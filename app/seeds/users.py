@@ -14,12 +14,16 @@ def seed_users():
         username='Leonard', email='leonard@gmail.com', password='password', first_name='Leonard', last_name='Hofstadter', phone_number="7776665555", image_url="https://the-big-bang-theory.com/images/uploads/2/rs_1365ce5b16123fd10b8.jpg", city="Bellevue", state="WA")
     raj = User(
         username='Raj', email='raj@gmail.com', password='password', first_name='Raj', last_name='Koothrappali', phone_number="1230001234", image_url="https://the-big-bang-theory.com/images/uploads/2/rs_35619e852e696869058.jpg", city="Brooklyn", state="NY")
+    amy = User(
+        username='Amy', email='amy@gmail.com', password='password', first_name='Amy', last_name='Fowler', phone_number="3141592654", image_url="https://scontent-sjc3-1.xx.fbcdn.net/v/t39.30808-6/305302101_417640143804191_7973729746509039859_n.jpg", city="San Francisco", state="CA")
 
     db.session.add(demo)
     db.session.add(sheldon)
     db.session.add(penny)
     db.session.add(leonard)
     db.session.add(raj)
+    db.session.add(amy)
+
     db.session.commit()
 
 
