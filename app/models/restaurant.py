@@ -45,7 +45,7 @@ class Restaurant(db.Model):
     reviews = db.relationship(
         "Review", back_populates="restaurant", cascade="all, delete-orphan")
     restaurant_favs = db.relationship(
-        "User", secondary=favorites, back_populates="user_favs", cascade="all, delete-orphan")
+        "User", secondary=favorites, back_populates="user_favs")
 
     def to_dict(self, geo=False):
         res = {

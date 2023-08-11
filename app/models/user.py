@@ -37,7 +37,7 @@ class User(db.Model, UserMixin):
     orderitem_likes = db.relationship(
         "OrderItemLike", back_populates="user", cascade="all, delete-orphan")
     user_favs = db.relationship(
-        "Restaurant", secondary=favorites, back_populates="restaurant_favs", cascade="all, delete-orphan")
+        "Restaurant", secondary=favorites, back_populates="restaurant_favs")
 
     @property
     def password(self):
