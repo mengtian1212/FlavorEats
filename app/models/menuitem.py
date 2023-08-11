@@ -27,6 +27,9 @@ class MenuItem(db.Model):
     orderitems = db.relationship(
         "OrderItem", back_populates="menuitem", cascade="all, delete-orphan")
 
+    menuitem_likes = db.relationship(
+        "MenuItemLike", back_populates="menuitem", cascade="all, delete-orphan")
+
     def to_dict(self):
         res = {
             'id': self.id,

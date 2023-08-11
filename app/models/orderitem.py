@@ -24,8 +24,8 @@ class OrderItem(db.Model):
     menuitem = db.relationship("MenuItem", back_populates="orderitems")
     order = db.relationship("Order", back_populates="orderitems")
 
-    orderitem_likes = db.relationship(
-        "OrderItemLike", back_populates="orderitem", cascade="all, delete-orphan")
+    # orderitem_likes = db.relationship(
+    #     "OrderItemLike", back_populates="orderitem", cascade="all, delete-orphan")
 
     def to_dict(self):
         res = {

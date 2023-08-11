@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 433fc85f73c7
+Revision ID: b66162114e1a
 Revises: 
-Create Date: 2023-08-11 03:47:51.442999
+Create Date: 2023-08-11 15:18:55.510402
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '433fc85f73c7'
+revision = 'b66162114e1a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -60,8 +60,8 @@ def upgrade():
                                                       '$$$$', name='price_ranges'), nullable=True),
                     sa.Column('city', sa.String(length=40), nullable=True),
                     sa.Column('state', sa.String(length=2), nullable=True),
-                    sa.Column('lat', sa.Integer(), nullable=True),
-                    sa.Column('lng', sa.Integer(), nullable=True),
+                    sa.Column('lat', sa.Float(), nullable=True),
+                    sa.Column('lng', sa.Float(), nullable=True),
                     sa.Column('address', sa.String(
                         length=255), nullable=False),
                     sa.Column('created_at', sa.DateTime(timezone=True),
@@ -72,12 +72,17 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id')
                     )
     op.create_table('favorites',
+                    sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
                     sa.Column('restaurant_id', sa.Integer(), nullable=False),
+                    sa.Column('created_at', sa.DateTime(timezone=True),
+                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+                    sa.Column('updated_at', sa.DateTime(timezone=True),
+                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.ForeignKeyConstraint(
                         ['restaurant_id'], ['restaurants.id'], ),
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-                    sa.PrimaryKeyConstraint('user_id', 'restaurant_id')
+                    sa.PrimaryKeyConstraint('id')
                     )
     op.create_table('menuitems',
                     sa.Column('id', sa.Integer(), nullable=False),
@@ -124,14 +129,27 @@ def upgrade():
                     sa.Column('reviewer_id', sa.Integer(), nullable=False),
                     sa.Column('restaurant_id', sa.Integer(), nullable=False),
                     sa.Column('rating', sa.Integer(), nullable=False),
-                    sa.Column('message', sa.String(
-                        length=255), nullable=False),
+                    sa.Column('message', sa.String(), nullable=False),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.ForeignKeyConstraint(
                         ['restaurant_id'], ['restaurants.id'], ),
+                    sa.ForeignKeyConstraint(['reviewer_id'], ['users.id'], ),
+                    sa.PrimaryKeyConstraint('id')
+                    )
+    op.create_table('menuitemlikes',
+                    sa.Column('id', sa.Integer(), nullable=False),
+                    sa.Column('reviewer_id', sa.Integer(), nullable=False),
+                    sa.Column('menuitem_id', sa.Integer(), nullable=False),
+                    sa.Column('is_like', sa.Boolean(), nullable=False),
+                    sa.Column('created_at', sa.DateTime(timezone=True),
+                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+                    sa.Column('updated_at', sa.DateTime(timezone=True),
+                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
+                    sa.ForeignKeyConstraint(
+                        ['menuitem_id'], ['menuitems.id'], ),
                     sa.ForeignKeyConstraint(['reviewer_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
@@ -148,20 +166,6 @@ def upgrade():
                     sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
-    op.create_table('orderitemlikes',
-                    sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('reviewer_id', sa.Integer(), nullable=False),
-                    sa.Column('order_item_id', sa.Integer(), nullable=False),
-                    sa.Column('is_like', sa.Boolean(), nullable=False),
-                    sa.Column('created_at', sa.DateTime(timezone=True),
-                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
-                    sa.Column('updated_at', sa.DateTime(timezone=True),
-                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
-                    sa.ForeignKeyConstraint(
-                        ['order_item_id'], ['orderitems.id'], ),
-                    sa.ForeignKeyConstraint(['reviewer_id'], ['users.id'], ),
-                    sa.PrimaryKeyConstraint('id')
-                    )
     # ### end Alembic commands ###
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
@@ -171,13 +175,13 @@ def upgrade():
         op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE orderitems SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE orderitemlikes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE menuitemlikes SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
-    op.drop_table('orderitemlikes')
     op.drop_table('orderitems')
+    op.drop_table('menuitemlikes')
     op.drop_table('reviews')
     op.drop_table('orders')
     op.drop_table('menuitems')

@@ -2,8 +2,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 
 
-class OrderItemLike(db.Model):
-    __tablename__ = 'orderitemlikes'
+class MenuItemLike(db.Model):
+    __tablename__ = 'menuitemlikes'
 
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
@@ -13,8 +13,8 @@ class OrderItemLike(db.Model):
     reviewer_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
 
-    order_item_id = db.Column(db.Integer, db.ForeignKey(
-        add_prefix_for_prod("orderitems.id")), nullable=False)
+    menuitem_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod("menuitems.id")), nullable=False)
 
     is_like = db.Column(db.Boolean, nullable=False, default=1)
 
@@ -24,15 +24,15 @@ class OrderItemLike(db.Model):
                            server_default=func.now(), onupdate=func.now())
 
     user = db.relationship(
-        "User", back_populates="orderitem_likes")
-    orderitem = db.relationship(
-        "OrderItem", back_populates="orderitem_likes")
+        "User", back_populates="menuitem_likes")
+    menuitem = db.relationship(
+        "MenuItem", back_populates="menuitem_likes")
 
     def to_dict(self):
         res = {
             'id': self.id,
             'reviewer_id': self.reviewer_id,
-            'order_item_id': self.order_item_id,
+            'menuitem_id': self.menuitem_id,
             'is_like': self.is_like,
             'created_at': self.created_at,
             'updated_at': self.updated_at

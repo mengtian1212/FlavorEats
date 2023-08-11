@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from sqlalchemy.sql import func
-from .favorite import favorites
+# from .favorite import favorites
 
 
 class User(db.Model, UserMixin):
@@ -34,10 +34,12 @@ class User(db.Model, UserMixin):
     # many-to-many
     reviews = db.relationship(
         "Review", back_populates="user", cascade="all, delete-orphan")
-    orderitem_likes = db.relationship(
-        "OrderItemLike", back_populates="user", cascade="all, delete-orphan")
-    user_favs = db.relationship(
-        "Restaurant", secondary=favorites, back_populates="restaurant_favs")
+    menuitem_likes = db.relationship(
+        "MenuItemLike", back_populates="user", cascade="all, delete-orphan")
+    # user_favs = db.relationship(
+    #     "Restaurant", secondary=favorites, back_populates="restaurant_favs")
+    favorites = db.relationship(
+        "Favorite", back_populates="user", cascade="all, delete-orphan")
 
     @property
     def password(self):

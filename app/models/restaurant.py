@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
-from .favorite import favorites
+# from .favorite import favorites
 
 price_ranges = ['$', '$$', '$$$', '$$$$']
 
@@ -25,8 +25,8 @@ class Restaurant(db.Model):
     # location
     city = db.Column(db.String(40), nullable=True)
     state = db.Column(db.String(2), nullable=True)
-    lat = db.Column(db.Integer, nullable=True)
-    lng = db.Column(db.Integer, nullable=True)
+    lat = db.Column(db.Float, nullable=True)
+    lng = db.Column(db.Float, nullable=True)
     address = db.Column(db.String(255), nullable=False)
 
     created_at = db.Column(db.DateTime(timezone=True),
@@ -44,8 +44,10 @@ class Restaurant(db.Model):
     # many-to-many
     reviews = db.relationship(
         "Review", back_populates="restaurant", cascade="all, delete-orphan")
-    restaurant_favs = db.relationship(
-        "User", secondary=favorites, back_populates="user_favs")
+    # restaurant_favs = db.relationship(
+    #     "User", secondary=favorites, back_populates="user_favs")
+    favorites = db.relationship(
+        "Favorite", back_populates="restaurant", cascade="all, delete-orphan")
 
     def to_dict(self, geo=False):
         res = {

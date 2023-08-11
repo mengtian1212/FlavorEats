@@ -15,7 +15,7 @@ class Review(db.Model):
     restaurant_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("restaurants.id")), nullable=False)
     rating = db.Column(db.Integer, nullable=False)
-    message = db.Column(db.String(255), nullable=False)
+    message = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True),
@@ -28,7 +28,7 @@ class Review(db.Model):
     def to_dict(self):
         res = {
             'id': self.id,
-            'reviewer_id': self.reviwer_id,
+            'reviewer_id': self.reviewer_id,
             'restaurant_id': self.restaurant_id,
             'rating': self.rating,
             'message': self.message,
