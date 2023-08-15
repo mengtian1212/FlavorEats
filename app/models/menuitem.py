@@ -30,6 +30,15 @@ class MenuItem(db.Model):
     menuitem_likes = db.relationship(
         "MenuItemLike", back_populates="menuitem", cascade="all, delete-orphan")
 
+    def calculate_like_dislike_ratio(self):
+        likes_count = sum(1 for like in self.menuitem_likes if like.is_like)
+        dislikes_count = sum(
+            1 for like in self.menuitem_likes if not like.is_like)
+
+        total_likes_dislikes = likes_count + dislikes_count
+        like_ratio = likes_count / total_likes_dislikes if total_likes_dislikes > 0 else 0
+        return like_ratio
+
     def to_dict(self):
         res = {
             'id': self.id,
@@ -40,6 +49,8 @@ class MenuItem(db.Model):
             'description': self.description,
             'item_type': self.item_type,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'like_ratio': self.calculate_like_dislike_ratio(),
+            'num_likes': sum(1 for like in self.menuitem_likes if like.is_like)
         }
         return res

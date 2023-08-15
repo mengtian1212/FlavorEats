@@ -49,8 +49,59 @@ class Restaurant(db.Model):
     favorites = db.relationship(
         "Favorite", back_populates="restaurant", cascade="all, delete-orphan")
 
+    def avg_rating(self):
+        avg_rating = 0
+        if len(self.reviews):
+            total = sum([review.rating for review in self.reviews])
+            avg_rating = total / len(self.reviews)
+
+        return avg_rating
+
+    def num_orders(self):
+        return len(self.orders)
+
+    def items(self):
+        res = {}
+        for item in self.menuitems:
+            res[item.id] = item.to_dict()
+        return res
+
+    def popularItems(self):
+        items = self.items().values()
+        popularItems = sorted(
+            items, key=lambda item: (
+                -float(item.get("like_ratio", 0)),
+                -float(item.get("num_likes", 0))
+            )
+        )[:5]
+        popular_items = {str(item["id"]): item for item in popularItems}
+        return popularItems
+
+    def to_dict_simple(self, geo=False):
+        res = {
+            'id': self.id,
+            'owner_id': self.owner_id,
+            'name': self.name,
+            'delivery_fee': self.delivery_fee,
+            'cusine_types': self.cusine_types,
+            'price_ranges': self.price_ranges,
+            'image_url': self.image_url,
+            'city': self.city,
+            'state': self.state,
+            'address': self.address,
+            'avg_rating': self.avg_rating(),
+            'num_orders': self.num_orders()
+        }
+
+        if geo:
+            res['lat'] = self.lat
+            res['lng'] = self.lng
+
+        return res
+
     def to_dict(self, geo=False):
         res = {
+            'id': self.id,
             'owner_id': self.owner_id,
             'name': self.name,
             'description': self.description,
@@ -62,7 +113,12 @@ class Restaurant(db.Model):
             'state': self.state,
             'address': self.address,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'num_rating': len(self.reviews),
+            'avg_rating': self.avg_rating(),
+            'num_orders': self.num_orders(),
+            'menuitems': self.items(),
+            'popular': self.popularItems()
         }
 
         if geo:

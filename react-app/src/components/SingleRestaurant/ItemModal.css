@@ -1,0 +1,11 @@
+.item-modal-container {
+  width: 1056px;
+  padding: 24px;
+  display: flex;
+}
+
+.item-img1 {
+  height: 492px;
+  width: 492px;
+  object-fit: cover;
+}

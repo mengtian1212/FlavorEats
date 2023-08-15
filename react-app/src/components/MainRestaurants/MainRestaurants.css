@@ -1,0 +1,261 @@
+.cuisine-types-container {
+  padding-top: 24px;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+}
+
+.single-cuisine-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cuisine-focus {
+  background-color: #e2e2e2;
+}
+
+.cuisine-types-img-container {
+  margin-bottom: 8px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cuisine-type-img {
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.cuisine-type-img:hover {
+  background-color: #e2e2e2;
+}
+
+.single-cuisine-type > div {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.sec3 {
+  margin: 0 48px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 60px;
+}
+
+/* sort & filters  */
+.sort-container {
+  width: 100%;
+  padding-top: 24px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+.sort-container > * {
+  max-width: 280px;
+}
+
+.clear-filter {
+  text-decoration: underline;
+}
+
+.all-res {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.sort-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 24px;
+}
+
+.sorts {
+  margin-top: 8px;
+  margin-bottom: 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.sort-radio {
+  display: flex;
+  gap: 8px;
+}
+
+input[type="radio"] {
+  accent-color: #232323;
+}
+
+.sort-radio div {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 500;
+  padding: 6px 0;
+}
+
+.price-range {
+  padding-top: 12px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+}
+
+.range-container {
+  padding: 12px;
+  border-radius: 30px;
+  line-height: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--btn);
+}
+
+.dollarColor {
+  background-color: black !important;
+  color: white !important;
+}
+
+.dietary-container {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.range-container1 {
+  padding: 10px 12px;
+  border-radius: 30px;
+  line-height: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--btn);
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.range-container1 div {
+  line-height: 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.halal-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Restaurants container  */
+.res-list-title {
+  line-height: 40px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding-right: 16px;
+}
+
+.all-res-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 24px;
+}
+
+.restaurant-card-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.fav {
+  position: absolute;
+  right: 12px;
+  top: 8px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.fav:hover {
+  color: #b1b1b1;
+}
+
+.restaurant-preview {
+  width: 437.75px;
+  height: 128px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.restaurant-card-name {
+  margin-top: 12px;
+  padding: 2px 0px;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.restaurant-delivery {
+  font-size: 14px;
+  color: rgb(84, 84, 84);
+  line-height: 20px;
+}
+
+.restaurant-card-stars {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 14px;
+  line-height: 20px;
+  gap: 4px;
+}
+
+/* star ratings  */
+.ratings {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  color: #b1b1b1;
+  overflow: hidden;
+}
+
+.full-stars {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: black;
+}
+
+.empty-stars:before,
+.full-stars:before {
+  content: "\2605\2605\2605\2605\2605";
+  font-size: 14pt;
+}
+
+.empty-stars:before {
+  -webkit-text-stroke: 1px transparent;
+}
+
+.full-stars:before {
+  -webkit-text-stroke: 1px transparent;
+}

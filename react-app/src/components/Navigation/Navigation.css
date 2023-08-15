@@ -1,7 +1,323 @@
+.logo-wrap {
+  background-color: transparent;
+}
+
+.logotext {
+  font-weight: 700;
+  margin: 180px;
+  padding: 18px;
+  height: 180px;
+  width: 180px;
+  border-radius: 0px;
+  background-color: #06c167;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation-fill-mode: center;
+}
+
+.logotext div {
+  font-weight: 1200;
+  font-size: 38px;
+  font-family: "Uber Move Text", sans-serif;
+}
+
 .profile-dropdown {
   position: absolute;
 }
 
 .hidden {
   display: none;
+}
+
+/* start here */
+.nav-container {
+  height: 96px;
+  padding: 0px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+}
+
+/* logo  */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.logo-flavor {
+  text-decoration: none;
+  color: black;
+  font-size: 28px;
+  font-weight: 500;
+}
+
+.logo-eats {
+  text-decoration: none;
+  color: rgb(6, 193, 103);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* toggle delivery pickup  */
+.toggle-delivery-container {
+  height: 48px;
+  width: auto;
+  background-color: var(--btn);
+  padding: 4px;
+  border-radius: 500px;
+  display: flex;
+}
+
+.toggle-delivery {
+  padding: 0px 16px;
+  cursor: pointer;
+  border-radius: 500px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+
+  outline: none;
+  border: none;
+}
+
+.on {
+  background-color: white;
+}
+
+.off {
+  background-color: transparent;
+}
+
+/* address  */
+.nav-address {
+  height: 48px;
+  background-color: var(--btn);
+  padding: 8px 12px;
+  line-height: 16px;
+  border-radius: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-address div {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* search bar  */
+.nav-search {
+  background-color: var(--btn);
+  padding: 8px 14px;
+  line-height: 20px;
+  font-weight: 500;
+  border-radius: 500px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.search-input {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-weight: 500;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* past orders & shopping carts buttons  */
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-black {
+  background-color: black;
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  line-height: 20px;
+  height: 48px;
+  border-radius: 500px;
+  font-weight: 500;
+  border: none;
+}
+
+.btn-black:hover {
+  background-color: #262626;
+  opacity: 90%;
+}
+
+.btn-white {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 16px;
+  font-size: 16px;
+  line-height: 20px;
+  height: 48px;
+  border-radius: 500px;
+  font-weight: 500;
+  border: 1px solid #000000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-white:hover {
+  background-color: #e2e2e2;
+}
+
+._16 {
+  width: 16px;
+}
+
+._24 {
+  width: 24px;
+}
+
+._32 {
+  width: 32px;
+}
+
+._40 {
+  width: 40px;
+}
+
+._48 {
+  width: 48px;
+}
+
+.bars-icon {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+.bars-icon i {
+  font-size: 20px;
+}
+
+/* user menu when login */
+.profile-dropdown {
+  background-color: white;
+  width: 300px;
+  max-width: 80%;
+  height: 100vh;
+  padding: 24px;
+  top: 0;
+  left: 0;
+  transform: translateX(0px);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: opacity 0.4s ease-in-out 0s;
+  z-index: 1;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.user-img {
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}
+
+.manage-account {
+  color: rgb(4, 136, 72);
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.menu-item {
+  padding-top: 24px;
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: center;
+  font-weight: 500;
+}
+
+.menu-icons {
+  width: 18px;
+  padding: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-out {
+  color: #6b6b6b;
+  padding: 12px 0px;
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.github0 {
+  border-top: 1px solid #6b6b6b;
+  gap: 16px;
+  text-decoration: none;
+  color: #000000;
+}
+
+/* user menu when logout */
+.menu-logout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 16px;
+}
+
+.user-signup {
+  min-height: 56px;
+  font-size: 18px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 500;
+  border: none;
+}
+
+.user-signup:hover {
+  background-color: #262626;
+  opacity: 80%;
+}
+
+.github {
+  padding: 16px;
+  padding-top: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  gap: 16px;
+  text-decoration: none;
+  color: #000000;
 }

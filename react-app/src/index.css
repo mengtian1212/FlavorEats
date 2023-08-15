@@ -1,1 +1,35 @@
 /* TODO Add site wide styles */
+* {
+  margin: 0px 0px;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Uber Move Text", sans-serif;
+  list-style-type: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+:root {
+  --btn: #eeeeee;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.btn-grey {
+  background-color: var(--btn);
+  color: #000000;
+}
+
+.btn-grey:hover {
+  background-color: #e2e2e2;
+}
