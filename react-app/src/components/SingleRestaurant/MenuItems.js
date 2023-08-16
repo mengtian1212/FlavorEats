@@ -3,7 +3,6 @@ import OpenModalButton from "../OpenModalButton";
 import ItemModal from "./ItemModal";
 
 function MenuItems({ type, items }) {
-  console.log(items);
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -19,7 +18,6 @@ function MenuItems({ type, items }) {
 
   useEffect(() => {
     if (!showMenu) return;
-    console.log(ulRef.current);
 
     const closeMenu = (e) => {
       if (!ulRef.current || !ulRef.current.contains(e.target)) {
@@ -48,16 +46,25 @@ function MenuItems({ type, items }) {
                     }
                     onItemClick={closeMenu}
                     modalComponent={<ItemModal item={item} />}
+                    myClass="btn-location"
+                    modalClass=""
                   />
-                  {/* <OpenModalButton
+                  <OpenModalButton
                     buttonText="Quick view"
                     onItemClick={closeMenu}
                     modalComponent={<ItemModal item={item} />}
-                  /> */}
-                  <div className="img-quick-view cursor">Quick view</div>
+                    myClass="img-quick-view cursor"
+                    modalClass=""
+                  />
                 </div>
                 <div className="item-name-text">{item.item_name}</div>
-                <div className="item-price">${item.price}</div>
+                <div className="price-calory">
+                  <div className="item-price">${item.price}</div>
+                  <div className="item-calory">·</div>
+                  <div className="item-calory">
+                    {parseInt(item.calory)} Cal.
+                  </div>
+                </div>
                 {item.like_ratio > 0 && (
                   <div className="item-likes-container">
                     <i className="fa-solid fa-thumbs-up"></i>
@@ -83,14 +90,26 @@ function MenuItems({ type, items }) {
                     }
                     onItemClick={closeMenu}
                     modalComponent={<ItemModal item={item} />}
+                    myClass="btn-location"
                   />
-                  <div className="img-quick-view cursor">Quick view</div>
+                  <OpenModalButton
+                    buttonText="Quick view"
+                    onItemClick={closeMenu}
+                    modalComponent={<ItemModal item={item} />}
+                    myClass="img-quick-view cursor"
+                  />
                   {item.like_ratio >= 0.8 && (
                     <div className="popular-sign">Popular</div>
                   )}
                 </div>
                 <div className="item-name-text">{item.item_name}</div>
-                <div className="item-price">${item.price}</div>
+                <div className="price-calory">
+                  <div className="item-price">${item.price}</div>
+                  <div className="item-calory">·</div>
+                  <div className="item-calory">
+                    {parseInt(item.calory)} Cal.
+                  </div>
+                </div>
                 {item.like_ratio > 0 && (
                   <div className="item-likes-container">
                     <i className="fa-solid fa-thumbs-up"></i>

@@ -23,10 +23,6 @@ function MainRestaurants() {
   const [priceRanges, setPriceRanges] = useState([]);
   const [dietary, setDietary] = useState([]);
 
-  console.log("filterRestaurants", filterRestaurants);
-  console.log("filterType", filterType);
-  console.log("sortBy", sortBy);
-
   useEffect(() => {
     dispatch(fetchAllRestaurantsThunk());
     window.scroll(0, 0);

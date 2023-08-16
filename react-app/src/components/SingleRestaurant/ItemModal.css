@@ -1,11 +1,84 @@
 .item-modal-container {
   width: 1056px;
   padding: 24px;
+  padding-top: 42px;
   display: flex;
+  gap: 24px;
+}
+
+#left-item-container {
+  height: 492px;
+  min-width: 492px;
+  overflow: hidden;
 }
 
 .item-img1 {
   height: 492px;
   width: 492px;
   object-fit: cover;
+  cursor: zoom-in;
+}
+
+.xmark-container {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  cursor: pointer;
+  color: black;
+  border-radius: 500px;
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.xmark-container i {
+  font-size: 20px;
+}
+
+.xmark-container:hover {
+  background-color: #e2e2e2;
+}
+
+.item-n {
+  line-height: 40px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.item-c {
+  line-height: 28px;
+  color: rgb(84, 84, 84);
+  font-size: 18px;
+}
+
+.item-p {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.item-d {
+  padding: 8px 0px;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.item-likes-container1 {
+  width: fit-content;
+  flex-grow: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 5px 9px;
+  margin-top: 16px;
+  background-color: rgb(238, 238, 238);
+  border-radius: 12px;
+}
+
+.item-likes-container1 > * {
+  line-height: 16px;
+  font-size: 12px;
 }

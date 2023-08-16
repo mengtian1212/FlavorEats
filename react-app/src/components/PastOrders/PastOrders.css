@@ -1,0 +1,148 @@
+.past-orders-container {
+  padding: 2px 40px;
+  margin: 0 aut0;
+  min-width: 1024px;
+  max-width: 1920px;
+}
+
+#past-orders-title {
+  line-height: 44px;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 8px 0px 32px;
+}
+
+.single-order-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.order-left-container {
+  display: flex;
+  gap: 24px;
+}
+
+.past-order-res-img {
+  height: 140px;
+  width: 302px;
+  object-fit: cover;
+}
+
+.order-resimg-container {
+  position: relative;
+  height: fit-content;
+}
+
+.img-quick-view1 {
+  z-index: 3;
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background-color: rgb(255, 255, 255);
+  padding: 9px 12px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+  border: 1px solid #e2e2e2;
+  transition: background-color 0.3s ease-in-out;
+  height: 36px;
+  width: fit-content;
+  border-radius: 500px;
+  line-height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  vertical-align: center;
+  text-align: center;
+}
+
+.img-quick-view1:hover {
+  background-color: #e2e2e2;
+}
+
+.order-item-container {
+  padding-top: 16px;
+}
+
+.order-name {
+  color: rgb(51, 51, 51);
+  margin-bottom: 4px;
+  line-height: 28px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.order-stat {
+  display: flex;
+  margin-bottom: 4px;
+  gap: 4px;
+}
+
+.order-stat > * {
+  color: rgb(84, 84, 84);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.single-item-container {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 16px;
+  align-items: center;
+}
+
+.single-item-name {
+  line-height: 24px;
+  font-size: 16px;
+}
+
+.single-item-quantity {
+  height: 22px;
+  padding: 0px 8px;
+  border: 1px solid rgb(226, 226, 226);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.order-right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 24px;
+}
+
+.reorder-btn {
+  width: 302px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+
+.reorder-btn:hover {
+  opacity: 80%;
+}
+
+.reorder-btn1 {
+  width: 302px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #e5e5e5;
+  color: black;
+  cursor: pointer;
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+
+.reorder-btn1:hover {
+  background-color: #d2d2d2;
+}

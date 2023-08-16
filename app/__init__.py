@@ -10,6 +10,7 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.restaurant_routes import restaurant_routes
+from .api.order_routes import order_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -30,6 +31,8 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(restaurant_routes, url_prefix='/api/restaurants')
+app.register_blueprint(order_routes, url_prefix='/api/orders')
+
 
 db.init_app(app)
 Migrate(app, db)

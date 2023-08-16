@@ -31,17 +31,58 @@ class Order(db.Model):
     orderitems = db.relationship(
         "OrderItem", back_populates="order", cascade="all, delete-orphan")
 
+    def calculate_num_items(self):
+        num_items = 0
+        for item in self.orderitems:
+            num_items += item.quantity
+        return num_items
+
+    def calculate_total_price(self):
+        total_price = 0
+        for item in self.orderitems:
+            curr = item.quantity * item.menuitem.price
+            total_price += curr
+        tip = self.tip if self.is_pickup == False else 0
+        return float(total_price + self.restaurant.delivery_fee + tip)
+
+    def calculate_subtotal(self):
+        subtotal = 0
+        for item in self.orderitems:
+            curr = item.quantity * item.menuitem.price
+            subtotal += curr
+        return float(subtotal)
+
+    def items(self):
+        res = {}
+        for orderitem in self.orderitems:
+            res[orderitem.item_id] = {
+                "item_id": orderitem.item_id,
+                "item_name": orderitem.menuitem.item_name,
+                "quantity": orderitem.quantity,
+                "item_price": float(orderitem.menuitem.price),
+                "item_subtotal": float(orderitem.menuitem.price) * orderitem.quantity,
+                "image_url": orderitem.menuitem.image_url,
+                "order_id": orderitem.order_id
+            }
+        return res
+
     def to_dict(self, geo=False):
         res = {
             'id': self.id,
             'user_id': self.user_id,
             'restaurant_id': self.restaurant_id,
-            'tip': self.tip,
+            'restaurant_name': self.restaurant.name,
+            'restaurant_image': self.restaurant.image_url,
+            'tip': float(self.tip),
             'is_pickup': self.is_pickup,
             'is_complete': self.is_complete,
             'delivery_address': self.delivery_address,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'order_items': self.items(),
+            'num_items': self.calculate_num_items(),
+            'total_price': self.calculate_total_price(),
+            'subtotal': self.calculate_subtotal()
         }
 
         if geo:

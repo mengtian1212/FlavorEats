@@ -191,6 +191,7 @@
 
 .item-img-container {
   position: relative;
+  height: 188px;
 }
 
 .item-background {
@@ -249,9 +250,20 @@
   padding-top: 8px;
 }
 
+.price-calory {
+  display: flex;
+  gap: 4px;
+}
+
 .item-price {
   line-height: 20px;
   font-size: 14px;
+}
+
+.item-calory {
+  line-height: 20px;
+  font-size: 14px;
+  color: #6b6b6b;
 }
 
 .item-likes-container {
@@ -277,6 +289,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 40px 24px;
   padding: 16px;
+  margin-bottom: 16px;
 }
 
 .item-type-name {
@@ -296,6 +309,14 @@
   color: white;
   border-radius: 500px;
   border: 1px solid white;
+}
+
+.btn-location {
+  position: absolute;
+  right: 0px;
+  top: 0;
+  background-color: transparent;
+  border: none;
 }
 
 .item-plus:hover {

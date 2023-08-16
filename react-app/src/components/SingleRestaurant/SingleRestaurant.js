@@ -74,7 +74,6 @@ function SingleRestaurant() {
 
   const ids = Object.keys(items);
   const activeId = useScrollspy(ids, 54); // 54 is navigation height
-  console.log(items);
   return (
     <div>
       <div>
@@ -93,7 +92,10 @@ function SingleRestaurant() {
               {targetRestaurant.avg_rating > 0 &&
                 targetRestaurant.avg_rating.toFixed(1)}
             </div>
-            <div>({targetRestaurant.num_rating} ratings)</div>
+            <div>
+              ({targetRestaurant.num_rating}{" "}
+              {targetRestaurant.num_rating === 1 ? "rating" : "ratings"})
+            </div>
             <div>· </div>
             <div>{groups && groups[0]}</div>
             <div>· </div>

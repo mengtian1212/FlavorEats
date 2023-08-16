@@ -1,0 +1,59 @@
+.cart-res-favicon {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.btn-black2 {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  line-height: 20px;
+  height: 48px;
+  border-radius: 500px;
+  font-weight: 500;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.btn-items {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 14px 12px 14px 8px;
+  color: #ffffff;
+}
+
+.btn-items:hover {
+  background-color: #333333;
+  opacity: 80%;
+}
+
+.btn-carts {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 14px 16px 14px 12px;
+  color: #ffffff;
+}
+
+.btn-carts:hover {
+  background-color: #333333;
+  opacity: 80%;
+}
+
+.seperate-line {
+  background-color: rgb(84, 84, 84);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  width: 1.5px;
+  height: 50%;
+  margin: 12px 0px;
+}

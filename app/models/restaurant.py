@@ -17,7 +17,7 @@ class Restaurant(db.Model):
     name = db.Column(db.String(255), nullable=False)
     image_url = db.Column(db.String(255), nullable=True)
     description = db.Column(db.String, nullable=True)
-    delivery_fee = db.Column(db.Float, nullable=True, default=0)
+    delivery_fee = db.Column(db.Numeric(4, 2), nullable=True, default=0)
     cusine_types = db.Column(db.String(255), nullable=False)
     price_ranges = db.Column(
         db.Enum(name='price_ranges', *price_ranges), default='$')
@@ -82,7 +82,7 @@ class Restaurant(db.Model):
             'id': self.id,
             'owner_id': self.owner_id,
             'name': self.name,
-            'delivery_fee': self.delivery_fee,
+            'delivery_fee': float(self.delivery_fee),
             'cusine_types': self.cusine_types,
             'price_ranges': self.price_ranges,
             'image_url': self.image_url,
