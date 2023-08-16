@@ -33,7 +33,7 @@ export const fetchOneRestaurantThunk = (restaurantId) => async (dispatch) => {
   }
 };
 
-/** Pins Reducer: */
+/** Restaurants Reducer: */
 const initialState = { allRestaurants: {}, singleRestaurant: {} };
 const restaurantsReducer = (state = initialState, action) => {
   switch (action.type) {

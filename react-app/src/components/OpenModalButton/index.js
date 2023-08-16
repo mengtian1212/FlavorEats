@@ -1,22 +1,26 @@
-import React from 'react';
-import { useModal } from '../../context/Modal';
+import React from "react";
+import { useModal } from "../../context/Modal";
 
 function OpenModalButton({
   modalComponent, // component to render inside the modal
   buttonText, // text of the button that opens the modal
   onButtonClick, // optional: callback function that will be called once the button that opens the modal is clicked
-  onModalClose // optional: callback function that will be called once the modal is closed
+  onModalClose, // optional: callback function that will be called once the modal is closed
+  myClass,
+  modalClass,
 }) {
-  const { setModalContent, setOnModalClose } = useModal();
-
+  const { setModalContent, setOnModalClose, setModalClass } = useModal();
   const onClick = () => {
+    if (modalClass) setModalClass(modalClass);
     if (onModalClose) setOnModalClose(onModalClose);
     setModalContent(modalComponent);
     if (onButtonClick) onButtonClick();
   };
 
   return (
-    <button onClick={onClick}>{buttonText}</button>
+    <button onClick={onClick} className={`${myClass}`}>
+      {buttonText}
+    </button>
   );
 }
 

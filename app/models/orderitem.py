@@ -30,9 +30,13 @@ class OrderItem(db.Model):
     def to_dict(self):
         res = {
             'id': self.id,
-            'order_id': self.order_id,
             'item_id': self.item_id,
+            "item_name": self.menuitem.item_name,
             'quantity': self.quantity,
+            "item_price": float(self.menuitem.price),
+            "item_subtotal": float(self.menuitem.price) * self.quantity,
+            "image_url": self.menuitem.image_url,
+            'order_id': self.order_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import LandingPage from "./components/LandingPage";
 import MainRestaurants from "./components/MainRestaurants";
 import SingleRestaurant from "./components/SingleRestaurant";
+import PastOrders from "./components/PastOrders";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,23 +19,32 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded && (
         <Switch>
           <Route path="/login">
+            <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
           </Route>
           <Route path="/signup">
+            <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
           </Route>
           <Route exact path="/">
+            <Navigation isLoaded={isLoaded} />
             <LandingPage />
           </Route>
+          <Route exact path="/restaurants/:restaurantId">
+            <Navigation isLoaded={isLoaded} />
+            <SingleRestaurant />
+          </Route>
           <Route exact path="/restaurants">
+            <Navigation isLoaded={isLoaded} />
             <MainRestaurants />
           </Route>
-          <Route exact path="/restaurants/:restaurantId">
-            <SingleRestaurant />
+          <Route exact path="/orders">
+            <Navigation isLoaded={isLoaded} />
+            <PastOrders />
           </Route>
         </Switch>
       )}

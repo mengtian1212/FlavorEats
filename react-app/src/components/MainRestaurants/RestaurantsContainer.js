@@ -34,13 +34,11 @@ function RestaurantsContainer({
   } else if (sortBy === "rating") {
     restaurants.sort((a, b) => b.avg_rating - a.avg_rating);
   }
-  console.log("priceRanges", priceRanges);
-  console.log("dietary", dietary);
 
   return (
     <div>
       <div className="res-list-title">
-        <span className="res-list-title">{type} -</span>
+        <span className="res-list-title">{type} </span>
         <span className="res-list-title">
           {restaurants.length} {restaurants.length === 1 ? "store" : "stores"}
         </span>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./Navigation.css";
 import UserButton from "./UserButton";
 import CartButton from "./CartButton";
@@ -13,8 +13,10 @@ function Navigation({ isLoaded }) {
   const handleClickLogo = () => {
     if (sessionUser) {
       history.push("/restaurants");
+      window.scroll(0, 0);
     } else {
       history.push("/");
+      window.scroll(0, 0);
     }
   };
   return (

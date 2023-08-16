@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b66162114e1a
-Revises: 
-Create Date: 2023-08-11 15:18:55.510402
+Revision ID: 52321bd4afd5
+Revises:
+Create Date: 2023-08-15 15:50:29.079598
 
 """
 from alembic import op
@@ -11,9 +11,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = 'b66162114e1a'
+revision = '52321bd4afd5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -53,7 +52,8 @@ def upgrade():
                     sa.Column('image_url', sa.String(
                         length=255), nullable=True),
                     sa.Column('description', sa.String(), nullable=True),
-                    sa.Column('delivery_fee', sa.Float(), nullable=True),
+                    sa.Column('delivery_fee', sa.Numeric(
+                        precision=4, scale=2), nullable=True),
                     sa.Column('cusine_types', sa.String(
                         length=255), nullable=False),
                     sa.Column('price_ranges', sa.Enum('$', '$$', '$$$',
@@ -95,6 +95,8 @@ def upgrade():
                         length=255), nullable=True),
                     sa.Column('description', sa.String(), nullable=True),
                     sa.Column('item_type', sa.String(), nullable=True),
+                    sa.Column('calory', sa.Numeric(
+                        precision=4, scale=2), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),

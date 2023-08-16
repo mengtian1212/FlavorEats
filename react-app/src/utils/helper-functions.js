@@ -3,7 +3,6 @@ export const hasCommonCuisineType = (list1, list2) => {
   const set2 = new Set(list2);
 
   for (const ele of set1) {
-    console.log(set2, set1, ele.slice(1));
     if (set2.has(ele)) {
       return true;
     }
@@ -22,4 +21,17 @@ export const getMenuItemsByType = (popular, items) => {
     res[itemType].push(item);
   }
   return res;
+};
+
+export const formatDate = (inputDateTime) => {
+  const date = new Date(inputDateTime);
+  const options = {
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+  return `${formattedDate.split(",")[0]} at ${formattedDate.split(",")[1]}`;
 };
