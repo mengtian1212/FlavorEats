@@ -26,16 +26,21 @@ export const editCartAction = (cart) => ({
   cart,
 });
 
-export const deleteCartAction = (payload) => {
+export const deleteCartAction = (restaurantId) => {
   return {
     type: DELETE_CART,
-    payload,
+    restaurantId,
   };
 };
 
 export const deleteItemFromCartAction = (targetOrder, itemId) => ({
   type: DELETE_ITEM,
   payload: { targetOrder, itemId },
+});
+
+export const updateItemInCartAction = (targetOrderU, targetOrderItemU) => ({
+  type: UPDATE_ITEM,
+  payload: { targetOrderU, targetOrderItemU },
 });
 
 /** Thunk Action Creators: */
@@ -46,13 +51,52 @@ export const fetchCartsThunk = () => async (dispatch) => {
   return current_orders;
 };
 
-export const deleteCartItemThunk = (orderId, itemId) => async (dispatch) => {
-  const response = await fetch(`/api/orders/${orderId}/items/${itemId}`, {
-    method: "delete",
+export const deleteCartThunk = (orderId) => async (dispatch) => {
+  const response = await fetch(`/api/orders/${orderId}`, {
+    method: "DELETE",
   });
+  const { targetOrderResId } = await response.json();
+  if (response.ok) {
+    dispatch(deleteCartAction(targetOrderResId));
+  }
+};
+
+// when item quantity = 0 => delete from cart.
+// if cart is empty after delete => delete this cart (in backend route & store).
+export const deleteCartItemThunk =
+  (orderId, itemId, restaurantId) => async (dispatch) => {
+    const response = await fetch(`/api/orders/${orderId}/items/${itemId}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    if (response.ok && data.targetOrder) {
+      dispatch(deleteItemFromCartAction(data.targetOrder, itemId));
+      return data;
+    }
+    if (response.ok && data.message) {
+      dispatch(deleteCartAction(restaurantId));
+    }
+    return data;
+  };
+
+// when item quantity != 0, then update
+export const updateCartItemThunk = (updatedOrderItem) => async (dispatch) => {
+  const requestBody = {
+    quantity: updatedOrderItem.quantity,
+  };
+  const response = await fetch(
+    `/api/orders/${updatedOrderItem.order_id}/items/${updatedOrderItem.item_id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    }
+  );
   const data = await response.json();
   if (response.ok) {
-    dispatch(deleteItemFromCartAction(data.targetOrder, itemId));
+    dispatch(updateItemInCartAction(data.targetOrder, data.targetOrderItem));
   }
   return data;
 };
@@ -72,7 +116,22 @@ const ordersReducer = (state = initialState, action) => {
       };
       delete newState[targetOrder.restaurant_id].order_items[itemId];
       return newState;
-
+    case DELETE_CART:
+      const newState1 = { ...state };
+      delete newState1[action.restaurantId];
+      return newState1;
+    case UPDATE_ITEM:
+      const { targetOrderU, targetOrderItemU } = action.payload;
+      const newState2 = { ...state };
+      newState2[targetOrderU.restaurant_id] = {
+        ...newState2[targetOrderU.restaurant_id],
+        ...targetOrderU,
+      };
+      newState2[targetOrderU.restaurant_id].order_items = {
+        ...newState2[targetOrderU.restaurant_id].order_items,
+        [targetOrderItemU.item_id]: { ...targetOrderItemU },
+      };
+      return newState2;
     default:
       return state;
   }

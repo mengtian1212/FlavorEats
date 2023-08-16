@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import OpenModalButton from "../OpenModalButton";
 import ItemModal from "./ItemModal";
+import AddToCartBtn from "./AddToCartBtn";
 
 function MenuItems({ type, items }) {
   const [showMenu, setShowMenu] = useState(false);
@@ -60,10 +61,12 @@ function MenuItems({ type, items }) {
                 <div className="item-name-text">{item.item_name}</div>
                 <div className="price-calory">
                   <div className="item-price">${item.price}</div>
-                  <div className="item-calory">·</div>
-                  <div className="item-calory">
-                    {parseInt(item.calory)} Cal.
-                  </div>
+                  {item.calory && <div className="item-calory">·</div>}
+                  {item.calory && (
+                    <div className="item-calory">
+                      {parseInt(item.calory)} Cal.
+                    </div>
+                  )}
                 </div>
                 {item.like_ratio > 0 && (
                   <div className="item-likes-container">
@@ -84,14 +87,7 @@ function MenuItems({ type, items }) {
                 <div className="item-img-container">
                   <img src={item.image_url} alt="" className="item-img" />
                   <div className="item-background"></div>
-                  <OpenModalButton
-                    buttonText={
-                      <i className="fa-solid fa-plus item-plus cursor"></i>
-                    }
-                    onItemClick={closeMenu}
-                    modalComponent={<ItemModal item={item} />}
-                    myClass="btn-location"
-                  />
+                  <AddToCartBtn item={item} />
                   <OpenModalButton
                     buttonText="Quick view"
                     onItemClick={closeMenu}
@@ -105,10 +101,12 @@ function MenuItems({ type, items }) {
                 <div className="item-name-text">{item.item_name}</div>
                 <div className="price-calory">
                   <div className="item-price">${item.price}</div>
-                  <div className="item-calory">·</div>
-                  <div className="item-calory">
-                    {parseInt(item.calory)} Cal.
-                  </div>
+                  {item.calory && <div className="item-calory">·</div>}
+                  {item.calory && (
+                    <div className="item-calory">
+                      {parseInt(item.calory)} Cal.
+                    </div>
+                  )}
                 </div>
                 {item.like_ratio > 0 && (
                   <div className="item-likes-container">

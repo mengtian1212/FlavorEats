@@ -55,15 +55,7 @@ class Order(db.Model):
     def items(self):
         res = {}
         for orderitem in self.orderitems:
-            res[orderitem.item_id] = {
-                "item_id": orderitem.item_id,
-                "item_name": orderitem.menuitem.item_name,
-                "quantity": orderitem.quantity,
-                "item_price": float(orderitem.menuitem.price),
-                "item_subtotal": float(orderitem.menuitem.price) * orderitem.quantity,
-                "image_url": orderitem.menuitem.image_url,
-                "order_id": orderitem.order_id
-            }
+            res[orderitem.item_id] = orderitem.to_dict()
         return res
 
     def to_dict(self, geo=False):

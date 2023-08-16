@@ -21,6 +21,8 @@ def seed_orderitems():
         # order 5 restaurant 5
         {"order_id": 5, "item_id": 41, "quantity": 1},
         {"order_id": 5, "item_id": 54, "quantity": 1},
+        # order 6 restaurant 3
+        {"order_id": 6, "item_id": 27, "quantity": 3},
     ]
 
     seed_menuitems = [db.session.add(

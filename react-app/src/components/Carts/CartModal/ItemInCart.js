@@ -1,6 +1,8 @@
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { deleteCartItemThunk } from "../../../store/orders";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  deleteCartItemThunk,
+  updateCartItemThunk,
+} from "../../../store/orders";
 
 function ItemInCart({ restaurantId, orderItemId }) {
   const dispatch = useDispatch();
@@ -15,9 +17,16 @@ function ItemInCart({ restaurantId, orderItemId }) {
   }
 
   const handleUpdateQuantity = (e) => {
+    console.log("e.target.value", e.target.value);
     if (e.target.value === orderItem.quantity) return;
     if (e.target.value === "0") {
-      dispatch(deleteCartItemThunk(orderItem?.order_id, orderItem?.item_id));
+      dispatch(
+        deleteCartItemThunk(
+          orderItem?.order_id,
+          orderItem?.item_id,
+          restaurantId
+        )
+      );
     } else {
       const updatedOrderItem = {
         id: orderItemId,
@@ -25,7 +34,7 @@ function ItemInCart({ restaurantId, orderItemId }) {
         item_id: orderItem.item_id,
         quantity: parseInt(e.target.value),
       };
-      //   dispatch(updateCartItemThunk(updatedOrderItem));
+      dispatch(updateCartItemThunk(updatedOrderItem));
     }
   };
 
@@ -39,19 +48,21 @@ function ItemInCart({ restaurantId, orderItemId }) {
         </div>
       </div>
       <div className="cart-6">
-        <select
-          value={orderItem.quantity}
-          onChange={handleUpdateQuantity}
-          className=""
-        >
-          <option value="0">Remove</option>
-          {QUANTITYS.map((quantity) => (
-            <option key={quantity} value={quantity}>
-              {quantity}
-            </option>
-          ))}
-        </select>
-        <div className="cart-2-num">${orderItem?.item_subtotal}</div>
+        <div className="cart-6-select-container">
+          <select
+            value={orderItem.quantity}
+            onChange={handleUpdateQuantity}
+            className="cart-6-select"
+          >
+            <option value="0">Remove</option>
+            {QUANTITYS.map((quantity) => (
+              <option key={quantity} value={quantity}>
+                {quantity}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="cart-3-num">${orderItem?.item_subtotal.toFixed(2)}</div>
       </div>
       <div className="vert-line"></div>
     </div>

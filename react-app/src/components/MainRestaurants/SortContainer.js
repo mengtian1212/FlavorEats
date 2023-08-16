@@ -5,18 +5,35 @@ function SortContainer({
   setFilterType,
   sortBy,
   setSortBy,
+  priceRanges,
   setPriceRanges,
   setDietary,
+  isOne,
+  isTwo,
+  isThree,
+  isFour,
+  setIsOne,
+  setIsTwo,
+  setIsThree,
+  setIsFour,
+  isVegetarian,
+  setIsVegetarian,
+  isVegan,
+  setIsVegan,
+  isGluten,
+  setIsGluten,
+  isHalal,
+  setIsHalal,
 }) {
-  const [isOne, setIsOne] = useState(false);
-  const [isTwo, setIsTwo] = useState(false);
-  const [isThree, setIsThree] = useState(false);
-  const [isFour, setIsFour] = useState(false);
+  // const [isOne, setIsOne] = useState(false);
+  // const [isTwo, setIsTwo] = useState(false);
+  // const [isThree, setIsThree] = useState(false);
+  // const [isFour, setIsFour] = useState(false);
 
-  const [isVegetarian, setIsVegetarian] = useState(false);
-  const [isVegan, setIsVegan] = useState(false);
-  const [isGluten, setIsGluten] = useState(false);
-  const [isHalal, setIsHalal] = useState(false);
+  // const [isVegetarian, setIsVegetarian] = useState(false);
+  // const [isVegan, setIsVegan] = useState(false);
+  // const [isGluten, setIsGluten] = useState(false);
+  // const [isHalal, setIsHalal] = useState(false);
 
   const handleClear = () => {
     setIsOne(false);
@@ -47,7 +64,6 @@ function SortContainer({
     if (isHalal) dietary.push("Halal");
     setDietary(dietary);
   }, [isVegetarian, isVegan, isGluten, isHalal, setDietary]);
-
   return (
     <div className="sort-container">
       <div className="all-res">All Restaurants</div>

@@ -54,6 +54,16 @@ def seed_orders():
             "delivery_lat": 40.748817,
             "delivery_lng": -73.985428,
         },
+        {  # 6
+            "user_id": 1,
+            "restaurant_id": 3,
+            "tip": 2,
+            "is_pickup": False,
+            "is_complete": False,
+            "delivery_address": "Empire State Building 350 5th Ave, New York, NY 10118",
+            "delivery_lat": 40.748817,
+            "delivery_lng": -73.985428,
+        },
     ]
     seed_orders = [db.session.add(
         Order(**order)) for order in orders]

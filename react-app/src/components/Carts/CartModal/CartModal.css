@@ -98,6 +98,7 @@
   display: flex;
   justify-content: space-between;
   padding: 16px 0px;
+  margin-bottom: 8px;
 }
 
 .cart-4 {
@@ -116,7 +117,7 @@
   position: sticky;
   background-color: white;
   bottom: 0px;
-  padding-top: 24px;
+  padding-top: 8px;
 }
 
 .i-con {
@@ -149,7 +150,51 @@
 .cart-6 {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   height: 64px;
+}
+
+.cart-6-select-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e2e2;
+  border-radius: 500px;
+}
+
+.cart-6-select {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 55px;
+  height: 36px;
+  padding-left: 12px;
+  padding-right: 0px;
+  margin-right: 8px;
+  line-height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cart-6-select-container:hover {
+  background-color: #d2d2d2;
+}
+
+.cart-6-select-container:hover option {
+  background-color: #e2e2e2;
+}
+
+.cart-6-select-container option {
+  background-color: #e2e2e2;
+}
+
+.cart-3-num {
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 16px;
 }
 
 .vert-line {
@@ -208,4 +253,30 @@
 
 .reorder-btn3:hover {
   background-color: #d2d2d2;
+}
+
+.reorder-btn4 {
+  margin: 0px auto;
+  width: fit-content;
+  background-color: transparent;
+  padding: 8px 0px;
+  color: #e11900;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border: none;
+}
+
+.reorder-btn4 > * {
+  cursor: pointer;
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.reorder-btn4:hover {
+  color: #e60023;
 }
