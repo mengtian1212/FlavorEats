@@ -106,14 +106,51 @@
   border-radius: 500px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }
 
-.nav-address div {
+.nav-address > div {
   font-size: 14px;
   font-weight: 500;
+}
+
+.address0 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.nav-address.extend0 {
+  flex: 1;
+  display: flex;
+}
+
+.edit-address-input {
+  flex: 1;
+  outline: none;
+  border: none;
+  height: 100%;
+  background-color: transparent;
+}
+
+.change-address-btn {
+  background-color: #ffffff;
+  outline: none;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.change-address-btn:hover {
+  background-color: #d2d2d2;
 }
 
 /* search bar  */

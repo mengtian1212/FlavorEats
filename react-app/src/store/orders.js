@@ -1,10 +1,10 @@
 /** Action Type Constants: */
 export const LOAD_ALL_CARTS = "carts/LOAD_ALL_CARTS";
 
-export const CREATE_CART = "carts/CREATE_CART";
-export const EDIT_CART = "carts/EDIT_CART";
 export const DELETE_CART = "carts/DELETE_CART";
-export const CHECKOUT_CART = "carts/CHECKOUT_CART";
+// export const CREATE_CART = "carts/CREATE_CART";
+// export const EDIT_CART = "carts/EDIT_CART";
+// export const CHECKOUT_CART = "carts/CHECKOUT_CART";
 
 export const ADD_ITEM = "carts/ADD_ITEM";
 export const DELETE_ITEM = "carts/DELETE_ITEM";
@@ -16,15 +16,15 @@ export const loadAllCartsAction = (current_orders) => ({
   current_orders,
 });
 
-export const createCartAction = (cart) => ({
-  type: CREATE_CART,
-  cart,
-});
+// export const createCartAction = (cart) => ({
+//   type: CREATE_CART,
+//   cart,
+// });
 
-export const editCartAction = (cart) => ({
-  type: EDIT_CART,
-  cart,
-});
+// export const editCartAction = (cart) => ({
+//   type: EDIT_CART,
+//   cart,
+// });
 
 export const deleteCartAction = (restaurantId) => {
   return {
@@ -41,6 +41,11 @@ export const deleteItemFromCartAction = (targetOrder, itemId) => ({
 export const updateItemInCartAction = (targetOrderU, targetOrderItemU) => ({
   type: UPDATE_ITEM,
   payload: { targetOrderU, targetOrderItemU },
+});
+
+export const addItemToCartAction = (targetOrderN, targetOrderItemN) => ({
+  type: ADD_ITEM,
+  payload: { targetOrderN, targetOrderItemN },
 });
 
 /** Thunk Action Creators: */
@@ -101,6 +106,28 @@ export const updateCartItemThunk = (updatedOrderItem) => async (dispatch) => {
   return data;
 };
 
+// in the backend, need to check if there is
+// already a shopping cart for this restaurant or not.
+// 1. if yes, then check this item is already in the cart or not:
+//            1.1 if not in the cart, just add orderItem.
+//            1.2 if in the cart, update orderItem quantity in the orderItem table.
+// 2. if no, create a new cart, then add orderItem.
+export const addCartItemThunk = (newOrderItemData) => async (dispatch) => {
+  console.log("in addCartItemThunk!!!!!!");
+  const response = await fetch(`/api/orders/new_item`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newOrderItemData),
+  });
+  const data = await response.json();
+  if (response.ok) {
+    dispatch(addItemToCartAction(data.targetOrder, data.targetOrderItem));
+  }
+  return data;
+};
+
 /** Orders Reducer: */
 const initialState = {};
 const ordersReducer = (state = initialState, action) => {
@@ -132,6 +159,27 @@ const ordersReducer = (state = initialState, action) => {
         [targetOrderItemU.item_id]: { ...targetOrderItemU },
       };
       return newState2;
+    case ADD_ITEM:
+      const { targetOrderN, targetOrderItemN } = action.payload;
+      const newState3 = { ...state };
+
+      const oldOrder = newState3[targetOrderN.restaurant_id]
+        ? newState3[targetOrderN.restaurant_id]
+        : {};
+      newState3[targetOrderN.restaurant_id] = {
+        ...oldOrder,
+        ...targetOrderN,
+      };
+
+      let oldOrderitems = {};
+      if (newState3[targetOrderN.restaurant_id]) {
+        oldOrderitems = newState3[targetOrderN.restaurant_id].order_items;
+      }
+      newState3[targetOrderN.restaurant_id].order_items = {
+        ...oldOrderitems,
+        [targetOrderItemN.item_id]: { ...targetOrderItemN },
+      };
+      return newState3;
     default:
       return state;
   }

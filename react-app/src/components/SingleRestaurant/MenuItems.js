@@ -41,15 +41,7 @@ function MenuItems({ type, items }) {
                 <div className="item-img-container">
                   <img src={item.image_url} alt="" className="item-img" />
                   <div className="item-background"></div>
-                  <OpenModalButton
-                    buttonText={
-                      <i className="fa-solid fa-plus item-plus cursor"></i>
-                    }
-                    onItemClick={closeMenu}
-                    modalComponent={<ItemModal item={item} />}
-                    myClass="btn-location"
-                    modalClass=""
-                  />
+                  <AddToCartBtn item={item} />
                   <OpenModalButton
                     buttonText="Quick view"
                     onItemClick={closeMenu}

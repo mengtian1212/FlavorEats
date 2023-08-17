@@ -19,6 +19,10 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(255), nullable=True)
     phone_number = db.Column(db.String(255), nullable=True)
     image_url = db.Column(db.String(255), nullable=True)
+    address = db.Column(db.String(255), nullable=False)
+    lat = db.Column(db.Integer, nullable=True)
+    lng = db.Column(db.Integer, nullable=True)
+    zip = db.Column(db.String(12), nullable=True)
     city = db.Column(db.String(40), nullable=True)
     state = db.Column(db.String(2), nullable=True)
     created_at = db.Column(db.DateTime(timezone=True),
@@ -61,8 +65,12 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'phone_number': self.phone_number,
             'image_url': self.image_url,
+            'address': self.address,
+            'lat': self.lat,
+            'lng': self.lng,
             'city': self.city,
             'state': self.state,
+            'zip': self.zip,
             'created_at': self.created_at,
             'updated_at': self.updated_at
         }

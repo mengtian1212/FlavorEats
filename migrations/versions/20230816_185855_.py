@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 52321bd4afd5
+Revision ID: 483e8b5f0d90
 Revises:
-Create Date: 2023-08-15 15:50:29.079598
+Create Date: 2023-08-16 18:58:55.872957
 
 """
 from alembic import op
@@ -11,8 +11,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = '52321bd4afd5'
+revision = '483e8b5f0d90'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,6 +36,11 @@ def upgrade():
                         length=255), nullable=True),
                     sa.Column('image_url', sa.String(
                         length=255), nullable=True),
+                    sa.Column('address', sa.String(
+                        length=255), nullable=False),
+                    sa.Column('lat', sa.Integer(), nullable=True),
+                    sa.Column('lng', sa.Integer(), nullable=True),
+                    sa.Column('zip', sa.String(length=12), nullable=True),
                     sa.Column('city', sa.String(length=40), nullable=True),
                     sa.Column('state', sa.String(length=2), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),
@@ -114,7 +120,7 @@ def upgrade():
                     sa.Column('is_pickup', sa.Boolean(), nullable=False),
                     sa.Column('is_complete', sa.Boolean(), nullable=False),
                     sa.Column('delivery_address', sa.String(
-                        length=255), nullable=False),
+                        length=255), nullable=True),
                     sa.Column('delivery_lat', sa.Integer(), nullable=True),
                     sa.Column('delivery_lng', sa.Integer(), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),

@@ -7,6 +7,9 @@ import { useHistory } from "react-router-dom";
 import { deleteCartThunk } from "../../../store/orders";
 
 function CartModal({ restaurantId }) {
+  const sessionUser = useSelector((state) => state.session.user);
+  const userAddress =
+    sessionUser.address.split(",")[0] + "," + sessionUser.address.split(",")[1];
   const history = useHistory();
   const dispatch = useDispatch();
   const currentCart = useSelector((state) =>
@@ -44,9 +47,7 @@ function CartModal({ restaurantId }) {
                 <div className="cart-rr cursor" onClick={handleClickResName}>
                   {currentCart.restaurant_name}
                 </div>
-                <div className="cart-dd">
-                  Deliver to {currentCart.delivery_address.split(",")[0]}
-                </div>
+                <div className="cart-dd">Deliver to {userAddress}</div>
               </div>
               {/* <div className="cart-tright">
                 <i className="fa-solid fa-ellipsis cursor btn-grey btn-grey2"></i>

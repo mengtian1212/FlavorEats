@@ -1,3 +1,13 @@
+export const capitalizeFirstChar = (words) => {
+  let processedWord = words.trim().replace(/\s+/g, " ");
+  const wordArr = processedWord.split(" ");
+  const resArr = [];
+  for (let word of wordArr) {
+    const newWord = word[0].toUpperCase() + word.slice(1).toLowerCase();
+    resArr.push(newWord);
+  }
+  return resArr.join(" ");
+};
 export const hasCommonCuisineType = (list1, list2) => {
   const set1 = new Set(list1.split("#"));
   const set2 = new Set(list2);

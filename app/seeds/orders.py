@@ -10,9 +10,7 @@ def seed_orders():
             "tip": 2.50,
             "is_pickup": False,
             "is_complete": False,
-            "delivery_address": "Empire State Building 350 5th Ave, New York, NY 10118",
-            "delivery_lat": 40.748817,
-            "delivery_lng": -73.985428,
+            "delivery_address": "",
         },
         {  # 2
             "user_id": 1,
@@ -50,9 +48,7 @@ def seed_orders():
             "tip": 3,
             "is_pickup": False,
             "is_complete": False,
-            "delivery_address": "Empire State Building 350 5th Ave, New York, NY 10118",
-            "delivery_lat": 40.748817,
-            "delivery_lng": -73.985428,
+            "delivery_address": "",
         },
         {  # 6
             "user_id": 1,
@@ -60,9 +56,7 @@ def seed_orders():
             "tip": 2,
             "is_pickup": False,
             "is_complete": False,
-            "delivery_address": "Empire State Building 350 5th Ave, New York, NY 10118",
-            "delivery_lat": 40.748817,
-            "delivery_lng": -73.985428,
+            "delivery_address": "",
         },
     ]
     seed_orders = [db.session.add(

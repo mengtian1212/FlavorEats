@@ -32,6 +32,14 @@
   justify-content: center;
 }
 
+.res-add {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(84, 84, 84);
+  font-weight: 400;
+  padding-top: 4px;
+}
+
 .res-bottom-container {
   display: flex;
   align-items: flex-start;
@@ -192,6 +200,7 @@
 .item-img-container {
   position: relative;
   height: 188px;
+  overflow: hidden;
 }
 
 .item-background {

@@ -1,4 +1,4 @@
-from app.models import db, Order, OrderItem
+from app.models import db, Order, OrderItem, MenuItem
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from sqlalchemy import and_
@@ -70,3 +70,50 @@ def delete_cart(orderId):
     db.session.delete(targetOrder)
     db.session.commit()
     return {"targetOrderResId": targetOrder.restaurant_id}
+
+# in the backend, need to check if there is
+# already a shopping cart for this restaurant or not.
+# 1. if yes, then check this item is already in the cart or not:
+#            1.1 if not in the cart, just add orderItem.
+#            1.2 if in the cart, update orderItem quantity in the orderItem table.
+# 2. if no, create a new cart, then add orderItem.
+
+
+@order_routes.route('/new_item', methods=['POST'])
+@login_required
+def add_item_to_cart():
+    newOrderItemData = request.json
+    targetMenuItem = MenuItem.query.get(newOrderItemData["item_id"])
+    if not targetMenuItem:
+        return jsonify({"message": "MenuItem not found in this restaurant"}), 404
+
+    targetOrder = Order.query.filter(
+        and_(Order.is_complete == False, Order.user_id == current_user.id, Order.restaurant_id == targetMenuItem.restaurant_id)).first()
+
+    # targetOrder not found => create a new cart
+    if not targetOrder:
+        # create a new cart - order, then query the new cart order, need its cart id
+        newOrder = Order(user_id=current_user.id,
+                         restaurant_id=targetMenuItem.restaurant_id,
+                         is_complete=False)
+        db.session.add(newOrder)
+        db.session.commit()
+
+        targetOrder = Order.query.filter_by(
+            user_id=current_user.id).order_by(Order.id.desc()).first()
+
+    targetOrderItem = OrderItem.query.filter_by(
+        order_id=targetOrder.id, item_id=newOrderItemData["item_id"]).first()
+    if not targetOrderItem:
+        newOrderItem = OrderItem(order_id=targetOrder.id,
+                                 item_id=newOrderItemData["item_id"],
+                                 quantity=newOrderItemData["quantity"])
+        db.session.add(newOrderItem)
+        db.session.commit()
+    else:
+        targetOrderItem.quantity += newOrderItemData["quantity"]
+        db.session.commit()
+
+    targetOrderItem = OrderItem.query.filter_by(
+        order_id=targetOrder.id, item_id=newOrderItemData["item_id"]).first()
+    return {"targetOrder": targetOrder.to_dict(), "targetOrderItem": targetOrderItem.to_dict()}, 200

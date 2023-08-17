@@ -15,8 +15,8 @@ class Order(db.Model):
         add_prefix_for_prod("restaurants.id")), nullable=False)
     tip = db.Column(db.Numeric(4, 2), nullable=False, default=0)
     is_pickup = db.Column(db.Boolean, nullable=False, default=0)
-    is_complete = db.Column(db.Boolean, nullable=False, default=1)
-    delivery_address = db.Column(db.String(255), nullable=False)
+    is_complete = db.Column(db.Boolean, nullable=False, default=False)
+    delivery_address = db.Column(db.String(255), nullable=True)
     delivery_lat = db.Column(db.Integer, nullable=True)
     delivery_lng = db.Column(db.Integer, nullable=True)
 

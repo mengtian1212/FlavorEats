@@ -65,7 +65,7 @@ function SingleRestaurant() {
   useEffect(() => {
     dispatch(fetchOneRestaurantThunk(restaurantId));
     window.scroll(0, 0);
-  }, []);
+  }, [restaurantId]);
 
   const items = getMenuItemsByType(
     targetRestaurant?.popular,
@@ -105,6 +105,7 @@ function SingleRestaurant() {
             <div>· </div>
             <div>More info</div>
           </div>
+          <div className="res-add">{targetRestaurant?.address}</div>
         </div>
       </div>
       <div className="res-bottom-container">
