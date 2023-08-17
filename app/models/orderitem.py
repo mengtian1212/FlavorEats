@@ -38,6 +38,10 @@ class OrderItem(db.Model):
             "image_url": self.menuitem.image_url,
             'order_id': self.order_id,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            # 'description': self.menuitem.description,
+            # 'calory': self.menuitem.calory,
+            # 'like_ratio': self.menuitem.calculate_like_dislike_ratio(),
+            # 'num_likes': sum(1 for like in self.menuitem.menuitem_likes if like.is_like)
         }
         return res

@@ -29,7 +29,7 @@
 }
 
 .xmark-container1:hover {
-  background-color: #e2e2e2;
+  background-color: #eeeeee;
 }
 
 .cart-modal-container {
@@ -102,7 +102,7 @@
   display: flex;
   justify-content: space-between;
   padding: 16px 24px;
-  margin-bottom: 8px;
+  padding-bottom: 36px;
 }
 
 .cart-4 {

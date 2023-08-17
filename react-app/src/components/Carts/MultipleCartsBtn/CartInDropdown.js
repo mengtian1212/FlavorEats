@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import CartModal from "../CartModal";
+import { capitalizeFirstChar } from "../../../utils/helper-functions";
 
 function CartInDropdown({ restaurantId, setShowMenu }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -27,11 +28,19 @@ function CartInDropdown({ restaurantId, setShowMenu }) {
         <div className="cart-content-container">
           <div className="cart-n">{targetCart?.restaurant_name}</div>
           <div className="cart-sub">${targetCart?.subtotal.toFixed(2)}</div>
-          <div className="cart-sub">Deliver to {userAddress}</div>
+          {!targetCart?.is_pickup && (
+            <div className="cart-sub">Deliver to {userAddress}</div>
+          )}
+          {targetCart?.is_pickup && (
+            <div className="cart-sub">
+              Pickup at{" "}
+              {capitalizeFirstChar(targetCart?.restaurant_address.trim())}
+            </div>
+          )}
         </div>
       </div>
       <div className="single-cart-right">
-        <div className="nitems">{targetCart.num_items}</div>
+        <div className="nitems">{targetCart?.num_items}</div>
         <i className="fa-solid fa-angle-right"></i>
       </div>
     </div>

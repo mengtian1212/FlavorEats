@@ -9,6 +9,7 @@ import LandingPage from "./components/LandingPage";
 import MainRestaurants from "./components/MainRestaurants";
 import SingleRestaurant from "./components/SingleRestaurant";
 import PastOrders from "./components/PastOrders";
+import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function App() {
           <Route exact path="/orders">
             <Navigation isLoaded={isLoaded} />
             <PastOrders />
+          </Route>
+          <Route exact path="/checkout/restaurants/:restaurantId">
+            <CheckoutPage />
           </Route>
         </Switch>
       )}

@@ -4,6 +4,7 @@ import { useModal } from "../../context/Modal";
 import "./ItemModal.css";
 import { addCartItemThunk } from "../../store/orders";
 import CartModal from "../Carts/CartModal";
+import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
 
 function ItemModal({ item }) {
   const dispatch = useDispatch();
@@ -46,19 +47,25 @@ function ItemModal({ item }) {
     setQuantity((prev) => prev + 1);
   };
 
+  const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
+  // delivery method could be set only when user add a item to a new cart (create a new cart)
+  // user can change the delivery method again during checkout
+  // before checkout, toggle delivery/pickup will have no effect to current order
+  // will only apply to new order
   const { setModalContent, setModalClass } = useModal();
   const handleAddItem = (e) => {
     setIsAdded(true);
     const newOrderItemData = {
       item_id: item.id,
       quantity: parseInt(quantity),
+      is_delivery: isDeliveryT,
     };
     dispatch(addCartItemThunk(newOrderItemData));
     setTimeout(() => {
       closeModal();
       setModalContent(<CartModal restaurantId={item.restaurant_id} />);
       setModalClass("cart-modal");
-    }, 1000);
+    }, 1200);
     // in the thunk, need to check if there is
     // already a shopping cart for this restaurant or not.
     // 1. if yes, then check this item is already in the cart or not:

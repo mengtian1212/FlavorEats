@@ -1,20 +1,24 @@
+import "./Navigation.css";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import "./Navigation.css";
 import { capitalizeFirstChar } from "../../utils/helper-functions";
 import UserButton from "./UserButton";
 import CartButton from "./CartButton";
 import { editUserAddressThunk } from "../../store/session";
+import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  const [isDelivery, setIsDelivery] = useState(true);
   const userAddress = capitalizeFirstChar(sessionUser?.address?.split(",")[0]);
   const [myAddress, setMyAddress] = useState(sessionUser.address);
   const [showEditAddress, setShowEditAddress] = useState(false);
+
+  const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
+  // const [isDelivery, setIsDelivery] = useState(true);
+  console.log(isDeliveryT);
 
   const handleClickLogo = () => {
     if (sessionUser) {
@@ -51,14 +55,14 @@ function Navigation({ isLoaded }) {
             <div className="_40"></div>
             <div className="toggle-delivery-container cursor">
               <button
-                className={`toggle-delivery ${isDelivery ? "on" : "off"}`}
-                onClick={() => setIsDelivery(true)}
+                className={`toggle-delivery ${isDeliveryT ? "on" : "off"}`}
+                onClick={() => setIsDeliveryT(true)}
               >
                 Delivery
               </button>
               <button
-                className={`toggle-delivery ${isDelivery ? "off" : "on"}`}
-                onClick={() => setIsDelivery(false)}
+                className={`toggle-delivery ${isDeliveryT ? "off" : "on"}`}
+                onClick={() => setIsDeliveryT(false)}
               >
                 Pickup
               </button>
@@ -68,7 +72,10 @@ function Navigation({ isLoaded }) {
               <i className="fa-solid fa-location-dot"></i>
               <div className="address0">
                 {!showEditAddress && (
-                  <div onClick={() => setShowEditAddress(true)}>
+                  <div
+                    onClick={() => setShowEditAddress(true)}
+                    className="address1"
+                  >
                     {userAddress}
                   </div>
                 )}
@@ -90,7 +97,12 @@ function Navigation({ isLoaded }) {
                     </button>
                   </>
                 )}
-                {!showEditAddress && <div> · Now</div>}
+                {!showEditAddress && (
+                  <div className="address1">
+                    {" "}
+                    · {!isDeliveryT ? "Pick up now" : "Now"}
+                  </div>
+                )}
               </div>
             </div>
             {!showEditAddress && (

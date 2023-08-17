@@ -126,6 +126,12 @@
   align-items: center;
 }
 
+.address1 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
 .nav-address.extend0 {
   flex: 1;
   display: flex;

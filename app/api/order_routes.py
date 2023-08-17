@@ -95,6 +95,7 @@ def add_item_to_cart():
         # create a new cart - order, then query the new cart order, need its cart id
         newOrder = Order(user_id=current_user.id,
                          restaurant_id=targetMenuItem.restaurant_id,
+                         is_pickup=not newOrderItemData["is_delivery"],
                          is_complete=False)
         db.session.add(newOrder)
         db.session.commit()

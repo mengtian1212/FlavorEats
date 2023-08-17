@@ -3,6 +3,8 @@ import {
   deleteCartItemThunk,
   updateCartItemThunk,
 } from "../../../store/orders";
+import { useModal } from "../../../context/Modal";
+import ItemModal from "../../SingleRestaurant/ItemModal";
 
 function ItemInCart({ restaurantId, orderItemId }) {
   const dispatch = useDispatch();
@@ -37,7 +39,11 @@ function ItemInCart({ restaurantId, orderItemId }) {
       dispatch(updateCartItemThunk(updatedOrderItem));
     }
   };
-
+  // const { setModalContent, setModalClass } = useModal();
+  // const handleClickOrderItem = () => {
+  //   setModalContent(<ItemModal item={orderItem} />);
+  //   setModalClass("item-modal");
+  // };
   return (
     <div className="cart-item">
       <div className="cart-5">

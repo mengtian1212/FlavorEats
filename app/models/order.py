@@ -65,6 +65,7 @@ class Order(db.Model):
             'restaurant_id': self.restaurant_id,
             'restaurant_name': self.restaurant.name,
             'restaurant_image': self.restaurant.image_url,
+            'restaurant_address': self.restaurant.address,
             'tip': float(self.tip),
             'is_pickup': self.is_pickup,
             'is_complete': self.is_complete,

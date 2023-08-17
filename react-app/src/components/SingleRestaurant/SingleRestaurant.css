@@ -178,6 +178,8 @@
   background-color: white;
   padding: 8px;
   transition: box-shadow 0.3s ease-in-out;
+  /* width: max-content; */
+  min-width: 80%;
 }
 
 .menu-container:hover {
@@ -190,6 +192,7 @@
   padding: 8px;
   transition: box-shadow 0.3s ease-in-out;
   position: relative;
+  min-width: 100%;
 }
 
 .menu-container1:hover {
@@ -200,6 +203,7 @@
 .item-img-container {
   position: relative;
   height: 188px;
+  min-width: 100%;
   overflow: hidden;
 }
 
@@ -215,6 +219,7 @@
 
 .item-img {
   height: 188px;
+  min-width: 100%;
   width: 100%;
   object-fit: cover;
   z-index: -1 !important;

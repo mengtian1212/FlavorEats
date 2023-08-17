@@ -54,7 +54,7 @@ def seed_orders():
             "user_id": 1,
             "restaurant_id": 3,
             "tip": 2,
-            "is_pickup": False,
+            "is_pickup": True,
             "is_complete": False,
             "delivery_address": "",
         },
