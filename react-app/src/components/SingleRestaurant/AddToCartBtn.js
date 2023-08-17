@@ -4,6 +4,7 @@ import { useModal } from "../../context/Modal";
 import { useState, useEffect, useRef } from "react";
 
 import ItemModal from "./ItemModal";
+import { deleteCartItemThunk, updateCartItemThunk } from "../../store/orders";
 
 function AddToCartBtn({ item }) {
   // if there is no current cart for this restaurant, then button should be "+", click to open menuItem modal
@@ -35,6 +36,37 @@ function AddToCartBtn({ item }) {
     setShowAddToCartDrop(true);
   };
 
+  const handleClickTrash = async () => {
+    await dispatch(
+      deleteCartItemThunk(
+        orderItem?.order_id,
+        orderItem?.item_id,
+        item?.restaurant_id
+      )
+    );
+  };
+
+  const handleClickMinus = async () => {
+    const updatedOrderItem = {
+      id: orderItem?.id,
+      order_id: orderItem?.order_id,
+      item_id: orderItem?.item_id,
+      quantity: parseInt(orderItem?.quantity) - 1,
+    };
+    await dispatch(updateCartItemThunk(updatedOrderItem));
+  };
+
+  const handleClickAdd = async () => {
+    if (parseInt(orderItem?.quantity) === 98) return;
+    const updatedOrderItem = {
+      id: orderItem?.id,
+      order_id: orderItem?.order_id,
+      item_id: orderItem?.item_id,
+      quantity: parseInt(orderItem?.quantity) + 1,
+    };
+    await dispatch(updateCartItemThunk(updatedOrderItem));
+  };
+
   useEffect(() => {
     if (!showAddToCartDrop) return;
 
@@ -64,12 +96,21 @@ function AddToCartBtn({ item }) {
             ref={ulRef}
           >
             {orderItem?.quantity === 1 ? (
-              <i className="fa-solid fa-trash-can item-plus2 cursor"></i>
+              <i
+                className="fa-solid fa-trash-can item-plus2 cursor"
+                onClick={handleClickTrash}
+              ></i>
             ) : (
-              <i className="fa-solid fa-minus item-plus2 cursor"></i>
+              <i
+                className="fa-solid fa-minus item-plus2 cursor"
+                onClick={handleClickMinus}
+              ></i>
             )}
             <div className="middle-q"> {orderItem?.quantity}</div>
-            <i className="fa-solid fa-plus item-plus2 cursor"></i>
+            <i
+              className="fa-solid fa-plus item-plus2 cursor"
+              onClick={handleClickAdd}
+            ></i>
           </div>
         </>
       )}
