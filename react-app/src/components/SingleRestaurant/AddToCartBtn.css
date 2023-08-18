@@ -5,14 +5,69 @@
   width: 35.75px;
   height: 38px;
   font-size: 18px;
+  font-weight: 500;
   background-color: #000000;
-  padding: 9px;
   color: white;
   border-radius: 500px;
   border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .item-plus1:hover {
   background-color: #262626;
   opacity: 90%;
+}
+
+.profile-dropdown1 {
+  /* right: 68px; */
+  top: 8px;
+  position: absolute;
+  background-color: white;
+  width: -106.11px;
+  right: -97.11px;
+  transition: all 0.2s ease-in-out;
+
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #000000;
+  color: white;
+  border-radius: 500px;
+  border: 1px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.item-plus2 {
+  right: 8px;
+  top: 8px;
+
+  width: 35.75px;
+  height: 38px;
+  font-size: 18px;
+  background-color: #000000;
+  padding: 9px;
+  color: white;
+  border-radius: 500px;
+}
+
+.item-plus2:hover {
+  background-color: #454343;
+}
+
+.middle-q {
+  width: 28px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 24px;
+  text-align: center;
 }

@@ -63,8 +63,14 @@
 .logo-eats {
   text-decoration: none;
   color: rgb(6, 193, 103);
+  /* color: rgb(4, 136, 72); */
   font-size: 28px;
   font-weight: 600;
+}
+
+.logo-eats:hover {
+  /* color: rgb(3, 112, 60); */
+  color: rgb(4, 136, 72);
 }
 
 /* toggle delivery pickup  */
@@ -106,14 +112,75 @@
   border-radius: 500px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
+  position: relative;
 }
 
-.nav-address div {
+.error-edit-address {
+  position: absolute;
+  top: 54px;
+  color: red;
+  font-weight: normal;
+  font-size: 14px;
+
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+.error-edit-address.active1 {
+  opacity: 1;
+  max-height: 16px;
+}
+
+.nav-address > div {
   font-size: 14px;
   font-weight: 500;
+}
+
+.address0 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.address1 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.nav-address.extend0 {
+  flex: 1;
+  display: flex;
+}
+
+.edit-address-input {
+  flex: 1;
+  outline: none;
+  border: none;
+  height: 100%;
+  background-color: transparent;
+}
+
+.change-address-btn {
+  background-color: #ffffff;
+  outline: none;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 500px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.change-address-btn:hover {
+  background-color: #d2d2d2;
 }
 
 /* search bar  */
@@ -221,7 +288,7 @@
   top: 0;
   left: 0;
   transform: translateX(0px);
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
   z-index: 999;
 }
 

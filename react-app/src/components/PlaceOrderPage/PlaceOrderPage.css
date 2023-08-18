@@ -1,0 +1,117 @@
+.new-york-img {
+  background-image: url("https://media.discordapp.net/attachments/1139263822469795862/1142002296985747516/new-york-map.PNG?width=2755&height=1365");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: fixed;
+  top: 96px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1000 !important;
+}
+
+.main-place-holder-container {
+  position: relative;
+  z-index: -999 !important;
+}
+.thanks-container {
+  position: absolute;
+  z-index: 10 !important;
+  background-color: white !important;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 82vh;
+  left: 0px;
+  top: 52px;
+  bottom: 0px;
+  margin-left: 72px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+}
+
+/* width of scroll bar  */
+.thanks-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* style scrollbar thumb */
+.thanks-container::-webkit-scrollbar-thumb {
+  background-color: #e2e2e2; /* Color of the thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+/* hide scrollbar track for Firefox */
+.thanks-container {
+  scrollbar-width: auto;
+}
+
+/* style scrollbar thumb for Firefox */
+.thanks-container {
+  scrollbar-color: #eeeeee transparent;
+}
+
+/* line-height: 24px;
+font-size: 16px;
+color: #000000; */
+
+.checkout-delivery-box3 {
+  padding: 48px 24px 0px 24px;
+}
+
+.checkout-delivery-box4 {
+  padding: 24px 0px 24px 0px;
+}
+
+.checkout-delivery-box5 {
+  padding: 24px 24px 24px 24px;
+}
+
+.checkout-delivery-box6 {
+  padding: 36px 0px 0px 0px;
+}
+
+.checkout-delivery-box7 {
+  padding: 36px 0px 0px 0px;
+}
+
+.checkout-a-sub1 {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.single-item-container2 {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0px;
+  align-items: center;
+}
+
+.pad {
+  padding: 16px 0px;
+}
+.pad1 {
+  padding: 16px 0px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkout-tt {
+  line-height: 48px;
+  font-weight: 700;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+
+.single-fee-container2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -16px;
+  margin-bottom: 24px;
+}

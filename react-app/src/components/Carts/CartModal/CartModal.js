@@ -1,12 +1,16 @@
 import "./CartModal.css";
 import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
-import ItemInCart from "./ItemInCart";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { deleteCartThunk } from "../../../store/orders";
+import ItemInCart from "./ItemInCart";
+import { capitalizeFirstChar } from "../../../utils/helper-functions";
 
 function CartModal({ restaurantId }) {
+  const sessionUser = useSelector((state) => state.session.user);
+  const userAddress =
+    sessionUser.address.split(",")[0] + "," + sessionUser.address.split(",")[1];
   const history = useHistory();
   const dispatch = useDispatch();
   const currentCart = useSelector((state) =>
@@ -16,11 +20,16 @@ function CartModal({ restaurantId }) {
   const { closeModal } = useModal();
   const handleClickResName = (e) => {
     closeModal();
-    history.push(`/restaurants/${currentCart.restaurant_id}`);
+    history.push(`/restaurants/${currentCart?.restaurant_id}`);
     window.scroll(0, 0);
   };
   const handleDeleteCart = async () => {
-    await dispatch(deleteCartThunk(currentCart.id));
+    await dispatch(deleteCartThunk(currentCart?.id));
+    closeModal();
+    window.scroll(0, 0);
+  };
+  const handleCheckoutCart = () => {
+    history.push(`/checkout`, { currentCart: currentCart });
     closeModal();
     window.scroll(0, 0);
   };
@@ -42,11 +51,17 @@ function CartModal({ restaurantId }) {
             <div className="cart-title-container">
               <div className="cart-tleft">
                 <div className="cart-rr cursor" onClick={handleClickResName}>
-                  {currentCart.restaurant_name}
+                  {currentCart?.restaurant_name} (
+                  {currentCart?.restaurant_address.split(",")[0]})
                 </div>
-                <div className="cart-dd">
-                  Deliver to {currentCart.delivery_address.split(",")[0]}
-                </div>
+                {!currentCart?.is_pickup && (
+                  <div className="cart-dd">Deliver to {userAddress}</div>
+                )}
+                {currentCart?.is_pickup && (
+                  <div className="cart-dd">
+                    Pickup at {currentCart?.restaurant_address.trim()}
+                  </div>
+                )}
               </div>
               {/* <div className="cart-tright">
                 <i className="fa-solid fa-ellipsis cursor btn-grey btn-grey2"></i>
@@ -54,8 +69,8 @@ function CartModal({ restaurantId }) {
             </div>
             <div className="cart-2">
               <div className="cart-2-num">
-                {currentCart.num_items}{" "}
-                {currentCart.num_items === 1 ? "item" : "items"}
+                {currentCart?.num_items}{" "}
+                {currentCart?.num_items === 1 ? "item" : "items"}
               </div>
               <div className="cart-2-sub">
                 <div className="cart-2-subtotal">Subtotal:</div>
@@ -66,6 +81,7 @@ function CartModal({ restaurantId }) {
             </div>
 
             <div className="cart-items-container">
+              <div className="vert-line"></div>
               {orderItems &&
                 orderItems?.map((orderItem, index) => (
                   <ItemInCart
@@ -87,7 +103,9 @@ function CartModal({ restaurantId }) {
             </div>
             <div className="sti">
               <div className="cart-4">
-                <button className="reorder-btn2">Go to Checkout</button>
+                <button className="reorder-btn2" onClick={handleCheckoutCart}>
+                  Go to Checkout
+                </button>
                 <button className="reorder-btn3" onClick={handleClickResName}>
                   Add Items
                 </button>
