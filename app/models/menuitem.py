@@ -16,7 +16,7 @@ class MenuItem(db.Model):
     image_url = db.Column(db.String(255), nullable=True)
     description = db.Column(db.String, nullable=True)
     item_type = db.Column(db.String, nullable=True)
-    calory = db.Column(db.Numeric(4, 2), nullable=True)
+    calory = db.Column(db.Integer, nullable=True)
 
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
