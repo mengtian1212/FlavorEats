@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchLastPastOrderThunk } from "../../store/pastOrders";
-import { capitalizeFirstChar } from "../../utils/helper-functions";
 
 function PlaceOrderPage() {
   const location = useLocation();

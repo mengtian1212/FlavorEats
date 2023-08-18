@@ -25,15 +25,23 @@ function Navigation({ isLoaded }) {
   console.log(isDeliveryT);
 
   const [showItem, setShowItem] = useState(true);
+  const [logoColor, setLogoColor] = useState("");
   useEffect(() => {
     if (
       location.pathname === "/checkout" ||
-      location.pathname === "/place-order"
+      location.pathname === "/place-order" ||
+      location.pathname === "/business/restaurant-builder"
     ) {
       // hide everything except logo on the nav bar when route changes to "/checkout"
       setShowItem(false);
     } else {
       setShowItem(true);
+    }
+
+    if (location.pathname === "/business/restaurant-builder") {
+      setLogoColor("white-logo");
+    } else {
+      setLogoColor("");
     }
   }, [location]);
 
@@ -78,7 +86,7 @@ function Navigation({ isLoaded }) {
         <UserButton user={sessionUser} />
         <div className="_32"></div>
         <div className="logo-container cursor" onClick={handleClickLogo}>
-          <div className="logo-flavor">Flavor</div>
+          <div className={`logo-flavor` + ` ` + logoColor}>Flavor</div>
           <div className="logo-eats">Eats</div>
         </div>
         {sessionUser && showItem ? (

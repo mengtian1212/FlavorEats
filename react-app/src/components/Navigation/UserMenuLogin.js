@@ -21,7 +21,13 @@ const UserMenuLogin = ({ user, closeMenu }) => {
 
   const handleMyRestaurants = (e) => {
     e.preventDefault();
-    history.push("/my-restaurants");
+    history.push("/business/restaurants");
+    closeMenu();
+  };
+
+  const handleCreateRestaurant = (e) => {
+    e.preventDefault();
+    history.push("/business/restaurant-builder");
     closeMenu();
   };
 
@@ -65,7 +71,14 @@ const UserMenuLogin = ({ user, closeMenu }) => {
           <i className="fa-solid fa-store"></i>
         </div>
         <div className="_16"></div>
-        <div>Manage Restaurants</div>
+        <div>Manage restaurants</div>
+      </div>
+      <div className="menu-item cursor" onClick={handleCreateRestaurant}>
+        <div className="menu-icons">
+          <i className="fa-solid fa-circle-plus"></i>
+        </div>
+        <div className="_16"></div>
+        <div>Create your restaurant</div>
       </div>
       <div onClick={handleLogout} className="menu-item cursor">
         <div className="sign-out">Sign out</div>

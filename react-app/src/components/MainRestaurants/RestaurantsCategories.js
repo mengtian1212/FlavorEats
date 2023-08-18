@@ -1,38 +1,6 @@
 import { useState } from "react";
 
 function RestaurantsCategories({ filterType, setFilterType }) {
-  const cuisine_types = [
-    "Fast Food",
-    "Healthy",
-    "Bakery",
-    "Mexican",
-    "Chinese",
-    "Burgers",
-    "Pizza",
-    "Vegan",
-    "Indian",
-    "Comfort Food",
-    "Tacos",
-    "Asian",
-    "Bubble Tea",
-    "Ramen",
-    "French",
-    "Japanese",
-    "Desserts",
-    "BBQ",
-    "Salads",
-    "American",
-    "Coffee",
-    "Seafood",
-    "European",
-    "Alcohol",
-    "Breakfast",
-    "Sushi",
-    "Italian",
-    "Ice cream",
-    "Burritos",
-  ];
-
   const selectedCuisineTypes = [
     {
       name: "Pizza",
