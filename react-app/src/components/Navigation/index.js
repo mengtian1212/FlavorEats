@@ -37,6 +37,11 @@ function Navigation({ isLoaded }) {
     }
   }, [location]);
 
+  useEffect(() => {
+    setMyAddress(sessionUser?.address);
+    setShowEditAddress(false);
+  }, [location]);
+
   const handleClickLogo = () => {
     if (sessionUser) {
       history.push("/restaurants");

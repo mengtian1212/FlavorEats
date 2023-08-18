@@ -38,18 +38,80 @@
   width: 8px;
 }
 
-/* styl scrollbar thumb */
+/* style scrollbar thumb */
 .thanks-container::-webkit-scrollbar-thumb {
   background-color: #e2e2e2; /* Color of the thumb */
   border-radius: 5px; /* Rounded corners for the thumb */
 }
 
-/* Hide the scrollbar track for Firefox */
+/* hide scrollbar track for Firefox */
 .thanks-container {
   scrollbar-width: auto;
 }
 
-/* Style the scrollbar thumb for Firefox */
+/* style scrollbar thumb for Firefox */
 .thanks-container {
   scrollbar-color: #eeeeee transparent;
+}
+
+/* line-height: 24px;
+font-size: 16px;
+color: #000000; */
+
+.checkout-delivery-box3 {
+  padding: 48px 24px 0px 24px;
+}
+
+.checkout-delivery-box4 {
+  padding: 24px 0px 24px 0px;
+}
+
+.checkout-delivery-box5 {
+  padding: 24px 24px 24px 24px;
+}
+
+.checkout-delivery-box6 {
+  padding: 36px 0px 0px 0px;
+}
+
+.checkout-delivery-box7 {
+  padding: 36px 0px 0px 0px;
+}
+
+.checkout-a-sub1 {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+}
+
+.single-item-container2 {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0px;
+  align-items: center;
+}
+
+.pad {
+  padding: 16px 0px;
+}
+.pad1 {
+  padding: 16px 0px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkout-tt {
+  line-height: 48px;
+  font-weight: 700;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+
+.single-fee-container2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -16px;
+  margin-bottom: 24px;
 }

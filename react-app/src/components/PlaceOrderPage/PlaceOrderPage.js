@@ -41,7 +41,7 @@ function PlaceOrderPage() {
     if (currentStep < steps.length) {
       const timer = setTimeout(() => {
         setCurrentStep((prevStep) => prevStep + 1);
-      }, 1000); // Adjust delay between steps
+      }, 1000); // adjust delay between steps
 
       return () => {
         clearTimeout(timer);
@@ -49,7 +49,7 @@ function PlaceOrderPage() {
     } else {
       const finalTimer = setTimeout(() => {
         setShowFinalComponent(true);
-      }, 1000); // Adjust delay for showing final component
+      }, 1000); // adjust delay for showing final component
       return () => {
         clearTimeout(finalTimer);
       };
@@ -78,7 +78,11 @@ function PlaceOrderPage() {
 export default PlaceOrderPage;
 
 const Step1 = () => {
-  return <div>Placing order...</div>;
+  return (
+    <div className="checkout-delivery-box3">
+      <div className="checkout-t">Placing order...</div>
+    </div>
+  );
 };
 
 const Step2 = ({ orderJustPlaced }) => {
@@ -89,11 +93,27 @@ const Step2 = ({ orderJustPlaced }) => {
     .join(", ")
     .trim();
   return (
-    <div className="checkout-a-sub">
-      <i className="fa-solid fa-check"></i>
-      <div>
-        <div className="address2">{userAddress}</div>
-        <div className="address2d">{userAddressDetail}</div>
+    <div className="checkout-delivery-box5">
+      <div className="checkout-a-sub1">
+        <i className="fa-solid fa-check bolt-i"></i>
+        <div>
+          {!orderJustPlaced.is_pickup && (
+            <>
+              <div className="address2">{userAddress}</div>
+              <div className="address2d">{userAddressDetail}</div>
+            </>
+          )}
+          {orderJustPlaced.is_pickup && (
+            <>
+              <div className="address2">
+                Pickup at {orderJustPlaced.restaurant_name}
+              </div>
+              <div className="address2d">
+                {orderJustPlaced.restaurant_address}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
@@ -102,15 +122,19 @@ const Step2 = ({ orderJustPlaced }) => {
 const Step3 = ({ orderJustPlaced, sessionUser }) => {
   const orderItems = Object.values(orderJustPlaced?.order_items);
   return (
-    <div className="checkout-a-sub">
-      <i className="fa-solid fa-check"></i>
-      <div>
-        <div className="address2">Your order, {sessionUser.first_name}</div>
-        <div className="order-item-container">
-          {orderItems &&
-            orderItems.map((orderItem, index) => (
-              <OrderItem key={index} index={index} order_item={orderItem} />
-            ))}
+    <div className="checkout-delivery-box5">
+      <div className="checkout-a-sub1">
+        <i className="fa-solid fa-check bolt-i"></i>
+        <div>
+          <div className="">
+            Your order, {sessionUser?.first_name} {sessionUser?.last_name}
+          </div>
+          <div className="order-item-container">
+            {orderItems &&
+              orderItems.map((orderItem, index) => (
+                <OrderItem key={index} index={index} order_item={orderItem} />
+              ))}
+          </div>
         </div>
       </div>
     </div>
@@ -120,21 +144,40 @@ const Step3 = ({ orderJustPlaced, sessionUser }) => {
 const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
   const orderItems = Object.values(orderJustPlaced?.order_items);
   return (
-    <div>
-      <div>Thank you for ordering with Flavor Eats!</div>
+    <div className="checkout-delivery-box3">
+      <div className="checkout-tt">
+        Thank you for ordering with Flavor Eats, {sessionUser?.first_name}{" "}
+        {sessionUser?.last_name}!
+      </div>
+      <div className="check-space-line"></div>
       {!orderJustPlaced.is_pickup && (
-        <div>
-          <div>Delivery details</div>
-          <div>{orderJustPlaced.delivery_address}</div>
-          <div>Service</div>
-          <div>
-            {orderJustPlaced.is_priority ? "Priority delivery" : "Standard"}
+        <div className="checkout-delivery-box6">
+          <div className="checkout-t">Delivery details</div>
+          <div className="pad">{orderJustPlaced.delivery_address}</div>
+          <div className="pad1">
+            <div>Service</div>
+            <div className="address2d">
+              {orderJustPlaced.is_priority ? "Priority delivery" : "Standard"}
+            </div>
           </div>
         </div>
       )}
-      <div>
-        <div>Order Summary</div>
-        <div>
+      {orderJustPlaced.is_pickup && (
+        <div className="checkout-delivery-box6">
+          <div className="checkout-t">Pickup details</div>
+          <div className="pad">{orderJustPlaced.restaurant_address}</div>
+          <div className="pad1">
+            <div>Service</div>
+            <div className="address2d">
+              {orderJustPlaced.is_priority ? "Priority delivery" : "Standard"}
+            </div>
+          </div>
+        </div>
+      )}
+      <div className="check-space-line"></div>
+      <div className="checkout-delivery-box7">
+        <div className="checkout-t">Order Summary</div>
+        <div className="pad">
           From {orderJustPlaced.restaurant_name} (
           {orderJustPlaced.restaurant_address.split(", ")[1]})
         </div>
@@ -144,8 +187,8 @@ const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
               <OrderItem key={index} index={index} order_item={orderItem} />
             ))}
         </div>
-        <div className="checkout-delivery-box1">
-          <div className="single-fee-container1">
+        <div className="checkout-delivery-box7">
+          <div className="single-fee-container2">
             <div className="checkout-t">Total</div>
             <div className="checkout-t">
               ${orderJustPlaced.total_price.toFixed(2)}
@@ -160,12 +203,9 @@ const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
 function OrderItem({ order_item }) {
   return (
     <>
-      <div className="single-item-container1">
+      <div className="single-item-container2">
         <div className="single-item-quantity1">{order_item?.quantity}</div>
         <div className="single-item-name1">{order_item?.item_name}</div>
-        <div className="single-item-name2">
-          ${(order_item?.item_subtotal).toFixed(2)}
-        </div>
       </div>
     </>
   );
