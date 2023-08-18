@@ -29,8 +29,8 @@ function CartModal({ restaurantId }) {
     window.scroll(0, 0);
   };
   const handleCheckoutCart = () => {
+    history.push(`/checkout`, { currentCart: currentCart });
     closeModal();
-    history.push(`/checkout/restaurants/${restaurantId}`);
     window.scroll(0, 0);
   };
 
@@ -51,7 +51,8 @@ function CartModal({ restaurantId }) {
             <div className="cart-title-container">
               <div className="cart-tleft">
                 <div className="cart-rr cursor" onClick={handleClickResName}>
-                  {currentCart?.restaurant_name}
+                  {currentCart?.restaurant_name} (
+                  {currentCart?.restaurant_address.split(",")[0]})
                 </div>
                 {!currentCart?.is_pickup && (
                   <div className="cart-dd">Deliver to {userAddress}</div>
@@ -80,6 +81,7 @@ function CartModal({ restaurantId }) {
             </div>
 
             <div className="cart-items-container">
+              <div className="vert-line"></div>
               {orderItems &&
                 orderItems?.map((orderItem, index) => (
                   <ItemInCart

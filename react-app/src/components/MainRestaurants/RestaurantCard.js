@@ -27,7 +27,7 @@ function RestaurantCard({ restaurant }) {
       <img src={restaurant.image_url} alt="" className="restaurant-preview" />
       <div className="restaurant-card-name">{restaurant.name}</div>
       <div className="restaurant-delivery">
-        ${restaurant.delivery_fee} Delivery Fee · {restaurant.price_ranges}
+        ${restaurant.delivery_fee} Delivery Fee • {restaurant.price_ranges}
       </div>
       <div className="restaurant-card-stars">
         {restaurant.avg_rating > 0 && restaurant.avg_rating.toFixed(1)}

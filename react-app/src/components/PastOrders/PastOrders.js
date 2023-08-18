@@ -8,14 +8,16 @@ function PastOrders() {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   let pastOrders = Object.values(
-    useSelector((state) => (state.pastOrders ? state.pastOrders : {}))
+    useSelector((state) =>
+      state.pastOrders.all_past_orders ? state.pastOrders.all_past_orders : {}
+    )
   );
 
   useEffect(() => {
     dispatch(fetchPastOrdersThunk());
     window.scroll(0, 0);
   }, [dispatch]);
-  pastOrders.sort((a, b) => b.updated_at - a.updated_at);
+  pastOrders.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
   return (
     <div className="past-orders-container">

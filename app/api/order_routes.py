@@ -11,7 +11,26 @@ order_routes = Blueprint('orders', __name__)
 def get_all_past_orders():
     past_orders = Order.query.filter(and_(Order.is_complete == True, Order.user_id == current_user.id)).order_by(
         Order.updated_at.desc()).all()
-    return {"past_orders": {order.restaurant_id: order.to_dict() for order in past_orders}}
+    return {"past_orders": {order.id: order.to_dict() for order in past_orders}}
+
+
+@order_routes.route('/past/<int:orderId>')
+@login_required
+def get_single_past_order(orderId):
+    single_past_order = Order.query.get(orderId)
+    if not single_past_order:
+        return jsonify({"message": "Order not found"}), 404
+    return {"single_past_order": single_past_order.to_dict()}
+
+
+@order_routes.route('/past/latest')
+@login_required
+def get_last_past_order():
+    last_past_order = Order.query.filter(
+        Order.user_id == current_user.id).order_by(Order.updated_at.desc()).first()
+    if not last_past_order:
+        return jsonify({"message": "Order not found"}), 404
+    return {"last_past_order": last_past_order.to_dict()}
 
 
 @order_routes.route('/current')
@@ -118,3 +137,27 @@ def add_item_to_cart():
     targetOrderItem = OrderItem.query.filter_by(
         order_id=targetOrder.id, item_id=newOrderItemData["item_id"]).first()
     return {"targetOrder": targetOrder.to_dict(), "targetOrderItem": targetOrderItem.to_dict()}, 200
+
+
+@order_routes.route('/<int:orderId>/checkout', methods=['PUT'])
+@login_required
+def checkout_cart(orderId):
+    orderPlaced = request.json
+    print(orderPlaced)
+    target_order = Order.query.filter(
+        and_(Order.is_complete == False, Order.user_id == current_user.id, Order.id == orderId)).first()
+
+    if not target_order:
+        return jsonify({"message": "Active cart not found for this restaurant"}), 404
+
+    if not target_order.user_id == current_user.id:
+        return {"errors": "Unauthorized"}, 403
+
+    target_order.tip = float(orderPlaced["tip"])
+    target_order.is_pickup = orderPlaced["is_pickup"]
+    target_order.is_priority = orderPlaced["is_priority"]
+    target_order.is_complete = orderPlaced["is_complete"]
+    target_order.delivery_address = orderPlaced["delivery_address"]
+    db.session.commit()
+    new_past_order = Order.query.get(orderId)
+    return {"new_past_order": new_past_order.to_dict()}, 200

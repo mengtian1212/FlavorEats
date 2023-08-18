@@ -178,3 +178,8 @@
   border: none;
   cursor: not-allowed;
 }
+
+.right-item-container {
+  width: 100%;
+}
+

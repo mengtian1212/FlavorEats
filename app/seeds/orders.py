@@ -7,7 +7,6 @@ def seed_orders():
         {  # 1
             "user_id": 1,
             "restaurant_id": 1,
-            "tip": 2.50,
             "is_pickup": False,
             "is_complete": False,
             "delivery_address": "",
@@ -15,7 +14,7 @@ def seed_orders():
         {  # 2
             "user_id": 1,
             "restaurant_id": 1,
-            "tip": 5.00,
+            "tip": 5,
             "is_pickup": False,
             "is_complete": True,
             "delivery_address": "Time Square, Manhattan, NY 10036",
@@ -45,7 +44,6 @@ def seed_orders():
         {  # 5
             "user_id": 1,
             "restaurant_id": 5,
-            "tip": 3,
             "is_pickup": False,
             "is_complete": False,
             "delivery_address": "",
@@ -53,7 +51,6 @@ def seed_orders():
         {  # 6
             "user_id": 1,
             "restaurant_id": 3,
-            "tip": 2,
             "is_pickup": True,
             "is_complete": False,
             "delivery_address": "",

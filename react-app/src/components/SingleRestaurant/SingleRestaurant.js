@@ -96,13 +96,13 @@ function SingleRestaurant() {
               ({targetRestaurant.num_rating}{" "}
               {targetRestaurant.num_rating === 1 ? "rating" : "ratings"})
             </div>
-            <div>· </div>
+            <div>• </div>
             <div>{groups && groups[0]}</div>
-            <div>· </div>
+            <div>• </div>
             <div>{targetRestaurant.price_ranges}</div>
-            <div>· </div>
+            <div>• </div>
             <div>Read Reviews </div>
-            <div>· </div>
+            <div>• </div>
             <div>More info</div>
           </div>
           <div className="res-add">{targetRestaurant?.address}</div>

@@ -65,7 +65,7 @@ function ItemModal({ item }) {
       closeModal();
       setModalContent(<CartModal restaurantId={item.restaurant_id} />);
       setModalClass("cart-modal");
-    }, 1200);
+    }, 300);
     // in the thunk, need to check if there is
     // already a shopping cart for this restaurant or not.
     // 1. if yes, then check this item is already in the cart or not:
@@ -123,13 +123,13 @@ function ItemModal({ item }) {
         </div>
         {!isAdded && (
           <button className="reorder-btn5" onClick={handleAddItem}>
-            Add {quantity} to order · $
+            Add {quantity} to order • $
             {(item.price * parseInt(quantity)).toFixed(2)}
           </button>
         )}
         {isAdded && (
           <button className={`reorder-btn5 ${isAdded ? "colorg" : ""}`}>
-            Adding... · ${(item.price * parseInt(quantity)).toFixed(2)}
+            Adding... • ${(item.price * parseInt(quantity)).toFixed(2)}
           </button>
         )}
       </div>

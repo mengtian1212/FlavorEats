@@ -1,6 +1,6 @@
 import "./Navigation.css";
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { capitalizeFirstChar } from "../../utils/helper-functions";
 import UserButton from "./UserButton";
@@ -12,13 +12,30 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
-  const userAddress = capitalizeFirstChar(sessionUser?.address?.split(",")[0]);
-  const [myAddress, setMyAddress] = useState(sessionUser.address);
+  const location = useLocation();
+  const userAddress =
+    sessionUser?.address &&
+    capitalizeFirstChar(sessionUser?.address?.split(",")[0]);
+  const [myAddress, setMyAddress] = useState(sessionUser?.address);
   const [showEditAddress, setShowEditAddress] = useState(false);
+  const [showEditAddressError, setShowEditAddressError] = useState(false);
 
   const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
   // const [isDelivery, setIsDelivery] = useState(true);
   console.log(isDeliveryT);
+
+  const [showItem, setShowItem] = useState(true);
+  useEffect(() => {
+    if (
+      location.pathname === "/checkout" ||
+      location.pathname === "/place-order"
+    ) {
+      // hide everything except logo on the nav bar when route changes to "/checkout"
+      setShowItem(false);
+    } else {
+      setShowItem(true);
+    }
+  }, [location]);
 
   const handleClickLogo = () => {
     if (sessionUser) {
@@ -31,6 +48,15 @@ function Navigation({ isLoaded }) {
   };
 
   const handleSubmitAddress = async (e) => {
+    if (myAddress.trim() === "") {
+      setShowEditAddressError(true);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setShowEditAddressError(false);
+      }, 1100);
+      return;
+    }
     if (capitalizeFirstChar(myAddress.trim()) === sessionUser.address) {
       setShowEditAddress(false);
       return;
@@ -50,7 +76,7 @@ function Navigation({ isLoaded }) {
           <div className="logo-flavor">Flavor</div>
           <div className="logo-eats">Eats</div>
         </div>
-        {sessionUser ? (
+        {sessionUser && showItem ? (
           <>
             <div className="_40"></div>
             <div className="toggle-delivery-container cursor">
@@ -79,6 +105,13 @@ function Navigation({ isLoaded }) {
                     {userAddress}
                   </div>
                 )}
+                <div
+                  className={`error-edit-address ${
+                    showEditAddressError ? "active1" : ""
+                  }`}
+                >
+                  {showEditAddressError && "Address invalid"}
+                </div>
                 {showEditAddress && (
                   <>
                     <input
@@ -100,7 +133,7 @@ function Navigation({ isLoaded }) {
                 {!showEditAddress && (
                   <div className="address1">
                     {" "}
-                    · {!isDeliveryT ? "Pick up now" : "Now"}
+                    • {!isDeliveryT ? "Pick up now" : "Now"}
                   </div>
                 )}
               </div>
@@ -123,9 +156,11 @@ function Navigation({ isLoaded }) {
           ""
         )}
       </div>
-      <div className="nav-right">
-        <CartButton user={sessionUser} />
-      </div>
+      {showItem && (
+        <div className="nav-right">
+          <CartButton user={sessionUser} />
+        </div>
+      )}
     </div>
   );
 }

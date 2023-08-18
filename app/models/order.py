@@ -15,6 +15,7 @@ class Order(db.Model):
         add_prefix_for_prod("restaurants.id")), nullable=False)
     tip = db.Column(db.Numeric(4, 2), nullable=False, default=0)
     is_pickup = db.Column(db.Boolean, nullable=False, default=0)
+    is_priority = db.Column(db.Boolean, nullable=False, default=False)
     is_complete = db.Column(db.Boolean, nullable=False, default=False)
     delivery_address = db.Column(db.String(255), nullable=True)
     delivery_lat = db.Column(db.Integer, nullable=True)
@@ -42,8 +43,9 @@ class Order(db.Model):
         for item in self.orderitems:
             curr = item.quantity * item.menuitem.price
             total_price += curr
-        tip = self.tip if self.is_pickup == False else 0
-        return float(total_price + self.restaurant.delivery_fee + tip)
+        tip = float(self.tip) if self.is_pickup == False else 0
+        priority_fee = float(2.99) if self.is_priority else 0
+        return float(total_price) + float(self.restaurant.delivery_fee) + tip + priority_fee
 
     def calculate_subtotal(self):
         subtotal = 0
@@ -69,7 +71,9 @@ class Order(db.Model):
             'tip': float(self.tip),
             'is_pickup': self.is_pickup,
             'is_complete': self.is_complete,
+            'is_priority': self.is_priority,
             'delivery_address': self.delivery_address,
+            'delivery_fee': self.restaurant.delivery_fee,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'order_items': self.items(),

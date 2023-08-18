@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 483e8b5f0d90
+Revision ID: be474e494097
 Revises:
-Create Date: 2023-08-16 18:58:55.872957
+Create Date: 2023-08-17 11:38:29.833023
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '483e8b5f0d90'
+revision = 'be474e494097'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -118,6 +118,7 @@ def upgrade():
                     sa.Column('tip', sa.Numeric(
                         precision=4, scale=2), nullable=False),
                     sa.Column('is_pickup', sa.Boolean(), nullable=False),
+                    sa.Column('is_priority', sa.Boolean(), nullable=False),
                     sa.Column('is_complete', sa.Boolean(), nullable=False),
                     sa.Column('delivery_address', sa.String(
                         length=255), nullable=True),

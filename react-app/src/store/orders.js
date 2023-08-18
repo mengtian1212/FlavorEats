@@ -1,14 +1,14 @@
+import { fetchLastPastOrderThunk } from "./pastOrders";
+
 /** Action Type Constants: */
 export const LOAD_ALL_CARTS = "carts/LOAD_ALL_CARTS";
 
 export const DELETE_CART = "carts/DELETE_CART";
-// export const CREATE_CART = "carts/CREATE_CART";
-// export const EDIT_CART = "carts/EDIT_CART";
-// export const CHECKOUT_CART = "carts/CHECKOUT_CART";
+export const CHECKOUT_CART = "carts/CHECKOUT_CART"; // similar to edit order
 
 export const ADD_ITEM = "carts/ADD_ITEM";
-export const DELETE_ITEM = "carts/DELETE_ITEM";
 export const UPDATE_ITEM = "carts/UPDATE_ITEM";
+export const DELETE_ITEM = "carts/DELETE_ITEM";
 
 /**  Action Creators: */
 export const loadAllCartsAction = (current_orders) => ({
@@ -16,15 +16,10 @@ export const loadAllCartsAction = (current_orders) => ({
   current_orders,
 });
 
-// export const createCartAction = (cart) => ({
-//   type: CREATE_CART,
-//   cart,
-// });
-
-// export const editCartAction = (cart) => ({
-//   type: EDIT_CART,
-//   cart,
-// });
+export const checkoutCartAction = (cart) => ({
+  type: CHECKOUT_CART,
+  cart,
+});
 
 export const deleteCartAction = (restaurantId) => {
   return {
@@ -124,6 +119,22 @@ export const addCartItemThunk = (newOrderItemData) => async (dispatch) => {
   const data = await response.json();
   if (response.ok) {
     dispatch(addItemToCartAction(data.targetOrder, data.targetOrderItem));
+  }
+  return data;
+};
+
+export const checkoutCartThunk = (orderPlaced) => async (dispatch) => {
+  const response = await fetch(`/api/orders/${orderPlaced.id}/checkout`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(orderPlaced),
+  });
+  const data = await response.json();
+  if (response.ok) {
+    dispatch(deleteCartAction(data.new_past_order.restaurant_id));
+    dispatch(fetchLastPastOrderThunk());
   }
   return data;
 };
