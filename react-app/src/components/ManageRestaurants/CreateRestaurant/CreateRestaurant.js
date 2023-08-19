@@ -3,7 +3,11 @@ import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { USSTATES, cuisine_types } from "../../../utils/helper-functions";
+import {
+  USSTATES,
+  capitalizeFirstChar,
+  cuisine_types,
+} from "../../../utils/helper-functions";
 import { createNewRestaurantThunk } from "../../../store/restaurants";
 
 function CreateRestaurant() {
@@ -34,6 +38,7 @@ function CreateRestaurant() {
 
   const [name, setName] = useState("");
   const [selectedTypes, setSelectedTypes] = useState([]);
+  const [imageLoading, setImageLoading] = useState(false);
 
   const [validationErrors, setValidationErrors] = useState({});
 
@@ -119,12 +124,18 @@ function CreateRestaurant() {
     }
 
     let formData = new FormData();
+    setImageLoading(true);
+
+    // format address & restaurant name
+    const nameData = capitalizeFirstChar(name);
+    const addressData = capitalizeFirstChar(address);
+    const cityData = capitalizeFirstChar(city);
 
     formData.append("image", image);
-    formData.append("address", address);
-    formData.append("city", city);
+    formData.append("address", addressData);
+    formData.append("city", cityData);
     formData.append("state", state);
-    formData.append("name", name);
+    formData.append("name", nameData);
     formData.append("cusine_types", selectedTypes.join("#").trim());
     console.log(formData);
 
@@ -197,6 +208,7 @@ function CreateRestaurant() {
                 </div>
               </div>
             )}
+            {imageLoading && <p>Loading...</p>}
             {validationErrors.image && (
               <div className="errors">{validationErrors.image}</div>
             )}

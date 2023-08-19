@@ -74,6 +74,10 @@ function App() {
             <Navigation isLoaded={isLoaded} />
             {/* <MyRestaurantAllMenuitems /> */}
           </Route>
+          <Route exact path="/business/:restaurantId/items/new">
+            <Navigation isLoaded={isLoaded} />
+            {/* <CreateMyMenuitem /> */}
+          </Route>
           <Route exact path="/business/:restaurantId/items/:itemId">
             <Navigation isLoaded={isLoaded} />
             {/* <MyRestaurantOneMenuItem /> */}

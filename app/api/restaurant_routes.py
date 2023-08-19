@@ -45,17 +45,22 @@ def new_restaurant():
         image_file = form.data["image"]
         image_file.filename = get_unique_filename(image_file.filename)
         upload = upload_file_to_s3(image_file)
+        if "url" not in upload:
+            return {"errors": upload}, 400
 
         new_restaurant = Restaurant(
             owner_id=current_user.id,
             name=form.data['name'],
             image_url=upload["url"],
             cusine_types=form.data['cusine_types'],
-            address=form.data['address'],
+            address=form.data['address'] + ', ' +
+            form.data['city'] + ', ' + form.data['state'],
             city=form.data['city'],
             state=form.data['state'],
         )
+
         db.session.add(new_restaurant)
+        db.session.commit()
         return new_restaurant.to_dict()
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
