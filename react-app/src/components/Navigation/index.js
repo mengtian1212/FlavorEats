@@ -78,7 +78,7 @@ function Navigation({ isLoaded }) {
     // must have 4 components
     if (parts.length !== 4) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -90,7 +90,7 @@ function Navigation({ isLoaded }) {
     // each component should not be empty
     if (parts.includes("")) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -104,7 +104,7 @@ function Navigation({ isLoaded }) {
     const state_zip = parts[3].split(" ");
     if (state_zip.length !== 2) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -116,7 +116,7 @@ function Navigation({ isLoaded }) {
     const state = state_zip[0].trim();
     if (state.length !== 2 || !USSTATES.includes(state.toUpperCase())) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -130,7 +130,7 @@ function Navigation({ isLoaded }) {
     const zip = state_zip[1].trim();
     if (zip.length !== 5) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -259,8 +259,9 @@ function Navigation({ isLoaded }) {
                 <div className="nav-search">
                   <i className="fas fa-search"></i>
                   <input
-                    className="search-input"
-                    placeholder="Search restaurant name"
+                    className="search-input cursor"
+                    placeholder="Search restaurants, dishes, drinks, cuisine types, etc"
+                    onClick={() => alert("Feature Coming Soon...")}
                   />
                 </div>
               </>

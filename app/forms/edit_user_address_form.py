@@ -62,10 +62,10 @@ def validate_state(form, field):
 
     if len(state) != 2:
         raise ValidationError(
-            'Invalid format : eg. Address name, 123 main street, new york, ny 10000')
+            'Invalid format : e.g. Address name, 123 main street, New York, NY 10000')
     if state not in USSTATES:
         raise ValidationError(
-            'Invalid format : eg. Address name, 123 main street, new york, ny 10000')
+            'Invalid format : e.g. Address name, 123 main street, New York, NY 10000')
 
 
 # check zip code: should be 5 characters.
@@ -73,7 +73,7 @@ def validate_zip(form, field):
     zip = field.data
     if len(zip) != 5:
         raise ValidationError(
-            'Invalid format : eg. Address name, 123 main street, new york, ny 10000')
+            'Invalid format : e.g. Address name, 123 main street, New York, NY 10000')
 
 
 class EditUserAddressForm(FlaskForm):

@@ -69,8 +69,12 @@ function CheckoutPage() {
   const [tipState, setTipState] = useState(0.1 * currentCart?.subtotal);
 
   console.log(
+    "isDeliveryT:",
+    isDeliveryT,
     "deliveryFeeState:",
     deliveryFeeState,
+    "isPriority",
+    isPriority,
     "priorityFeeState:",
     priorityFeeState,
     "tipState:",
@@ -98,7 +102,7 @@ function CheckoutPage() {
     // must have 4 components
     if (parts.length !== 4) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -110,7 +114,7 @@ function CheckoutPage() {
     // each component should not be empty
     if (parts.includes("")) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -124,7 +128,7 @@ function CheckoutPage() {
     const state_zip = parts[3].split(" ");
     if (state_zip.length !== 2) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -136,7 +140,7 @@ function CheckoutPage() {
     const state = state_zip[0].trim();
     if (state.length !== 2 || !USSTATES.includes(state.toUpperCase())) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -150,7 +154,7 @@ function CheckoutPage() {
     const zip = state_zip[1].trim();
     if (zip.length !== 5) {
       err.errors =
-        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);

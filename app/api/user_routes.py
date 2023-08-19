@@ -47,4 +47,4 @@ def update_user_address(userId):
         response = target_user.to_dict()
         return response
 
-    return {"errors": 'Invalid format : eg. Address name, 123 main street, new york, ny 10000'}, 400
+    return {"errors": 'Invalid format : e.g. Address name, 123 main street, New York, NY 10000'}, 400

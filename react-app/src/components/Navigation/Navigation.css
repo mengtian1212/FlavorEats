@@ -129,6 +129,7 @@
   opacity: 0;
   max-height: 0;
   transition: opacity 0.5s ease, max-height 0.5s ease;
+  width: 600px;
 }
 
 .error-edit-address.active1 {
