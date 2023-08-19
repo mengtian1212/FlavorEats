@@ -11,6 +11,12 @@ function RestaurantCard({ restaurant }) {
     setIsFavorite((prev) => !prev);
   };
 
+  const currentDate = new Date();
+  const oneHourAgo = new Date();
+  const createdDate = new Date(restaurant.created_at);
+  oneHourAgo.setHours(currentDate.getHours() - 1);
+  const isNewRestaurant = createdDate >= oneHourAgo;
+  console.log("oneHourAgo", oneHourAgo, restaurant.created_at);
   return (
     <div
       className="restaurant-card-container cursor"
@@ -29,6 +35,7 @@ function RestaurantCard({ restaurant }) {
       <div className="restaurant-delivery">
         ${restaurant.delivery_fee} Delivery Fee • {restaurant.price_ranges}
       </div>
+      {isNewRestaurant && <div className="item-plus4">New</div>}
       <div className="restaurant-card-stars">
         {restaurant.avg_rating > 0 && restaurant.avg_rating.toFixed(1)}
         {restaurant.avg_rating > 0 && (

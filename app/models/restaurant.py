@@ -90,7 +90,9 @@ class Restaurant(db.Model):
             'state': self.state,
             'address': self.address,
             'avg_rating': self.avg_rating(),
-            'num_orders': self.num_orders()
+            'num_orders': self.num_orders(),
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
         }
 
         if geo:
@@ -118,7 +120,9 @@ class Restaurant(db.Model):
             'avg_rating': self.avg_rating(),
             'num_orders': self.num_orders(),
             'menuitems': self.items(),
-            'popular': self.popularItems()
+            'popular': self.popularItems(),
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
         }
 
         if geo:

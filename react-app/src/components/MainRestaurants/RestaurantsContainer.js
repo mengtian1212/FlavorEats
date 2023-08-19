@@ -33,6 +33,8 @@ function RestaurantsContainer({
     restaurants.sort((a, b) => b.num_orders - a.num_orders);
   } else if (sortBy === "rating") {
     restaurants.sort((a, b) => b.avg_rating - a.avg_rating);
+  } else {
+    restaurants.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   }
 
   return (

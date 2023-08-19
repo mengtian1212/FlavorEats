@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
-import { capitalizeFirstChar } from "../../utils/helper-functions";
+import { USSTATES, formatAddress } from "../../utils/helper-functions";
 import { editUserAddressThunk } from "../../store/session";
 import { checkoutCartThunk } from "../../store/orders";
 
@@ -41,13 +41,12 @@ function CheckoutPage() {
   // for edit user delivery address
   const [myAddress, setMyAddress] = useState(sessionUser?.address);
   const userAddress =
-    sessionUser?.address &&
-    capitalizeFirstChar(sessionUser?.address?.split(",")[0]);
+    sessionUser?.address && sessionUser?.address?.split(",")[0];
   const userAddressDetail =
     sessionUser?.address &&
     sessionUser?.address?.split(",").slice(1).join(", ").trim();
   const [showEditAddress, setShowEditAddress] = useState(false);
-  const [showEditAddressError, setShowEditAddressError] = useState(false);
+  const [editAddressError, setEditAddressError] = useState({});
 
   // for delivery method & delivery fee
   const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
@@ -79,24 +78,127 @@ function CheckoutPage() {
   );
   ///// state variables defined above
 
-  const handleSubmitAddress = async (e) => {
-    if (myAddress.trim() === "") {
-      setShowEditAddressError(true);
+  // for edit address
+  const validateAddressInput = () => {
+    const err = {};
+    const data = myAddress.trim();
+    // should not be a long empty string '      '
+    if (data.length === 0) {
+      err.errors = "Address invalid";
+      setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
       setTimeout(() => {
-        setShowEditAddressError(false);
-      }, 1100);
-      return;
+        setEditAddressError({});
+      }, 3000);
+      return false;
     }
-    if (capitalizeFirstChar(myAddress.trim()) === sessionUser.address) {
+
+    const parts = data.split(",").map((part) => part.trim());
+    // must have 4 components
+    if (parts.length !== 4) {
+      err.errors =
+        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+    // each component should not be empty
+    if (parts.includes("")) {
+      err.errors =
+        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+
+    // check state 1. should be 2 characters. 2.should in 52 US states.
+    const state_zip = parts[3].split(" ");
+    if (state_zip.length !== 2) {
+      err.errors =
+        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+    const state = state_zip[0].trim();
+    if (state.length !== 2 || !USSTATES.includes(state.toUpperCase())) {
+      err.errors =
+        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+
+    // check zip code: should be 5 characters.
+    const zip = state_zip[1].trim();
+    if (zip.length !== 5) {
+      err.errors =
+        "Invalid format : eg. Address name, 123 main street, new york, ny 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmitAddress = async (e) => {
+    if (!validateAddressInput()) return;
+    const addressFormatedList = formatAddress(myAddress, "list");
+    const addressFormatedString = formatAddress(myAddress, "string");
+    if (
+      myAddress.length !== 0 &&
+      addressFormatedString === sessionUser.address
+    ) {
+      setMyAddress(sessionUser.address);
       setShowEditAddress(false);
       return;
     }
-    const formData = { updatedAddress: capitalizeFirstChar(myAddress.trim()) };
-    await dispatch(editUserAddressThunk(formData, sessionUser.id));
-    setMyAddress(capitalizeFirstChar(myAddress.trim()));
-    setShowEditAddress(false);
+
+    const formData = {
+      address: addressFormatedString,
+      city: addressFormatedList[2],
+      state: addressFormatedList[3],
+      zip: addressFormatedList[4],
+    };
+    console.log(formData);
+
+    // const formData = { updatedAddress: myAddress.trim() };
+    const data = await dispatch(editUserAddressThunk(formData, sessionUser.id));
+    if (data.errors) {
+      console.log("data error", data.errors);
+      setEditAddressError(data.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return;
+    } else {
+      setMyAddress(data.address);
+      setShowEditAddress(false);
+    }
   };
   // end for edit user delivery address
 
@@ -183,10 +285,14 @@ function CheckoutPage() {
               )}
               <div
                 className={`error-edit-address1 ${
-                  isDeliveryT && showEditAddressError ? "active2" : ""
+                  isDeliveryT && Object.keys(editAddressError).length !== 0
+                    ? "active2"
+                    : ""
                 }`}
               >
-                {isDeliveryT && showEditAddressError && "Address invalid"}
+                {isDeliveryT &&
+                  Object.keys(editAddressError).length !== 0 &&
+                  editAddressError}
               </div>
               {isDeliveryT && showEditAddress && (
                 <>

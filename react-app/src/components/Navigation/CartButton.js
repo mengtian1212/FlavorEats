@@ -18,9 +18,7 @@ function CartButton({ user }) {
   console.log("restaurantId", restaurantId);
 
   const carts = useSelector((state) => (state.orders ? state.orders : {}));
-  const num_carts = Object.keys(carts).length;
   const currentCart = carts[restaurantId];
-  console.log("currentCart -------------------------------------", currentCart);
 
   useEffect(() => {
     if (sessionUser) dispatch(fetchCartsThunk());
