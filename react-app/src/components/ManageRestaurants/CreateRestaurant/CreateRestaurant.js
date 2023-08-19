@@ -15,14 +15,14 @@ function CreateRestaurant() {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  useEffect(() => {
-    if (location.pathname === "/business/restaurant-builder") {
-      document.body.classList.add("black-background");
-    }
-    return () => {
-      document.body.classList.remove("black-background");
-    };
-  }, [location]);
+  // useEffect(() => {
+  //   if (location.pathname === "/business/restaurant-builder") {
+  //     document.body.classList.add("black-background");
+  //   }
+  //   return () => {
+  //     document.body.classList.remove("black-background");
+  //   };
+  // }, [location]);
 
   // for create new restaurant: restaurant image_url, address, city, state, name, cusine_types
   // in edit resturant: then add more info for description, delivery_fee, price_ranges
@@ -55,7 +55,8 @@ function CreateRestaurant() {
   };
 
   let preview = null;
-  if (photoUrl) preview = <img src={photoUrl} id="preview-pin-img" alt="" />;
+  if (photoUrl)
+    preview = <img src={photoUrl} id="preview-restaurant-img" alt="" />;
 
   // for cuisine types checkbox
   const isCtypeSelected = (t) => selectedTypes.includes(t);
@@ -165,11 +166,11 @@ function CreateRestaurant() {
       <div className="create-restaurant-background"></div>
       <div className="create-main-box">
         <div className="create-main-box-left">
-          <div>Unlock a new revenue stream</div>
-          <p>
+          <div className="left-title">Unlock a new revenue stream</div>
+          {/* <p>
             Connect with more customers and grow your business on your terms.
             Partner with us today.
-          </p>
+          </p> */}
         </div>
         <form
           className="restaurant-form-container"

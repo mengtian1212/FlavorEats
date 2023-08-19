@@ -33,6 +33,7 @@
 /* start here */
 .nav-container {
   height: 96px;
+  width: 100%;
   padding: 0px 48px;
   display: flex;
   justify-content: space-between;
@@ -396,4 +397,10 @@
 
 .bars-icon.cursor.white-logo {
   color: #ffffff;
+}
+
+.nav-container.black-nav {
+  background-color: #000000;
+  position: fixed;
+  left: 0;
 }

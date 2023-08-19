@@ -24,6 +24,7 @@ function Navigation({ isLoaded }) {
 
   const [showItem, setShowItem] = useState(true);
   const [logoColor, setLogoColor] = useState("");
+  const [navColor, setNavColor] = useState("");
   useEffect(() => {
     if (
       location.pathname === "/checkout" ||
@@ -38,8 +39,10 @@ function Navigation({ isLoaded }) {
 
     if (location.pathname === "/business/restaurant-builder") {
       setLogoColor("white-logo");
+      setNavColor("black-nav");
     } else {
       setLogoColor("");
+      setNavColor("");
     }
   }, [location]);
 
@@ -182,7 +185,7 @@ function Navigation({ isLoaded }) {
   };
 
   return (
-    <div className="nav-container">
+    <div className={`nav-container` + ` ` + navColor}>
       <div className="nav-left">
         <UserButton user={sessionUser} />
         <div className="_32"></div>
