@@ -14,20 +14,20 @@ class Restaurant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")), nullable=False)
-    name = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(120), nullable=False)
     image_url = db.Column(db.String(255), nullable=True)
     description = db.Column(db.String, nullable=True)
     delivery_fee = db.Column(db.Numeric(4, 2), nullable=True, default=0)
-    cusine_types = db.Column(db.String(255), nullable=False)
+    cusine_types = db.Column(db.String, nullable=False)
     price_ranges = db.Column(
         db.Enum(name='price_ranges', *price_ranges), default='$')
 
     # location
+    address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(40), nullable=True)
     state = db.Column(db.String(2), nullable=True)
     lat = db.Column(db.Float, nullable=True)
     lng = db.Column(db.Float, nullable=True)
-    address = db.Column(db.String(255), nullable=False)
 
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())

@@ -2,13 +2,6 @@ from app.models import db, Restaurant, environment, SCHEMA
 from sqlalchemy.sql import text
 
 
-cusine_types = ["Fast Food", "Healthy", "Bakery", "Mexican", "Chinese", "Burgers",
-                "Pizza", "Vegan", "Indian", "Comfort Food", "Tacos",
-                "Asian", "Bubble Tea", "Ramen", "French", "Japanese", "Desserts",
-                "BBQ", "Salads", "American", "Coffee", "Seafood", "European",
-                "Alcohol", "Breakfast", "Sushi", "Italian", "Ice cream", "Burritos"]
-
-
 def seed_restaurants():
     restaurants = [
         {  # 1

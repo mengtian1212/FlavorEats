@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import UserMenuLogin from "./UserMenuLogin";
 import UserMenuLogout from "./UserMenuLogout";
 
@@ -27,10 +28,23 @@ function UserButton({ user }) {
   const closeMenu = () => setShowMenu(false);
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+
+  const location = useLocation();
+  const [logoColor, setLogoColor] = useState("");
+  useEffect(() => {
+    if (location.pathname === "/business/restaurant-builder") {
+      setLogoColor("white-logo");
+    } else {
+      setLogoColor("");
+    }
+  }, [location]);
   return (
     <>
-      <button onClick={openMenu} className="bars-icon cursor">
-        <i className="fa-solid fa-bars"></i>
+      <button
+        onClick={openMenu}
+        className={`bars-icon cursor` + ` ` + logoColor}
+      >
+        <i className={`fa-solid fa-bars`}></i>
       </button>
       <div className={showMenu ? "modal-background" : ""} />
       <ul className={ulClassName} ref={ulRef}>

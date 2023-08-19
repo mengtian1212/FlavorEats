@@ -11,6 +11,8 @@ import SingleRestaurant from "./components/SingleRestaurant";
 import PastOrders from "./components/PastOrders";
 import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
 import PlaceOrderPage from "./components/PlaceOrderPage/PlaceOrderPage";
+import MyAllRestaurants from "./components/ManageRestaurants/MyAllRestaurants";
+import CreateRestaurant from "./components/ManageRestaurants/CreateRestaurant";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,10 +34,6 @@ function App() {
             <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
           </Route>
-          <Route exact path="/">
-            <Navigation isLoaded={isLoaded} />
-            <LandingPage />
-          </Route>
           <Route exact path="/restaurants/:restaurantId">
             <Navigation isLoaded={isLoaded} />
             <SingleRestaurant />
@@ -55,6 +53,42 @@ function App() {
           <Route exact path="/place-order">
             <Navigation isLoaded={isLoaded} />
             <PlaceOrderPage />
+          </Route>
+          <Route exact path="/business/restaurant-builder">
+            <Navigation isLoaded={isLoaded} />
+            <CreateRestaurant />
+          </Route>
+          <Route exact path="/business/restaurants">
+            <Navigation isLoaded={isLoaded} />
+            <MyAllRestaurants />
+          </Route>
+          <Route exact path="/business/:restaurantId">
+            <Navigation isLoaded={isLoaded} />
+            {/* <MyOneRestaurant /> */}
+          </Route>
+          <Route exact path="/business/:restaurantId/edit">
+            <Navigation isLoaded={isLoaded} />
+            {/* <EditMyOneRestaurant /> */}
+          </Route>
+          <Route exact path="/business/:restaurantId/items">
+            <Navigation isLoaded={isLoaded} />
+            {/* <MyRestaurantAllMenuitems /> */}
+          </Route>
+          <Route exact path="/business/:restaurantId/items/new">
+            <Navigation isLoaded={isLoaded} />
+            {/* <CreateMyMenuitem /> */}
+          </Route>
+          <Route exact path="/business/:restaurantId/items/:itemId">
+            <Navigation isLoaded={isLoaded} />
+            {/* <MyRestaurantOneMenuItem /> */}
+          </Route>
+          <Route exact path="/business/:restaurantId/items/:itemId/edit">
+            <Navigation isLoaded={isLoaded} />
+            {/* <EditMyRestaurantOneMenuItem /> */}
+          </Route>
+          <Route exact path="/">
+            <Navigation isLoaded={isLoaded} />
+            <LandingPage />
           </Route>
         </Switch>
       )}
