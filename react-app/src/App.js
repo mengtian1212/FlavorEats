@@ -35,31 +35,24 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/restaurants/:restaurantId">
-            <Navigation isLoaded={isLoaded} />
             <SingleRestaurant />
           </Route>
           <Route exact path="/restaurants">
-            <Navigation isLoaded={isLoaded} />
             <MainRestaurants />
           </Route>
           <Route exact path="/orders">
-            <Navigation isLoaded={isLoaded} />
             <PastOrders />
           </Route>
           <Route exact path="/checkout">
-            <Navigation isLoaded={isLoaded} />
             <CheckoutPage />
           </Route>
           <Route exact path="/place-order">
-            <Navigation isLoaded={isLoaded} />
             <PlaceOrderPage />
           </Route>
           <Route exact path="/business/restaurant-builder">
-            <Navigation isLoaded={isLoaded} />
             <CreateRestaurant />
           </Route>
           <Route exact path="/business/restaurants">
-            <Navigation isLoaded={isLoaded} />
             <MyAllRestaurants />
           </Route>
           <Route exact path="/business/:restaurantId">

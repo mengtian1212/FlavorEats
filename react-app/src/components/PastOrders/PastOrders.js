@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import PastOrderCard from "./PastOrderCard";
 import { fetchPastOrdersThunk } from "../../store/pastOrders";
+import Navigation from "../Navigation";
 
 function PastOrders() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,11 +21,14 @@ function PastOrders() {
   pastOrders.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
   return (
-    <div className="past-orders-container">
-      <div id="past-orders-title">Past Orders</div>
-      {pastOrders.map((pastOrder, index) => (
-        <PastOrderCard key={index} index={index} pastOrder={pastOrder} />
-      ))}
+    <div className="mw">
+      <Navigation />
+      <div className="past-orders-container">
+        <div id="past-orders-title">Past Orders</div>
+        {pastOrders.map((pastOrder, index) => (
+          <PastOrderCard key={index} index={index} pastOrder={pastOrder} />
+        ))}
+      </div>
     </div>
   );
 }

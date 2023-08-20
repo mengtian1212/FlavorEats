@@ -93,8 +93,8 @@ function MenuItems({ type, items }) {
                 <div className="item-name-text">{item.item_name}</div>
                 <div className="price-calory">
                   <div className="item-price">${item.price}</div>
-                  {item.calory && <div className="item-calory">•</div>}
-                  {item.calory && (
+                  {item.calory !== null && <div className="item-calory">•</div>}
+                  {item.calory !== null && (
                     <div className="item-calory">
                       {parseInt(item.calory)} Cal.
                     </div>

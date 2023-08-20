@@ -22,10 +22,6 @@
   font-family: "Uber Move Text", sans-serif;
 }
 
-.profile-dropdown {
-  position: absolute;
-}
-
 .hidden {
   display: none;
 }
@@ -282,13 +278,16 @@
 
 /* user menu when login */
 .profile-dropdown {
+  position: fixed;
+  top: 0 !important;
+  left: 0 !important;
   background-color: white;
+  overflow-y: auto;
+
   width: 300px;
-  max-width: 80%;
+  max-width: 100%;
   height: 100vh;
   padding: 24px;
-  top: 0;
-  left: 0;
   transform: translateX(0px);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
   z-index: 999;
@@ -403,4 +402,13 @@
   background-color: #000000;
   position: fixed;
   left: 0;
+}
+
+.nav-container.checkout-nav {
+  background-color: #ffffff;
+  z-index: 10;
+}
+
+.checkout-nav {
+  background-color: #f6f6f6;
 }

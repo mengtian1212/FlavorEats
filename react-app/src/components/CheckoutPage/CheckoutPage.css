@@ -1,8 +1,13 @@
 .checkout-main-container {
-  margin: 16px auto;
-  margin-bottom: 36px;
+  min-width: 1024px;
   max-width: 1200px;
-  width: 80%;
+
+  margin: 16px auto;
+
+  padding: 0px auto;
+  padding-bottom: 36px;
+  /* width: 80%; */
+
   display: grid;
   grid-template-columns: 750px 490px;
   row-gap: 32px;

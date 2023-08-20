@@ -214,6 +214,8 @@ input[type="radio"] {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .restaurant-delivery {
