@@ -43,9 +43,18 @@ class Order(db.Model):
         for item in self.orderitems:
             curr = item.quantity * item.menuitem.price
             total_price += curr
-        tip = float(self.tip) if self.is_pickup == False else 0
-        priority_fee = float(2.99) if self.is_priority else 0
-        return float(total_price) + float(self.restaurant.delivery_fee) + tip + priority_fee
+
+        # tip exist for both delivery and pickup orders
+        tip = float(self.tip)
+
+        # delivery fee exist only for delivery orders
+        delivery = float(
+            self.restaurant.delivery_fee) if not self.is_pickup else 0
+
+        # priority fee exist only for delivery & priority delivery orders
+        priority_fee = float(
+            2.99) if not self.is_pickup and self.is_priority else 0
+        return float(total_price) + tip + delivery + priority_fee
 
     def calculate_subtotal(self):
         subtotal = 0

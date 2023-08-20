@@ -21,6 +21,23 @@
   opacity: 90%;
 }
 
+.item-plus4 {
+  background-color: rgb(4, 136, 72);
+  position: absolute;
+  top: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 12px;
+  z-index: 1;
+  border-radius: 0px 12px 12px 0px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  vertical-align: center;
+}
+
 .profile-dropdown1 {
   /* right: 68px; */
   top: 8px;

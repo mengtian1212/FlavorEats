@@ -44,10 +44,10 @@
 
 .sec3 {
   margin: 0 48px;
-  margin-bottom: 52px;
+  padding-bottom: 52px;
   display: flex;
   justify-content: flex-start;
-  gap: 60px;
+  gap: 100px;
 }
 
 /* sort & filters  */
@@ -161,6 +161,8 @@ input[type="radio"] {
 .halal-icon {
   width: 18px;
   height: 18px;
+  background-color: white;
+  border-radius: 500px;
 }
 
 /* Restaurants container  */
@@ -173,9 +175,16 @@ input[type="radio"] {
   padding-right: 16px;
 }
 
+.over-res {
+  flex: 1;
+}
+
 .all-res-container {
+  flex: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: repeat(auto-fill, 442px);
+
   gap: 40px 24px;
 }
 
@@ -192,6 +201,7 @@ input[type="radio"] {
   color: white;
   font-size: 20px;
   cursor: pointer;
+  /* background: (at center center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%); */
 }
 
 .fav:hover {
@@ -199,7 +209,7 @@ input[type="radio"] {
 }
 
 .restaurant-preview {
-  width: 437.75px;
+  width: 442px;
   height: 128px;
   border-radius: 12px;
   object-fit: cover;
@@ -212,6 +222,8 @@ input[type="radio"] {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+  width: 442px;
+  word-wrap: break-word;
 }
 
 .restaurant-delivery {

@@ -46,6 +46,51 @@ export const formatDate = (inputDateTime) => {
   return `${formattedDate.split(",")[0]} at ${formattedDate.split(",")[1]}`;
 };
 
+// format address string "empire state building, 123 main street, new york, ny 10000"
+// to "Empire State Building, 123 Main Street, New York, NY 10000"
+export const formatAddress = (address, formatting = "list") => {
+  let data = address.trim();
+  const parts = data.split(",").map((part) => part.trim());
+
+  // building_name, street_name, city: capitalize each first character
+  const building_name = parts[0].trim();
+  const street_name = parts[1].trim();
+  const city = parts[2].trim();
+
+  const building_name_formatted = capitalizeFirstChar(building_name);
+  const street_name_formatted = capitalizeFirstChar(street_name);
+  const city_formatted = capitalizeFirstChar(city);
+
+  const state_zip = parts[3].split(" ");
+  // state: all upper case
+  const state = state_zip[0].trim();
+  const state_formatted = state.toUpperCase();
+
+  // zip: just trim
+  const zip = state_zip[1].trim();
+  if (formatting === "list") {
+    return [
+      building_name_formatted,
+      street_name_formatted,
+      city_formatted,
+      state_formatted,
+      zip,
+    ];
+  } else {
+    return (
+      building_name_formatted +
+      ", " +
+      street_name_formatted +
+      ", " +
+      city_formatted +
+      ", " +
+      state_formatted +
+      " " +
+      zip
+    );
+  }
+};
+
 export const USSTATES = [
   "AL",
   "AK",

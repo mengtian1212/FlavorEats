@@ -8,10 +8,6 @@
   list-style-type: none;
 }
 
-.cursor {
-  cursor: pointer;
-}
-
 :root {
   --btn: #eeeeee;
 }
@@ -20,10 +16,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* overall layout  */
 body {
-  max-width: 1920px;
+  /* max-width: 1920px; */
   margin: 0 auto;
 }
+
+.mw {
+  min-width: 1024px;
+  max-width: 1920px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#root {
+  height: 100vh;
+}
+
+.cursor {
+  cursor: pointer;
+}
+/* end for overall layout  */
 
 .btn-grey {
   background-color: var(--btn);

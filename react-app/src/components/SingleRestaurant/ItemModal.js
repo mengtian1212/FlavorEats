@@ -98,7 +98,7 @@ function ItemModal({ item }) {
       </div>
       <div className="right-item-container">
         <div className="item-n">{item.item_name}</div>
-        {item.calory && (
+        {item.calory !== null && (
           <div className="item-c">{parseInt(item.calory)} Cal.</div>
         )}
         <div className="item-p">${item.price}</div>

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, db
+from .auth_routes import validation_errors_to_error_messages
 from app.forms.edit_user_address_form import EditUserAddressForm
 
 user_routes = Blueprint('users', __name__)
@@ -36,22 +37,14 @@ def update_user_address(userId):
         return jsonify({"message": "User not found"}), 404
 
     if form.validate_on_submit():
-        target_user.address = form.data["updatedAddress"]
-        parts = target_user.address.split(', ')
-        building_name = parts[0]
-        street_address = parts[1]
-        city = parts[2]
-
-        state_zip = parts[3].split(' ')
-        state = state_zip[0]
-        zip = state_zip[1]
-        target_user.city = city
-        target_user.state = state
-        target_user.zip = zip
+        target_user.address = form.data["address"]
+        target_user.city = form.data["city"]
+        target_user.state = form.data["state"]
+        target_user.zip = form.data["zip"]
         target_user.lat = None
         target_user.lng = None
         db.session.commit()
         response = target_user.to_dict()
         return response
-    if form.errors:
-        return form.errors
+
+    return {"errors": 'Invalid format : e.g. Address name, 123 main street, New York, NY 10000'}, 400

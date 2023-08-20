@@ -2,7 +2,7 @@ import "./Navigation.css";
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { capitalizeFirstChar } from "../../utils/helper-functions";
+import { USSTATES, formatAddress } from "../../utils/helper-functions";
 import UserButton from "./UserButton";
 import CartButton from "./CartButton";
 import { editUserAddressThunk } from "../../store/session";
@@ -13,35 +13,45 @@ function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const userAddress =
-    sessionUser?.address &&
-    capitalizeFirstChar(sessionUser?.address?.split(",")[0]);
+
   const [myAddress, setMyAddress] = useState(sessionUser?.address);
+  const userAddress =
+    sessionUser?.address && sessionUser?.address?.split(",")[0];
   const [showEditAddress, setShowEditAddress] = useState(false);
-  const [showEditAddressError, setShowEditAddressError] = useState(false);
+  const [editAddressError, setEditAddressError] = useState({});
 
   const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
-  // const [isDelivery, setIsDelivery] = useState(true);
-  console.log(isDeliveryT);
 
   const [showItem, setShowItem] = useState(true);
   const [logoColor, setLogoColor] = useState("");
+  const [navClass, setNavClass] = useState("");
   useEffect(() => {
-    if (
-      location.pathname === "/checkout" ||
-      location.pathname === "/place-order" ||
-      location.pathname === "/business/restaurant-builder"
-    ) {
+    if (location.pathname === "/checkout") {
       // hide everything except logo on the nav bar when route changes to "/checkout"
       setShowItem(false);
     } else {
       setShowItem(true);
     }
 
-    if (location.pathname === "/business/restaurant-builder") {
-      setLogoColor("white-logo");
+    if (location.pathname === "/place-order") {
+      // hide everything except logo on the nav bar when route changes to "/checkout"
+      setShowItem(false);
+      setNavClass("checkout-nav");
     } else {
+      setShowItem(true);
+      setNavClass("");
+    }
+
+    if (location.pathname.startsWith("/business")) {
+      // if (location.pathname === "/business/restaurant-builder") {
+      // hide everything except logo on the nav bar when route changes to "/checkout"
+      setShowItem(false);
+      setLogoColor("white-logo");
+      setNavClass("black-nav");
+    } else {
+      setShowItem(true);
       setLogoColor("");
+      setNavClass("");
     }
   }, [location]);
 
@@ -60,28 +70,131 @@ function Navigation({ isLoaded }) {
     }
   };
 
-  const handleSubmitAddress = async (e) => {
-    if (myAddress.trim() === "") {
-      setShowEditAddressError(true);
+  // for edit address
+  const validateAddressInput = () => {
+    const err = {};
+    const data = myAddress.trim();
+    // should not be a long empty string '      '
+    if (data.length === 0) {
+      err.errors = "Address invalid";
+      setEditAddressError(err.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
       setTimeout(() => {
-        setShowEditAddressError(false);
-      }, 1100);
-      return;
+        setEditAddressError({});
+      }, 3000);
+      return false;
     }
-    if (capitalizeFirstChar(myAddress.trim()) === sessionUser.address) {
+
+    const parts = data.split(",").map((part) => part.trim());
+    // must have 4 components
+    if (parts.length !== 4) {
+      err.errors =
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+    // each component should not be empty
+    if (parts.includes("")) {
+      err.errors =
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+
+    // check state 1. should be 2 characters. 2.should in 52 US states.
+    const state_zip = parts[3].split(" ");
+    if (state_zip.length !== 2) {
+      err.errors =
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+    const state = state_zip[0].trim();
+    if (state.length !== 2 || !USSTATES.includes(state.toUpperCase())) {
+      err.errors =
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+
+    // check zip code: should be 5 characters.
+    const zip = state_zip[1].trim();
+    if (zip.length !== 5) {
+      err.errors =
+        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
+      setEditAddressError(err.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmitAddress = async (e) => {
+    if (!validateAddressInput()) return;
+    const addressFormatedList = formatAddress(myAddress, "list");
+    const addressFormatedString = formatAddress(myAddress, "string");
+    if (
+      myAddress.length !== 0 &&
+      addressFormatedString === sessionUser.address
+    ) {
+      setMyAddress(sessionUser.address);
       setShowEditAddress(false);
       return;
     }
-    const formData = { updatedAddress: capitalizeFirstChar(myAddress.trim()) };
-    await dispatch(editUserAddressThunk(formData, sessionUser.id));
-    setMyAddress(capitalizeFirstChar(myAddress.trim()));
-    setShowEditAddress(false);
+
+    const formData = {
+      address: addressFormatedString,
+      city: addressFormatedList[2],
+      state: addressFormatedList[3],
+      zip: addressFormatedList[4],
+    };
+    console.log(formData);
+
+    // const formData = { updatedAddress: myAddress.trim() };
+    const data = await dispatch(editUserAddressThunk(formData, sessionUser.id));
+    if (data.errors) {
+      console.log("data error", data.errors);
+      setEditAddressError(data.errors);
+      setMyAddress(sessionUser.address);
+      setShowEditAddress(false);
+      setTimeout(() => {
+        setEditAddressError({});
+      }, 3000);
+      return;
+    } else {
+      setMyAddress(data.address);
+      setShowEditAddress(false);
+    }
   };
 
   return (
-    <div className="nav-container">
+    <div className={`nav-container ` + navClass}>
       <div className="nav-left">
         <UserButton user={sessionUser} />
         <div className="_32"></div>
@@ -120,10 +233,11 @@ function Navigation({ isLoaded }) {
                 )}
                 <div
                   className={`error-edit-address ${
-                    showEditAddressError ? "active1" : ""
+                    Object.keys(editAddressError).length !== 0 ? "active1" : ""
                   }`}
                 >
-                  {showEditAddressError && "Address invalid"}
+                  {Object.keys(editAddressError).length !== 0 &&
+                    editAddressError}
                 </div>
                 {showEditAddress && (
                   <>
@@ -132,7 +246,7 @@ function Navigation({ isLoaded }) {
                       type="text"
                       value={myAddress}
                       onChange={(e) => setMyAddress(e.target.value)}
-                      onBlur={handleSubmitAddress}
+                      // onBlur={handleSubmitAddress}
                       placeholder="Enter address"
                     />
                     <button
@@ -157,8 +271,9 @@ function Navigation({ isLoaded }) {
                 <div className="nav-search">
                   <i className="fas fa-search"></i>
                   <input
-                    className="search-input"
-                    placeholder="Search restaurant name"
+                    className="search-input cursor"
+                    placeholder="Search restaurants, dishes, drinks, cuisine types, etc"
+                    onClick={() => alert("Feature Coming Soon...")}
                   />
                 </div>
               </>

@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { deleteCartThunk } from "../../../store/orders";
 import ItemInCart from "./ItemInCart";
-import { capitalizeFirstChar } from "../../../utils/helper-functions";
 
 function CartModal({ restaurantId }) {
   const sessionUser = useSelector((state) => state.session.user);

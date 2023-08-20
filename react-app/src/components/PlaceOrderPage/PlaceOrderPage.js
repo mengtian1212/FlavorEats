@@ -1,26 +1,16 @@
 import "./PlaceOrderPage.css";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchLastPastOrderThunk } from "../../store/pastOrders";
+import Header from "../Header";
 
 function PlaceOrderPage() {
-  const location = useLocation();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   let orderJustPlaced = useSelector((state) =>
     state.pastOrders?.last_past_order ? state.pastOrders?.last_past_order : {}
   );
   console.log("orderJustPlaced", orderJustPlaced);
-
-  useEffect(() => {
-    if (location.pathname === "/place-order") {
-      document.body.classList.add("grey-background");
-    }
-    return () => {
-      document.body.classList.remove("grey-background");
-    };
-  }, [location]);
 
   useEffect(() => {
     dispatch(fetchLastPastOrderThunk());
@@ -57,6 +47,9 @@ function PlaceOrderPage() {
 
   return (
     <div className="main-place-holder-container">
+      <div className="checkout-nav">
+        <Header />
+      </div>
       <div className="thanks-container">
         {!showFinalComponent &&
           steps
@@ -69,7 +62,7 @@ function PlaceOrderPage() {
           />
         )}
       </div>
-      <div className="new-york-img"></div>
+      {/* <div className="new-york-img"></div> */}
     </div>
   );
 }
@@ -79,7 +72,9 @@ export default PlaceOrderPage;
 const Step1 = () => {
   return (
     <div className="checkout-delivery-box3">
-      <div className="checkout-t">Placing order...</div>
+      <div className="checkout-ttt">
+        Placing order...<i className="fa-solid fa-circle-notch fa-spin"></i>
+      </div>
     </div>
   );
 };
