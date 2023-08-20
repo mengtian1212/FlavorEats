@@ -8,6 +8,7 @@ import RestaurantsCategories from "./RestaurantsCategories";
 import SideShow from "./SideShow";
 import SortContainer from "./SortContainer";
 import RestaurantsContainer from "./RestaurantsContainer";
+import Navigation from "../Navigation";
 
 function MainRestaurants() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -83,7 +84,8 @@ function MainRestaurants() {
   }, [history]);
 
   return (
-    <>
+    <div className="mw">
+      <Navigation />
       <RestaurantsCategories
         filterType={filterType}
         setFilterType={setFilterType}
@@ -125,7 +127,7 @@ function MainRestaurants() {
           dietary={dietary}
         />
       </section>
-    </>
+    </div>
   );
 }
 

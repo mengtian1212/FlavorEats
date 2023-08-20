@@ -1,8 +1,8 @@
 .past-orders-container {
-  padding: 2px 40px;
-  margin: 0 aut0;
   min-width: 1024px;
-  max-width: 1920px;
+  margin: 0 auto;
+  padding: 2px 48px;
+  padding-bottom: 36px;
 }
 
 #past-orders-title {

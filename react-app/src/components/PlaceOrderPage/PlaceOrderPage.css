@@ -1,5 +1,5 @@
 .new-york-img {
-  background-image: url("https://media.discordapp.net/attachments/1139263822469795862/1142002296985747516/new-york-map.PNG?width=2755&height=1365");
+  /* background-image: url("https://media.discordapp.net/attachments/1139263822469795862/1142002296985747516/new-york-map.PNG?width=2755&height=1365");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -8,24 +8,26 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: -1000 !important;
+  z-index: -1000 !important; */
 }
 
 .main-place-holder-container {
-  position: relative;
-  z-index: -999 !important;
+  height: 100vh;
+  background-image: url("https://media.discordapp.net/attachments/1139263822469795862/1142002296985747516/new-york-map.PNG?width=2755&height=1365");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
 .thanks-container {
   position: absolute;
-  z-index: 10 !important;
   background-color: white !important;
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 82vh;
-  left: 0px;
-  top: 52px;
-  bottom: 0px;
+  height: 80vh;
+  left: 36px;
+  top: 120px;
   margin-left: 72px;
   overflow-y: auto;
   -ms-overflow-style: none;
@@ -76,6 +78,22 @@ color: #000000; */
 
 .checkout-delivery-box7 {
   padding: 36px 0px 0px 0px;
+}
+
+.checkout-ttt {
+  line-height: 32px;
+  font-weight: 700;
+  font-size: 24px;
+  width: 100%;
+  position: relative;
+}
+
+.fa-spin {
+  position: absolute;
+  font-size: 22px;
+  right: 16px;
+  top: 6px;
+  color: #bfbebe;
 }
 
 .checkout-a-sub1 {

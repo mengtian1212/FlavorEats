@@ -6,6 +6,7 @@ import { fetchOneRestaurantThunk } from "../../store/restaurants";
 import { useLayoutEffect } from "react";
 import { getMenuItemsByType } from "../../utils/helper-functions";
 import MenuItems from "./MenuItems";
+import Navigation from "../Navigation";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
@@ -75,7 +76,8 @@ function SingleRestaurant() {
   const ids = Object.keys(items);
   const activeId = useScrollspy(ids, 54); // 54 is navigation height
   return (
-    <div>
+    <div className="mw">
+      <Navigation />
       <div>
         <img
           src={targetRestaurant.image_url}

@@ -13,6 +13,8 @@ import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
 import PlaceOrderPage from "./components/PlaceOrderPage/PlaceOrderPage";
 import MyAllRestaurants from "./components/ManageRestaurants/MyAllRestaurants";
 import CreateRestaurant from "./components/ManageRestaurants/CreateRestaurant";
+import MyOneRestaurant from "./components/ManageRestaurants/MyOneRestaurant/MyOneResturant";
+import MyResAllMenuitems from "./components/ManageRestaurants/MyResAllMenuitems/MyResAllMenuitems";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,44 +37,35 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/restaurants/:restaurantId">
-            <Navigation isLoaded={isLoaded} />
             <SingleRestaurant />
           </Route>
           <Route exact path="/restaurants">
-            <Navigation isLoaded={isLoaded} />
             <MainRestaurants />
           </Route>
           <Route exact path="/orders">
-            <Navigation isLoaded={isLoaded} />
             <PastOrders />
           </Route>
           <Route exact path="/checkout">
-            <Navigation isLoaded={isLoaded} />
             <CheckoutPage />
           </Route>
           <Route exact path="/place-order">
-            <Navigation isLoaded={isLoaded} />
             <PlaceOrderPage />
           </Route>
           <Route exact path="/business/restaurant-builder">
-            <Navigation isLoaded={isLoaded} />
             <CreateRestaurant />
           </Route>
           <Route exact path="/business/restaurants">
-            <Navigation isLoaded={isLoaded} />
             <MyAllRestaurants />
           </Route>
           <Route exact path="/business/:restaurantId">
-            <Navigation isLoaded={isLoaded} />
-            {/* <MyOneRestaurant /> */}
+            <MyOneRestaurant />
           </Route>
           <Route exact path="/business/:restaurantId/edit">
             <Navigation isLoaded={isLoaded} />
             {/* <EditMyOneRestaurant /> */}
           </Route>
           <Route exact path="/business/:restaurantId/items">
-            <Navigation isLoaded={isLoaded} />
-            {/* <MyRestaurantAllMenuitems /> */}
+            <MyResAllMenuitems />
           </Route>
           <Route exact path="/business/:restaurantId/items/new">
             <Navigation isLoaded={isLoaded} />
@@ -80,11 +73,11 @@ function App() {
           </Route>
           <Route exact path="/business/:restaurantId/items/:itemId">
             <Navigation isLoaded={isLoaded} />
-            {/* <MyRestaurantOneMenuItem /> */}
+            {/* <MyResOneMenuItem /> */}
           </Route>
           <Route exact path="/business/:restaurantId/items/:itemId/edit">
             <Navigation isLoaded={isLoaded} />
-            {/* <EditMyRestaurantOneMenuItem /> */}
+            {/* <EditMyResOneMenuItem /> */}
           </Route>
           <Route exact path="/">
             <Navigation isLoaded={isLoaded} />

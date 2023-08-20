@@ -9,6 +9,7 @@ import {
   cuisine_types,
 } from "../../../utils/helper-functions";
 import { createNewRestaurantThunk } from "../../../store/restaurants";
+import Header from "../../Header";
 
 function CreateRestaurant() {
   const location = useLocation();
@@ -96,6 +97,10 @@ function CreateRestaurant() {
 
   // for validate form
   const validateForm = () => {
+    if (image == null) {
+      setNoPicture(true);
+    }
+
     const err = {};
     if (address.trim().length === 0) err.address = "Store address is required";
     if (address.trim().length > 255)
@@ -114,15 +119,8 @@ function CreateRestaurant() {
   };
 
   const handleSubmit = async (e) => {
-    console.log("here");
     e.preventDefault();
     if (!validateForm()) return;
-    console.log("tttt");
-
-    if (image == null) {
-      setNoPicture(true);
-      return;
-    }
 
     let formData = new FormData();
     setImageLoading(true);
@@ -163,8 +161,10 @@ function CreateRestaurant() {
 
   return (
     <div className="main-place-holder-container1">
-      <div className="create-restaurant-background"></div>
-      <div className="create-main-box">
+      <div className="black-background">
+        <Header logo={"white-logo"} />
+      </div>
+      <div className="create-restaurant-background">
         <div className="create-main-box-left">
           <div className="left-title">Unlock a new revenue stream</div>
           {/* <p>
@@ -177,73 +177,71 @@ function CreateRestaurant() {
           onSubmit={handleSubmit}
           encType="multipart/form-data"
         >
-          <div>Get started</div>
+          <div className="start">Get started</div>
 
           {/* for upload image  */}
-          <div
-            id="leftContainer"
-            className={noPicture ? "no-picture cursor" : "cursor"}
-            onClick={() => uploadInput.current.click()}
-          >
-            <input
-              className="uploadButton"
-              id="image"
-              type="file"
-              // accept="image/*"
-              accept="image/png, image/jpeg, image/jpg, image/gif"
-              // onChange={(e) => setImage(e.target.files[0])}
-              onChange={handlePhoto}
-              ref={uploadInput}
-              style={{ display: "none" }}
-            />
-            {preview || (
-              <div
-                id="upload-sign-box-text"
-                className={noPicture ? "no-picture" : ""}
-              >
-                <i className="fa-solid fa-upload"></i>
-                <div>
-                  {!noPicture
-                    ? "Click to upload."
-                    : "An Image is required to create a restaurant."}
+          <div>
+            <div className="create-t">Store preview image</div>
+            <div
+              id="aws-img-container"
+              className={noPicture ? "no-picture" : ""}
+              onClick={() => uploadInput.current.click()}
+            >
+              <input
+                type="file"
+                // accept="image/*"
+                accept="image/png, image/jpeg, image/jpg, image/gif"
+                // onChange={(e) => setImage(e.target.files[0])}
+                onChange={handlePhoto}
+                ref={uploadInput}
+                style={{ display: "none" }}
+              />
+              {preview || (
+                <div
+                  id="upload-sign-box-text"
+                  className={noPicture ? "no-picture" : ""}
+                >
+                  <i className="fa-solid fa-upload"></i>
+                  <div>
+                    {!noPicture
+                      ? "Click to upload"
+                      : "An Image is required to create a restaurant."}
+                  </div>
                 </div>
-              </div>
-            )}
-            {imageLoading && <p>Loading...</p>}
-            {validationErrors.image && (
-              <div className="errors">{validationErrors.image}</div>
-            )}
+              )}
+              {validationErrors.image && (
+                <div className="errors">{validationErrors.image}</div>
+              )}
+              {imageLoading && <p>Loading...</p>}
+            </div>
           </div>
 
           {/* for restaurant address */}
           <div className="title-container">
-            <div className="city-state-input-container">
-              <input
-                placeholder="Address"
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-              />
-            </div>
+            <div className="create-t">Store address</div>
+            <input
+              className="create-input"
+              placeholder="Example: 123 Main street"
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
             {validationErrors.address && (
               <div className="errors">{validationErrors.address}</div>
             )}
-          </div>
-
-          {/* for restaurant city & state */}
-          <div className="title-container">
+            {/* for restaurant city & state */}
             <div className="city-state-input-container">
               <input
+                className="create-input"
                 placeholder="City"
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
               <select
-                // placeholder=""
+                className={state === "" ? "first-option" : ""}
                 value={state}
                 onChange={(e) => setState(e.target.value)}
-                className={state === "" ? "first-option" : ""}
               >
                 <option value="">-- Select State --</option>
                 {USSTATES.map((state) => (
@@ -263,9 +261,14 @@ function CreateRestaurant() {
 
           {/* for restaurant name */}
           <div className="title-container">
+            <div className="create-t">Store name</div>
+            <div className="create-p">
+              This is how your store will appear in the app.
+            </div>
             <div className="city-state-input-container">
               <input
-                placeholder="Name"
+                className="create-input"
+                placeholder="Example: Sam's Pizza"
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -278,16 +281,21 @@ function CreateRestaurant() {
 
           {/* for cusine_types */}
           <div className="title-container">
-            <div>
+            <div className="create-t">Cuisine types</div>
+            <div className="create-p">
+              We'll use this to help organize information and optimze search
+              results.
+            </div>
+            <div className="cuisine-type-container">
               {cuisine_types.map((ctype) => (
-                <label key={ctype}>
-                  {ctype}
+                <label key={ctype} className="checkbox-label">
                   <input
                     value={ctype}
                     type="checkbox"
                     checked={isCtypeSelected(ctype)}
                     onChange={(e) => toggleCtype(ctype)}
                   ></input>
+                  {ctype}
                 </label>
               ))}
             </div>
@@ -297,12 +305,12 @@ function CreateRestaurant() {
           </div>
 
           <div className="btns-container">
-            <button type="submit" className="yes-delete1 cursor">
+            <button type="submit" className="reorder-btn5">
               Submit
             </button>
             <button
               type="button"
-              className="yes-delete1 no-keep1 cursor"
+              className="reorder-btn4 cursor black1"
               onClick={handleResetClick}
             >
               Reset
