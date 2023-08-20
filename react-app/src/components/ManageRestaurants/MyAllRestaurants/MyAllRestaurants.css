@@ -46,8 +46,23 @@
   gap: 16px;
 }
 
+.lih {
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
 .lih:hover {
+  width: fit-content;
   font-weight: 500;
+  padding-bottom: 2px;
+  /* border-bottom: 2px solid #3e9920; */
+  color: #3e9920;
+}
+
+.lih2 {
+  color: #3e9920;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
 }
 
 /* <div
@@ -63,3 +78,107 @@
               filterType === "" ? "cuisine-focus" : ""
             }`}
           /> */
+
+.my-res-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 550px);
+  gap: 40px 40px;
+}
+
+.restaurant-card-container1 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 550px;
+  width: 550px;
+}
+
+.my-one-img {
+  position: relative;
+  width: 550px;
+  height: 128px;
+}
+
+.my-one-img:hover .restaurant-preview1 {
+  opacity: 0.5;
+}
+
+.my-one-img:hover .middle {
+  opacity: 1;
+  z-index: 1 !important;
+}
+
+.restaurant-preview1 {
+  width: 550px;
+  height: 128px;
+  border-radius: 12px;
+  object-fit: cover;
+
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text {
+  z-index: 100 !important;
+  /* background-color: #04aa6d !important; */
+  background-color: rgb(4, 136, 72);
+  color: white;
+  font-size: 16px;
+  padding: 16px 32px;
+  border-radius: 8px;
+}
+.text:hover {
+  background: rgb(3, 112, 60);
+}
+
+/*  */
+.res-list-title1 {
+  line-height: 40px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding-right: 16px;
+}
+
+.my-res-text-c {
+  min-width: 550px;
+  width: 550px;
+  display: flex;
+  padding: 2px 0px;
+  padding-right: 4px;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.restaurant-card-name1 {
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+
+.restaurant-card-stars1 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 500px;
+  background-color: #eeeeee;
+}

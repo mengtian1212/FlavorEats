@@ -72,7 +72,9 @@ export default PlaceOrderPage;
 const Step1 = () => {
   return (
     <div className="checkout-delivery-box3">
-      <div className="checkout-t">Placing order...</div>
+      <div className="checkout-ttt">
+        Placing order...<i className="fa-solid fa-circle-notch fa-spin"></i>
+      </div>
     </div>
   );
 };

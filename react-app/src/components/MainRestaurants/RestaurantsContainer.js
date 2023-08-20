@@ -38,7 +38,7 @@ function RestaurantsContainer({
   }
 
   return (
-    <div>
+    <div className="over-res">
       <div className="res-list-title">
         <span className="res-list-title">{type} </span>
         <span className="res-list-title">

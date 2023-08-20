@@ -16,7 +16,6 @@ function RestaurantCard({ restaurant }) {
   const createdDate = new Date(restaurant.created_at);
   oneHourAgo.setHours(currentDate.getHours() - 1);
   const isNewRestaurant = createdDate >= oneHourAgo;
-  console.log("oneHourAgo", oneHourAgo, restaurant.created_at);
   return (
     <div
       className="restaurant-card-container cursor"

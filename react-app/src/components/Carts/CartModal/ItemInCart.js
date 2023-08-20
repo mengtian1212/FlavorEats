@@ -19,7 +19,6 @@ function ItemInCart({ restaurantId, orderItemId }) {
   }
 
   const handleUpdateQuantity = (e) => {
-    console.log("e.target.value", e.target.value);
     if (e.target.value === orderItem.quantity) return;
     if (e.target.value === "0") {
       dispatch(
