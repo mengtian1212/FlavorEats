@@ -46,7 +46,8 @@
   height: calc(100vh - 96px);
   background-color: white;
   overflow-y: auto;
-  padding: 28px;
+  padding: 26px;
+  padding-bottom: 22px;
   padding-top: 40px;
 }
 
@@ -147,11 +148,26 @@
   line-height: 24px;
   font-weight: normal;
   background-color: #eeeeee;
-  outline: none;
-  border: none;
+  /* outline: none; */
+  border: 1px solid transparent;
   border-radius: 8px;
   width: 100%;
   cursor: pointer;
+}
+
+.create-input:active::after {
+  border-color: 1px solid #75bfff !important;
+  outline: none;
+}
+
+select {
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease-in-out;
+}
+
+select:active::before {
+  border-color: #75bfff !important;
+  outline: none;
 }
 
 .city-state-input-container {

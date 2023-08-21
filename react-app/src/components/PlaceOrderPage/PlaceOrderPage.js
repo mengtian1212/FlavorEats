@@ -1,11 +1,13 @@
 import "./PlaceOrderPage.css";
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchLastPastOrderThunk } from "../../store/pastOrders";
 import Header from "../Header";
 
 function PlaceOrderPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   let orderJustPlaced = useSelector((state) =>
     state.pastOrders?.last_past_order ? state.pastOrders?.last_past_order : {}
@@ -44,6 +46,17 @@ function PlaceOrderPage() {
       };
     }
   }, [currentStep, steps.length]);
+
+  if (!sessionUser) {
+    setTimeout(() => history.push("/restaurants"), 3000);
+    window.scroll(0, 0);
+    return (
+      <div className="need-log-in">
+        <div className="">Please log in to place orders</div>
+        <div>Redirect to Home page...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="main-place-holder-container">

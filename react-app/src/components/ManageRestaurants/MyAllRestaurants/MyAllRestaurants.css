@@ -133,14 +133,16 @@
 .text {
   z-index: 100 !important;
   /* background-color: #04aa6d !important; */
-  background-color: rgb(4, 136, 72);
+  /* background-color: rgb(4, 136, 72); */
+  background-color: #3e9920;
   color: white;
   font-size: 16px;
   padding: 16px 32px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 .text:hover {
-  background: rgb(3, 112, 60);
+  /* background: rgb(3, 112, 60); */
+  background-color: #328117;
 }
 
 /*  */

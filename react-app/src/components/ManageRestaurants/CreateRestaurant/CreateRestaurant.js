@@ -153,8 +153,8 @@ function CreateRestaurant() {
     window.scroll(0, 0);
     return (
       <div className="need-log-in">
-        <h2 className="">Please log in to create a restaurant</h2>
-        <h2>Redirect to Home page...</h2>
+        <div className="">Please log in to create a restaurant</div>
+        <div>Redirect to Home page...</div>
       </div>
     );
   }
@@ -212,7 +212,7 @@ function CreateRestaurant() {
               {validationErrors.image && (
                 <div className="errors">{validationErrors.image}</div>
               )}
-              {imageLoading && <p>Loading...</p>}
+              {/* {imageLoading && <p>Loading...</p>} */}
             </div>
           </div>
 
@@ -239,6 +239,7 @@ function CreateRestaurant() {
                 onChange={(e) => setCity(e.target.value)}
               />
               <select
+                id="state-select"
                 className={state === "" ? "first-option" : ""}
                 value={state}
                 onChange={(e) => setState(e.target.value)}

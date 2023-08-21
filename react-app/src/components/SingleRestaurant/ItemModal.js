@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./ItemModal.css";
 import { addCartItemThunk } from "../../store/orders";
@@ -9,6 +9,8 @@ import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
 function ItemModal({ item }) {
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
+  const [showLoginNotice, setShowLoginNotice] = useState(false);
 
   const { closeModal } = useModal();
 
@@ -54,24 +56,31 @@ function ItemModal({ item }) {
   // will only apply to new order
   const { setModalContent, setModalClass } = useModal();
   const handleAddItem = (e) => {
-    setIsAdded(true);
-    const newOrderItemData = {
-      item_id: item.id,
-      quantity: parseInt(quantity),
-      is_delivery: isDeliveryT,
-    };
-    dispatch(addCartItemThunk(newOrderItemData));
-    setTimeout(() => {
-      closeModal();
-      setModalContent(<CartModal restaurantId={item.restaurant_id} />);
-      setModalClass("cart-modal");
-    }, 300);
-    // in the thunk, need to check if there is
-    // already a shopping cart for this restaurant or not.
-    // 1. if yes, then check this item is already in the cart or not:
-    //            1.1 if not in the cart, just add orderItem.
-    //            1.2 if in the cart, update orderItem quantity in the orderItem table.
-    // 2. if no, create a new cart, then add orderItem.
+    if (sessionUser) {
+      setIsAdded(true);
+      const newOrderItemData = {
+        item_id: item.id,
+        quantity: parseInt(quantity),
+        is_delivery: isDeliveryT,
+      };
+      dispatch(addCartItemThunk(newOrderItemData));
+      setTimeout(() => {
+        closeModal();
+        setModalContent(<CartModal restaurantId={item.restaurant_id} />);
+        setModalClass("cart-modal");
+      }, 300);
+      // in the thunk, need to check if there is
+      // already a shopping cart for this restaurant or not.
+      // 1. if yes, then check this item is already in the cart or not:
+      //            1.1 if not in the cart, just add orderItem.
+      //            1.2 if in the cart, update orderItem quantity in the orderItem table.
+      // 2. if no, create a new cart, then add orderItem.
+    } else {
+      setShowLoginNotice(true);
+      setTimeout(() => {
+        setShowLoginNotice(false);
+      }, 1000);
+    }
   };
 
   return (
@@ -131,6 +140,9 @@ function ItemModal({ item }) {
           <button className={`reorder-btn5 ${isAdded ? "colorg" : ""}`}>
             Adding... • ${(item.price * parseInt(quantity)).toFixed(2)}
           </button>
+        )}
+        {showLoginNotice && (
+          <div className="error-message1">Please sign in to add food</div>
         )}
       </div>
     </div>

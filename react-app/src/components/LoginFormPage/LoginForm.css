@@ -1,0 +1,151 @@
+.login-background {
+  height: calc(100vh - 96px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  width: 370px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background-color: white;
+}
+
+.login-title0 {
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.login-title {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.login-form-c {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.login-input {
+  padding: 10px 0px 10px 12px;
+  background-color: #eee;
+  width: 100%;
+  height: 52px;
+  line-height: 24px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+}
+
+.login-input:focus {
+  border: 2px solid black;
+}
+
+/* login buttons  */
+.login-or-box {
+  padding: 4px 16px;
+  color: #afafaf;
+  display: flex;
+  -webkit-box-flex: 1;
+  align-items: center;
+  -webkit-box-align: center;
+}
+
+.login-or-box::before {
+  flex-grow: 1;
+  background: #afafaf;
+  content: "";
+  color: #afafaf;
+  height: 1px;
+}
+
+.login-or-box::after {
+  flex-grow: 1;
+  background: #afafaf;
+  color: #afafaf;
+  content: "";
+  height: 1px;
+}
+
+.login-or {
+  margin: 0 8px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #afafaf;
+}
+
+.reorder-btn8 {
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: center;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.reorder-btn8:hover {
+  opacity: 80%;
+}
+
+.enabledBtn {
+  background-color: black;
+}
+
+.enabledBtn:hover {
+  opacity: 80%;
+}
+
+.disabledBtn {
+  /* opacity: 20%; */
+  cursor: not-allowed;
+}
+
+.disabledBtn:hover {
+  /* cursor: not-allowed; */
+}
+
+/* error-message */
+.error-message {
+  padding: 4px 8px;
+  color: red;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.error-message1 {
+  padding: 8px 12px;
+  color: red;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.login-password {
+  position: relative;
+}
+
+.pwicon {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  font-weight: 500;
+  font-size: 16pt;
+  cursor: pointer;
+}

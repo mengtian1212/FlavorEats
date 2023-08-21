@@ -54,3 +54,15 @@ body {
 .black-background {
   background-color: #000000;
 }
+
+.need-log-in {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.need-log-in > * {
+  font-size: 20px;
+}

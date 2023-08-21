@@ -29,8 +29,10 @@ function UserButton({ user }) {
   const location = useLocation();
   const [logoColor, setLogoColor] = useState("");
   useEffect(() => {
-    if (location.pathname.startsWith("/business")) {
-      // if (location.pathname === "/business/restaurant-builder") {
+    if (
+      location.pathname.startsWith("/business") ||
+      location.pathname === "/login"
+    ) {
       setLogoColor("white-logo");
     } else {
       setLogoColor("");
@@ -42,7 +44,7 @@ function UserButton({ user }) {
       onClick={handleClickUserMenu}
       className={`bars-icon cursor` + ` ` + logoColor}
     >
-      <i className={`fa-solid fa-bars`}></i>
+      <i className={`fa-solid fa-bars` + ` ` + logoColor}></i>
     </button>
   );
 }
