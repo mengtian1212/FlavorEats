@@ -64,3 +64,47 @@ def new_restaurant():
         return new_restaurant.to_dict()
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
+@restaurant_routes.route('/<int:restaurantId>/edit', methods=["PUT"])
+@login_required
+def edit_restaurant(restaurantId):
+    form = NewRestaurantForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        targetRestaurant = Restaurant.query.get(restaurantId)
+        if not targetRestaurant:
+            return {"errors": "Restaurant not found,"}, 404
+
+        if not targetRestaurant.owner_id == current_user.id:
+            return {"errors": "Unauthorized"}, 401
+
+        print("update restaurant data pass validation in the backend!")
+        image_file = form.data["image"]
+        image_file.filename = get_unique_filename(image_file.filename)
+        upload = upload_file_to_s3(image_file)
+        if "url" not in upload:
+            return {"errors": upload}, 400
+
+        targetRestaurant.name = form.data['name']
+        targetRestaurant.image_url = upload["url"]
+        targetRestaurant.cusine_types = form.data['cusine_types']
+        targetRestaurant.address = form.data['address'] + \
+            ', ' + form.data['city'] + ', ' + form.data['state']
+        targetRestaurant.city = form.data['city']
+        targetRestaurant.state = form.data['state']
+
+        db.session.commit()
+        return targetRestaurant.to_dict()
+
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
+@restaurant_routes.route('/<int:restaurantId>/delete', methods=["DELETE"])
+@login_required
+def delete_restaurant(restaurantId):
+    targetRestaurant = Restaurant.query.get(restaurantId)
+    db.session.delete(targetRestaurant)
+    db.session.commit()
+    return {"id": targetRestaurant.id}

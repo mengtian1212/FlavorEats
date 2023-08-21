@@ -97,7 +97,23 @@ function LoginFormPage() {
     const password = "password";
 
     setErrors({});
-    await dispatch(login(email, password));
+    const data = await dispatch(login(email, password));
+    if (!landingAddressData) {
+      history.push("/restaurants");
+      return;
+    }
+
+    const addressFormatedList = formatAddress(landingAddressData, "list");
+    console.log("addressFormatedList", addressFormatedList);
+    const formData = {
+      address: landingAddressData,
+      city: addressFormatedList[2],
+      state: addressFormatedList[3],
+      zip: addressFormatedList[4],
+    };
+    console.log(formData);
+    await dispatch(editUserAddressThunk(formData, data.id));
+    history.push("/restaurants");
   };
 
   const submitBtnClassName = submitBtn ? "enabledBtn" : `disabledBtn`;
@@ -181,7 +197,7 @@ function LoginFormPage() {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              history.push("/signup");
+              history.push("/signup", { landingAddress: landingAddressProp });
             }}
             className={`reorder-btn8`}
           >

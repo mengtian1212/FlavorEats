@@ -92,13 +92,14 @@ function LandingPage() {
       history.push("/login", { landingAddress: landingAddress });
     }
   };
+  // need to add a logic for if session user exist, then only edit address.
 
   return (
     <div className="main-place-holder-container2">
       <div className="create-restaurant-background2">
         <div className="w2">
-          {/* <Navigation /> */}
-          <Header />
+          <Navigation />
+          {/* <Header /> */}
           <div className="landing-box">
             <div className="left-title1">Order food to your door</div>
             <div className="landing-btns">

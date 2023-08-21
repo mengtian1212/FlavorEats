@@ -75,7 +75,7 @@
 }
 
 #aws-img-container.no-picture {
-  border: 1px solid #cc0000 !important;
+  border: 2px solid #cc0000 !important;
   background-color: #ffe8e7 !important;
 }
 
@@ -158,6 +158,11 @@
 .create-input:active::after {
   border-color: 1px solid #75bfff !important;
   outline: none;
+}
+
+.error-bg {
+  border: 2px solid #cc0000 !important;
+  background-color: #ffe8e7 !important;
 }
 
 select {

@@ -35,7 +35,6 @@ function App() {
             <LoginFormPage />
           </Route>
           <Route path="/signup">
-            <Navigation isLoaded={isLoaded} />
             <SignupFormPage />
           </Route>
           <Route exact path="/restaurants/:restaurantId">
