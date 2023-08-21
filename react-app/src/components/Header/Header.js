@@ -15,7 +15,8 @@ function Header({ isLoaded, logo }) {
       history.push("/restaurants");
       window.scroll(0, 0);
     } else {
-      history.push("/");
+      // history.push("/");
+      history.push("/restaurants");
       window.scroll(0, 0);
     }
   };
