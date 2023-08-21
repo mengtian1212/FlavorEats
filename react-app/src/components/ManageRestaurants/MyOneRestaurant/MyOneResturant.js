@@ -8,6 +8,7 @@ import MyOneResSideBar from "./MyOneResSideBar";
 import SingleRestaurant from "../../SingleRestaurant";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteResModal from "../DeleteResModal/DeleteResModal";
+import EditResModal from "../EditResModal/EditResModal";
 
 function MyOneRestaurant() {
   const { restaurantId } = useParams();
@@ -90,7 +91,11 @@ function MyOneRestaurant() {
             </div>
           </div>
           <div className="my-one-edit-btns">
-            <button className="reorder-btn6">Edit restaurant profile</button>
+            <OpenModalButton
+              buttonText="Edit restaurant profile"
+              modalComponent={<EditResModal restaurant={myRestaurant} />}
+              myClass="reorder-btn6"
+            />
             <OpenModalButton
               buttonText="Delete restaurant"
               modalComponent={<DeleteResModal restaurant={myRestaurant} />}
