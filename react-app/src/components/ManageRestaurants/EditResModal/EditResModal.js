@@ -24,7 +24,9 @@ function EditResModal({ restaurant }) {
   const [photoUrl, setPhotoUrl] = useState(restaurant?.image_url || null);
   const [noPicture, setNoPicture] = useState(false);
 
-  const [address, setAddress] = useState(restaurant?.address || "");
+  const [address, setAddress] = useState(
+    restaurant?.address.split(",")[0] || ""
+  );
   const [city, setCity] = useState(restaurant?.city || "");
   const [state, setState] = useState(restaurant?.state || "");
 
@@ -99,7 +101,9 @@ function EditResModal({ restaurant }) {
     if (address.trim().length === 0) err.address = "Store address is required";
     if (address.trim().length > 255)
       err.address = "Store address should not exceed 255 characters";
-
+    if (address.includes(",")) {
+      err.address = "Please enter an address without special characters";
+    }
     if (city.trim().length === 0) err.city = "City is required";
     if (!state) err.state = "State is required";
     if (name.trim().length === 0) err.name = "Name is required";
