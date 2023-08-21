@@ -9,6 +9,7 @@ import {
   cuisine_types,
 } from "../../../utils/helper-functions";
 import { editRestaurantThunk } from "../../../store/restaurants";
+import { useModal } from "../../../context/Modal";
 function EditResModal({ restaurant }) {
   const location = useLocation();
   const history = useHistory();
@@ -80,7 +81,7 @@ function EditResModal({ restaurant }) {
     setSelectedTypes("");
     return;
   };
-
+  const { closeModal } = useModal();
   const handleResetClick = (e) => {
     e.preventDefault();
     resetForm();
@@ -125,8 +126,8 @@ function EditResModal({ restaurant }) {
     const nameData = capitalizeFirstChar(name);
     const addressData = capitalizeFirstChar(address);
     const cityData = capitalizeFirstChar(city);
-
-    formData.append("id", restaurant.id);
+    console.log("nameData", nameData, nameData);
+    formData.append("id", restaurant["id"]);
     formData.append("image", image);
     formData.append("address", addressData);
     formData.append("city", cityData);
@@ -140,6 +141,7 @@ function EditResModal({ restaurant }) {
       setValidationErrors(data.errors);
     } else {
       resetForm();
+      closeModal();
       history.push(`/business/${data.id}`);
       window.scroll(0, 0);
     }
