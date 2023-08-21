@@ -220,7 +220,9 @@ function CreateRestaurant() {
           <div className="title-container">
             <div className="create-t">Store address</div>
             <input
-              className="create-input"
+              className={`create-input ${
+                validationErrors.address ? "error-bg" : ""
+              }`}
               placeholder="Example: 123 Main street"
               type="text"
               value={address}
@@ -232,7 +234,9 @@ function CreateRestaurant() {
             {/* for restaurant city & state */}
             <div className="city-state-input-container">
               <input
-                className="create-input"
+                className={`create-input ${
+                  validationErrors.city ? "error-bg" : ""
+                }`}
                 placeholder="City"
                 type="text"
                 value={city}
@@ -240,7 +244,9 @@ function CreateRestaurant() {
               />
               <select
                 id="state-select"
-                className={state === "" ? "first-option" : ""}
+                className={`${state === "" ? "first-option" : ""} ${
+                  validationErrors.state ? "error-bg" : ""
+                }`}
                 value={state}
                 onChange={(e) => setState(e.target.value)}
               >
@@ -268,7 +274,9 @@ function CreateRestaurant() {
             </div>
             <div className="city-state-input-container">
               <input
-                className="create-input"
+                className={`create-input ${
+                  validationErrors.name ? "error-bg" : ""
+                }`}
                 placeholder="Example: Sam's Pizza"
                 type="text"
                 value={name}

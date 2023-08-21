@@ -24,6 +24,7 @@ const UserMenuLogout = ({ closeMenu }) => {
     const password = "password";
     closeMenu();
     await dispatch(login(email, password));
+    history.push("/restaurants");
   };
 
   return (

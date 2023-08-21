@@ -31,7 +31,8 @@ function UserButton({ user }) {
   useEffect(() => {
     if (
       location.pathname.startsWith("/business") ||
-      location.pathname === "/login"
+      location.pathname === "/login" ||
+      location.pathname === "/signup"
     ) {
       setLogoColor("white-logo");
     } else {
