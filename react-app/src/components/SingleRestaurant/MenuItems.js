@@ -1,9 +1,11 @@
 import { useRef, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import OpenModalButton from "../OpenModalButton";
 import ItemModal from "./ItemModal";
 import AddToCartBtn from "./AddToCartBtn";
 
 function MenuItems({ type, items }) {
+  const sessionUser = useSelector((state) => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
@@ -41,7 +43,7 @@ function MenuItems({ type, items }) {
                 <div className="item-img-container">
                   <img src={item.image_url} alt="" className="item-img" />
                   <div className="item-background"></div>
-                  <AddToCartBtn item={item} />
+                  {sessionUser && <AddToCartBtn item={item} />}
                   <OpenModalButton
                     buttonText="Quick view"
                     onItemClick={closeMenu}

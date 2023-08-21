@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
 import { fetchCartsThunk } from "../../store/orders";
 import OneCartBtn from "../Carts/OneCartBtn/OneCartBtn";
 import MultipleCartsBtn from "../Carts/MultipleCartsBtn/MultipleCartsBtn";
@@ -24,11 +20,6 @@ function CartButton({ user }) {
     if (sessionUser) dispatch(fetchCartsThunk());
     window.scroll(0, 0);
   }, [dispatch, sessionUser]);
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-    dispatch(logout());
-  };
 
   return (
     <>

@@ -90,7 +90,7 @@ function MainRestaurants() {
         filterType={filterType}
         setFilterType={setFilterType}
       />
-      <SideShow />
+      {/* <SideShow /> */}
       <section className="sec3">
         <div>
           <SortContainer

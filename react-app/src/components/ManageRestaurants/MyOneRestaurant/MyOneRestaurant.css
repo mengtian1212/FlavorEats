@@ -34,3 +34,31 @@
   /* padding-bottom: 2px; */
   color: #3e9920;
 }
+
+.my-one-edit-btns {
+  padding-top: 60px;
+  display: flex;
+  gap: 36px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.reorder-btn6 {
+  width: 302px;
+  padding: 20px;
+  border: none;
+  outline: none;
+  /* border-radius: 8px; */
+  background-color: #e5e5e5;
+  color: black;
+  cursor: pointer;
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+
+.reorder-btn6:hover {
+  background-color: #d2d2d2;
+}

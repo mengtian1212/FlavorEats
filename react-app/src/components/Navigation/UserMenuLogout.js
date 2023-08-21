@@ -1,6 +1,9 @@
 import { useHistory } from "react-router-dom";
+import { login } from "../../store/session";
+import { useDispatch } from "react-redux";
 
 const UserMenuLogout = ({ closeMenu }) => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const handleClickLogin = (e) => {
     e.preventDefault();
@@ -12,6 +15,15 @@ const UserMenuLogout = ({ closeMenu }) => {
     e.preventDefault();
     closeMenu();
     history.push("/signup");
+  };
+
+  const demoUser = async (e) => {
+    e.preventDefault();
+
+    const email = "demo@aa.io";
+    const password = "password";
+    closeMenu();
+    await dispatch(login(email, password));
   };
 
   return (
@@ -27,7 +39,7 @@ const UserMenuLogout = ({ closeMenu }) => {
         Log in
       </button>
       <div className="_16"></div>
-      <button className="user-signup cursor btn-grey">
+      <button className="user-signup cursor btn-grey" onClick={demoUser}>
         Log in as Demo User
       </button>
     </div>
