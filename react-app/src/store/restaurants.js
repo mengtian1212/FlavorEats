@@ -2,6 +2,7 @@
 export const LOAD_ALL_RESTAURANTS = "restaurants/LOAD_ALL_RESTAURANTS";
 export const LOAD_ONE_RESTAURANT = "restaurants/LOAD_ONE_RESTAURANT";
 export const CREATE_RESTAURANT = "restaurants/CREATE_RESTAURANT";
+export const DELETE_RESTAURANT = "restaurants/DELETE_RESTAURANT";
 
 /**  Action Creators: */
 export const loadAllRestaurantsAction = (restaurants) => ({
@@ -17,6 +18,11 @@ export const loadOneRestaurantAction = (restaurant) => ({
 export const receiveRestaurantAction = (newRestaurant) => ({
   type: CREATE_RESTAURANT,
   newRestaurant,
+});
+
+export const deleteRestaurantAction = (restaurantId) => ({
+  type: DELETE_RESTAURANT,
+  restaurantId,
 });
 
 /** Thunk Action Creators: */
@@ -53,6 +59,17 @@ export const createNewRestaurantThunk = (restaurant) => async (dispatch) => {
   return data;
 };
 
+export const deleteRestaurantThunk = (restaurantId) => async (dispatch) => {
+  const response = await fetch(`/api/restaurants/${restaurantId}/delete`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const { id: deletedRestaurantId } = await response.json();
+    dispatch(deleteRestaurantAction(deletedRestaurantId));
+    return deletedRestaurantId;
+  }
+};
+
 /** Restaurants Reducer: */
 const initialState = { allRestaurants: {}, singleRestaurant: {} };
 const restaurantsReducer = (state = initialState, action) => {
@@ -75,6 +92,18 @@ const restaurantsReducer = (state = initialState, action) => {
         singleRestaurant: singleRestaurant,
       };
       return newState;
+    case DELETE_RESTAURANT:
+      const allResState = { ...state.allRestaurants };
+      delete allResState[action.restaurantId];
+      let singleRestaurantState = { ...state.singleRestaurant };
+      if (state.singleRestaurant.id === action.restaurantId) {
+        singleRestaurantState = {};
+      }
+      return {
+        ...state,
+        allRestaurants: allResState,
+        singleRestaurant: singleRestaurantState,
+      };
     default:
       return state;
   }

@@ -64,3 +64,12 @@ def new_restaurant():
         return new_restaurant.to_dict()
 
     return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
+
+@restaurant_routes.route('/<int:restaurantId>/delete', methods=["DELETE"])
+@login_required
+def delete_restaurant(restaurantId):
+    targetRestaurant = Restaurant.query.get(restaurantId)
+    db.session.delete(targetRestaurant)
+    db.session.commit()
+    return {"id": targetRestaurant.id}
