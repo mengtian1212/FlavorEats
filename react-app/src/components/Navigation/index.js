@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { USSTATES, formatAddress } from "../../utils/helper-functions";
 import UserButton from "./UserButton";
 import CartButton from "./CartButton";
-import { editUserAddressThunk } from "../../store/session";
+import { authenticate, editUserAddressThunk } from "../../store/session";
 import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
 
 function Navigation({ isLoaded }) {
@@ -17,6 +17,18 @@ function Navigation({ isLoaded }) {
   const [myAddress, setMyAddress] = useState(sessionUser?.address);
   const userAddress =
     sessionUser?.address && sessionUser?.address?.split(",")[0];
+
+  useEffect(() => {
+    setMyAddress(sessionUser?.address);
+  }, [sessionUser]);
+
+  console.log(
+    "myAddress -------------------------------------",
+    myAddress,
+    "userAddress",
+    userAddress
+  );
+
   const [showEditAddress, setShowEditAddress] = useState(false);
   const [editAddressError, setEditAddressError] = useState({});
 
@@ -25,6 +37,7 @@ function Navigation({ isLoaded }) {
   const [showItem, setShowItem] = useState(true);
   const [logoColor, setLogoColor] = useState("");
   const [navClass, setNavClass] = useState("");
+
   useEffect(() => {
     if (location.pathname === "/checkout") {
       // hide everything except logo on the nav bar when route changes to "/checkout"
@@ -43,7 +56,6 @@ function Navigation({ isLoaded }) {
     }
 
     if (location.pathname.startsWith("/business")) {
-      // if (location.pathname === "/business/restaurant-builder") {
       // hide everything except logo on the nav bar when route changes to "/checkout"
       setShowItem(false);
       setLogoColor("white-logo");
@@ -56,6 +68,7 @@ function Navigation({ isLoaded }) {
   }, [location]);
 
   useEffect(() => {
+    // dispatch(authenticate());
     setMyAddress(sessionUser?.address);
     setShowEditAddress(false);
   }, [location]);
@@ -65,7 +78,8 @@ function Navigation({ isLoaded }) {
       history.push("/restaurants");
       window.scroll(0, 0);
     } else {
-      history.push("/");
+      // history.push("/");
+      history.push("/restaurants");
       window.scroll(0, 0);
     }
   };

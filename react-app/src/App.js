@@ -16,6 +16,9 @@ import CreateRestaurant from "./components/ManageRestaurants/CreateRestaurant";
 import MyOneRestaurant from "./components/ManageRestaurants/MyOneRestaurant/MyOneResturant";
 import MyResAllMenuitems from "./components/ManageRestaurants/MyResAllMenuitems/MyResAllMenuitems";
 
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import NotFound from "./components/NotFound/NotFound";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -29,7 +32,6 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route path="/login">
-            <Navigation isLoaded={isLoaded} />
             <LoginFormPage />
           </Route>
           <Route path="/signup">
@@ -45,9 +47,11 @@ function App() {
           <Route exact path="/orders">
             <PastOrders />
           </Route>
-          <Route exact path="/checkout">
+          <ProtectedRoute exact path="/checkout">
+            {/* <Route exact path="/checkout"> */}
             <CheckoutPage />
-          </Route>
+            {/* </Route> */}
+          </ProtectedRoute>
           <Route exact path="/place-order">
             <PlaceOrderPage />
           </Route>
@@ -80,8 +84,10 @@ function App() {
             {/* <EditMyResOneMenuItem /> */}
           </Route>
           <Route exact path="/">
-            <Navigation isLoaded={isLoaded} />
             <LandingPage />
+          </Route>
+          <Route>
+            <NotFound />
           </Route>
         </Switch>
       )}

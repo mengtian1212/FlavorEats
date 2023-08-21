@@ -4,8 +4,7 @@ import CartModal from "../CartModal";
 
 function CartInDropdown({ restaurantId, setShowMenu }) {
   const sessionUser = useSelector((state) => state.session.user);
-  const userAddress =
-    sessionUser.address.split(",")[0] + "," + sessionUser.address.split(",")[1];
+  const userAddress = sessionUser.address.split(",")[0];
   const targetCart = useSelector((state) =>
     state.orders ? state.orders[restaurantId] : {}
   );

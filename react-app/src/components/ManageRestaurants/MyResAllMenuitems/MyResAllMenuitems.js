@@ -26,6 +26,17 @@ function MyResAllMenuitems() {
     window.scroll(0, 0);
   }, [restaurantId]);
 
+  if (!sessionUser) {
+    setTimeout(() => history.push("/restaurants"), 3000);
+    window.scroll(0, 0);
+    return (
+      <div className="need-log-in">
+        <div className="">Please log in to manage restaurants</div>
+        <div>Redirect to Home page...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="main-place-holder-container1">
       <div className="black-background">

@@ -8,8 +8,7 @@ import ItemInCart from "./ItemInCart";
 
 function CartModal({ restaurantId }) {
   const sessionUser = useSelector((state) => state.session.user);
-  const userAddress =
-    sessionUser.address.split(",")[0] + "," + sessionUser.address.split(",")[1];
+  const userAddress = sessionUser.address.split(",")[0];
   const history = useHistory();
   const dispatch = useDispatch();
   const currentCart = useSelector((state) =>

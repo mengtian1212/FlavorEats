@@ -240,6 +240,18 @@ function CheckoutPage() {
     }, 900);
   };
 
+  // problem here!
+  if (!sessionUser || !currentCart) {
+    setTimeout(() => history.push("/restaurants"), 3000);
+    window.scroll(0, 0);
+    return (
+      <div className="need-log-in">
+        <div className="">Please log in to checkout your cart</div>
+        <div>Redirect to Home page...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="mw">
       <Navigation />
