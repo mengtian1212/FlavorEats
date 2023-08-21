@@ -98,6 +98,7 @@ function LoginFormPage() {
 
     setErrors({});
     await dispatch(login(email, password));
+    history.push("/restaurants");
   };
 
   const submitBtnClassName = submitBtn ? "enabledBtn" : `disabledBtn`;
