@@ -20,7 +20,7 @@ function MyOneResCard({ restaurant, handleClickOne }) {
           className="restaurant-preview1"
         />
         <div className="middle">
-          <div class="text">Manage</div>
+          <div className="text">Manage</div>
         </div>
       </div>
       {isNewRestaurant && <div className="item-plus4">New</div>}

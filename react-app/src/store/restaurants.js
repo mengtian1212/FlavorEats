@@ -2,6 +2,8 @@
 export const LOAD_ALL_RESTAURANTS = "restaurants/LOAD_ALL_RESTAURANTS";
 export const LOAD_ONE_RESTAURANT = "restaurants/LOAD_ONE_RESTAURANT";
 export const CREATE_RESTAURANT = "restaurants/CREATE_RESTAURANT";
+export const EDIT_RESTAURANT = "restaurants/EDIT_RESTAURANT";
+export const DELETE_RESTAURANT = "restaurants/DELETE_RESTAURANT";
 
 /**  Action Creators: */
 export const loadAllRestaurantsAction = (restaurants) => ({
@@ -17,6 +19,16 @@ export const loadOneRestaurantAction = (restaurant) => ({
 export const receiveRestaurantAction = (newRestaurant) => ({
   type: CREATE_RESTAURANT,
   newRestaurant,
+});
+
+export const editRestaurantAction = (updatedRestaurant) => ({
+  type: EDIT_RESTAURANT,
+  updatedRestaurant,
+});
+
+export const deleteRestaurantAction = (restaurantId) => ({
+  type: DELETE_RESTAURANT,
+  restaurantId,
 });
 
 /** Thunk Action Creators: */
@@ -53,6 +65,32 @@ export const createNewRestaurantThunk = (restaurant) => async (dispatch) => {
   return data;
 };
 
+export const editRestaurantThunk = (restaurant) => async (dispatch) => {
+  console.log(restaurant);
+  const response = await fetch(`/api/restaurants/${restaurant.id}/edit`, {
+    method: "PUT",
+    body: restaurant,
+  });
+  console.log("RESPONSE FROM SERVER", response);
+
+  const data = await response.json();
+  if (response.ok) {
+    dispatch(editRestaurantAction(data));
+  }
+  return data;
+};
+
+export const deleteRestaurantThunk = (restaurantId) => async (dispatch) => {
+  const response = await fetch(`/api/restaurants/${restaurantId}/delete`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    const { id: deletedRestaurantId } = await response.json();
+    dispatch(deleteRestaurantAction(deletedRestaurantId));
+    return deletedRestaurantId;
+  }
+};
+
 /** Restaurants Reducer: */
 const initialState = { allRestaurants: {}, singleRestaurant: {} };
 const restaurantsReducer = (state = initialState, action) => {
@@ -75,6 +113,32 @@ const restaurantsReducer = (state = initialState, action) => {
         singleRestaurant: singleRestaurant,
       };
       return newState;
+    case EDIT_RESTAURANT:
+      const updatedAllRestaurants = {
+        ...state.allRestaurants,
+        [action.updatedRestaurant.id]: { ...action.updatedRestaurant },
+      };
+      const updatedSingleRestaurant = {
+        ...action.updatedRestaurant,
+        menuitems: state.singleRestaurant.menuitems,
+      };
+      return {
+        allRestaurants: updatedAllRestaurants,
+        singleRestaurant: updatedSingleRestaurant,
+      };
+
+    case DELETE_RESTAURANT:
+      const allResState = { ...state.allRestaurants };
+      delete allResState[action.restaurantId];
+      let singleRestaurantState = { ...state.singleRestaurant };
+      if (state.singleRestaurant.id === action.restaurantId) {
+        singleRestaurantState = {};
+      }
+      return {
+        ...state,
+        allRestaurants: allResState,
+        singleRestaurant: singleRestaurantState,
+      };
     default:
       return state;
   }

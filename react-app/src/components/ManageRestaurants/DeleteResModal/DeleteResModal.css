@@ -1,0 +1,49 @@
+.delete-pin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  width: 35rem;
+  background-color: white;
+}
+
+.del-title {
+  font-size: 23px;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.delete-content {
+  font-weight: 500;
+}
+
+.del-p-btn {
+  display: flex;
+}
+
+.cancel-btn {
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  width: 5rem;
+  margin-top: 1rem;
+}
+
+.del-btn {
+  padding: 5px;
+  border-radius: 20px;
+  color: white;
+  background-color: red;
+  border: none;
+  margin-left: 1rem;
+  width: 5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.del-btn:hover,
+.cancel-btn:hover {
+  filter: brightness(90%);
+}
