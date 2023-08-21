@@ -5,6 +5,7 @@ from .AWS_helpers import upload_file_to_s3, get_unique_filename
 from .auth_routes import validation_errors_to_error_messages
 
 from app.forms.create_restaurant_form import NewRestaurantForm
+from app.forms.edit_restaurant_form import EditRestaurantForm
 from app.models import Restaurant
 from sqlalchemy import and_, case
 from sqlalchemy.sql import func
@@ -69,7 +70,7 @@ def new_restaurant():
 @restaurant_routes.route('/<int:restaurantId>/edit', methods=["PUT"])
 @login_required
 def edit_restaurant(restaurantId):
-    form = NewRestaurantForm()
+    form = EditRestaurantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
@@ -82,13 +83,15 @@ def edit_restaurant(restaurantId):
 
         print("update restaurant data pass validation in the backend!")
         image_file = form.data["image"]
-        image_file.filename = get_unique_filename(image_file.filename)
-        upload = upload_file_to_s3(image_file)
-        if "url" not in upload:
-            return {"errors": upload}, 400
+        if image_file:
+            image_file.filename = get_unique_filename(image_file.filename)
+            upload = upload_file_to_s3(image_file)
+            if "url" not in upload:
+                return {"errors": upload}, 400
+            targetRestaurant.image_url = upload["url"]
 
         targetRestaurant.name = form.data['name']
-        targetRestaurant.image_url = upload["url"]
+        # targetRestaurant.image_url = upload["url"]
         targetRestaurant.cusine_types = form.data['cusine_types']
         targetRestaurant.address = form.data['address'] + \
             ', ' + form.data['city'] + ', ' + form.data['state']
