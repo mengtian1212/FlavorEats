@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchOneRestaurantThunk } from "../../store/restaurants";
 import { useLayoutEffect } from "react";
 import { getMenuItemsByType } from "../../utils/helper-functions";
-import MenuItems from "./MenuItems";
 import Navigation from "../Navigation";
+import MenuItems from "./MenuItems";
+import ReviewSection from "../Reviews/ReviewSection";
+import { fetchAllReviewsThunk } from "../../store/reviews";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
@@ -136,6 +138,8 @@ function SingleRestaurant() {
           ))}
         </main>
       </div>
+
+      {targetRestaurant && <ReviewSection restaurantId={targetRestaurant.id} />}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-from app.models import db, Restaurant
+from app.models import db, Restaurant, Review
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .AWS_helpers import upload_file_to_s3, get_unique_filename
@@ -6,7 +6,6 @@ from .auth_routes import validation_errors_to_error_messages
 
 from app.forms.create_restaurant_form import NewRestaurantForm
 from app.forms.edit_restaurant_form import EditRestaurantForm
-from app.models import Restaurant
 from sqlalchemy import and_, case
 from sqlalchemy.sql import func
 
@@ -111,3 +110,20 @@ def delete_restaurant(restaurantId):
     db.session.delete(targetRestaurant)
     db.session.commit()
     return {"id": targetRestaurant.id}
+
+
+@restaurant_routes.route('/<int:restaurantId>/reviews')
+def get_restaurant_reviews_by_restaurantId(restaurantId):
+    targetRestaurant = Restaurant.query.get(restaurantId)
+    if not targetRestaurant:
+        return jsonify({"errors": "Restaurant not found"}), 404
+    reviews = Review.query.join(Restaurant).filter(
+        Restaurant.id == restaurantId)
+    reviews_list = []
+    print(targetRestaurant)
+    for review in reviews:
+        review_dict = review.to_dict()
+        review_dict["reviewer"] = {
+            "image_url": review.user.image_url, "first_name": review.user.first_name, "last_name": review.user.last_name}
+        reviews_list.append(review_dict)
+    return reviews_list

@@ -337,3 +337,9 @@
   background-color: #262626;
   opacity: 90%;
 }
+
+/* reviews  */
+#reviews-section {
+  display: flex;
+  /* flex-direction: column; */
+}

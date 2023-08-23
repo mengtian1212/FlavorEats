@@ -91,6 +91,37 @@ export const formatAddress = (address, formatting = "list") => {
   }
 };
 
+export const calculateRatingDistribution = (reviews) => {
+  if (!reviews || reviews.length === 0) return {};
+
+  const ratings = reviews.map((review) => review.rating);
+
+  // frequency of different ratings
+  const ratingCount = {};
+  ratings.forEach((rating) => {
+    if (rating in ratingCount) {
+      ratingCount[rating]++;
+    } else {
+      ratingCount[rating] = 1;
+    }
+  });
+  // rating with most occurrences
+  const mostCommonRating = Object.keys(ratingCount).reduce(
+    (a, b) => (ratingCount[a] > ratingCount[b] ? a : b),
+    0
+  );
+
+  // relative percentage of other ratings relative to the rating with most reviews
+  const ratingPercents = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+  for (const key in ratingCount) {
+    ratingPercents[key] = (
+      ratingCount[key] / ratingCount[mostCommonRating]
+    ).toFixed(2);
+  }
+  console.log(ratingPercents);
+  return ratingPercents;
+};
+
 export const USSTATES = [
   "AL",
   "AK",
