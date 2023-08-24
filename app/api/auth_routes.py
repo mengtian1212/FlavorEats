@@ -7,6 +7,16 @@ from flask_login import current_user, login_user, logout_user, login_required
 auth_routes = Blueprint('auth', __name__)
 
 
+def capitalize_first_char(words):
+    processed_word = " ".join(words.strip().split())
+    word_arr = processed_word.split(" ")
+    res_arr = []
+    for word in word_arr:
+        new_word = word[0].upper() + word[1:].lower()
+        res_arr.append(new_word)
+    return " ".join(res_arr)
+
+
 def validation_errors_to_error_messages(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
@@ -77,9 +87,9 @@ def sign_up():
         user = User(
             email=form.data['email'],
             password=form.data['password'],
-            first_name=form.data['first_name'],
-            username=form.data['first_name'],
-            last_name=form.data['last_name'],
+            first_name=capitalize_first_char(form.data['first_name']),
+            username=capitalize_first_char(form.data['first_name']),
+            last_name=capitalize_first_char(form.data['last_name']),
             address=form.data['address'],
             city=form.data['city'],
             state=form.data['state'],

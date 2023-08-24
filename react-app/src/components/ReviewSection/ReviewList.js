@@ -1,10 +1,10 @@
-import "./Reviews.css";
+import "./ReviewSection.css";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAllReviewsThunk } from "../../store/reviews";
 import ReviewCard from "./ReviewCard";
 
-function ReviewsList({ restaurantId }) {
+function ReviewList({ restaurantId }) {
   const dispatch = useDispatch();
   const reviews = useSelector((state) => Object.values(state.reviews));
   reviews?.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
@@ -24,8 +24,9 @@ function ReviewsList({ restaurantId }) {
       </div>
     );
   } else {
+    reviews.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
     return (
-      <div>
+      <div className="relist-container">
         {reviews.map((review) => (
           <ReviewCard key={review.id} review={review} />
         ))}
@@ -34,4 +35,4 @@ function ReviewsList({ restaurantId }) {
   }
 }
 
-export default ReviewsList;
+export default ReviewList;

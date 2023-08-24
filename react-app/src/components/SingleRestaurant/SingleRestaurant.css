@@ -5,7 +5,7 @@
 }
 
 .res-title-container {
-  padding: 24px 48px 0px 48px;
+  padding: 24px 40px 0px 40px;
   line-height: 16px;
   font-weight: 500;
   font-size: 14px;
@@ -43,7 +43,8 @@
 .res-bottom-container {
   display: flex;
   align-items: flex-start;
-  padding: 24px 48px;
+  padding: 24px 40px;
+  padding-right: 0px;
 }
 
 /*  */
@@ -302,7 +303,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 40px 24px;
-  padding: 16px;
+  padding: 16px 12px;
   margin-bottom: 16px;
 }
 
@@ -336,10 +337,4 @@
 .item-plus:hover {
   background-color: #262626;
   opacity: 90%;
-}
-
-/* reviews  */
-#reviews-section {
-  display: flex;
-  /* flex-direction: column; */
 }

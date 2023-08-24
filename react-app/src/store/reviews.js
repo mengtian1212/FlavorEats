@@ -11,18 +11,42 @@ const loadAllReviewsAction = (reviews, restaurantId) => ({
   restaurantId,
 });
 
+const createReviewAction = (review) => ({
+  type: CREATE_REVIEW,
+  review,
+});
+
 /** Thunk Action Creators: */
 export const fetchAllReviewsThunk = (restaurantId) => async (dispatch) => {
   const response = await fetch(`/api/restaurants/${restaurantId}/reviews`);
   if (response.ok) {
     const reviews = await response.json();
-    dispatch(loadAllReviewsAction(reviews, restaurantId));
+    return dispatch(loadAllReviewsAction(reviews, restaurantId));
   } else {
     const errors = await response.json();
     console.log(errors);
     return errors;
   }
 };
+
+export const createReviewThunk =
+  (reviewData, restaurantId) => async (dispatch) => {
+    const response = await fetch(`/api/restaurants/${restaurantId}/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewData),
+    });
+    if (response.ok) {
+      const review = await response.json();
+      dispatch(createReviewAction(review));
+      return review;
+    } else {
+      const errors = await response.json();
+      return errors;
+    }
+  };
 
 /** Reviews Reducer: */
 const initialState = {};
@@ -35,6 +59,8 @@ const reviewsReducer = (state = initialState, action) => {
         newReviews[review.id] = review;
       });
       return { ...newReviews };
+    case CREATE_REVIEW:
+      return { ...state, [action.review.id]: action.review };
     default:
       return state;
   }

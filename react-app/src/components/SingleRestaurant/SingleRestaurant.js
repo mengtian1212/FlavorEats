@@ -7,8 +7,7 @@ import { useLayoutEffect } from "react";
 import { getMenuItemsByType } from "../../utils/helper-functions";
 import Navigation from "../Navigation";
 import MenuItems from "./MenuItems";
-import ReviewSection from "../Reviews/ReviewSection";
-import { fetchAllReviewsThunk } from "../../store/reviews";
+import ReviewSection from "../ReviewSection";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
@@ -139,7 +138,7 @@ function SingleRestaurant() {
         </main>
       </div>
 
-      {targetRestaurant && <ReviewSection restaurantId={targetRestaurant.id} />}
+      {targetRestaurant && <ReviewSection resName={targetRestaurant?.name} />}
     </div>
   );
 }

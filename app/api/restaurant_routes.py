@@ -6,10 +6,22 @@ from .auth_routes import validation_errors_to_error_messages
 
 from app.forms.create_restaurant_form import NewRestaurantForm
 from app.forms.edit_restaurant_form import EditRestaurantForm
+from app.forms.create_review_form import ReviewForm
 from sqlalchemy import and_, case
 from sqlalchemy.sql import func
+import random
 
 restaurant_routes = Blueprint('restaurants', __name__)
+
+user_images = [
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9538c4f1cb0d524a.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/544c3c3781e0db92.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/21f488d3249d6f03.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d590fac5df89924d.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9f716d4b83f1173e.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/76cd7fa5fcf22251.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d96375ed3fb7384c.svg",
+]
 
 
 @restaurant_routes.route('')
@@ -127,3 +139,29 @@ def get_restaurant_reviews_by_restaurantId(restaurantId):
             "image_url": review.user.image_url, "first_name": review.user.first_name, "last_name": review.user.last_name}
         reviews_list.append(review_dict)
     return reviews_list
+
+
+@restaurant_routes.route('/<int:restaurantId>/reviews', methods=['POST'])
+def add_review_to_restaurant(restaurantId):
+    targetRestaurant = Restaurant.query.get(restaurantId)
+    if not targetRestaurant:
+        return jsonify({"errors": "Restaurant not found"}), 404
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        new_review = Review(
+            restaurant_id=restaurantId,
+            reviewer_id=current_user.id,
+            message=form.data["message"],
+            rating=form.data["rating"]
+        )
+        db.session.add(new_review)
+        db.session.commit()
+        response = new_review.to_dict()
+        response["reviewer"] = {"image_url": new_review.user.image_url if new_review.user.image_url else random.choice(user_images),
+                                "first_name": new_review.user.first_name,
+                                "last_name": new_review.user.last_name}
+        return response
+
+    if form.errors:
+        return form.errors
