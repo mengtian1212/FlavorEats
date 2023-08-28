@@ -80,6 +80,7 @@ function CreateReview({ restaurantId, resName }) {
             setModalContent(
               <CreateReviewModal
                 restaurantId={restaurantId}
+                resName={resName}
                 ratingP={rating}
                 setRatingP={setRating}
               />

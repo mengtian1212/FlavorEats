@@ -161,3 +161,39 @@ def checkout_cart(orderId):
     db.session.commit()
     new_past_order = Order.query.get(orderId)
     return {"new_past_order": new_past_order.to_dict()}, 200
+
+
+@order_routes.route('/<int:orderId>/reorder', methods=['POST'])
+@login_required
+def reorder(orderId):
+    isDeliveryT = request.json
+
+    pastOrder = Order.query.get(orderId)
+    print(pastOrder)
+    if pastOrder:
+        copied_order_items = []
+        for order_item in pastOrder.orderitems:
+            new_orderitem = OrderItem(
+                item_id=order_item.item_id,
+                quantity=order_item.quantity
+            )
+            copied_order_items.append(new_orderitem)
+
+        newOrder = Order(user_id=current_user.id,
+                         restaurant_id=pastOrder.restaurant_id,
+                         is_pickup=not isDeliveryT,
+                         is_complete=False,
+                         orderitems=copied_order_items)
+        db.session.add(newOrder)
+        db.session.commit()
+        return newOrder.to_dict()
+
+    # targetOrder = Order.query.filter_by(
+    #     user_id=current_user.id).order_by(Order.id.desc()).first()
+
+    # for cart_item in requestBody["cartItems"]:
+    #     targetOrder.orderitems.append({
+    #         "item_id": cart_item.item_id,
+    #         "quantity": cart_item.quantity
+    #     })
+    # db.session.commit()

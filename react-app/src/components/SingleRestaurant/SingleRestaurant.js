@@ -8,6 +8,7 @@ import { getMenuItemsByType } from "../../utils/helper-functions";
 import Navigation from "../Navigation";
 import MenuItems from "./MenuItems";
 import ReviewSection from "../ReviewSection";
+import { fetchAllReviewsThunk } from "../../store/reviews";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
@@ -18,6 +19,13 @@ function SingleRestaurant() {
       ? state.restaurants?.singleRestaurant
       : {}
   );
+  const reviews = useSelector((state) => Object.values(state.reviews));
+  let avgRating = 0;
+  if (reviews.length > 0) {
+    const total = reviews.reduce((sum, review) => sum + review.rating, 0);
+    avgRating = total / reviews.length;
+  }
+
   let groups = targetRestaurant?.cusine_types?.split("#");
 
   const capitalize = (text) => {
@@ -66,6 +74,7 @@ function SingleRestaurant() {
 
   useEffect(() => {
     dispatch(fetchOneRestaurantThunk(restaurantId));
+    dispatch(fetchAllReviewsThunk(restaurantId));
     window.scroll(0, 0);
   }, [restaurantId]);
 
@@ -89,22 +98,20 @@ function SingleRestaurant() {
           <div className="res-name">{targetRestaurant.name}</div>
           <div className="res-stat-container">
             <div className="res-rating-container">
-              {targetRestaurant.avg_rating > 0 && (
-                <i className="fa-solid fa-star"></i>
-              )}
-              {targetRestaurant.avg_rating > 0 &&
-                targetRestaurant.avg_rating.toFixed(1)}
+              {avgRating > 0 && <i className="fa-solid fa-star"></i>}
+              {avgRating > 0 && avgRating.toFixed(1)}
             </div>
             <div>
-              ({targetRestaurant.num_rating}{" "}
-              {targetRestaurant.num_rating === 1 ? "rating" : "ratings"})
+              ({reviews.length} {reviews.length === 1 ? "rating" : "ratings"})
             </div>
             <div>• </div>
             <div>{groups && groups[0]}</div>
             <div>• </div>
             <div>{targetRestaurant.price_ranges}</div>
             <div>• </div>
-            <div>Read Reviews </div>
+            <a className="read-reviews" href="#reviews-block">
+              Read Reviews{" "}
+            </a>
             <div>• </div>
             <div>More info</div>
           </div>
@@ -137,8 +144,9 @@ function SingleRestaurant() {
           ))}
         </main>
       </div>
-
-      {targetRestaurant && <ReviewSection resName={targetRestaurant?.name} />}
+      <div id="reviews-block">
+        {targetRestaurant && <ReviewSection resName={targetRestaurant?.name} />}
+      </div>
     </div>
   );
 }

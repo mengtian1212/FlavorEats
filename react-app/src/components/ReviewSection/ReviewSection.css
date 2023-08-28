@@ -119,12 +119,12 @@
 .create-review-box {
   display: flex;
   justify-content: flex-start;
-  padding: 36px;
+  padding: 24px;
   border-radius: 4px;
   border-color: #ebebeb;
   box-shadow: 0 0 10px #0000001a;
   width: 600px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .user-profile1 {
@@ -144,7 +144,7 @@
 .rating-box {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .rating-b {
@@ -156,13 +156,16 @@
 .rating-dd {
   color: #545454;
   font-size: 16px;
+  line-height: 24px;
   font-weight: normal;
 }
 
 .rating-ddd {
   /* color: #545454; */
-  color: #027a97;
+  /* color: #027a97; */
+  color: rgb(4, 136, 72);
   font-size: 16px;
+  line-height: 24px;
   font-weight: 700;
   cursor: pointer;
 }

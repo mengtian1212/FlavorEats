@@ -142,6 +142,7 @@ def get_restaurant_reviews_by_restaurantId(restaurantId):
 
 
 @restaurant_routes.route('/<int:restaurantId>/reviews', methods=['POST'])
+@login_required
 def add_review_to_restaurant(restaurantId):
     targetRestaurant = Restaurant.query.get(restaurantId)
     if not targetRestaurant:

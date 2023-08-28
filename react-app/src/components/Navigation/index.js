@@ -286,7 +286,7 @@ function Navigation({ isLoaded }) {
                   <i className="fas fa-search"></i>
                   <input
                     className="search-input cursor"
-                    placeholder="Search restaurants, dishes, drinks, cuisine types, etc"
+                    placeholder="Search restaurants, dishes, cuisine types, etc"
                     onClick={() => alert("Feature Coming Soon...")}
                   />
                 </div>
