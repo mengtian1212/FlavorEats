@@ -1,0 +1,81 @@
+/* create review modal  */
+.review-modal-container {
+  width: 560px;
+  max-height: 100%;
+  overflow: auto;
+
+  padding: 24px;
+  padding-top: 42px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-t {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-line-clamp: 1;
+
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.rating-input2 {
+  display: flex;
+  margin-right: 4px;
+  font-size: 32px;
+  align-items: center;
+  gap: 8px;
+}
+
+.rating-input2 .filled {
+  color: rgb(255, 135, 66);
+}
+
+.rating-input2 .empty {
+  color: #eeeeee;
+}
+
+.star-create1 {
+  font-size: 42px;
+  cursor: pointer;
+}
+
+.rading-dddd {
+  line-height: 24px;
+  padding-left: 12px;
+}
+
+.textarea-comment {
+  background-color: rgb(238, 238, 238);
+
+  border-radius: 8px;
+  margin: 0px 0px 4px 0px;
+  padding: 12px 16px;
+
+  width: 100%;
+  min-height: 144px;
+  max-height: 300px;
+  outline: none;
+  border: 2px solid transparent;
+  resize: vertical;
+  overflow-y: auto;
+
+  line-height: 24px;
+}
+
+.textarea-comment:focus {
+  border: 2px solid black;
+}
+
+.review-min {
+  font-size: 14px;
+  line-height: 16px;
+  color: rgb(118, 118, 118);
+}
+
+.ep {
+  margin-top: 4px;
+}

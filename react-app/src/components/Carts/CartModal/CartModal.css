@@ -34,6 +34,7 @@
 
 .cart-modal-container {
   /* padding: 0px 24px; */
+  margin-right: -16px;
   padding-top: 52px;
   display: flex;
   flex-direction: column;
@@ -103,6 +104,7 @@
   justify-content: space-between;
   padding: 16px 24px;
   padding-bottom: 36px;
+  margin-bottom: 24px;
 }
 
 .cart-4 {

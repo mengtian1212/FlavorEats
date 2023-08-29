@@ -252,7 +252,9 @@ function CreateRestaurant() {
                 value={state}
                 onChange={(e) => setState(e.target.value)}
               >
-                <option value="">-- Select State --</option>
+                {/* <option value="">-- Select State --</option> */}
+                <option value="">Select State</option>
+
                 {USSTATES.map((state) => (
                   <option key={state} value={state}>
                     {state}

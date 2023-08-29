@@ -1,6 +1,6 @@
 .cuisine-types-container {
   padding-top: 24px;
-  padding: 16px 40px;
+  padding: 16px 16px;
   display: flex;
   justify-content: space-around;
   gap: 16px;
@@ -43,7 +43,7 @@
 }
 
 .sec3 {
-  margin: 0 48px;
+  margin: 0 40px;
   padding-bottom: 52px;
   display: flex;
   justify-content: flex-start;
@@ -52,6 +52,7 @@
 
 /* sort & filters  */
 .sort-container {
+  margin-right: 80px;
   width: 100%;
   padding-top: 24px;
   position: -webkit-sticky;

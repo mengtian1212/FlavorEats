@@ -1,5 +1,12 @@
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { formatDate } from "../../utils/helper-functions";
+import { useDispatch, useSelector } from "react-redux";
+import { useModal } from "../../context/Modal";
+import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
+import CartModal from "../Carts/CartModal";
+import NewCartModal from "./NewCartModal";
+import { reorderThunk } from "../../store/orders";
 
 function OrderItem({ order_item }) {
   return (
@@ -12,9 +19,44 @@ function OrderItem({ order_item }) {
 
 function PastOrderCard({ pastOrder }) {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const order_items = Object.values(pastOrder?.order_items);
   const handleClickRestaurant = () => {
     history.push(`/restaurants/${pastOrder?.restaurant_id}`);
+  };
+
+  // for reorder
+  // first get all current carts.
+  // check if this reorder restaurant is already a current cart
+  const carts = useSelector((state) => (state.orders ? state.orders : {}));
+  const { setModalContent, setModalClass, closeModal } = useModal();
+  const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
+  const [isAdded, setIsAdded] = useState(false);
+  const handleReorder = async (pastOrder) => {
+    console.log("hererer");
+    const currCart = carts[pastOrder.restaurant_id];
+    if (currCart) {
+      console.log("currCart exists");
+      // current cart exist.
+      // popup modal to ask to start a new cart or cancel.
+      // if start a new cart: then dispatch thunk to create a new order and add new items, after that popup cart modal
+      // if cancel: close modal
+      setModalContent(
+        <NewCartModal pastOrder={pastOrder} currCart={currCart} />
+      );
+    } else {
+      // current cart doesn't exist.
+      // directly dispatch thunk to create a new order and add new items, after that popup cart modal
+      setIsAdded(true);
+      const newCart = await dispatch(reorderThunk(pastOrder.id, isDeliveryT));
+      setTimeout(() => {
+        closeModal();
+        setModalContent(<CartModal restaurantId={newCart?.restaurant_id} />);
+        setModalClass("cart-modal");
+        setIsAdded(false);
+      }, 1000);
+    }
   };
 
   return (
@@ -62,12 +104,24 @@ function PastOrderCard({ pastOrder }) {
           </div>
         </div>
         <div className="order-right-container">
-          <div className="reorder-btn">
-            <div>Reorder</div>
-          </div>
-          <div className="reorder-btn1">
-            <div>Rate your order</div>
-          </div>
+          {sessionUser && !isAdded && (
+            <div
+              className={`reorder-btn ${isAdded ? "colorg" : ""}`}
+              onClick={() => handleReorder(pastOrder)}
+            >
+              <div>Reorder</div>
+            </div>
+          )}
+          {sessionUser && isAdded && (
+            <div className={`reorder-btn ${isAdded ? "colorg" : ""}`}>
+              <div>Reordering</div>
+            </div>
+          )}
+          {sessionUser && (
+            <div className="reorder-btn1">
+              <div>Rate your order</div>
+            </div>
+          )}
         </div>
       </div>
       <div className="vert-line"></div>

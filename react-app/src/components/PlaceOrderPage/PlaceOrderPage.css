@@ -93,7 +93,8 @@ color: #000000; */
   font-size: 22px;
   right: 16px;
   top: 6px;
-  color: #bfbebe;
+  /* color: #bfbebe; */
+  color: rgb(4, 136, 72);
 }
 
 .checkout-a-sub1 {

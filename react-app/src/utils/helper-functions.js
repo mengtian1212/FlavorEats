@@ -8,6 +8,7 @@ export const capitalizeFirstChar = (words) => {
   }
   return resArr.join(" ");
 };
+
 export const hasCommonCuisineType = (list1, list2) => {
   const set1 = new Set(list1.split("#"));
   const set2 = new Set(list2);
@@ -88,6 +89,68 @@ export const formatAddress = (address, formatting = "list") => {
       " " +
       zip
     );
+  }
+};
+
+export const calculateRatingDistribution = (reviews) => {
+  if (!reviews || reviews.length === 0) return {};
+
+  const ratings = reviews.map((review) => review.rating);
+
+  // frequency of different ratings
+  const ratingCount = {};
+  ratings.forEach((rating) => {
+    if (rating in ratingCount) {
+      ratingCount[rating]++;
+    } else {
+      ratingCount[rating] = 1;
+    }
+  });
+  // rating with most occurrences
+  const mostCommonRating = Object.keys(ratingCount).reduce(
+    (a, b) => (ratingCount[a] > ratingCount[b] ? a : b),
+    0
+  );
+
+  // relative percentage of other ratings relative to the rating with most reviews
+  const ratingPercents = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+  for (const key in ratingCount) {
+    ratingPercents[key] = (
+      ratingCount[key] / ratingCount[mostCommonRating]
+    ).toFixed(2);
+  }
+  console.log(ratingPercents);
+  return ratingPercents;
+};
+
+export const calculatedTimePassed = (time) => {
+  const now = new Date();
+  const oldTime = new Date(time);
+
+  const timeDifference = now - oldTime;
+
+  const seconds = Math.floor(timeDifference / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(months / 12);
+
+  if (years > 0) {
+    return `${years} year${years === 1 ? "" : "s"} ago`;
+  } else if (months > 0) {
+    return `${months} month${months === 1 ? "" : "s"} ago`;
+  } else if (weeks > 0) {
+    return `${weeks} week${weeks === 1 ? "" : "s"} ago`;
+  } else if (days > 0) {
+    return `${days} day${days === 1 ? "" : "s"} ago`;
+  } else if (hours > 0) {
+    return `${hours} hour${hours === 1 ? "" : "s"} ago`;
+  } else if (minutes > 0) {
+    return `${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+  } else {
+    return "Just now";
   }
 };
 

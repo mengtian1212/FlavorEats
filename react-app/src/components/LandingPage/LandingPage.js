@@ -5,8 +5,9 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Navigation from "../Navigation";
 import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
-import { USSTATES } from "../../utils/helper-functions";
+import { USSTATES, formatAddress } from "../../utils/helper-functions";
 import Header from "../Header";
+import { editUserAddressThunk } from "../../store/session";
 
 function LandingPage() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -76,23 +77,90 @@ function LandingPage() {
     return true;
   };
 
-  const handleFindFood = () => {
-    if (
-      !landingAddress ||
-      (landingAddress && landingAddress.trim().length === 0) ||
-      !validateLandingAddress(landingAddress)
-    ) {
-      setValidAddressError(
-        "Invalid address. Please check the following format."
-      );
-      setTimeout(() => {
-        setValidAddressError("");
-      }, 2000);
+  // when clicking Find food button:
+  // case 1. if not session user:
+  //      case 1.1: no input address             -> not login & just redirect to restaurants page with not login status
+  //      case 1.2: have invalid input address   -> validate address error
+  //      case 1.3: have valid input address     -> pass address prop to & redirect to login page
+
+  // case 2. if session user:
+  //      case 2.1: no input address             -> no edit address & just redirect to restaurants page
+  //      case 2.2: have invalid input address   -> validate address error
+  //      case 2.3: have valid input address     -> edit address & redirect to restaurants page
+
+  // const handleFindFood = () => {
+  //   if (
+  //     !landingAddress ||
+  //     (landingAddress && landingAddress.trim().length === 0) ||
+  //     !validateLandingAddress(landingAddress)
+  //   ) {
+  //     setValidAddressError(
+  //       "Invalid address. Please check the following format."
+  //     );
+  //     setTimeout(() => {
+  //       setValidAddressError("");
+  //     }, 2000);
+  //   } else {
+  //     history.push("/login", { landingAddress: landingAddress });
+  //   }
+  // }; // need to add a logic for if session user exist, then only edit address.
+
+  const handleFindFood = async () => {
+    // case 1. if not session user:
+    if (!sessionUser) {
+      if (
+        //case 1.1: no input address             -> not login & just redirect to restaurants page with not login status
+        !landingAddress ||
+        (landingAddress && landingAddress.trim().length === 0)
+      ) {
+        history.push("/restaurants");
+      } else if (landingAddress && !validateLandingAddress(landingAddress)) {
+        //case 1.2: have invalid input address (means the user want to login with this address but invalid)  -> validate address error
+        setValidAddressError(
+          "Invalid address. Please check the following format."
+        );
+        setTimeout(() => {
+          setValidAddressError("");
+        }, 3000);
+      } else {
+        //case 1.3: have valid input address     -> pass address prop to & redirect to login page
+        history.push("/login", { landingAddress: landingAddress });
+      }
     } else {
-      history.push("/login", { landingAddress: landingAddress });
+      // case 2. if session user:
+      if (
+        //case 2.1: no input address             -> no edit address & just redirect to restaurants page
+        !landingAddress ||
+        (landingAddress && landingAddress.trim().length === 0)
+      ) {
+        history.push("/restaurants");
+      } else if (landingAddress && !validateLandingAddress(landingAddress)) {
+        //case 2.2: have invalid input address (means the user want to edit address but invalid)  -> validate address error
+        setValidAddressError(
+          "Invalid address. Please check the following format."
+        );
+        setTimeout(() => {
+          setValidAddressError("");
+        }, 3000);
+      } else {
+        //case 2.3: have valid input address     -> edit address & redirect to restaurants page
+        const landingAddressData = formatAddress(
+          landingAddress?.split(",")[0] + ", " + landingAddress,
+          "string"
+        );
+        const addressFormatedList = formatAddress(landingAddressData, "list");
+        const formData = {
+          address: landingAddressData,
+          city: addressFormatedList[2],
+          state: addressFormatedList[3],
+          zip: addressFormatedList[4],
+        };
+        console.log(formData);
+        await dispatch(editUserAddressThunk(formData, sessionUser.id));
+        history.push("/restaurants");
+      }
     }
   };
-  // need to add a logic for if session user exist, then only edit address.
 
   return (
     <div className="main-place-holder-container2">
