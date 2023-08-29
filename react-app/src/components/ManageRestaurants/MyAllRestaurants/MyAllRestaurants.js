@@ -60,7 +60,7 @@ function MyAllRestaurants() {
           <div className="menu-item2 cursor lih" onClick={handleClickAll}>
             <i className="fa-solid fa-house menu-icons pb4 lih2"></i>
             <div className="_16"></div>
-            <div className="lih2">Home</div>
+            <div className="lih2">Manage my restaurants</div>
           </div>
           <div className="menu-item2 lih">
             <i className="fa-solid fa-store"></i>

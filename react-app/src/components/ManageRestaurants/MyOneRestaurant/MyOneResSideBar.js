@@ -44,7 +44,7 @@ function MyOneResSideBar({
       <div className="menu-item2 cursor lih" onClick={handleClickAll}>
         <i className="fa-solid fa-house menu-icons lih"></i>
         <div className="_16"></div>
-        <div className="lih">Home</div>
+        <div className="lih">Manage my restaurants</div>
       </div>
       <div className="menu-item3">
         Current restaurant <div className="_16"></div>

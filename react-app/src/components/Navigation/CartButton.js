@@ -32,8 +32,10 @@ function CartButton({ user }) {
             Past Orders
           </button>
           <div className="_16"></div>
-          {currentCart && <OneCartBtn restaurantId={restaurantId} />}
-          {!currentCart && <MultipleCartsBtn restaurantId={restaurantId} />}
+          <div className="one-cart-btn-container">
+            {currentCart && <OneCartBtn restaurantId={restaurantId} />}
+            {!currentCart && <MultipleCartsBtn restaurantId={restaurantId} />}
+          </div>
         </>
       )}
       {!user && (

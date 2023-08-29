@@ -13,7 +13,7 @@ def seed_orderitems():
         {"order_id": 2, "item_id": 5, "quantity": 3},
         {"order_id": 2, "item_id": 11, "quantity": 2},
         {"order_id": 2, "item_id": 20, "quantity": 2},
-        # order 3 restaurant 3
+        # order 3 restaurant 2
         {"order_id": 3, "item_id": 28, "quantity": 1},
         {"order_id": 3, "item_id": 32, "quantity": 1},
         # order 4 restaurant 5

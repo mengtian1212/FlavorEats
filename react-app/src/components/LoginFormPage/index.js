@@ -17,12 +17,12 @@ function LoginFormPage() {
 
   const landingAddressData = landingAddressProp
     ? formatAddress(
-        landingAddressProp?.split(", ")[0] + ", " + landingAddressProp,
+        landingAddressProp?.split(",")[0] + ", " + landingAddressProp,
         "string"
       )
     : "";
   const landingAddress = landingAddressData
-    ? landingAddressData.split(", ").slice(1).join(", ")
+    ? landingAddressData.split(",").slice(1).join(", ")
     : "";
 
   console.log("landingAddress in login page", landingAddress);

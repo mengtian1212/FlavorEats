@@ -16,7 +16,6 @@ function AddToCartBtn({ item }) {
   const orderItem = useSelector((state) =>
     state.orders ? state.orders[item.restaurant_id]?.order_items[item.id] : {}
   );
-  console.log("orderItem:", orderItem);
 
   const [showAddToCartDrop, setShowAddToCartDrop] = useState(false);
   const ulRef = useRef();

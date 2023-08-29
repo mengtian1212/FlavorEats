@@ -1,4 +1,4 @@
-from app.models import db, Restaurant
+from app.models import db, Restaurant, Review
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .AWS_helpers import upload_file_to_s3, get_unique_filename
@@ -6,9 +6,10 @@ from .auth_routes import validation_errors_to_error_messages
 
 from app.forms.create_restaurant_form import NewRestaurantForm
 from app.forms.edit_restaurant_form import EditRestaurantForm
-from app.models import Restaurant
+from app.forms.create_review_form import ReviewForm
 from sqlalchemy import and_, case
 from sqlalchemy.sql import func
+import random
 
 restaurant_routes = Blueprint('restaurants', __name__)
 
@@ -111,3 +112,48 @@ def delete_restaurant(restaurantId):
     db.session.delete(targetRestaurant)
     db.session.commit()
     return {"id": targetRestaurant.id}
+
+
+@restaurant_routes.route('/<int:restaurantId>/reviews')
+def get_restaurant_reviews_by_restaurantId(restaurantId):
+    targetRestaurant = Restaurant.query.get(restaurantId)
+    if not targetRestaurant:
+        return jsonify({"errors": "Restaurant not found"}), 404
+    reviews = Review.query.join(Restaurant).filter(
+        Restaurant.id == restaurantId)
+    reviews_list = []
+    print(targetRestaurant)
+    for review in reviews:
+        review_dict = review.to_dict()
+        review_dict["reviewer"] = {
+            "image_url": review.user.image_url, "first_name": review.user.first_name, "last_name": review.user.last_name}
+        reviews_list.append(review_dict)
+    return reviews_list
+
+
+@restaurant_routes.route('/<int:restaurantId>/reviews', methods=['POST'])
+@login_required
+def add_review_to_restaurant(restaurantId):
+    targetRestaurant = Restaurant.query.get(restaurantId)
+    if not targetRestaurant:
+        return jsonify({"errors": "Restaurant not found"}), 404
+    form = ReviewForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+    if form.validate_on_submit():
+        new_review = Review(
+            restaurant_id=restaurantId,
+            reviewer_id=current_user.id,
+            message=form.data["message"],
+            rating=form.data["rating"]
+        )
+        db.session.add(new_review)
+        db.session.commit()
+        response = new_review.to_dict()
+        print("fdfdfddf", new_review.user.image_url)
+        response["reviewer"] = {"image_url": new_review.user.image_url,
+                                "first_name": new_review.user.first_name,
+                                "last_name": new_review.user.last_name}
+        return response
+
+    if form.errors:
+        return form.errors

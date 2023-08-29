@@ -12,6 +12,10 @@
   overflow: hidden;
 }
 
+.right-item-container {
+  flex: 1;
+}
+
 .item-img1 {
   height: 492px;
   width: 492px;
@@ -141,13 +145,13 @@
   opacity: 80%;
 }
 
-.reorder-btn5.colorg {
+.reorder-btn2.colorg {
   background-color: #eeeeee;
   width: 100%;
   min-height: 56px;
   padding: 12px 16px;
   border-radius: 8px;
-  color: #918a8a;
+  color: #000000;
   cursor: pointer;
   line-height: 24px;
   font-size: 18px;
@@ -159,27 +163,3 @@
   cursor: not-allowed;
   opacity: 80%;
 }
-
-.reorder-btn5.colorg:hover {
-  opacity: 80%;
-  background-color: #eeeeee;
-  width: 100%;
-  min-height: 56px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  color: #918a8a;
-  cursor: pointer;
-  line-height: 24px;
-  font-size: 18px;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: not-allowed;
-}
-
-.right-item-container {
-  width: 100%;
-}
-

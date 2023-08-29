@@ -3,6 +3,7 @@ import { fetchLastPastOrderThunk } from "./pastOrders";
 /** Action Type Constants: */
 export const LOAD_ALL_CARTS = "carts/LOAD_ALL_CARTS";
 
+export const CREATE_CART = "carts/CREATE_CART";
 export const DELETE_CART = "carts/DELETE_CART";
 export const CHECKOUT_CART = "carts/CHECKOUT_CART"; // similar to edit order
 
@@ -41,6 +42,11 @@ export const updateItemInCartAction = (targetOrderU, targetOrderItemU) => ({
 export const addItemToCartAction = (targetOrderN, targetOrderItemN) => ({
   type: ADD_ITEM,
   payload: { targetOrderN, targetOrderItemN },
+});
+
+export const receiveCartAction = (newCart) => ({
+  type: CREATE_CART,
+  newCart,
 });
 
 /** Thunk Action Creators: */
@@ -139,6 +145,21 @@ export const checkoutCartThunk = (orderPlaced) => async (dispatch) => {
   return data;
 };
 
+export const reorderThunk = (pastOrderId, isDeliveryT) => async (dispatch) => {
+  const response = await fetch(`/api/orders/${pastOrderId}/reorder`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(isDeliveryT),
+  });
+  const newCart = await response.json();
+  if (response.ok) {
+    dispatch(receiveCartAction(newCart));
+  }
+  return newCart;
+};
+
 /** Orders Reducer: */
 const initialState = {};
 const ordersReducer = (state = initialState, action) => {
@@ -191,6 +212,11 @@ const ordersReducer = (state = initialState, action) => {
         [targetOrderItemN.item_id]: { ...targetOrderItemN },
       };
       return newState3;
+    case CREATE_CART:
+      return {
+        ...state,
+        [action.newCart.restaurant_id]: { ...action.newCart },
+      };
     default:
       return state;
   }
