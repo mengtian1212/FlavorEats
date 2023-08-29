@@ -304,150 +304,150 @@ def seed_menuitems():
             "image_url": "https://d1ralsognjng37.cloudfront.net/b8f12db6-3953-49e1-8fc5-063839db3472.jpeg",
             "description": "Angus beef cheeseburger topped with freshly sliced avocado, applewood-smoked bacon, and ShackSauce on a toasted potato bun (contains sesame, eggs, milk, soy, wheat, and gluten)"
         },
-        # {  # 35
-        #     "restaurant_id": 3,
-        #     "item_name": "Bourbon Bacon Jam Burger",
-        #     "item_type": "Burgers",
-        #     "price": 11.49,
-        #     "calory": 960,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ab02678e31368f6ddad8c9d4cfbecf3f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "100% Angus beef cheeseburger topped with crispy onions, ShackSauce, and bourbon bacon jam made with Maker's Mark Bourbon"
-        # },
-        # {  # 36
-        #     "restaurant_id": 3,
-        #     "item_name": "Veggie Shack",
-        #     "item_type": "Burgers",
-        #     "price": 10.59,
-        #     "calory": 630,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/61019691349c9853d0593face1bb4702/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Our veggie burger packed with mushrooms, sweet potatoes, carrots, farro, and quinoa, and topped with American cheese, crispy onions, pickles and ShackSauce (contains sesame, eggs, milk, soy, wheat, and gluten)"
-        # },
-        # {  # 37
-        #     "restaurant_id": 3,
-        #     "item_name": "ShackBurger",
-        #     "item_type": "Burgers",
-        #     "price": 8.69,
-        #     "calory": 750,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d07d986a0cfdf95fb2ff1508b4273fe4/859baff1d76042a45e319d1de80aec7a.jpeg",
-        #     "description": "Angus beef cheeseburger with lettuce, tomato, and ShackSauce on a toasted potato bun (contains sesame, eggs, milk, soy, wheat, and gluten)"
-        # },
-        # {  # 38
-        #     "restaurant_id": 3,
-        #     "item_name": "Shack Stack",
-        #     "item_type": "Burgers",
-        #     "price": 14.89,
-        #     "calory": 800,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/92fac1cd-850f-4c51-9c2b-e3ea0f1a9561.jpeg",
-        #     "description": "Angus beef cheeseburger topped with a 'Shroom Burger with lettuce, tomato, and ShackSauce on a toasted potato bun (contains sesame, milk, wheat, egg, soy, and gluten)"
-        # },
-        # {  # 39
-        #     "restaurant_id": 3,
-        #     "item_name": "Hamburger",
-        #     "item_type": "Burgers",
-        #     "price": 8.19,
-        #     "calory": 590,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/bea6ce86-adef-4893-a9ee-f4a516f1984e.jpeg",
-        #     "description": "Angus beef patty and your choice of toppings on a toasted potato bun (contains sesame, milk, wheat, and gluten)"
-        # },
-        # {  # 40
-        #     "restaurant_id": 3,
-        #     "item_name": "Avocado Bacon Chicken",
-        #     "item_type": "Chicken",
-        #     "price": 12.89,
-        #     "calory": 550,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/e2e7dc2f-afc4-40e6-823a-8c5b5c84d8aa.jpeg",
-        #     "description": "Crispy chicken breast topped with lettuce, pickles, buttermilk herb mayo (contains sesame, milk, wheat, egg, soy, and gluten)"
-        # },
-        # {  # 41
-        #     "restaurant_id": 3,
-        #     "item_name": "Chicken Shack",
-        #     "item_type": "Chicken",
-        #     "price": 10.29,
-        #     "calory": 590,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/56527e87-66c9-4f2f-8490-3432d58fd045.jpeg",
-        #     "description": "Crispy, white-meat chicken breast over lettuce, pickles, and buttermilk herb mayo on a toasted potato bun (contains sesame, milk, wheat, egg, soy, and gluten)"
-        # },
-        # {  # 42
-        #     "restaurant_id": 3,
-        #     "item_name": "Chicken Bites",
-        #     "item_type": "Chicken",
-        #     "price": 6.39,
-        #     "calory": 500,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/132d62ec-2f8a-4aff-b1d0-bb1a2844c8da.jpeg",
-        #     "description": "Crispy, whole white-meat bites served with honey mustard or BBQ (contains milk, wheat, soy, and gluten)"
-        # },
-        # {  # 43
-        #     "restaurant_id": 3,
-        #     "item_name": "Spicy Fries with Ranch",
-        #     "item_type": "Crinkle Cut Fries",
-        #     "price": 5.49,
-        #     "calory": 630,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/72b7eabdc82726fb70edd558807925be/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Crispy crinkle cut fries spiced with our own spicy pepper blend, served with our ranch sauce"
-        # },
-        # {  # 44
-        #     "restaurant_id": 3,
-        #     "item_name": "Fries",
-        #     "item_type": "Crinkle Cut Fries",
-        #     "price": 4.69,
-        #     "calory": 470,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/b2b5bd9a-c652-4df7-9ad5-6d30c2bc30c0.jpeg",
-        #     "description": "Crispy crinkle cut fries (contains soy)"
-        # },
-        # {  # 45
-        #     "restaurant_id": 3,
-        #     "item_name": "Cheese Fries",
-        #     "item_type": "Crinkle Cut Fries",
-        #     "price": 5.89,
-        #     "calory": 710,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/d01388aa-9bd2-46df-b76b-98453a9e9ee8.jpeg",
-        #     "description": "Crispy crinkle cuts topped with our cheese sauce (contains soy and milk)"
-        # },
-        # {  # 46
-        #     "restaurant_id": 3,
-        #     "item_name": "Triple Chocolate Brownie Shake",
-        #     "item_type": "Shakes & Frozen Custard",
-        #     "price": 7.69,
-        #     "calory": 950,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/686cb2d9eba4b29e46acc87d1298dcdc/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Chocolate frozen custard hand-spun with brownie bits, chocolate sprinkles, and chocolate chips, topped with whipped cream and brownie crunch - (contains milk and egg)"
-        # },
-        # {  # 47
-        #     "restaurant_id": 3,
-        #     "item_name": "Vanilla Shake",
-        #     "item_type": "Shakes & Frozen Custard",
-        #     "price": 6.89,
-        #     "calory": 680,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4302e50c5b22a28248e96da8a13bb3f1/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "House-made vanilla frozen custard with real vanilla (contains milk and egg)"
-        # },
-        # {  # 48
-        #     "restaurant_id": 3,
-        #     "item_name": "Strawberry Shake",
-        #     "item_type": "Shakes & Frozen Custard",
-        #     "price": 6.89,
-        #     "calory": 690,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/45633a3bc06531cc13dc4be0220c4694/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Real strawberry hand spun with our house-made vanilla frozen custard (contains milk and egg)"
-        # },
-        # {  # 49
-        #     "restaurant_id": 3,
-        #     "item_name": "Frozen Custard",
-        #     "item_type": "Shakes & Frozen Custard",
-        #     "price": 5.59,
-        #     "calory": 500,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/6947ea26-5403-4da0-8f29-4fdd8f9a74e2.jpeg",
-        #     "description": "Vanilla or Chocolate frozen custard made in house every day (contains milk and egg)"
-        # },
-        # {  # 50
-        #     "restaurant_id": 3,
-        #     "item_name": "Strawberry Lemonade",
-        #     "item_type": "Drinks",
-        #     "price": 5.19,
-        #     "calory": 280,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b1329b94f3156d127c203710d0f55afb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Real strawberry and house-made lemonade. (Try it naturally caffeinated!)"
-        # },
+        {  # 35
+            "restaurant_id": 3,
+            "item_name": "Bourbon Bacon Jam Burger",
+            "item_type": "Burgers",
+            "price": 11.49,
+            "calory": 960,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ab02678e31368f6ddad8c9d4cfbecf3f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "100% Angus beef cheeseburger topped with crispy onions, ShackSauce, and bourbon bacon jam made with Maker's Mark Bourbon"
+        },
+        {  # 36
+            "restaurant_id": 3,
+            "item_name": "Veggie Shack",
+            "item_type": "Burgers",
+            "price": 10.59,
+            "calory": 630,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/61019691349c9853d0593face1bb4702/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Our veggie burger packed with mushrooms, sweet potatoes, carrots, farro, and quinoa, and topped with American cheese, crispy onions, pickles and ShackSauce (contains sesame, eggs, milk, soy, wheat, and gluten)"
+        },
+        {  # 37
+            "restaurant_id": 3,
+            "item_name": "ShackBurger",
+            "item_type": "Burgers",
+            "price": 8.69,
+            "calory": 750,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d07d986a0cfdf95fb2ff1508b4273fe4/859baff1d76042a45e319d1de80aec7a.jpeg",
+            "description": "Angus beef cheeseburger with lettuce, tomato, and ShackSauce on a toasted potato bun (contains sesame, eggs, milk, soy, wheat, and gluten)"
+        },
+        {  # 38
+            "restaurant_id": 3,
+            "item_name": "Shack Stack",
+            "item_type": "Burgers",
+            "price": 14.89,
+            "calory": 800,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/92fac1cd-850f-4c51-9c2b-e3ea0f1a9561.jpeg",
+            "description": "Angus beef cheeseburger topped with a 'Shroom Burger with lettuce, tomato, and ShackSauce on a toasted potato bun (contains sesame, milk, wheat, egg, soy, and gluten)"
+        },
+        {  # 39
+            "restaurant_id": 3,
+            "item_name": "Hamburger",
+            "item_type": "Burgers",
+            "price": 8.19,
+            "calory": 590,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/bea6ce86-adef-4893-a9ee-f4a516f1984e.jpeg",
+            "description": "Angus beef patty and your choice of toppings on a toasted potato bun (contains sesame, milk, wheat, and gluten)"
+        },
+        {  # 40
+            "restaurant_id": 3,
+            "item_name": "Avocado Bacon Chicken",
+            "item_type": "Chicken",
+            "price": 12.89,
+            "calory": 550,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/e2e7dc2f-afc4-40e6-823a-8c5b5c84d8aa.jpeg",
+            "description": "Crispy chicken breast topped with lettuce, pickles, buttermilk herb mayo (contains sesame, milk, wheat, egg, soy, and gluten)"
+        },
+        {  # 41
+            "restaurant_id": 3,
+            "item_name": "Chicken Shack",
+            "item_type": "Chicken",
+            "price": 10.29,
+            "calory": 590,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/56527e87-66c9-4f2f-8490-3432d58fd045.jpeg",
+            "description": "Crispy, white-meat chicken breast over lettuce, pickles, and buttermilk herb mayo on a toasted potato bun (contains sesame, milk, wheat, egg, soy, and gluten)"
+        },
+        {  # 42
+            "restaurant_id": 3,
+            "item_name": "Chicken Bites",
+            "item_type": "Chicken",
+            "price": 6.39,
+            "calory": 500,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/132d62ec-2f8a-4aff-b1d0-bb1a2844c8da.jpeg",
+            "description": "Crispy, whole white-meat bites served with honey mustard or BBQ (contains milk, wheat, soy, and gluten)"
+        },
+        {  # 43
+            "restaurant_id": 3,
+            "item_name": "Spicy Fries with Ranch",
+            "item_type": "Crinkle Cut Fries",
+            "price": 5.49,
+            "calory": 630,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/72b7eabdc82726fb70edd558807925be/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Crispy crinkle cut fries spiced with our own spicy pepper blend, served with our ranch sauce"
+        },
+        {  # 44
+            "restaurant_id": 3,
+            "item_name": "Fries",
+            "item_type": "Crinkle Cut Fries",
+            "price": 4.69,
+            "calory": 470,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/b2b5bd9a-c652-4df7-9ad5-6d30c2bc30c0.jpeg",
+            "description": "Crispy crinkle cut fries (contains soy)"
+        },
+        {  # 45
+            "restaurant_id": 3,
+            "item_name": "Cheese Fries",
+            "item_type": "Crinkle Cut Fries",
+            "price": 5.89,
+            "calory": 710,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/d01388aa-9bd2-46df-b76b-98453a9e9ee8.jpeg",
+            "description": "Crispy crinkle cuts topped with our cheese sauce (contains soy and milk)"
+        },
+        {  # 46
+            "restaurant_id": 3,
+            "item_name": "Triple Chocolate Brownie Shake",
+            "item_type": "Shakes & Frozen Custard",
+            "price": 7.69,
+            "calory": 950,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/686cb2d9eba4b29e46acc87d1298dcdc/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Chocolate frozen custard hand-spun with brownie bits, chocolate sprinkles, and chocolate chips, topped with whipped cream and brownie crunch - (contains milk and egg)"
+        },
+        {  # 47
+            "restaurant_id": 3,
+            "item_name": "Vanilla Shake",
+            "item_type": "Shakes & Frozen Custard",
+            "price": 6.89,
+            "calory": 680,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4302e50c5b22a28248e96da8a13bb3f1/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "House-made vanilla frozen custard with real vanilla (contains milk and egg)"
+        },
+        {  # 48
+            "restaurant_id": 3,
+            "item_name": "Strawberry Shake",
+            "item_type": "Shakes & Frozen Custard",
+            "price": 6.89,
+            "calory": 690,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/45633a3bc06531cc13dc4be0220c4694/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Real strawberry hand spun with our house-made vanilla frozen custard (contains milk and egg)"
+        },
+        {  # 49
+            "restaurant_id": 3,
+            "item_name": "Frozen Custard",
+            "item_type": "Shakes & Frozen Custard",
+            "price": 5.59,
+            "calory": 500,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/6947ea26-5403-4da0-8f29-4fdd8f9a74e2.jpeg",
+            "description": "Vanilla or Chocolate frozen custard made in house every day (contains milk and egg)"
+        },
+        {  # 50
+            "restaurant_id": 3,
+            "item_name": "Strawberry Lemonade",
+            "item_type": "Drinks",
+            "price": 5.19,
+            "calory": 280,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b1329b94f3156d127c203710d0f55afb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Real strawberry and house-made lemonade. (Try it naturally caffeinated!)"
+        },
         # {  # 51
         #     "restaurant_id": 3,
         #     "item_name": "Shack-made Lemonade",
