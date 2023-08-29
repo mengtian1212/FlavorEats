@@ -898,172 +898,172 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b0e4697135dbd08b84c9e3c2619d6044/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Awaken your taste buds with the zing of refreshing lemonade—this tangy, fresh sip puts a little zip in your step."
         },
-        # {  # 101
-        #     "restaurant_id": 5,
-        #     "item_name": "Iced Black Tea",
-        #     "item_type": "Cold Drinks",
-        #     "price": 3.75,
-        #     "calory": 0,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/04cd7d504500f9db768f2bd4aedc86c8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Premium black tea sweetened just right and shaken with ice to create an ideal iced tea—a rich and flavorful black tea journey awaits you."
-        # },
-        # {  # 102
-        #     "restaurant_id": 5,
-        #     "item_name": "Iced Passion Tango Tea",
-        #     "item_type": "Cold Drinks",
-        #     "price": 3.75,
-        #     "calory": 0,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/35086bb8b4fe568d3b67906572690acd/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "A blend of hibiscus, lemongrass and apple hand-shaken with ice: a refreshingly vibrant tea infused with the color of passion."
-        # },
-        # {  # 103
-        #     "restaurant_id": 5,
-        #     "item_name": "Double-Smoked Bacon, Cheddar & Egg Sandwich",
-        #     "item_type": "Bakery",
-        #     "price": 6.75,
-        #     "calory": 500,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fb519df2d047d5542dacebc8548cd25b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Bacon smoked for six hours over hickory wood chips, stacked with a cage-free fried egg, topped with a melted slice of sharp Cheddar cheese—all on our signature croissant bun. -HIGH-PROTEIN"
-        # },
-        # {  # 104
-        #     "restaurant_id": 5,
-        #     "item_name": "Sausage, Cheddar & Egg Sandwich",
-        #     "item_type": "Bakery",
-        #     "price": 5.25,
-        #     "calory": 480,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9fccc88a8da59bdd92161226a7386cb7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "A savory sausage patty, fluffy cage-free eggs and aged Cheddar cheese on a perfectly toasted English muffin. -HIGH-PROTEIN"
-        # },
-        # {  # 105
-        #     "restaurant_id": 5,
-        #     "item_name": "Butter Croissant",
-        #     "item_type": "Bakery",
-        #     "price": 4.45,
-        #     "calory": 250,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d887b0305178efd47272079624b548ef/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Classic butter croissant with soft, flaky layers and a golden-brown crust. -VEGETARIAN"
-        # },
-        # {  # 106
-        #     "restaurant_id": 5,
-        #     "item_name": "Caffè Americano",
-        #     "item_type": "Hot Coffees",
-        #     "price": 3.95,
-        #     "calory": 5,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3e6b2dab8acdd087797b91fc30c209b7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Espresso shots topped with hot water create a light layer of crema culminating in this wonderfully rich cup with depth and nuance. Pro Tip: For an additional boost, ask your barista to try this with an extra shot."
-        # },
-        # {  # 107
-        #     "restaurant_id": 15,
-        #     "item_name": "Lobster Roll",
-        #     "item_type": "Kitchen - Lobster",
-        #     "price": 24.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2b681dd14ccb305361c0d940e90adacb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Claw and tail meat, celery, scallions, lemon & mayo, on a toasted top-split bun"
-        # },
-        # {  # 108
-        #     "restaurant_id": 15,
-        #     "item_name": "Lobster Bake for 2 (2 lb lobster)",
-        #     "item_type": "Kitchen - Lobster",
-        #     "price": 110.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d508e97cf5034aaff30673b639d31511/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Fresh steamed north-Atlantic lobster, clams, mussels, chorizo, potatoes & corn-on-the-cob served in a rich seafood broth (serves 2)"
-        # },
-        # {  # 109
-        #     "restaurant_id": 15,
-        #     "item_name": "Lobster Roll Combo",
-        #     "item_type": "Kitchen - Lobster",
-        #     "price": 30.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c41d3aa453ffae5047dc65a9fc2fc764/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Maine style lobster roll, chips & choice of soup. Perfect for a picnic!"
-        # },
-        # {  # 110
-        #     "restaurant_id": 15,
-        #     "item_name": "Steamed Lobster 1.25 LB",
-        #     "item_type": "Kitchen - Lobster",
-        #     "price": 51.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/07492de654b7f72da5f51ec13f177cb8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Freshly steamed north Atlantic hard-shell lobster served with butter & lemon"
-        # },
-        # {  # 111
-        #     "restaurant_id": 15,
-        #     "item_name": "Fish & Shrimp Fry",
-        #     "item_type": "Kitchen - Kitchen",
-        #     "price": 21.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/30466d13a2774b7d1d068ad44f9235f6/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Crispy sole, fried shrimp, fries, old bay, lemon & tartar sauce"
-        # },
-        # {  # 112
-        #     "restaurant_id": 15,
-        #     "item_name": "Broiled Miso Oysters",
-        #     "item_type": "Kitchen - Kitchen",
-        #     "price": 16.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9a10fa7415ff95d5ce7645b7457fb498/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Garlic butter, bacon, pickled shallot, breadcrumbs, sautéed kale"
-        # },
-        # {  # 113
-        #     "restaurant_id": 15,
-        #     "item_name": "Peel-N-Eat Shrimp",
-        #     "item_type": "Kitchen - Kitchen",
-        #     "price": 18.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/56ecdc454549e577c9af2cc002c08440/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Steamed & Chilled Shrimp Tossed in Old Bay and served with Lemon"
-        # },
-        # {  # 114
-        #     "restaurant_id": 15,
-        #     "item_name": "Chopped Salad",
-        #     "item_type": "Kitchen - Kitchen",
-        #     "price": 15.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4d4951e429397ce30e82624775abc2be/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Romaine, kale, green beans, cherry tomatoes, scallion, cucumber, red onion, feta cheese, dill & balsamic dressing."
-        # },
-        # {  # 115
-        #     "restaurant_id": 15,
-        #     "item_name": "Crab Cake",
-        #     "item_type": "Kitchen - Kitchen",
-        #     "price": 20.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2c9cb9cf999f4114dd12a05e6660f279/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Lump crab meat, boston lettuce, tomato & house remoulade, on a grilled potato bun."
-        # },
-        # {  # 116
-        #     "restaurant_id": 15,
-        #     "item_name": "Grain Bowl",
-        #     "item_type": "Kitchen - Kitchen",
-        #     "price": 18.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/97a13d5a4edc422a155cecd64d9e1c7e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Bulgar wheat mixed with salsa verde, sautéed kale and chickpeas (Choice of: Grilled Salmon or Grilled Shrimp)."
-        # },
-        # {  # 117
-        #     "restaurant_id": 15,
-        #     "item_name": "Salmon Burger",
-        #     "item_type": "Kitchen - Kitchen",
-        #     "price": 18.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e4cc40f4dedbb9bd0c16eb3242ef6143/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Atlantic salmon, pickled peppers, tomato, Boston lettuce & smoked aioli, on a grilled potato bun."
-        # },
-        # {  # 118
-        #     "restaurant_id": 15,
-        #     "item_name": "Salmon Avocado Roll",
-        #     "item_type": "Sushi Bar - Sushi Rolls",
-        #     "price": 9.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1a09c76a48a9f9644f197c13f3631ccb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Salmon, avocado, nori, white rice & sesame seeds."
-        # },
-        # {  # 119
-        #     "restaurant_id": 15,
-        #     "item_name": "Shrimp Tempura Roll",
-        #     "item_type": "Sushi Bar - Sushi Rolls",
-        #     "price": 12.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3367b0bcd333ffe2512b9f9e7357c4e4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Tempura fried shrimp w/avocado, cucumber, masago & topped with eel sauce."
-        # },
-        # {  # 120
-        #     "restaurant_id": 15,
-        #     "item_name": "Spicy Lobster Roll",
-        #     "item_type": "Sushi Bar - Sushi Rolls",
-        #     "price": 19.50,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ae9fa16ae6a10140842f267dc58a4093/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Lobster meat w/ avocado, spicy sauce & masago."
-        # },
+        {  # 101
+            "restaurant_id": 5,
+            "item_name": "Iced Black Tea",
+            "item_type": "Cold Drinks",
+            "price": 3.75,
+            "calory": 0,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/04cd7d504500f9db768f2bd4aedc86c8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Premium black tea sweetened just right and shaken with ice to create an ideal iced tea—a rich and flavorful black tea journey awaits you."
+        },
+        {  # 102
+            "restaurant_id": 5,
+            "item_name": "Iced Passion Tango Tea",
+            "item_type": "Cold Drinks",
+            "price": 3.75,
+            "calory": 0,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/35086bb8b4fe568d3b67906572690acd/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A blend of hibiscus, lemongrass and apple hand-shaken with ice: a refreshingly vibrant tea infused with the color of passion."
+        },
+        {  # 103
+            "restaurant_id": 5,
+            "item_name": "Double-Smoked Bacon, Cheddar & Egg Sandwich",
+            "item_type": "Bakery",
+            "price": 6.75,
+            "calory": 500,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fb519df2d047d5542dacebc8548cd25b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Bacon smoked for six hours over hickory wood chips, stacked with a cage-free fried egg, topped with a melted slice of sharp Cheddar cheese—all on our signature croissant bun. -HIGH-PROTEIN"
+        },
+        {  # 104
+            "restaurant_id": 5,
+            "item_name": "Sausage, Cheddar & Egg Sandwich",
+            "item_type": "Bakery",
+            "price": 5.25,
+            "calory": 480,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9fccc88a8da59bdd92161226a7386cb7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A savory sausage patty, fluffy cage-free eggs and aged Cheddar cheese on a perfectly toasted English muffin. -HIGH-PROTEIN"
+        },
+        {  # 105
+            "restaurant_id": 5,
+            "item_name": "Butter Croissant",
+            "item_type": "Bakery",
+            "price": 4.45,
+            "calory": 250,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d887b0305178efd47272079624b548ef/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Classic butter croissant with soft, flaky layers and a golden-brown crust. -VEGETARIAN"
+        },
+        {  # 106
+            "restaurant_id": 5,
+            "item_name": "Caffè Americano",
+            "item_type": "Hot Coffees",
+            "price": 3.95,
+            "calory": 5,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3e6b2dab8acdd087797b91fc30c209b7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Espresso shots topped with hot water create a light layer of crema culminating in this wonderfully rich cup with depth and nuance. Pro Tip: For an additional boost, ask your barista to try this with an extra shot."
+        },
+        {  # 107
+            "restaurant_id": 15,
+            "item_name": "Lobster Roll",
+            "item_type": "Kitchen - Lobster",
+            "price": 24.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2b681dd14ccb305361c0d940e90adacb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Claw and tail meat, celery, scallions, lemon & mayo, on a toasted top-split bun"
+        },
+        {  # 108
+            "restaurant_id": 15,
+            "item_name": "Lobster Bake for 2 (2 lb lobster)",
+            "item_type": "Kitchen - Lobster",
+            "price": 110.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d508e97cf5034aaff30673b639d31511/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Fresh steamed north-Atlantic lobster, clams, mussels, chorizo, potatoes & corn-on-the-cob served in a rich seafood broth (serves 2)"
+        },
+        {  # 109
+            "restaurant_id": 15,
+            "item_name": "Lobster Roll Combo",
+            "item_type": "Kitchen - Lobster",
+            "price": 30.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c41d3aa453ffae5047dc65a9fc2fc764/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Maine style lobster roll, chips & choice of soup. Perfect for a picnic!"
+        },
+        {  # 110
+            "restaurant_id": 15,
+            "item_name": "Steamed Lobster 1.25 LB",
+            "item_type": "Kitchen - Lobster",
+            "price": 51.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/07492de654b7f72da5f51ec13f177cb8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Freshly steamed north Atlantic hard-shell lobster served with butter & lemon"
+        },
+        {  # 111
+            "restaurant_id": 15,
+            "item_name": "Fish & Shrimp Fry",
+            "item_type": "Kitchen - Kitchen",
+            "price": 21.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/30466d13a2774b7d1d068ad44f9235f6/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Crispy sole, fried shrimp, fries, old bay, lemon & tartar sauce"
+        },
+        {  # 112
+            "restaurant_id": 15,
+            "item_name": "Broiled Miso Oysters",
+            "item_type": "Kitchen - Kitchen",
+            "price": 16.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9a10fa7415ff95d5ce7645b7457fb498/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Garlic butter, bacon, pickled shallot, breadcrumbs, sautéed kale"
+        },
+        {  # 113
+            "restaurant_id": 15,
+            "item_name": "Peel-N-Eat Shrimp",
+            "item_type": "Kitchen - Kitchen",
+            "price": 18.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/56ecdc454549e577c9af2cc002c08440/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Steamed & Chilled Shrimp Tossed in Old Bay and served with Lemon"
+        },
+        {  # 114
+            "restaurant_id": 15,
+            "item_name": "Chopped Salad",
+            "item_type": "Kitchen - Kitchen",
+            "price": 15.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4d4951e429397ce30e82624775abc2be/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine, kale, green beans, cherry tomatoes, scallion, cucumber, red onion, feta cheese, dill & balsamic dressing."
+        },
+        {  # 115
+            "restaurant_id": 15,
+            "item_name": "Crab Cake",
+            "item_type": "Kitchen - Kitchen",
+            "price": 20.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2c9cb9cf999f4114dd12a05e6660f279/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Lump crab meat, boston lettuce, tomato & house remoulade, on a grilled potato bun."
+        },
+        {  # 116
+            "restaurant_id": 15,
+            "item_name": "Grain Bowl",
+            "item_type": "Kitchen - Kitchen",
+            "price": 18.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/97a13d5a4edc422a155cecd64d9e1c7e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Bulgar wheat mixed with salsa verde, sautéed kale and chickpeas (Choice of: Grilled Salmon or Grilled Shrimp)."
+        },
+        {  # 117
+            "restaurant_id": 15,
+            "item_name": "Salmon Burger",
+            "item_type": "Kitchen - Kitchen",
+            "price": 18.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e4cc40f4dedbb9bd0c16eb3242ef6143/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Atlantic salmon, pickled peppers, tomato, Boston lettuce & smoked aioli, on a grilled potato bun."
+        },
+        {  # 118
+            "restaurant_id": 15,
+            "item_name": "Salmon Avocado Roll",
+            "item_type": "Sushi Bar - Sushi Rolls",
+            "price": 9.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1a09c76a48a9f9644f197c13f3631ccb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Salmon, avocado, nori, white rice & sesame seeds."
+        },
+        {  # 119
+            "restaurant_id": 15,
+            "item_name": "Shrimp Tempura Roll",
+            "item_type": "Sushi Bar - Sushi Rolls",
+            "price": 12.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3367b0bcd333ffe2512b9f9e7357c4e4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Tempura fried shrimp w/avocado, cucumber, masago & topped with eel sauce."
+        },
+        {  # 120
+            "restaurant_id": 15,
+            "item_name": "Spicy Lobster Roll",
+            "item_type": "Sushi Bar - Sushi Rolls",
+            "price": 19.50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ae9fa16ae6a10140842f267dc58a4093/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Lobster meat w/ avocado, spicy sauce & masago."
+        },
         # {  # 121
         #     "restaurant_id": 15,
         #     "item_name": "Spicy Tuna Roll",
