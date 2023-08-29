@@ -673,231 +673,231 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/185388986cd6eb25a6cd63b92fa2229e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Spicy Sichuan chili sauce, peanuts, green onion, red chili peppers "
         },
-        # {  # 76
-        #     "restaurant_id": 4,
-        #     "item_name": "Ma Po Tofu",
-        #     "item_type": "Main Entrees",
-        #     "price": 21.00,
-        #     "calory": 490,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e7453c24b706b2404ecd6c9500b72ee7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Crispy silken tofu, sweet-spicy red chili sauce, steamed broccoli"
-        # },
-        # {  # 77
-        #     "restaurant_id": 4,
-        #     "item_name": "Mongolian Beef",
-        #     "item_type": "Main Entrees",
-        #     "price": 29.00,
-        #     "calory": 380,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e343075df0bd016906832b34166837f8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Sweet soy glaze, flank steak, garlic, snipped green onion"
-        # },
-        # {  # 78
-        #     "restaurant_id": 4,
-        #     "item_name": "Wagyu Steak",
-        #     "item_type": "Main Entrees",
-        #     "price": 48.00,
-        #     "calory": 230,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d5739c079b7ca458176b4f6db27c5a68/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Savory bulgogi glaze, wok-seared mushrooms, Asian chimichurri sauce "
-        # },
-        # {  # 79
-        #     "restaurant_id": 4,
-        #     "item_name": "Miso Glazed Salmon",
-        #     "item_type": "Main Entrees",
-        #     "price": 32.00,
-        #     "calory": 320,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/eb75b2c5202bdbf3d5aa6af6e54f76ca/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Grilled salmon, Asian mushrooms, spinach, cabbage, garlic-ginger aromatics, miso glaze"
-        # },
-        # {  # 80
-        #     "restaurant_id": 4,
-        #     "item_name": "Gluten Free | Singapore Street Noodles",
-        #     "item_type": "Gluten Free",
-        #     "price": 23.50,
-        #     "calory": 610,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f3d90b393266ae9a603fcfc4a8a6b640/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Thin rice noodles, light curry sauce, chicken, shrimp, onion, julienned vegetables "
-        # },
-        # {  # 81
-        #     "restaurant_id": 4,
-        #     "item_name": "Gluten Free | Fried Rice",
-        #     "item_type": "Gluten Free",
-        #     "price": 20.00,
-        #     "calory": 450,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f1dc0e12e5727c2af230545f303e9c1b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Wok-tossed with egg, carrots, bean sprouts, green onion"
-        # },
-        # {  # 82
-        #     "restaurant_id": 4,
-        #     "item_name": "Gluten Free | Chocolate Souffle",
-        #     "item_type": "Gluten Free",
-        #     "price": 13.00,
-        #     "calory": 400,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/064efd0276d83e2b64180db8a60a6f4c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Chocolate soufflé, vanilla ice cream, raspberry sauce"
-        # },
-        # {  # 83
-        #     "restaurant_id": 4,
-        #     "item_name": "Gluten Free | Egg Drop Soup Cup",
-        #     "item_type": "Gluten Free",
-        #     "price": 9.50,
-        #     "calory": 40,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2ce3c966ab12f8bf2534e4145a92ca7f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Velvety broth, julienned carrots, green onion"
-        # },
-        # {  # 84
-        #     "restaurant_id": 5,
-        #     "item_name": "Iced Chai Tea Latte",
-        #     "item_type": "Cold Coffees",
-        #     "price": 5.45,
-        #     "calory": 180,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d932f9eeeca81e9b68a67a75d2a6b575/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Black tea infused with cinnamon, clove, and other warming spices are combined with milk and ice for the perfect balance of sweet and spicy."
-        # },
-        # {  # 85
-        #     "restaurant_id": 5,
-        #     "item_name": "Iced Caramel Macchiato",
-        #     "item_type": "Cold Coffees",
-        #     "price": 5.75,
-        #     "calory": 180,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0f807b4e32b914f08da3ac400015ba36/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "We combine our rich, full-bodied espresso with vanilla-flavored syrup, milk and ice, then top it off with a caramel drizzle for an oh-so-sweet finish."
-        # },
-        # {  # 86
-        #     "restaurant_id": 5,
-        #     "item_name": "Iced Brown Sugar Oatmilk Shaken Espresso",
-        #     "item_type": "Cold Coffees",
-        #     "price": 6.15,
-        #     "calory": 100,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f56f0855a7acabddd4d116368bf2e593/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "First we shake Starbucks® Blonde espresso, brown sugar and cinnamon together, and then top it off with oatmilk and ice for a cool lift to power you through your day."
-        # },
-        # {  # 87
-        #     "restaurant_id": 5,
-        #     "item_name": "Iced Caffè Americano",
-        #     "item_type": "Cold Coffees",
-        #     "price": 3.95,
-        #     "calory": 10,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/357988caa65cb3bbd94e162d2ba05405/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Espresso shots topped with cold water produce a light layer of crema, then served over ice. The result: a wonderfully rich cup with depth and nuance. Pro Tip: For an additional boost, ask your barista to try this with an extra shot."
-        # },
-        # {  # 88
-        #     "restaurant_id": 5,
-        #     "item_name": "Salted Caramel Cream Cold Brew",
-        #     "item_type": "Cold Coffees",
-        #     "price": 5.75,
-        #     "calory": 190,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4fe6d45fa28ceaa366643f8afcee36bb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Here's a savory-meets-sweet refreshing beverage certain to delight: our signature, super-smooth cold brew, sweetened with a touch of caramel and topped with a salted, rich cold foam."
-        # },
-        # {  # 89
-        #     "restaurant_id": 5,
-        #     "item_name": "Starbucks® Cold Brew Coffee with Milk",
-        #     "item_type": "Cold Coffees",
-        #     "price": 4.95,
-        #     "calory": 25,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6f2aba446901aa426be6126bec9e052e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Our custom blend of beans are grown to steep long and cold for a super-smooth flavor. Starbucks® Cold brew is handcrafted in small batches daily, slow-steeped in cool water for 20 hours, without touching heat and finished with a splash of milk."
-        # },
-        # {  # 90
-        #     "restaurant_id": 5,
-        #     "item_name": "Caffè Latte",
-        #     "item_type": "Hot Coffees",
-        #     "price": 4.95,
-        #     "calory": 100,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c8e3f707caface9f3b529b7d8671c7d1/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Our dark, rich espresso balanced with steamed milk and a light layer of foam. A perfect milk-forward warm-up."
-        # },
-        # {  # 91
-        #     "restaurant_id": 5,
-        #     "item_name": "White Chocolate Mocha",
-        #     "item_type": "Hot Coffees",
-        #     "price": 5.75,
-        #     "calory": 230,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fdefc21d2afadff084d8a071a31fd6b0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Our signature espresso meets white chocolate sauce and steamed milk, and then is finished off with sweetened whipped cream to create this supreme white chocolate delight."
-        # },
-        # {  # 92
-        #     "restaurant_id": 5,
-        #     "item_name": "Caramel Macchiato",
-        #     "item_type": "Hot Coffees",
-        #     "price": 5.75,
-        #     "calory": 120,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1bd36f1ea68af7c6457337ba74b445d3/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Freshly steamed milk with vanilla-flavored syrup marked with espresso and topped with a caramel drizzle for an oh-so-sweet finish."
-        # },
-        # {  # 93
-        #     "restaurant_id": 5,
-        #     "item_name": "Cappuccino",
-        #     "item_type": "Hot Coffees",
-        #     "price": 4.95,
-        #     "calory": 70,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/bc8f2d402a705c9dd5320c5387223e21/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Dark, rich espresso lies in wait under a smoothed and stretched layer of thick milk foam. An alchemy of barista artistry and craft."
-        # },
-        # {  # 94
-        #     "restaurant_id": 5,
-        #     "item_name": "Mocha Cookie Crumble Frappuccino",
-        #     "item_type": "Frappuccino Blended Beverages",
-        #     "price": 6.15,
-        #     "calory": 350,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6d167b97ad74bc7f8b1e12564a8e0b32/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Frappuccino® Roast coffee, mocha sauce and Frappuccino® chips blended with milk and ice, layered on top of whipped cream and chocolate cookie crumble and topped with vanilla whipped cream, mocha drizzle and even more chocolate cookie crumble. Each sip is as good as the last . . . all the way to the end."
-        # },
-        # {  # 95
-        #     "restaurant_id": 5,
-        #     "item_name": "Caramel Frappuccino Blended Beverage",
-        #     "item_type": "Frappuccino Blended Beverages",
-        #     "price": 5.75,
-        #     "calory": 260,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e0d6a1fd09ac2d49a366b88ae0ab807c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Caramel syrup meets coffee, milk and ice for a rendezvous in the blender, while whipped cream and buttery caramel sauce layer the love on top. To change things up, try it affogato-style with a hot espresso shot poured right over the top."
-        # },
-        # {  # 96
-        #     "restaurant_id": 5,
-        #     "item_name": "Caffè Vanilla Frappuccino Blended Beverage",
-        #     "item_type": "Frappuccino Blended Beverages",
-        #     "price": 5.75,
-        #     "calory": 280,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0edae087222f0d82043caaf360332fba/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "We take Frappuccino® roast coffee and vanilla bean powder, combine them with milk and ice, topped with whipped cream. Tastes like happiness."
-        # },
-        # {  # 97
-        #     "restaurant_id": 5,
-        #     "item_name": "Dragon Drink Starbucks Refreshers® Beverage",
-        #     "item_type": "Cold Drinks",
-        #     "price": 5.65,
-        #     "calory": 110,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0d05e260dcdacd0f687eb756ac2bee18/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "This tropical-inspired pick-me-up—crafted with sweet mango and dragonfruit flavors and hand-shaken with creamy coconutmilk, ice and a scoop of real diced dragonfruit—creates a refreshing and surprising delight in the fall."
-        # },
-        # {  # 98
-        #     "restaurant_id": 5,
-        #     "item_name": "Strawberry Açaí Starbucks Refreshers Beverage",
-        #     "item_type": "Cold Drinks",
-        #     "price": 4.95,
-        #     "calory": 80,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/233695d11725dfdd2317107aba83dda4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Sweet strawberry flavors accented by passion fruit and açaí notes, shaken with ice and real strawberry pieces—a welcoming sweet spot of refreshment."
-        # },
-        # {  # 99
-        #     "restaurant_id": 5,
-        #     "item_name": "Paradise Drink Starbucks Refreshers Beverage",
-        #     "item_type": "Cold Drinks",
-        #     "price": 5.65,
-        #     "calory": 110,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a5ecbe2ba6df8ff2154fbd0ce98ad2dc/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Tropical flavors of pineapple and passionfruit combine with diced pineapple and creamy coconutmilk to create a delicious island escape."
-        # },
-        # {  # 100
-        #     "restaurant_id": 5,
-        #     "item_name": "Lemonade",
-        #     "item_type": "Cold Drinks",
-        #     "price": 2.95,
-        #     "calory": 80,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b0e4697135dbd08b84c9e3c2619d6044/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Awaken your taste buds with the zing of refreshing lemonade—this tangy, fresh sip puts a little zip in your step."
-        # },
+        {  # 76
+            "restaurant_id": 4,
+            "item_name": "Ma Po Tofu",
+            "item_type": "Main Entrees",
+            "price": 21.00,
+            "calory": 490,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e7453c24b706b2404ecd6c9500b72ee7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Crispy silken tofu, sweet-spicy red chili sauce, steamed broccoli"
+        },
+        {  # 77
+            "restaurant_id": 4,
+            "item_name": "Mongolian Beef",
+            "item_type": "Main Entrees",
+            "price": 29.00,
+            "calory": 380,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e343075df0bd016906832b34166837f8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Sweet soy glaze, flank steak, garlic, snipped green onion"
+        },
+        {  # 78
+            "restaurant_id": 4,
+            "item_name": "Wagyu Steak",
+            "item_type": "Main Entrees",
+            "price": 48.00,
+            "calory": 230,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d5739c079b7ca458176b4f6db27c5a68/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Savory bulgogi glaze, wok-seared mushrooms, Asian chimichurri sauce "
+        },
+        {  # 79
+            "restaurant_id": 4,
+            "item_name": "Miso Glazed Salmon",
+            "item_type": "Main Entrees",
+            "price": 32.00,
+            "calory": 320,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/eb75b2c5202bdbf3d5aa6af6e54f76ca/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Grilled salmon, Asian mushrooms, spinach, cabbage, garlic-ginger aromatics, miso glaze"
+        },
+        {  # 80
+            "restaurant_id": 4,
+            "item_name": "Gluten Free | Singapore Street Noodles",
+            "item_type": "Gluten Free",
+            "price": 23.50,
+            "calory": 610,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f3d90b393266ae9a603fcfc4a8a6b640/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Thin rice noodles, light curry sauce, chicken, shrimp, onion, julienned vegetables "
+        },
+        {  # 81
+            "restaurant_id": 4,
+            "item_name": "Gluten Free | Fried Rice",
+            "item_type": "Gluten Free",
+            "price": 20.00,
+            "calory": 450,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f1dc0e12e5727c2af230545f303e9c1b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Wok-tossed with egg, carrots, bean sprouts, green onion"
+        },
+        {  # 82
+            "restaurant_id": 4,
+            "item_name": "Gluten Free | Chocolate Souffle",
+            "item_type": "Gluten Free",
+            "price": 13.00,
+            "calory": 400,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/064efd0276d83e2b64180db8a60a6f4c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Chocolate soufflé, vanilla ice cream, raspberry sauce"
+        },
+        {  # 83
+            "restaurant_id": 4,
+            "item_name": "Gluten Free | Egg Drop Soup Cup",
+            "item_type": "Gluten Free",
+            "price": 9.50,
+            "calory": 40,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2ce3c966ab12f8bf2534e4145a92ca7f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Velvety broth, julienned carrots, green onion"
+        },
+        {  # 84
+            "restaurant_id": 5,
+            "item_name": "Iced Chai Tea Latte",
+            "item_type": "Cold Coffees",
+            "price": 5.45,
+            "calory": 180,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d932f9eeeca81e9b68a67a75d2a6b575/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Black tea infused with cinnamon, clove, and other warming spices are combined with milk and ice for the perfect balance of sweet and spicy."
+        },
+        {  # 85
+            "restaurant_id": 5,
+            "item_name": "Iced Caramel Macchiato",
+            "item_type": "Cold Coffees",
+            "price": 5.75,
+            "calory": 180,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0f807b4e32b914f08da3ac400015ba36/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "We combine our rich, full-bodied espresso with vanilla-flavored syrup, milk and ice, then top it off with a caramel drizzle for an oh-so-sweet finish."
+        },
+        {  # 86
+            "restaurant_id": 5,
+            "item_name": "Iced Brown Sugar Oatmilk Shaken Espresso",
+            "item_type": "Cold Coffees",
+            "price": 6.15,
+            "calory": 100,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f56f0855a7acabddd4d116368bf2e593/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "First we shake Starbucks® Blonde espresso, brown sugar and cinnamon together, and then top it off with oatmilk and ice for a cool lift to power you through your day."
+        },
+        {  # 87
+            "restaurant_id": 5,
+            "item_name": "Iced Caffè Americano",
+            "item_type": "Cold Coffees",
+            "price": 3.95,
+            "calory": 10,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/357988caa65cb3bbd94e162d2ba05405/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Espresso shots topped with cold water produce a light layer of crema, then served over ice. The result: a wonderfully rich cup with depth and nuance. Pro Tip: For an additional boost, ask your barista to try this with an extra shot."
+        },
+        {  # 88
+            "restaurant_id": 5,
+            "item_name": "Salted Caramel Cream Cold Brew",
+            "item_type": "Cold Coffees",
+            "price": 5.75,
+            "calory": 190,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4fe6d45fa28ceaa366643f8afcee36bb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Here's a savory-meets-sweet refreshing beverage certain to delight: our signature, super-smooth cold brew, sweetened with a touch of caramel and topped with a salted, rich cold foam."
+        },
+        {  # 89
+            "restaurant_id": 5,
+            "item_name": "Starbucks® Cold Brew Coffee with Milk",
+            "item_type": "Cold Coffees",
+            "price": 4.95,
+            "calory": 25,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6f2aba446901aa426be6126bec9e052e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Our custom blend of beans are grown to steep long and cold for a super-smooth flavor. Starbucks® Cold brew is handcrafted in small batches daily, slow-steeped in cool water for 20 hours, without touching heat and finished with a splash of milk."
+        },
+        {  # 90
+            "restaurant_id": 5,
+            "item_name": "Caffè Latte",
+            "item_type": "Hot Coffees",
+            "price": 4.95,
+            "calory": 100,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c8e3f707caface9f3b529b7d8671c7d1/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Our dark, rich espresso balanced with steamed milk and a light layer of foam. A perfect milk-forward warm-up."
+        },
+        {  # 91
+            "restaurant_id": 5,
+            "item_name": "White Chocolate Mocha",
+            "item_type": "Hot Coffees",
+            "price": 5.75,
+            "calory": 230,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fdefc21d2afadff084d8a071a31fd6b0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Our signature espresso meets white chocolate sauce and steamed milk, and then is finished off with sweetened whipped cream to create this supreme white chocolate delight."
+        },
+        {  # 92
+            "restaurant_id": 5,
+            "item_name": "Caramel Macchiato",
+            "item_type": "Hot Coffees",
+            "price": 5.75,
+            "calory": 120,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1bd36f1ea68af7c6457337ba74b445d3/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Freshly steamed milk with vanilla-flavored syrup marked with espresso and topped with a caramel drizzle for an oh-so-sweet finish."
+        },
+        {  # 93
+            "restaurant_id": 5,
+            "item_name": "Cappuccino",
+            "item_type": "Hot Coffees",
+            "price": 4.95,
+            "calory": 70,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/bc8f2d402a705c9dd5320c5387223e21/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Dark, rich espresso lies in wait under a smoothed and stretched layer of thick milk foam. An alchemy of barista artistry and craft."
+        },
+        {  # 94
+            "restaurant_id": 5,
+            "item_name": "Mocha Cookie Crumble Frappuccino",
+            "item_type": "Frappuccino Blended Beverages",
+            "price": 6.15,
+            "calory": 350,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6d167b97ad74bc7f8b1e12564a8e0b32/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Frappuccino® Roast coffee, mocha sauce and Frappuccino® chips blended with milk and ice, layered on top of whipped cream and chocolate cookie crumble and topped with vanilla whipped cream, mocha drizzle and even more chocolate cookie crumble. Each sip is as good as the last . . . all the way to the end."
+        },
+        {  # 95
+            "restaurant_id": 5,
+            "item_name": "Caramel Frappuccino Blended Beverage",
+            "item_type": "Frappuccino Blended Beverages",
+            "price": 5.75,
+            "calory": 260,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e0d6a1fd09ac2d49a366b88ae0ab807c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Caramel syrup meets coffee, milk and ice for a rendezvous in the blender, while whipped cream and buttery caramel sauce layer the love on top. To change things up, try it affogato-style with a hot espresso shot poured right over the top."
+        },
+        {  # 96
+            "restaurant_id": 5,
+            "item_name": "Caffè Vanilla Frappuccino Blended Beverage",
+            "item_type": "Frappuccino Blended Beverages",
+            "price": 5.75,
+            "calory": 280,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0edae087222f0d82043caaf360332fba/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "We take Frappuccino® roast coffee and vanilla bean powder, combine them with milk and ice, topped with whipped cream. Tastes like happiness."
+        },
+        {  # 97
+            "restaurant_id": 5,
+            "item_name": "Dragon Drink Starbucks Refreshers® Beverage",
+            "item_type": "Cold Drinks",
+            "price": 5.65,
+            "calory": 110,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0d05e260dcdacd0f687eb756ac2bee18/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "This tropical-inspired pick-me-up—crafted with sweet mango and dragonfruit flavors and hand-shaken with creamy coconutmilk, ice and a scoop of real diced dragonfruit—creates a refreshing and surprising delight in the fall."
+        },
+        {  # 98
+            "restaurant_id": 5,
+            "item_name": "Strawberry Açaí Starbucks Refreshers Beverage",
+            "item_type": "Cold Drinks",
+            "price": 4.95,
+            "calory": 80,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/233695d11725dfdd2317107aba83dda4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Sweet strawberry flavors accented by passion fruit and açaí notes, shaken with ice and real strawberry pieces—a welcoming sweet spot of refreshment."
+        },
+        {  # 99
+            "restaurant_id": 5,
+            "item_name": "Paradise Drink Starbucks Refreshers Beverage",
+            "item_type": "Cold Drinks",
+            "price": 5.65,
+            "calory": 110,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a5ecbe2ba6df8ff2154fbd0ce98ad2dc/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Tropical flavors of pineapple and passionfruit combine with diced pineapple and creamy coconutmilk to create a delicious island escape."
+        },
+        {  # 100
+            "restaurant_id": 5,
+            "item_name": "Lemonade",
+            "item_type": "Cold Drinks",
+            "price": 2.95,
+            "calory": 80,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b0e4697135dbd08b84c9e3c2619d6044/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Awaken your taste buds with the zing of refreshing lemonade—this tangy, fresh sip puts a little zip in your step."
+        },
         # {  # 101
         #     "restaurant_id": 5,
         #     "item_name": "Iced Black Tea",
