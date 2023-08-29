@@ -448,231 +448,231 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b1329b94f3156d127c203710d0f55afb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Real strawberry and house-made lemonade. (Try it naturally caffeinated!)"
         },
-        # {  # 51
-        #     "restaurant_id": 3,
-        #     "item_name": "Shack-made Lemonade",
-        #     "item_type": "Drinks",
-        #     "price": 4.79,
-        #     "calory": 200,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/d4c4a45f-bd46-48e3-b4af-f73294cfd03e.jpeg",
-        #     "description": "Shack-made and sweetened just right"
-        # },
-        # {  # 52
-        #     "restaurant_id": 3,
-        #     "item_name": "Fifty/Fifty",
-        #     "item_type": "Drinks",
-        #     "price": 4.79,
-        #     "calory": 120,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/44621e63-48dc-4feb-adb5-c63ddc1b2f9e.jpeg",
-        #     "description": "Half lemonade, half organic iced tea"
-        # },
-        # {  # 53
-        #     "restaurant_id": 3,
-        #     "item_name": "Draft Root Beer",
-        #     "item_type": "Drinks",
-        #     "price": 4.49,
-        #     "calory": 220,
-        #     "image_url": "https://d1ralsognjng37.cloudfront.net/3f9034f0-50eb-43f6-b5ea-4a3910000cb5.jpeg",
-        #     "description": "Made with real Louisiana cane sugar"
-        # },
-        # {  # 54
-        #     "restaurant_id": 4,
-        #     "item_name": "Chang's Chicken Lettuce Wraps",
-        #     "item_type": "Appetizers",
-        #     "price": 18.00,
-        #     "calory": 330,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9e724f0eebee13b378fb9c7a00154bc7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "A secret family recipe and our signature dish. Enough said."
-        # },
-        # {  # 55
-        #     "restaurant_id": 4,
-        #     "item_name": "Dynamite Shrimp",
-        #     "item_type": "Appetizers",
-        #     "price": 18.50,
-        #     "calory": 290,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b61f1cedff0879c4528e0b8376c1b1b7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Tempura-battered, tossed with a sriracha aioli"
-        # },
-        # {  # 56
-        #     "restaurant_id": 4,
-        #     "item_name": "Chili-Garlic Green Beans",
-        #     "item_type": "Appetizers",
-        #     "price": 12.00,
-        #     "calory": 260,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f3d88e5fb5e716f5540c4871f6644927/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Fiery red chili sauce, fresh garlic, Sichuan preserves"
-        # },
-        # {  # 57
-        #     "restaurant_id": 4,
-        #     "item_name": "BBQ Pork Spare Ribs",
-        #     "item_type": "Appetizers",
-        #     "price": 19.00,
-        #     "calory": 430,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3d714f777aa077b40b903af03ee225a0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Slow-braised pork ribs wok-seared with a tangy Asian barbecue sauce"
-        # },
-        # {  # 58
-        #     "restaurant_id": 4,
-        #     "item_name": "Tempura Calamari",
-        #     "item_type": "Appetizers",
-        #     "price": 17.50,
-        #     "calory": 380,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/32e750cc6ae4fb4c34b27d3c0fa50b04/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Tempura Calamari"
-        # },
-        # {  # 59
-        #     "restaurant_id": 4,
-        #     "item_name": "Chang's Vegetarian Lettuce Wraps",
-        #     "item_type": "Appetizers",
-        #     "price": 18.00,
-        #     "calory": 260,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d550fdee4847b1b5a49a85c5f4f4a52b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "A secret family recipe and our signature dish. Enough said. "
-        # },
-        # {  # 60
-        #     "restaurant_id": 4,
-        #     "item_name": "Vegetable Spring Rolls | 3 Count",
-        #     "item_type": "Dim Sum",
-        #     "price": 12.00,
-        #     "calory": 240,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/12408043a8f1c4765d0a7c99f8396bec/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Crispy rolls stuffed with julienned veggies, sweet chili dipping sauce Calories listed are per piece"
-        # },
-        # {  # 61
-        #     "restaurant_id": 4,
-        #     "item_name": "Handmade Shrimp Dumplings | 6 Count",
-        #     "item_type": "Dim Sum",
-        #     "price": 16.00,
-        #     "calory": 50,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/548235d32c95ac442e9313c1bc6a2be4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Pan-fried or steamed, light chili sauce drizzle Calories listed are per piece"
-        # },
-        # {  # 62
-        #     "restaurant_id": 4,
-        #     "item_name": "Pork Egg Rolls | 2 Count",
-        #     "item_type": "Dim Sum",
-        #     "price": 12.50,
-        #     "calory": 490,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ab47fd38c2ef3454b7a00f02e8fd638f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Hand-rolled with julienned veggies, sweet and sour mustard sauce Calories listed are per piece"
-        # },
-        # {  # 63
-        #     "restaurant_id": 4,
-        #     "item_name": "Dynamite Roll",
-        #     "item_type": "Sushi",
-        #     "price": 19.50,
-        #     "calory": 100,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a70fd0eda78f3cbe4fc3860f990456ae/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Tempura-battered shrimp, signature California roll, sriracha aioli, umami sauce Calories listed are per piece"
-        # },
-        # {  # 64
-        #     "restaurant_id": 4,
-        #     "item_name": "Shrimp Tempura Roll",
-        #     "item_type": "Sushi",
-        #     "price": 18.50,
-        #     "calory": 70,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/26954c79967851364b2ccfe85b7f8f33/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Tempura shrimp, kani kama, cucumber, avocado, umami sauce Calories listed are per piece"
-        # },
-        # {  # 65
-        #     "restaurant_id": 4,
-        #     "item_name": "California Roll",
-        #     "item_type": "Sushi",
-        #     "price": 16.50,
-        #     "calory": 50,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0acdc1850880b5471848d527ea3b0cc8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Kani kama, cucumber, avocado, umami sauce Calories listed are per piece"
-        # },
-        # {  # 66
-        #     "restaurant_id": 4,
-        #     "item_name": "Spicy Tuna Roll",
-        #     "item_type": "Sushi",
-        #     "price": 18.00,
-        #     "calory": 45,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/251ed6eddd5ab117723be8caad8e61b0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Ahi, cucumber, spicy sriracha Calories listed are per piece"
-        # },
-        # {  # 67
-        #     "restaurant_id": 4,
-        #     "item_name": "Kung Pao Dragon Roll",
-        #     "item_type": "Sushi",
-        #     "price": 19.00,
-        #     "calory": 60,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7a6304ad2107ecc1d48092f86c97df00/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Signature California roll, seared Ahi, sriracha, tempura crunch, peanuts Calories listed are per piece"
-        # },
-        # {  # 68
-        #     "restaurant_id": 4,
-        #     "item_name": "Kung Pao Chicken Bowl",
-        #     "item_type": "Wok-Fired Bowls",
-        #     "price": 17.50,
-        #     "calory": 590,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b27d25af458d265f7eb90adb495b1977/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Spicy Sichuan chili sauce, peanuts, green onion, red chili peppers"
-        # },
-        # {  # 69
-        #     "restaurant_id": 4,
-        #     "item_name": "Orange Chicken Bowl",
-        #     "item_type": "Wok-Fired Bowls",
-        #     "price": 17.50,
-        #     "calory": 670,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/67fe2266586e60e04b8ac904e606d12b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "NEW RECIPE Lightly battered, sweet citrus chili sauce, fresh orange slices"
-        # },
-        # {  # 70
-        #     "restaurant_id": 4,
-        #     "item_name": "Mongolian Beef Bowl",
-        #     "item_type": "Wok-Fired Bowls",
-        #     "price": 19.50,
-        #     "calory": 460,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a3304437ae8e314345e9d8b86976f395/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Sweet soy glaze, flank steak, garlic, snipped green onion"
-        # },
-        # {  # 71
-        #     "restaurant_id": 4,
-        #     "item_name": "Chang's Spicy Chicken Bowl",
-        #     "item_type": "Wok-Fired Bowls",
-        #     "price": 17.50,
-        #     "calory": 810,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/765425560ad3ec24b1f89dcebf772230/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Signature sweet-spicy chili sauce, green onion"
-        # },
-        # {  # 72
-        #     "restaurant_id": 4,
-        #     "item_name": "Sesame Chicken Bowl",
-        #     "item_type": "Wok-Fired Bowls",
-        #     "price": 17.50,
-        #     "calory": 590,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/505fc14569d5d4b608982b5279eede31/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Sesame sauce, broccoli, bell peppers, onion"
-        # },
-        # {  # 73
-        #     "restaurant_id": 4,
-        #     "item_name": "Sweet & Sour Chicken Bowl",
-        #     "item_type": "Wok-Fired Bowls",
-        #     "price": 17.50,
-        #     "calory": 630,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ef7a9411b1759bd3bc5a5e323ac0bf91/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Sweet & sour sauce, pineapple, onion, bell peppers, ginger"
-        # },
-        # {  # 74
-        #     "restaurant_id": 4,
-        #     "item_name": "Ginger Chicken with Broccoli Bowl",
-        #     "item_type": "Wok-Fired Bowls",
-        #     "price": 17.50,
-        #     "calory": 350,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d2f51f4b1f61f21ec12140ccc2132ad2/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Ginger-garlic aromatics, green onion, steamed broccoli"
-        # },
-        # {  # 75
-        #     "restaurant_id": 4,
-        #     "item_name": "Kung Pao Chicken",
-        #     "item_type": "Main Entrees",
-        #     "price": 26.00,
-        #     "calory": 520,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/185388986cd6eb25a6cd63b92fa2229e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Spicy Sichuan chili sauce, peanuts, green onion, red chili peppers "
-        # },
+        {  # 51
+            "restaurant_id": 3,
+            "item_name": "Shack-made Lemonade",
+            "item_type": "Drinks",
+            "price": 4.79,
+            "calory": 200,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/d4c4a45f-bd46-48e3-b4af-f73294cfd03e.jpeg",
+            "description": "Shack-made and sweetened just right"
+        },
+        {  # 52
+            "restaurant_id": 3,
+            "item_name": "Fifty/Fifty",
+            "item_type": "Drinks",
+            "price": 4.79,
+            "calory": 120,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/44621e63-48dc-4feb-adb5-c63ddc1b2f9e.jpeg",
+            "description": "Half lemonade, half organic iced tea"
+        },
+        {  # 53
+            "restaurant_id": 3,
+            "item_name": "Draft Root Beer",
+            "item_type": "Drinks",
+            "price": 4.49,
+            "calory": 220,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/3f9034f0-50eb-43f6-b5ea-4a3910000cb5.jpeg",
+            "description": "Made with real Louisiana cane sugar"
+        },
+        {  # 54
+            "restaurant_id": 4,
+            "item_name": "Chang's Chicken Lettuce Wraps",
+            "item_type": "Appetizers",
+            "price": 18.00,
+            "calory": 330,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9e724f0eebee13b378fb9c7a00154bc7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A secret family recipe and our signature dish. Enough said."
+        },
+        {  # 55
+            "restaurant_id": 4,
+            "item_name": "Dynamite Shrimp",
+            "item_type": "Appetizers",
+            "price": 18.50,
+            "calory": 290,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b61f1cedff0879c4528e0b8376c1b1b7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Tempura-battered, tossed with a sriracha aioli"
+        },
+        {  # 56
+            "restaurant_id": 4,
+            "item_name": "Chili-Garlic Green Beans",
+            "item_type": "Appetizers",
+            "price": 12.00,
+            "calory": 260,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f3d88e5fb5e716f5540c4871f6644927/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Fiery red chili sauce, fresh garlic, Sichuan preserves"
+        },
+        {  # 57
+            "restaurant_id": 4,
+            "item_name": "BBQ Pork Spare Ribs",
+            "item_type": "Appetizers",
+            "price": 19.00,
+            "calory": 430,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3d714f777aa077b40b903af03ee225a0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Slow-braised pork ribs wok-seared with a tangy Asian barbecue sauce"
+        },
+        {  # 58
+            "restaurant_id": 4,
+            "item_name": "Tempura Calamari",
+            "item_type": "Appetizers",
+            "price": 17.50,
+            "calory": 380,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/32e750cc6ae4fb4c34b27d3c0fa50b04/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Tempura Calamari"
+        },
+        {  # 59
+            "restaurant_id": 4,
+            "item_name": "Chang's Vegetarian Lettuce Wraps",
+            "item_type": "Appetizers",
+            "price": 18.00,
+            "calory": 260,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d550fdee4847b1b5a49a85c5f4f4a52b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A secret family recipe and our signature dish. Enough said. "
+        },
+        {  # 60
+            "restaurant_id": 4,
+            "item_name": "Vegetable Spring Rolls | 3 Count",
+            "item_type": "Dim Sum",
+            "price": 12.00,
+            "calory": 240,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/12408043a8f1c4765d0a7c99f8396bec/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Crispy rolls stuffed with julienned veggies, sweet chili dipping sauce Calories listed are per piece"
+        },
+        {  # 61
+            "restaurant_id": 4,
+            "item_name": "Handmade Shrimp Dumplings | 6 Count",
+            "item_type": "Dim Sum",
+            "price": 16.00,
+            "calory": 50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/548235d32c95ac442e9313c1bc6a2be4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Pan-fried or steamed, light chili sauce drizzle Calories listed are per piece"
+        },
+        {  # 62
+            "restaurant_id": 4,
+            "item_name": "Pork Egg Rolls | 2 Count",
+            "item_type": "Dim Sum",
+            "price": 12.50,
+            "calory": 490,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ab47fd38c2ef3454b7a00f02e8fd638f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Hand-rolled with julienned veggies, sweet and sour mustard sauce Calories listed are per piece"
+        },
+        {  # 63
+            "restaurant_id": 4,
+            "item_name": "Dynamite Roll",
+            "item_type": "Sushi",
+            "price": 19.50,
+            "calory": 100,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a70fd0eda78f3cbe4fc3860f990456ae/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Tempura-battered shrimp, signature California roll, sriracha aioli, umami sauce Calories listed are per piece"
+        },
+        {  # 64
+            "restaurant_id": 4,
+            "item_name": "Shrimp Tempura Roll",
+            "item_type": "Sushi",
+            "price": 18.50,
+            "calory": 70,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/26954c79967851364b2ccfe85b7f8f33/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Tempura shrimp, kani kama, cucumber, avocado, umami sauce Calories listed are per piece"
+        },
+        {  # 65
+            "restaurant_id": 4,
+            "item_name": "California Roll",
+            "item_type": "Sushi",
+            "price": 16.50,
+            "calory": 50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0acdc1850880b5471848d527ea3b0cc8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Kani kama, cucumber, avocado, umami sauce Calories listed are per piece"
+        },
+        {  # 66
+            "restaurant_id": 4,
+            "item_name": "Spicy Tuna Roll",
+            "item_type": "Sushi",
+            "price": 18.00,
+            "calory": 45,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/251ed6eddd5ab117723be8caad8e61b0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Ahi, cucumber, spicy sriracha Calories listed are per piece"
+        },
+        {  # 67
+            "restaurant_id": 4,
+            "item_name": "Kung Pao Dragon Roll",
+            "item_type": "Sushi",
+            "price": 19.00,
+            "calory": 60,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7a6304ad2107ecc1d48092f86c97df00/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Signature California roll, seared Ahi, sriracha, tempura crunch, peanuts Calories listed are per piece"
+        },
+        {  # 68
+            "restaurant_id": 4,
+            "item_name": "Kung Pao Chicken Bowl",
+            "item_type": "Wok-Fired Bowls",
+            "price": 17.50,
+            "calory": 590,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b27d25af458d265f7eb90adb495b1977/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Spicy Sichuan chili sauce, peanuts, green onion, red chili peppers"
+        },
+        {  # 69
+            "restaurant_id": 4,
+            "item_name": "Orange Chicken Bowl",
+            "item_type": "Wok-Fired Bowls",
+            "price": 17.50,
+            "calory": 670,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/67fe2266586e60e04b8ac904e606d12b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "NEW RECIPE Lightly battered, sweet citrus chili sauce, fresh orange slices"
+        },
+        {  # 70
+            "restaurant_id": 4,
+            "item_name": "Mongolian Beef Bowl",
+            "item_type": "Wok-Fired Bowls",
+            "price": 19.50,
+            "calory": 460,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a3304437ae8e314345e9d8b86976f395/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Sweet soy glaze, flank steak, garlic, snipped green onion"
+        },
+        {  # 71
+            "restaurant_id": 4,
+            "item_name": "Chang's Spicy Chicken Bowl",
+            "item_type": "Wok-Fired Bowls",
+            "price": 17.50,
+            "calory": 810,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/765425560ad3ec24b1f89dcebf772230/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Signature sweet-spicy chili sauce, green onion"
+        },
+        {  # 72
+            "restaurant_id": 4,
+            "item_name": "Sesame Chicken Bowl",
+            "item_type": "Wok-Fired Bowls",
+            "price": 17.50,
+            "calory": 590,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/505fc14569d5d4b608982b5279eede31/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Sesame sauce, broccoli, bell peppers, onion"
+        },
+        {  # 73
+            "restaurant_id": 4,
+            "item_name": "Sweet & Sour Chicken Bowl",
+            "item_type": "Wok-Fired Bowls",
+            "price": 17.50,
+            "calory": 630,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ef7a9411b1759bd3bc5a5e323ac0bf91/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Sweet & sour sauce, pineapple, onion, bell peppers, ginger"
+        },
+        {  # 74
+            "restaurant_id": 4,
+            "item_name": "Ginger Chicken with Broccoli Bowl",
+            "item_type": "Wok-Fired Bowls",
+            "price": 17.50,
+            "calory": 350,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d2f51f4b1f61f21ec12140ccc2132ad2/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Ginger-garlic aromatics, green onion, steamed broccoli"
+        },
+        {  # 75
+            "restaurant_id": 4,
+            "item_name": "Kung Pao Chicken",
+            "item_type": "Main Entrees",
+            "price": 26.00,
+            "calory": 520,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/185388986cd6eb25a6cd63b92fa2229e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Spicy Sichuan chili sauce, peanuts, green onion, red chili peppers "
+        },
         # {  # 76
         #     "restaurant_id": 4,
         #     "item_name": "Ma Po Tofu",
