@@ -54,6 +54,15 @@ def seed_reviews():
          "message": "Their mobile ordering is convenient, and the drinks are usually prepared well. Sometimes the wait can be long during peak hours."},
         {"reviewer_id": 3, "restaurant_id": 5, "rating": 5,
          "message": "Starbucks has a wide variety of delicious drinks. Their caramel macchiato is my favorite. The service is usually fast, and I appreciate their cozy atmosphere."},
+
+        {"reviewer_id": 3, "restaurant_id": 6, "rating": 4,
+         "message": "It's close and easy to order and fast delivery."},
+        {"reviewer_id": 8, "restaurant_id": 6, "rating": 5,
+         "message": "Fantastic. Fresh and hot."},
+        {"reviewer_id": 11, "restaurant_id": 6, "rating": 5,
+         "message": "Taco Tuesday!!!"},
+
+
     ]
 
     seed_reviews = [db.session.add(

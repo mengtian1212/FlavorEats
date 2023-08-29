@@ -33,7 +33,7 @@ def seed_restaurants():
             "lng": -73.992232
         },
         {  # 3
-            "owner_id": 1,
+            "owner_id": 2,
             "name": "Shake Shack",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/66e0f9d70b3fb76cbec9ec5203d4cfea/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
             "description": "Shake Shack is an American fast casual restaurant chain based in New York City. It started out as a hot dog cart inside Madison Square Park in 2001, and its popularity steadily grew. ",
@@ -47,7 +47,7 @@ def seed_restaurants():
             "lng": -73.986337
         },
         {  # 4
-            "owner_id": 2,
+            "owner_id": 1,
             "name": "P.F. Chang's",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2892d0438d2d0db230564521ee2ac04b/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
             "delivery_fee": 0,
