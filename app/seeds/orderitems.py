@@ -14,15 +14,16 @@ def seed_orderitems():
         {"order_id": 2, "item_id": 11, "quantity": 2},
         {"order_id": 2, "item_id": 20, "quantity": 2},
         # order 3 restaurant 2
-        {"order_id": 3, "item_id": 28, "quantity": 1},
-        {"order_id": 3, "item_id": 32, "quantity": 1},
-        # order 4 restaurant 5
-        {"order_id": 4, "item_id": 47, "quantity": 2},
+        {"order_id": 3, "item_id": 27, "quantity": 3},
+        # order 4 restaurant 2
+        {"order_id": 4, "item_id": 28, "quantity": 1},
+        {"order_id": 4, "item_id": 32, "quantity": 1},
         # order 5 restaurant 5
-        {"order_id": 5, "item_id": 41, "quantity": 1},
-        {"order_id": 5, "item_id": 54, "quantity": 1},
-        # order 6 restaurant 3
-        {"order_id": 6, "item_id": 27, "quantity": 3},
+        {"order_id": 5, "item_id": 97, "quantity": 2},
+        # order 6 restaurant 5
+        {"order_id": 6, "item_id": 91, "quantity": 1},
+        {"order_id": 6, "item_id": 104, "quantity": 1},
+
     ]
 
     seed_menuitems = [db.session.add(
