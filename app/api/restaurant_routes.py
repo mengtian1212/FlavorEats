@@ -13,16 +13,6 @@ import random
 
 restaurant_routes = Blueprint('restaurants', __name__)
 
-user_images = [
-    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9538c4f1cb0d524a.svg",
-    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/544c3c3781e0db92.svg",
-    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/21f488d3249d6f03.svg",
-    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d590fac5df89924d.svg",
-    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9f716d4b83f1173e.svg",
-    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/76cd7fa5fcf22251.svg",
-    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d96375ed3fb7384c.svg",
-]
-
 
 @restaurant_routes.route('')
 def get_all_restaurants():
@@ -159,7 +149,8 @@ def add_review_to_restaurant(restaurantId):
         db.session.add(new_review)
         db.session.commit()
         response = new_review.to_dict()
-        response["reviewer"] = {"image_url": new_review.user.image_url if new_review.user.image_url else random.choice(user_images),
+        print("fdfdfddf", new_review.user.image_url)
+        response["reviewer"] = {"image_url": new_review.user.image_url,
                                 "first_name": new_review.user.first_name,
                                 "last_name": new_review.user.last_name}
         return response

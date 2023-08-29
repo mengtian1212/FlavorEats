@@ -20,20 +20,6 @@ def seed_restaurants():
         },
         {  # 2
             "owner_id": 1,
-            "name": "Shake Shack",
-            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/66e0f9d70b3fb76cbec9ec5203d4cfea/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
-            "description": "Shake Shack is an American fast casual restaurant chain based in New York City. It started out as a hot dog cart inside Madison Square Park in 2001, and its popularity steadily grew. ",
-            "delivery_fee": 0.99,
-            "cusine_types": "American#Fast Food#Burgers#Comfort Food#Ice cream",
-            "price_ranges": "$",
-            "address": "23rd And Madison Avenue, New York, NY 10010",
-            "city": "New York",
-            "state": "NY",
-            "lat": 40.741922,
-            "lng": -73.986337
-        },
-        {  # 3
-            "owner_id": 1,
             "name": "Gyu-Kaku Japanese BBQ",
             "image_url": "https://d1ralsognjng37.cloudfront.net/ece58bad-1d56-4102-893c-a087f7897c39.jpeg",
             "description": "Gyu-Kaku is a renowned Japanese barbecue (yakiniku) restaurant that offers an interactive and flavorful dining experience. Originating from Japan, Gyu-Kaku invites diners to grill their own high-quality meats and vegetables right at their table, fostering a sense of fun and community. ",
@@ -46,12 +32,26 @@ def seed_restaurants():
             "lat": 40.727246,
             "lng": -73.992232
         },
+        {  # 3
+            "owner_id": 1,
+            "name": "Shake Shack",
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/66e0f9d70b3fb76cbec9ec5203d4cfea/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
+            "description": "Shake Shack is an American fast casual restaurant chain based in New York City. It started out as a hot dog cart inside Madison Square Park in 2001, and its popularity steadily grew. ",
+            "delivery_fee": 0.99,
+            "cusine_types": "American#Fast Food#Burgers#Comfort Food#Ice cream#Dessert",
+            "price_ranges": "$",
+            "address": "23rd And Madison Avenue, New York, NY 10010",
+            "city": "New York",
+            "state": "NY",
+            "lat": 40.741922,
+            "lng": -73.986337
+        },
         {  # 4
             "owner_id": 2,
             "name": "P.F. Chang's",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2892d0438d2d0db230564521ee2ac04b/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
             "delivery_fee": 0,
-            "cusine_types": "Chinese#Asian",
+            "cusine_types": "Chinese#Asian#Sushi#Gluten-free",
             "price_ranges": "$$",
             "address": "113 University Place, New York, NY 10003",
             "city": "New York",

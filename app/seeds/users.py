@@ -1,6 +1,17 @@
 from app.models import db, User, environment, SCHEMA
 from sqlalchemy.sql import text
 
+user_images = [
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9538c4f1cb0d524a.svg",  # demo     user8
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/544c3c3781e0db92.svg",  # sheldon  user9
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/21f488d3249d6f03.svg",  # penny    user10
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d590fac5df89924d.svg",  # leonard  user11
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9f716d4b83f1173e.svg",  # raj      user12
+    # amy      user13   user15
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/76cd7fa5fcf22251.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d96375ed3fb7384c.svg",  # user7    user14
+]
+
 
 # Adds a demo user, you can add other users here if you want
 def seed_users():
@@ -24,39 +35,39 @@ def seed_users():
         lat=37.7879, lng=-122.4075, city="San Francisco", state="CA")
 
     user7 = User(
-        username='user7', email='user7@gmail.com', password='password', first_name='user7', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='John', email='john@gmail.com', password='password', first_name='John', last_name='Smith', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d96375ed3fb7384c.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user8 = User(
-        username='user8', email='user8@gmail.com', password='password', first_name='user8', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='Emily', email='emily@gmail.com', password='password', first_name='Emily', last_name='Johnson', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9538c4f1cb0d524a.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user9 = User(
-        username='user9', email='user9@gmail.com', password='password', first_name='user7', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='Michael', email='michael@gmail.com', password='password', first_name='Michael', last_name='Williams', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/544c3c3781e0db92.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user10 = User(
-        username='user10', email='user10@gmail.com', password='password', first_name='user10', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='Olivia', email='olivia@gmail.com', password='password', first_name='Olivia', last_name='Jones', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/21f488d3249d6f03.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user11 = User(
-        username='user11', email='user11@gmail.com', password='password', first_name='user11', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='William', email='william@gmail.com', password='password', first_name='William', last_name='Brown', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d590fac5df89924d.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user12 = User(
-        username='user12', email='user12@gmail.com', password='password', first_name='user12', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='Ava', email='ava@gmail.com', password='password', first_name='Ava', last_name='Davis', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9f716d4b83f1173e.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user13 = User(
-        username='user13', email='user13@gmail.com', password='password', first_name='user13', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='Sophia', email='sophia@gmail.com', password='password', first_name='Sophia', last_name='Wilson', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/76cd7fa5fcf22251.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user14 = User(
-        username='user14', email='user14@gmail.com', password='password', first_name='user14', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='Robert', email='robert@gmail.com', password='password', first_name='Robert', last_name='Moore', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d96375ed3fb7384c.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     user15 = User(
-        username='user15', email='user15@gmail.com', password='password', first_name='user15', last_name='', phone_number="0000000000", image_url="", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
+        username='Mia', email='mia@gmail.com', password='password', first_name='Mia', last_name='Taylor', phone_number="0000000000", image_url="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/76cd7fa5fcf22251.svg", address="Bellevue Downtown Park, 10201 NE 4th St, Bellevue, WA 98004", zip="98004",
         lat=47.615875, lng=-122.19295, city="Bellevue", state="WA")
 
     db.session.add(demo)

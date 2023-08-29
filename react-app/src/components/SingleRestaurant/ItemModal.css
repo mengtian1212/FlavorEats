@@ -12,6 +12,10 @@
   overflow: hidden;
 }
 
+.right-item-container {
+  flex: 1;
+}
+
 .item-img1 {
   height: 492px;
   width: 492px;

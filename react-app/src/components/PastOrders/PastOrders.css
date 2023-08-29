@@ -318,3 +318,28 @@
   justify-content: center;
   cursor: not-allowed;
 }
+
+.no-past-order {
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.no-past-title {
+  margin-bottom: 12px;
+  line-height: 28px;
+  font-size: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+.no-past-shop {
+  text-decoration: underline;
+  color: rgb(4, 136, 72);
+  font-size: 20px;
+  line-height: 28px;
+  cursor: pointer;
+}
