@@ -33,6 +33,13 @@ def seed_orders():
         },
         {  # 4
             "user_id": 1,
+            "restaurant_id": 2,
+            "is_pickup": True,
+            "is_complete": False,
+            "delivery_address": "",
+        },
+        {  # 5
+            "user_id": 1,
             "restaurant_id": 5,
             "tip": 8,
             "is_pickup": False,
@@ -41,20 +48,14 @@ def seed_orders():
             "delivery_lat": 40.748817,
             "delivery_lng": -73.985428,
         },
-        {  # 5
+        {  # 6
             "user_id": 1,
             "restaurant_id": 5,
             "is_pickup": False,
             "is_complete": False,
             "delivery_address": "",
         },
-        {  # 6
-            "user_id": 1,
-            "restaurant_id": 2,
-            "is_pickup": True,
-            "is_complete": False,
-            "delivery_address": "",
-        },
+
     ]
     seed_orders = [db.session.add(
         Order(**order)) for order in orders]

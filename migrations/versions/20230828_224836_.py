@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: f84c601a9fd2
+Revision ID: 53b200ac8780
 Revises:
-Create Date: 2023-08-18 09:38:36.397721
+Create Date: 2023-08-28 22:48:36.054036
 
 """
 from alembic import op
@@ -11,8 +11,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = 'f84c601a9fd2'
+revision = '53b200ac8780'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -53,22 +54,21 @@ def upgrade():
     op.create_table('restaurants',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('owner_id', sa.Integer(), nullable=False),
-                    sa.Column('name', sa.String(length=255), nullable=False),
+                    sa.Column('name', sa.String(length=120), nullable=False),
                     sa.Column('image_url', sa.String(
                         length=255), nullable=True),
                     sa.Column('description', sa.String(), nullable=True),
                     sa.Column('delivery_fee', sa.Numeric(
                         precision=4, scale=2), nullable=True),
-                    sa.Column('cusine_types', sa.String(
-                        length=255), nullable=False),
+                    sa.Column('cusine_types', sa.String(), nullable=False),
                     sa.Column('price_ranges', sa.Enum('$', '$$', '$$$',
                                                       '$$$$', name='price_ranges'), nullable=True),
+                    sa.Column('address', sa.String(
+                        length=255), nullable=False),
                     sa.Column('city', sa.String(length=40), nullable=True),
                     sa.Column('state', sa.String(length=2), nullable=True),
                     sa.Column('lat', sa.Float(), nullable=True),
                     sa.Column('lng', sa.Float(), nullable=True),
-                    sa.Column('address', sa.String(
-                        length=255), nullable=False),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),
@@ -173,7 +173,6 @@ def upgrade():
                     sa.ForeignKeyConstraint(['order_id'], ['orders.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
-
     # ### end Alembic commands ###
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
