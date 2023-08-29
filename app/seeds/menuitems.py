@@ -1064,133 +1064,133 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ae9fa16ae6a10140842f267dc58a4093/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Lobster meat w/ avocado, spicy sauce & masago."
         },
-        # {  # 121
-        #     "restaurant_id": 15,
-        #     "item_name": "Spicy Tuna Roll",
-        #     "item_type": "Sushi Bar - Sushi Rolls",
-        #     "price": 9.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3e2f5f4ca74ceb47eef3b014763df5c2/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Spicy yellowfin tuna, nori, white rice & sesame seeds."
-        # },
-        # {  # 122
-        #     "restaurant_id": 15,
-        #     "item_name": "California Red Crab Roll",
-        #     "item_type": "Sushi Bar - Sushi Rolls",
-        #     "price": 14.50,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2166fa1598b6a9add4db74b62477f628/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Red crab meat w/ avocado, cucumber & spicy sauce."
-        # },
-        # {  # 123
-        #     "restaurant_id": 15,
-        #     "item_name": "Yellowtail Scallion Roll",
-        #     "item_type": "Sushi Bar - Sushi Rolls",
-        #     "price": 8.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/19dc96e50902520bea54e0a1e2b55e9e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Yellowtail (hamachi), scallion, white rice & nori."
-        # },
-        # {  # 124
-        #     "restaurant_id": 15,
-        #     "item_name": "Vegetable Roll",
-        #     "item_type": "Sushi Bar - Sushi Rolls",
-        #     "price": 7.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/658ba720f06c7aa8b0f2607f0e04207c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Avocado, cucumber, nori, white rice & sesame seeds."
-        # },
-        # {  # 125
-        #     "restaurant_id": 15,
-        #     "item_name": "Sake",
-        #     "item_type": "Sushi Bar - Nigiri & Sashimi",
-        #     "price": 4.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a4d9c074dbd4aec16593bbba3591c3e5/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Atlantic Salmon."
-        # },
-        # {  # 126
-        #     "restaurant_id": 15,
-        #     "item_name": "Small Sashimi Box",
-        #     "item_type": "Sushi Bar - Nigiri & Sashimi",
-        #     "price": 20.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/638c366c5c23e3d16bbd5d79a877d0dc/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Mix of salmon, tuna & yellowtail sashimi (6 pieces total)."
-        # },
-        # {  # 127
-        #     "restaurant_id": 15,
-        #     "item_name": "Large Sashimi Box",
-        #     "item_type": "Sushi Bar - Nigiri & Sashimi",
-        #     "price": 40.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a291047f401ccb11e6fc2bd46f2150a0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Mix of salmon, tuna & yellowtail (12 pieces total)."
-        # },
-        # {  # 128
-        #     "restaurant_id": 15,
-        #     "item_name": "Maguro",
-        #     "item_type": "Sushi Bar - Nigiri & Sashimi",
-        #     "price": 4.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7bfdf1694cd02a6d1ea023e7fb843c0e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Yellowfin tuna."
-        # },
-        # {  # 129
-        #     "restaurant_id": 15,
-        #     "item_name": "Hamachi",
-        #     "item_type": "Sushi Bar - Nigiri & Sashimi",
-        #     "price": 5.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d6443ab6c0552c6df0052a7ff03ef678/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Yellowtail."
-        # },
-        # {  # 130
-        #     "restaurant_id": 15,
-        #     "item_name": "Aburi Sake",
-        #     "item_type": "Sushi Bar - Nigiri & Sashimi",
-        #     "price": 5.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7c41c1f80feb7c074162e74f1c15c224/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Salmon Belly."
-        # },
-        # {  # 131
-        #     "restaurant_id": 15,
-        #     "item_name": "Bara Chirashi",
-        #     "item_type": "Sushi Bar - Rice Bowls",
-        #     "price": 23.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2df30c7445777b551f6272d2d6b7db70/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Tuna, salmon, yellowtail, wakame, jalapeño, cucumber, furikake, avocado w/ chili-soy sauce served over seasoned rice."
-        # },
-        # {  # 132
-        #     "restaurant_id": 15,
-        #     "item_name": "Ponzu Sake Don",
-        #     "item_type": "Sushi Bar - Rice Bowls",
-        #     "price": 21.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/64d5c59b94207cf40cdcbb8be99f2019/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Salmon, hijiki, avocado, red radish furikake & masago mixed w/ ponzu sauce."
-        # },
-        # {  # 133
-        #     "restaurant_id": 15,
-        #     "item_name": "Negi Toro Don",
-        #     "item_type": "Sushi Bar - Rice Bowls",
-        #     "price": 27.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a964a2ebfff9fc64862ae588f642e102/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Chopped tuna belly, nori, scallion, furikake, served over seasoned sushi rice."
-        # },
-        # {  # 134
-        #     "restaurant_id": 15,
-        #     "item_name": "Miso Soup",
-        #     "item_type": "Sides & Extras",
-        #     "price": 6.50,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/812c714bd73dcee9b89e32f97003c242/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Miso, dashi, tofu, scallion, wakame (16oz)."
-        # },
-        # {  # 135
-        #     "restaurant_id": 15,
-        #     "item_name": "Edamame",
-        #     "item_type": "Sides & Extras",
-        #     "price": 7.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9b851e0eeabd23e2c2de342ae71481ce/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        #     "description": "Japanese soybean, sea salt."
-        # },
-        # {  # 136
-        #     "restaurant_id": 15,
-        #     "item_name": "Seaweed Salad",
-        #     "item_type": "Sides & Extras",
-        #     "price": 7.00,
-        #     "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2bf2e555253d8593496b82cb231a1561/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
-        # },
+        {  # 121
+            "restaurant_id": 15,
+            "item_name": "Spicy Tuna Roll",
+            "item_type": "Sushi Bar - Sushi Rolls",
+            "price": 9.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3e2f5f4ca74ceb47eef3b014763df5c2/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Spicy yellowfin tuna, nori, white rice & sesame seeds."
+        },
+        {  # 122
+            "restaurant_id": 15,
+            "item_name": "California Red Crab Roll",
+            "item_type": "Sushi Bar - Sushi Rolls",
+            "price": 14.50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2166fa1598b6a9add4db74b62477f628/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Red crab meat w/ avocado, cucumber & spicy sauce."
+        },
+        {  # 123
+            "restaurant_id": 15,
+            "item_name": "Yellowtail Scallion Roll",
+            "item_type": "Sushi Bar - Sushi Rolls",
+            "price": 8.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/19dc96e50902520bea54e0a1e2b55e9e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Yellowtail (hamachi), scallion, white rice & nori."
+        },
+        {  # 124
+            "restaurant_id": 15,
+            "item_name": "Vegetable Roll",
+            "item_type": "Sushi Bar - Sushi Rolls",
+            "price": 7.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/658ba720f06c7aa8b0f2607f0e04207c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Avocado, cucumber, nori, white rice & sesame seeds."
+        },
+        {  # 125
+            "restaurant_id": 15,
+            "item_name": "Sake",
+            "item_type": "Sushi Bar - Nigiri & Sashimi",
+            "price": 4.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a4d9c074dbd4aec16593bbba3591c3e5/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Atlantic Salmon."
+        },
+        {  # 126
+            "restaurant_id": 15,
+            "item_name": "Small Sashimi Box",
+            "item_type": "Sushi Bar - Nigiri & Sashimi",
+            "price": 20.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/638c366c5c23e3d16bbd5d79a877d0dc/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Mix of salmon, tuna & yellowtail sashimi (6 pieces total)."
+        },
+        {  # 127
+            "restaurant_id": 15,
+            "item_name": "Large Sashimi Box",
+            "item_type": "Sushi Bar - Nigiri & Sashimi",
+            "price": 40.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a291047f401ccb11e6fc2bd46f2150a0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Mix of salmon, tuna & yellowtail (12 pieces total)."
+        },
+        {  # 128
+            "restaurant_id": 15,
+            "item_name": "Maguro",
+            "item_type": "Sushi Bar - Nigiri & Sashimi",
+            "price": 4.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7bfdf1694cd02a6d1ea023e7fb843c0e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Yellowfin tuna."
+        },
+        {  # 129
+            "restaurant_id": 15,
+            "item_name": "Hamachi",
+            "item_type": "Sushi Bar - Nigiri & Sashimi",
+            "price": 5.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d6443ab6c0552c6df0052a7ff03ef678/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Yellowtail."
+        },
+        {  # 130
+            "restaurant_id": 15,
+            "item_name": "Aburi Sake",
+            "item_type": "Sushi Bar - Nigiri & Sashimi",
+            "price": 5.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7c41c1f80feb7c074162e74f1c15c224/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Salmon Belly."
+        },
+        {  # 131
+            "restaurant_id": 15,
+            "item_name": "Bara Chirashi",
+            "item_type": "Sushi Bar - Rice Bowls",
+            "price": 23.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2df30c7445777b551f6272d2d6b7db70/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Tuna, salmon, yellowtail, wakame, jalapeño, cucumber, furikake, avocado w/ chili-soy sauce served over seasoned rice."
+        },
+        {  # 132
+            "restaurant_id": 15,
+            "item_name": "Ponzu Sake Don",
+            "item_type": "Sushi Bar - Rice Bowls",
+            "price": 21.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/64d5c59b94207cf40cdcbb8be99f2019/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Salmon, hijiki, avocado, red radish furikake & masago mixed w/ ponzu sauce."
+        },
+        {  # 133
+            "restaurant_id": 15,
+            "item_name": "Negi Toro Don",
+            "item_type": "Sushi Bar - Rice Bowls",
+            "price": 27.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a964a2ebfff9fc64862ae588f642e102/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Chopped tuna belly, nori, scallion, furikake, served over seasoned sushi rice."
+        },
+        {  # 134
+            "restaurant_id": 15,
+            "item_name": "Miso Soup",
+            "item_type": "Sides & Extras",
+            "price": 6.50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/812c714bd73dcee9b89e32f97003c242/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Miso, dashi, tofu, scallion, wakame (16oz)."
+        },
+        {  # 135
+            "restaurant_id": 15,
+            "item_name": "Edamame",
+            "item_type": "Sides & Extras",
+            "price": 7.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9b851e0eeabd23e2c2de342ae71481ce/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Japanese soybean, sea salt."
+        },
+        {  # 136
+            "restaurant_id": 15,
+            "item_name": "Seaweed Salad",
+            "item_type": "Sides & Extras",
+            "price": 7.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2bf2e555253d8593496b82cb231a1561/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
     ]
 
     seed_menuitems = [db.session.add(

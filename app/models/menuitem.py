@@ -12,7 +12,7 @@ class MenuItem(db.Model):
     restaurant_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("restaurants.id")), nullable=False)
     item_name = db.Column(db.String(255), nullable=False)
-    price = db.Column(db.Numeric(4, 2), nullable=False)
+    price = db.Column(db.Numeric(5, 2), nullable=False)
     image_url = db.Column(db.String(255), nullable=True)
     description = db.Column(db.String, nullable=True)
     item_type = db.Column(db.String, nullable=True)
