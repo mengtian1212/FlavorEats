@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
@@ -39,6 +39,12 @@ Migrate(app, db)
 
 # Application Security
 CORS(app)
+
+
+@app.route('/api/maps/key', methods=['POST'])
+def get_maps_api_key():
+    google_maps_api_key = os.environ.get('GOOGLE_MAPS_API')
+    return jsonify({'googleMapsAPIKey': google_maps_api_key})
 
 
 # Since we are deploying with Docker and Flask,

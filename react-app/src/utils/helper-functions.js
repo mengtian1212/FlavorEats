@@ -119,7 +119,6 @@ export const calculateRatingDistribution = (reviews) => {
       ratingCount[key] / ratingCount[mostCommonRating]
     ).toFixed(2);
   }
-  console.log(ratingPercents);
   return ratingPercents;
 };
 

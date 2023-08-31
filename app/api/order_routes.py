@@ -158,6 +158,9 @@ def checkout_cart(orderId):
     target_order.is_priority = orderPlaced["is_priority"]
     target_order.is_complete = orderPlaced["is_complete"]
     target_order.delivery_address = orderPlaced["delivery_address"]
+    target_order.delivery_lat = orderPlaced["delivery_lat"]
+    target_order.delivery_lng = orderPlaced["delivery_lng"]
+
     db.session.commit()
     new_past_order = Order.query.get(orderId)
     return {"new_past_order": new_past_order.to_dict()}, 200

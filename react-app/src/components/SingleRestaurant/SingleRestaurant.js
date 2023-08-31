@@ -9,6 +9,7 @@ import Navigation from "../Navigation";
 import MenuItems from "./MenuItems";
 import ReviewSection from "../ReviewSection";
 import { fetchAllReviewsThunk } from "../../store/reviews";
+import RestaurantMap from "./RestaurantMap";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
@@ -147,6 +148,10 @@ function SingleRestaurant() {
       <div id="reviews-block">
         {targetRestaurant && <ReviewSection resName={targetRestaurant?.name} />}
       </div>
+      {/* <RestaurantMap /> */}
+      {/* {targetRestaurant && (
+        <MapContainer lat={targetRestaurant?.lat} lng={targetRestaurant?.lng} />
+      )} */}
     </div>
   );
 }

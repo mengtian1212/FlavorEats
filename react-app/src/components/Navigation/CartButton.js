@@ -11,7 +11,6 @@ function CartButton({ user }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { restaurantId } = useParams();
-  console.log("restaurantId", restaurantId);
 
   const carts = useSelector((state) => (state.orders ? state.orders : {}));
   const currentCart = carts[restaurantId];

@@ -5,6 +5,7 @@ import restaurantsReducer from "./restaurants";
 import ordersReducer from "./orders";
 import pastOrdersReducer from "./pastOrders";
 import reviewsReducer from "./reviews";
+import mapsReducer from "./maps";
 
 const rootReducer = combineReducers({
   session,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   orders: ordersReducer,
   pastOrders: pastOrdersReducer,
   reviews: reviewsReducer,
+  maps: mapsReducer,
 });
 
 let enhancer;

@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchLastPastOrderThunk } from "../../store/pastOrders";
 import Header from "../Header";
+import MapContainer from "./Maps";
 
 function PlaceOrderPage() {
   const dispatch = useDispatch();
@@ -60,6 +61,17 @@ function PlaceOrderPage() {
 
   return (
     <div className="main-place-holder-container">
+      <div className="map-direction-container">
+        <MapContainer
+          delivery_add={orderJustPlaced?.delivery_address?.split(",")[0]}
+          deliveryLat={orderJustPlaced?.delivery_lat}
+          deliveryLng={orderJustPlaced?.delivery_lng}
+          resName={orderJustPlaced?.restaurant_name}
+          resLat={orderJustPlaced?.restaurant_lat}
+          resLng={orderJustPlaced?.restaurant_lng}
+          resImg={orderJustPlaced?.restaurant_image}
+        />
+      </div>
       <div className="checkout-nav">
         <Header />
       </div>

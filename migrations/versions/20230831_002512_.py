@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 91cef82efbd3
+Revision ID: ff05df70094b
 Revises:
-Create Date: 2023-08-28 23:22:28.045246
+Create Date: 2023-08-31 00:25:12.015009
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '91cef82efbd3'
+revision = 'ff05df70094b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,8 +38,10 @@ def upgrade():
                         length=255), nullable=True),
                     sa.Column('address', sa.String(
                         length=255), nullable=False),
-                    sa.Column('lat', sa.Integer(), nullable=True),
-                    sa.Column('lng', sa.Integer(), nullable=True),
+                    sa.Column('lat', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
+                    sa.Column('lng', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
                     sa.Column('zip', sa.String(length=12), nullable=True),
                     sa.Column('city', sa.String(length=40), nullable=True),
                     sa.Column('state', sa.String(length=2), nullable=True),
@@ -67,8 +69,10 @@ def upgrade():
                         length=255), nullable=False),
                     sa.Column('city', sa.String(length=40), nullable=True),
                     sa.Column('state', sa.String(length=2), nullable=True),
-                    sa.Column('lat', sa.Float(), nullable=True),
-                    sa.Column('lng', sa.Float(), nullable=True),
+                    sa.Column('lat', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
+                    sa.Column('lng', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),

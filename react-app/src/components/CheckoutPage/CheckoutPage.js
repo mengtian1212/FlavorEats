@@ -231,8 +231,8 @@ function CheckoutPage() {
       is_priority: isPriority,
       is_complete: true,
       delivery_address: sessionUser?.address,
-      delivery_lat: null,
-      delivery_lag: null,
+      delivery_lat: sessionUser?.lat,
+      delivery_lng: sessionUser?.lng,
     };
     await dispatch(checkoutCartThunk(payload));
     setTimeout(() => {

@@ -22,13 +22,6 @@ function Navigation({ isLoaded }) {
     setMyAddress(sessionUser?.address);
   }, [sessionUser]);
 
-  console.log(
-    "myAddress -------------------------------------",
-    myAddress,
-    "userAddress",
-    userAddress
-  );
-
   const [showEditAddress, setShowEditAddress] = useState(false);
   const [editAddressError, setEditAddressError] = useState({});
 

@@ -26,8 +26,10 @@ class Restaurant(db.Model):
     address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(40), nullable=True)
     state = db.Column(db.String(2), nullable=True)
-    lat = db.Column(db.Float, nullable=True)
-    lng = db.Column(db.Float, nullable=True)
+    # lat = db.Column(db.Float, nullable=True)
+    # lng = db.Column(db.Float, nullable=True)
+    lat = db.Column(db.Numeric(scale=13, asdecimal=False), nullable=True)
+    lng = db.Column(db.Numeric(scale=13, asdecimal=False), nullable=True)
 
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
@@ -93,11 +95,14 @@ class Restaurant(db.Model):
             'num_orders': self.num_orders(),
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'lat': self.lat,
+            'lng': self.lng
         }
 
         if geo:
-            res['lat'] = self.lat
-            res['lng'] = self.lng
+            # res['lat'] = self.lat
+            # res['lng'] = self.lng
+            pass
 
         return res
 
@@ -123,10 +128,13 @@ class Restaurant(db.Model):
             'popular': self.popularItems(),
             'created_at': self.created_at,
             'updated_at': self.updated_at,
+            'lat': self.lat,
+            'lng': self.lng
         }
 
         if geo:
-            res['lat'] = self.lat
-            res['lng'] = self.lng
+            # res['lat'] = self.lat
+            # res['lng'] = self.lng
+            pass
 
         return res

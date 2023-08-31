@@ -12,11 +12,20 @@
 }
 
 .main-place-holder-container {
-  height: 100vh;
-  background-image: url("https://media.discordapp.net/attachments/1139263822469795862/1142002296985747516/new-york-map.PNG?width=2755&height=1365");
+  height: calc(100vh);
+  /* background-image: url("https://media.discordapp.net/attachments/1139263822469795862/1142002296985747516/new-york-map.PNG?width=2755&height=1365");
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+  position: relative;
+}
+
+.map-direction-container {
+  position: absolute;
+  top: 96px;
+  left: 0;
+  right: 0px;
+  bottom: 0;
 }
 
 .thanks-container {
@@ -134,3 +143,10 @@ color: #000000; */
   margin-top: -16px;
   margin-bottom: 24px;
 }
+
+/* .gmnoprint > * {
+  position: absolute;
+  bottom: 10px !important;
+  right: 10px !important;
+  z-index: 1000; /* Ensure the controls are on top of the map */
+/* } */
