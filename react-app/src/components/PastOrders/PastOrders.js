@@ -10,6 +10,8 @@ function PastOrders() {
   const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+
   let pastOrders = Object.values(
     useSelector((state) =>
       state.pastOrders.all_past_orders ? state.pastOrders.all_past_orders : {}
@@ -17,7 +19,7 @@ function PastOrders() {
   );
 
   useEffect(() => {
-    dispatch(fetchPastOrdersThunk());
+    dispatch(fetchPastOrdersThunk()).then(() => setIsLoading(false));
     window.scroll(0, 0);
   }, [dispatch]);
 
@@ -40,28 +42,36 @@ function PastOrders() {
   };
 
   return (
-    <div className="mw">
-      <Navigation />
-      <div className="past-orders-container">
-        <div id="past-orders-title">Past Orders</div>
-        {Object.values(pastOrders).length !== 0 ? (
-          <>
-            {pastOrders.map((pastOrder, index) => (
-              <PastOrderCard key={index} index={index} pastOrder={pastOrder} />
-            ))}
-          </>
-        ) : (
-          <div className="no-past-order">
-            <div className="no-past-title">
-              You haven't placed any orders yet
-            </div>
-            <div className="no-past-shop" onClick={handleStartShop}>
-              Click here to start shopping
-            </div>
+    <>
+      {!isLoading && (
+        <div className="mw">
+          <Navigation />
+          <div className="past-orders-container">
+            <div id="past-orders-title">Past Orders</div>
+            {Object.values(pastOrders).length !== 0 ? (
+              <>
+                {pastOrders.map((pastOrder, index) => (
+                  <PastOrderCard
+                    key={index}
+                    index={index}
+                    pastOrder={pastOrder}
+                  />
+                ))}
+              </>
+            ) : (
+              <div className="no-past-order">
+                <div className="no-past-title">
+                  You haven't placed any orders yet
+                </div>
+                <div className="no-past-shop" onClick={handleStartShop}>
+                  Click here to start shopping
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 

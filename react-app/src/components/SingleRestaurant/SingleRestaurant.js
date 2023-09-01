@@ -10,13 +10,15 @@ import MenuItems from "./MenuItems";
 import ReviewSection from "../ReviewSection";
 import { fetchAllReviewsThunk } from "../../store/reviews";
 import RestaurantMap from "./RestaurantMap";
+import LoadingPage from "../LoadingPage";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
   const sessionUser = useSelector((state) => state.session.user);
   const targetRestaurant = useSelector((state) =>
-    state.restaurants?.singleRestaurant
+    state.restaurants?.singleRestaurant && !isLoading
       ? state.restaurants?.singleRestaurant
       : {}
   );
@@ -74,7 +76,9 @@ function SingleRestaurant() {
   };
 
   useEffect(() => {
-    dispatch(fetchOneRestaurantThunk(restaurantId));
+    dispatch(fetchOneRestaurantThunk(restaurantId)).then(() =>
+      setIsLoading(false)
+    );
     dispatch(fetchAllReviewsThunk(restaurantId));
     window.scroll(0, 0);
   }, [restaurantId]);
@@ -87,73 +91,83 @@ function SingleRestaurant() {
   const ids = Object.keys(items);
   const activeId = useScrollspy(ids, 54); // 54 is navigation height
 
+  if (!targetRestaurant || Object.keys(targetRestaurant).length === 0) {
+    return <LoadingPage />;
+  }
   return (
-    <div className="mw">
-      <Navigation />
-      <div>
-        <img
-          src={targetRestaurant.image_url}
-          alt=""
-          className="restaurant-photo"
-        />
-        <div className="res-title-container">
-          <div className="res-name">{targetRestaurant.name}</div>
-          <div className="res-stat-container">
-            <div className="res-rating-container">
-              {avgRating > 0 && <i className="fa-solid fa-star"></i>}
-              {avgRating > 0 && avgRating.toFixed(1)}
-            </div>
-            <div>
-              ({reviews.length} {reviews.length === 1 ? "rating" : "ratings"})
-            </div>
-            <div>• </div>
-            <div>{groups && groups[0]}</div>
-            <div>• </div>
-            <div>{targetRestaurant.price_ranges}</div>
-            <div>• </div>
-            <a className="read-reviews" href="#reviews-block">
-              Read Reviews{" "}
-            </a>
-            <div>• </div>
-            <div>More info</div>
-          </div>
-          <div className="res-add">{targetRestaurant?.address}</div>
-        </div>
-      </div>
-      <div className="res-bottom-container">
-        <div className="header">
-          <ul className="menu">
-            {ids.map((id) => (
-              <li key={`menu-item-${id}`} className="menu-item">
-                <a
-                  href={`#${id}`}
-                  className={`menu-link ${
-                    id === activeId ? "menu-link-active" : ""
-                  }`}
-                >
-                  {capitalize(id)}
+    <>
+      {!isLoading && (
+        <div className="mw">
+          <Navigation />
+          <div>
+            <img
+              src={targetRestaurant.image_url}
+              alt=""
+              className="restaurant-photo"
+            />
+            <div className="res-title-container">
+              <div className="res-name">{targetRestaurant?.name}</div>
+              <div className="res-stat-container">
+                <div className="res-rating-container">
+                  {avgRating > 0 && <i className="fa-solid fa-star"></i>}
+                  {avgRating > 0 && avgRating.toFixed(1)}
+                </div>
+                <div>
+                  ({reviews.length}{" "}
+                  {reviews.length === 1 ? "rating" : "ratings"})
+                </div>
+                <div>• </div>
+                <div>{groups && groups[0]}</div>
+                <div>• </div>
+                <div>{targetRestaurant.price_ranges}</div>
+                <div>• </div>
+                <a className="read-reviews" href="#reviews-block">
+                  Read Reviews{" "}
                 </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <main>
-          {ids.map((id) => (
-            <section key={`section-${id}`} id={id} className="sectionItems">
-              <div className="item-type-name">{capitalize(id)}</div>
-              <MenuItems type={id} items={items[id]} />
-            </section>
-          ))}
-        </main>
-      </div>
-      <div id="reviews-block">
-        {targetRestaurant && <ReviewSection resName={targetRestaurant?.name} />}
-      </div>
-      {/* <RestaurantMap /> */}
-      {/* {targetRestaurant && (
+                <div>• </div>
+                <div>More info</div>
+              </div>
+              <div className="res-add">{targetRestaurant?.address}</div>
+            </div>
+          </div>
+          <div className="res-bottom-container">
+            <div className="header">
+              <ul className="menu">
+                {ids.map((id) => (
+                  <li key={`menu-item-${id}`} className="menu-item">
+                    <a
+                      href={`#${id}`}
+                      className={`menu-link ${
+                        id === activeId ? "menu-link-active" : ""
+                      }`}
+                    >
+                      {capitalize(id)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <main>
+              {ids.map((id) => (
+                <section key={`section-${id}`} id={id} className="sectionItems">
+                  <div className="item-type-name">{capitalize(id)}</div>
+                  <MenuItems type={id} items={items[id]} />
+                </section>
+              ))}
+            </main>
+          </div>
+          <div id="reviews-block">
+            {targetRestaurant && (
+              <ReviewSection resName={targetRestaurant?.name} />
+            )}
+          </div>
+          {/* <RestaurantMap /> */}
+          {/* {targetRestaurant && (
         <MapContainer lat={targetRestaurant?.lat} lng={targetRestaurant?.lng} />
       )} */}
-    </div>
+        </div>
+      )}
+    </>
   );
 }
 
