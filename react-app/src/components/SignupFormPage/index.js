@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useLocation, useHistory } from "react-router-dom";
 import { editUserAddressThunk, login, signUp } from "../../store/session";
 import Header from "../Header/Header";
+import { getKey } from "../../store/maps";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 // function SignupFormPage() {
 //   const dispatch = useDispatch();
@@ -101,20 +103,12 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const location = useLocation();
   const landingAddressProp = location.state && location.state.landingAddress;
-  console.log(landingAddressProp, landingAddressProp?.split(", ")[0]);
 
-  const landingAddressData = landingAddressProp
-    ? formatAddress(
-        landingAddressProp?.split(", ")[0] + ", " + landingAddressProp,
-        "string"
-      )
-    : "";
+  const landingAddressData = landingAddressProp?.slice(0, -2).join(", ");
   const landingAddress = landingAddressData
     ? landingAddressData.split(", ").slice(1).join(", ")
     : "";
 
-  const addressList = landingAddressData && formatAddress(landingAddressData);
-  console.log("address list", addressList);
   console.log("landingAddress in signup page", landingAddress);
 
   const [email, setEmail] = useState("");
@@ -122,10 +116,18 @@ function SignupFormPage() {
   const [last_name, setLast_name] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [address, setAddress] = useState(addressList ? addressList[0] : "");
-  const [city, setCity] = useState(addressList ? addressList[2] : "");
-  const [state, setState] = useState(addressList ? addressList[3] : "");
-  const [zip, setZip] = useState(addressList ? addressList[4] : "");
+  const [address, setAddress] = useState(
+    landingAddressProp ? landingAddressProp[1] : ""
+  );
+  const [city, setCity] = useState(
+    landingAddressProp ? landingAddressProp[2] : ""
+  );
+  const [state, setState] = useState(
+    landingAddressProp ? landingAddressProp[3] : ""
+  );
+  const [zip, setZip] = useState(
+    landingAddressProp ? landingAddressProp[4] : ""
+  );
 
   const [visiblepw, setVisiblepw] = useState(false);
   const [visiblepwc, setVisiblepwc] = useState(false);
@@ -146,13 +148,13 @@ function SignupFormPage() {
       return;
     }
 
-    const addressFormatedList = formatAddress(landingAddressData, "list");
-    console.log("addressFormatedList", addressFormatedList);
     const formData = {
-      address: landingAddressData,
-      city: addressFormatedList[2],
-      state: addressFormatedList[3],
-      zip: addressFormatedList[4],
+      address: landingAddressProp?.slice(0, -2).join(", "),
+      city: landingAddressProp[2],
+      state: landingAddressProp[3],
+      zip: landingAddressProp[4],
+      lat: landingAddressProp[5],
+      lng: landingAddressProp[6],
     };
     console.log(formData);
     await dispatch(editUserAddressThunk(formData, data.id));
@@ -163,7 +165,7 @@ function SignupFormPage() {
     if (!landingAddressData) {
       history.push("/login");
     } else {
-      history.push("/login", { landingAddress: landingAddressData });
+      history.push("/login", { landingAddress: landingAddressProp });
     }
   };
 
@@ -244,9 +246,20 @@ function SignupFormPage() {
     zip,
   ]);
 
-  if (sessionUser) return <Redirect to="/restaurants" />;
-
   const submitBtnClassName = submitBtn ? "enabledBtn cursor" : `disabledBtn`;
+
+  const key = useSelector((state) => state.maps.key);
+
+  useEffect(() => {
+    if (!key) {
+      dispatch(getKey());
+    }
+  }, [dispatch, key]);
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: key,
+    libraries: ["places"],
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -294,6 +307,7 @@ function SignupFormPage() {
     }
   };
 
+  if (sessionUser) return <Redirect to="/restaurants" />;
   return (
     <>
       <div className="black-background">
@@ -402,13 +416,13 @@ function SignupFormPage() {
 
             {/* step 4 address city state zip*/}
             <div className="signup-email-container">
-              {addressList && (
+              {landingAddressData && (
                 <div className="login-title">
                   Step 4: Confirm your address to get food delivered to your
                   door
                 </div>
               )}
-              {!addressList && (
+              {!landingAddressData && (
                 <div className="login-title">
                   Step 4: Add an address to get food delivered to your door
                 </div>

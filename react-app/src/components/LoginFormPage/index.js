@@ -4,23 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useLocation } from "react-router-dom";
 import "./LoginForm.css";
 import Header from "../Header/Header";
-import {
-  capitalizeFirstChar,
-  formatAddress,
-} from "../../utils/helper-functions";
-
 function LoginFormPage() {
   const dispatch = useDispatch();
   const location = useLocation();
   const landingAddressProp = location.state && location.state.landingAddress;
-  console.log(landingAddressProp, landingAddressProp?.split(", ")[0]);
-
-  const landingAddressData = landingAddressProp
-    ? formatAddress(
-        landingAddressProp?.split(",")[0] + ", " + landingAddressProp,
-        "string"
-      )
-    : "";
+  const landingAddressData = landingAddressProp?.slice(0, -2).join(", ");
   const landingAddress = landingAddressData
     ? landingAddressData.split(",").slice(1).join(", ")
     : "";
@@ -71,19 +59,19 @@ function LoginFormPage() {
     e.preventDefault();
     setErrors({});
 
+    // first login then check if there is address input, then need to update address
     const data = await dispatch(login(email, password));
     if (data && data.errors) {
       setErrors(data.errors);
     } else {
       if (!landingAddressData) return;
-
-      const addressFormatedList = formatAddress(landingAddressData, "list");
-      console.log("addressFormatedList", addressFormatedList);
       const formData = {
-        address: landingAddressData,
-        city: addressFormatedList[2],
-        state: addressFormatedList[3],
-        zip: addressFormatedList[4],
+        address: landingAddressProp?.slice(0, -2).join(", "),
+        city: landingAddressProp[2],
+        state: landingAddressProp[3],
+        zip: landingAddressProp[4],
+        lat: landingAddressProp[5],
+        lng: landingAddressProp[6],
       };
       console.log(formData);
       return await dispatch(editUserAddressThunk(formData, data.id));
@@ -103,13 +91,13 @@ function LoginFormPage() {
       return;
     }
 
-    const addressFormatedList = formatAddress(landingAddressData, "list");
-    console.log("addressFormatedList", addressFormatedList);
     const formData = {
-      address: landingAddressData,
-      city: addressFormatedList[2],
-      state: addressFormatedList[3],
-      zip: addressFormatedList[4],
+      address: landingAddressProp?.slice(0, -2).join(", "),
+      city: landingAddressProp[2],
+      state: landingAddressProp[3],
+      zip: landingAddressProp[4],
+      lat: landingAddressProp[5],
+      lng: landingAddressProp[6],
     };
     console.log(formData);
     await dispatch(editUserAddressThunk(formData, data.id));

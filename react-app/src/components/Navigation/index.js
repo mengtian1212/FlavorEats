@@ -7,6 +7,8 @@ import UserButton from "./UserButton";
 import CartButton from "./CartButton";
 import { authenticate, editUserAddressThunk } from "../../store/session";
 import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
+import { getKey } from "../../store/maps";
+import NavAddressAutoComplete from "./NavAddressAutoComplete";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
@@ -15,6 +17,7 @@ function Navigation({ isLoaded }) {
   const location = useLocation();
 
   const [myAddress, setMyAddress] = useState(sessionUser?.address);
+  console.log("myAddress ON NAV", myAddress);
   const userAddress =
     sessionUser?.address && sessionUser?.address?.split(",")[0];
 
@@ -80,7 +83,7 @@ function Navigation({ isLoaded }) {
   // for edit address
   const validateAddressInput = () => {
     const err = {};
-    const data = myAddress.trim();
+    const data = myAddress;
     // should not be a long empty string '      '
     if (data.length === 0) {
       err.errors = "Address invalid";
@@ -93,9 +96,8 @@ function Navigation({ isLoaded }) {
       return false;
     }
 
-    const parts = data.split(",").map((part) => part.trim());
-    // must have 4 components
-    if (parts.length !== 4) {
+    // must have 7 components
+    if (data.length !== 7) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
@@ -107,7 +109,7 @@ function Navigation({ isLoaded }) {
       return false;
     }
     // each component should not be empty
-    if (parts.includes("")) {
+    if (data.includes("")) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
@@ -120,19 +122,7 @@ function Navigation({ isLoaded }) {
     }
 
     // check state 1. should be 2 characters. 2.should in 52 US states.
-    const state_zip = parts[3].split(" ");
-    if (state_zip.length !== 2) {
-      err.errors =
-        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
-      setEditAddressError(err.errors);
-      setMyAddress(sessionUser.address);
-      setShowEditAddress(false);
-      setTimeout(() => {
-        setEditAddressError({});
-      }, 3000);
-      return false;
-    }
-    const state = state_zip[0].trim();
+    const state = data[3].trim();
     if (state.length !== 2 || !USSTATES.includes(state.toUpperCase())) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
@@ -146,7 +136,7 @@ function Navigation({ isLoaded }) {
     }
 
     // check zip code: should be 5 characters.
-    const zip = state_zip[1].trim();
+    const zip = data[4].trim();
     if (zip.length !== 5) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
@@ -164,11 +154,9 @@ function Navigation({ isLoaded }) {
 
   const handleSubmitAddress = async (e) => {
     if (!validateAddressInput()) return;
-    const addressFormatedList = formatAddress(myAddress, "list");
-    const addressFormatedString = formatAddress(myAddress, "string");
     if (
       myAddress.length !== 0 &&
-      addressFormatedString === sessionUser.address
+      myAddress.slice(0, -2).join(", ") === sessionUser.address
     ) {
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -176,10 +164,12 @@ function Navigation({ isLoaded }) {
     }
 
     const formData = {
-      address: addressFormatedString,
-      city: addressFormatedList[2],
-      state: addressFormatedList[3],
-      zip: addressFormatedList[4],
+      address: myAddress.slice(0, -2).join(", "),
+      city: myAddress[2],
+      state: myAddress[3],
+      zip: myAddress[4],
+      lat: myAddress[5],
+      lng: myAddress[6],
     };
     console.log(formData);
 
@@ -199,6 +189,18 @@ function Navigation({ isLoaded }) {
       setShowEditAddress(false);
     }
   };
+
+  const key = useSelector((state) => state.maps.key);
+
+  useEffect(() => {
+    if (!key) {
+      dispatch(getKey());
+    }
+  }, [dispatch, key]);
+
+  if (!key) {
+    return null;
+  }
 
   return (
     <div className={`nav-container ` + navClass}>
@@ -248,14 +250,24 @@ function Navigation({ isLoaded }) {
                 </div>
                 {showEditAddress && (
                   <>
-                    <input
+                    {/* <input
                       className="edit-address-input"
                       type="text"
                       value={myAddress}
                       onChange={(e) => setMyAddress(e.target.value)}
                       // onBlur={handleSubmitAddress}
                       placeholder="Enter address"
+                    /> */}
+                    <NavAddressAutoComplete
+                      apiKey={key}
+                      onAddressChange={setMyAddress}
                     />
+                    <button
+                      className="change-address-btn cursor"
+                      onClick={() => setShowEditAddress(false)}
+                    >
+                      Cancel
+                    </button>
                     <button
                       className="change-address-btn cursor"
                       onClick={handleSubmitAddress}

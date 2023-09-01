@@ -30,42 +30,53 @@ function LandingPage() {
 
   useEffect(() => {
     if (!showMenu) return;
+
     const closeMenu = (e) => {
       if (!ulRef.current || !ulRef.current.contains(e.target)) {
         setShowMenu(false);
       }
     };
+
     document.addEventListener("click", closeMenu);
+
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   const validateLandingAddress = () => {
+    const err = {};
+    const data = landingAddress.trim();
     // should not be a long empty string '      '
-    if (!landingAddress) {
+    if (data.length === 0) {
       return false;
     }
 
-    // landing address (7) ['4455 148th Ave NE', '4455 148th Avenue Northeast', 'Bellevue', 'WA', '98007', 47.6509958, -122.1457304]
-    // must have 7 components  (building name needed)
-    if (landingAddress.length !== 7) {
+    const parts = data.split(",").map((part) => part.trim());
+    // const parts = partsWithLatLng.slice(0, -2);
+    // must have 3 components  (no building name needed, just use "Home" as default)
+    if (parts.length !== 6) {
       return false;
     }
     // each component should not be empty
-    if (landingAddress.includes("") || landingAddress.includes(" ")) {
+    if (parts.includes("")) {
       return false;
     }
 
     // check state 1. should be 2 characters. 2.should in 52 US states.
-    const state = landingAddress[3].trim();
+    const state_zip = parts[2].split(" ");
+    if (state_zip.length !== 2) {
+      return false;
+    }
+    const state = state_zip[0].trim();
     if (state.length !== 2 || !USSTATES.includes(state.toUpperCase())) {
       return false;
     }
 
     // check zip code: should be 5 characters.
-    const zip = landingAddress[4].trim();
+    const zip = state_zip[1].trim();
     if (zip.length !== 5) {
       return false;
     }
+
     return true;
   };
 
@@ -85,7 +96,7 @@ function LandingPage() {
       if (
         //case 1.1: no input address             -> not login & just redirect to restaurants page with not login status
         !landingAddress ||
-        (landingAddress && landingAddress.length === 0)
+        (landingAddress && landingAddress.trim().length === 0)
       ) {
         history.push("/restaurants");
       } else if (landingAddress && !validateLandingAddress(landingAddress)) {
@@ -105,7 +116,7 @@ function LandingPage() {
       if (
         //case 2.1: no input address             -> no edit address & just redirect to restaurants page
         !landingAddress ||
-        (landingAddress && landingAddress.length === 0)
+        (landingAddress && landingAddress.trim().length === 0)
       ) {
         history.push("/restaurants");
       } else if (landingAddress && !validateLandingAddress(landingAddress)) {
@@ -118,13 +129,20 @@ function LandingPage() {
         }, 3000);
       } else {
         //case 2.3: have valid input address     -> edit address & redirect to restaurants page
+        const data = landingAddress.trim();
+        const partsWithLatLng = data.split(",").map((part) => part.trim());
+        const parts = partsWithLatLng.slice(0, -2);
+
+        const landingAddressData = formatAddress(
+          landingAddress?.split(",")[0] + ", " + landingAddress,
+          "string"
+        );
+        const addressFormatedList = formatAddress(landingAddressData, "list");
         const formData = {
-          address: landingAddress.slice(0, -2).join(", "),
-          city: landingAddress[2],
-          state: landingAddress[3],
-          zip: landingAddress[4],
-          lat: landingAddress[5],
-          lng: landingAddress[6],
+          address: landingAddressData,
+          city: addressFormatedList[2],
+          state: addressFormatedList[3],
+          zip: addressFormatedList[4],
         };
         console.log("formDataformData", formData);
         await dispatch(editUserAddressThunk(formData, sessionUser.id));
@@ -209,6 +227,23 @@ function LandingPage() {
                   </div>
                 </div>
               </div>
+              {/* <select
+                id={`landing-deliver`}
+                className="fa"
+                onChange={(e) =>
+                  setIsDeliveryT(
+                    e.target.value === "fa fa-clock deliver" ? true : false
+                  )
+                }
+              >
+                <option value="fa fa-clock deliver">
+                  &#xf017; Delivery now
+                </option>
+                <option value="fa fa-person-walking pickup">
+                  &#xf554; Pickup now
+                </option>
+              </select> */}
+
               <button className="reorder-btn7 cursor" onClick={handleFindFood}>
                 Find food
               </button>
@@ -217,11 +252,9 @@ function LandingPage() {
               <p className="error-message-a">{validAddressError}</p>
             )}
             <div className="login-t">
-              {validAddressError && (
-                <div>
-                  Example: Building name, 123 Main street, New York, NY 10000
-                </div>
-              )}
+              <div>
+                Example: Building name, 123 Main street, New York, NY 10000
+              </div>
               <div className="login-t">
                 <span
                   className="login-line cursor"

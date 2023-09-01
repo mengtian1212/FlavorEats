@@ -41,8 +41,8 @@ def update_user_address(userId):
         target_user.city = form.data["city"]
         target_user.state = form.data["state"]
         target_user.zip = form.data["zip"]
-        target_user.lat = None
-        target_user.lng = None
+        target_user.lat = form.data["lat"]
+        target_user.lng = form.data["lng"]
         db.session.commit()
         response = target_user.to_dict()
         return response

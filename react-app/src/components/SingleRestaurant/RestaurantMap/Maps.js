@@ -3,7 +3,6 @@ import React, { useCallback, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
   GoogleMap,
-  useJsApiLoader,
   Marker,
   InfoWindow,
   DirectionsService,
@@ -37,11 +36,6 @@ const Maps = ({ apiKey }) => {
     width: "100%",
     height: "100%",
   };
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: apiKey,
-  });
 
   const targetRestaurant = useSelector((state) =>
     state.restaurants?.singleRestaurant
@@ -102,7 +96,7 @@ const Maps = ({ apiKey }) => {
   }, []);
   return (
     <>
-      {isLoaded && targetRestaurant && sessionUser && (
+      {targetRestaurant && sessionUser && (
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={userLocation}

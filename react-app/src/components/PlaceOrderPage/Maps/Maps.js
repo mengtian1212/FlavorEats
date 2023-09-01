@@ -1,13 +1,12 @@
 // frontend/src/components/Maps/Maps.js
 import React, { useCallback, useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import {
   GoogleMap,
-  useJsApiLoader,
   Marker,
   InfoWindow,
   DirectionsService,
   DirectionsRenderer,
+  useJsApiLoader,
   // ControlPosition,
 } from "@react-google-maps/api";
 function calculateDistance(lat1, lng1, lat2, lng2) {
@@ -39,19 +38,12 @@ const Maps = ({
   resLng,
   resImg,
 }) => {
-  const sessionUser = useSelector((state) => state.session.user);
   const containerStyle = {
     // width: "800px",
     // height: "800px",
     width: "100%",
     height: "100%",
   };
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: apiKey,
-  });
-
   const [userLocation, setUserLocation] = useState({
     lat: parseFloat(deliveryLat),
     lng: parseFloat(deliveryLng),
@@ -63,6 +55,11 @@ const Maps = ({
   });
 
   const [response, setResponse] = useState(null);
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: apiKey,
+    libraries: ["places"],
+  });
 
   const directionsCallback = (response) => {
     if (response !== null) {

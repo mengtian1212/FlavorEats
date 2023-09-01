@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
+import { useSelector } from "react-redux";
 
 const RestaurantMap = () => {
   //This sets the center of the map. This must be set BEFORE the map loads
@@ -10,10 +11,10 @@ const RestaurantMap = () => {
   });
 
   // This is the equivalent to a script tag
-
+  const key = useSelector((state) => state.maps.key);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API,
+    googleMapsApiKey: key,
   });
   console.log(
     "google maps",
