@@ -12,12 +12,12 @@ def user_exists(form, field):
         raise ValidationError('Email address is already in use.')
 
 
-def username_exists(form, field):
-    # Checking if username is already in use
-    username = field.data
-    user = User.query.filter(User.username == username).first()
-    if user:
-        raise ValidationError('Username is already in use.')
+# def username_exists(form, field):
+#     # Checking if username is already in use
+#     username = field.data
+#     user = User.query.filter(User.username == username).first()
+#     if user:
+#         raise ValidationError('Username is already in use.')
 
 
 class SignUpForm(FlaskForm):
@@ -38,3 +38,5 @@ class SignUpForm(FlaskForm):
     state = StringField('State', validators=[DataRequired()])
     zip = StringField('Zip', validators=[
                       DataRequired(), Length(min=5, max=5)])
+    lat = StringField('Latitute', validators=[DataRequired()])
+    lng = StringField('Longitude', validators=[DataRequired()])

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Geocode from "react-geocode";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
-function NavAddressAutoComplete({ apiKey, onAddressChange }) {
+function ResAddressAutoComplete({ apiKey, onAddressChange }) {
   const [destinationAutocomplete, setDestinationAutocomplete] = useState(null);
   const destinationRef = React.useRef(null);
 
@@ -67,22 +67,26 @@ function NavAddressAutoComplete({ apiKey, onAddressChange }) {
     libraries: ["places"],
   });
   return (
-    <div className="edit-address-input2">
+    <>
       {isLoaded && (
         <Autocomplete
           onLoad={onDestinationAutocompleteLoad}
           onPlaceChanged={handleDestinationPlaceChanged}
         >
-          <input
-            className="edit-address-input2"
-            type="text"
-            placeholder="Enter address"
-            ref={destinationRef}
-          />
+          <div className="login-input2">
+            <i className="fas fa-search"></i>
+            <input
+              id="location-input"
+              className="edit-address-input4"
+              type="text"
+              placeholder="Search address"
+              ref={destinationRef}
+            />
+          </div>
         </Autocomplete>
       )}
-    </div>
+    </>
   );
 }
 
-export default React.memo(NavAddressAutoComplete);
+export default ResAddressAutoComplete;

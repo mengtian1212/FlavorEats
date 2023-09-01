@@ -21,6 +21,64 @@
   padding-left: 8px;
 }
 
+.user-city-state-container {
+  padding: 0.25em 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.user-city-state-container > * {
+  width: 100%;
+}
+
+.login-input1 {
+  padding: 10px 0px 10px 12px;
+  width: 100%;
+  height: 52px;
+  line-height: 24px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+}
+
+.login-input2 {
+  padding: 10px 0px 10px 12px;
+  background-color: #eee;
+  width: 100%;
+  height: 52px;
+  line-height: 24px;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.login-input2:focus-within {
+  border: 2px solid black;
+}
+
+.error-message2 {
+  padding: 0px 0px;
+  color: red;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.verify {
+  padding-top: 1em;
+}
+
+.edit-address-input4 {
+  width: 100%;
+  height: 40px;
+  flex: 1;
+  outline: none;
+  border: none;
+  background-color: #eeeeee;
+  padding-left: 6px;
+}
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {

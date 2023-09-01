@@ -15,3 +15,5 @@ class EditRestaurantForm(FlaskForm):
     name = StringField('Name', validators=[
                        DataRequired(), Length(min=1, max=120)])
     cusine_types = StringField('Cusine types', validators=[DataRequired()])
+    lat = StringField('Latitute', validators=[DataRequired()])
+    lng = StringField('Longitude', validators=[DataRequired()])

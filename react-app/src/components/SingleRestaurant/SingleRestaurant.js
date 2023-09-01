@@ -86,6 +86,7 @@ function SingleRestaurant() {
 
   const ids = Object.keys(items);
   const activeId = useScrollspy(ids, 54); // 54 is navigation height
+
   return (
     <div className="mw">
       <Navigation />

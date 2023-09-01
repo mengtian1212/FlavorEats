@@ -327,10 +327,12 @@ function CheckoutPage() {
                         onBlur={handleSubmitAddress}
                         placeholder="Enter address"
                       /> */}
-                      <NavAddressAutoComplete
-                        apiKey={key}
-                        onAddressChange={setMyAddress}
-                      />
+                      <div className="edit-address-input3">
+                        <NavAddressAutoComplete
+                          apiKey={key}
+                          onAddressChange={setMyAddress}
+                        />
+                      </div>
                     </div>
                     <button
                       className="change-address-btn1 cursor"

@@ -3,8 +3,20 @@ from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
+import random
 
 auth_routes = Blueprint('auth', __name__)
+
+user_images = [
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9538c4f1cb0d524a.svg",  # demo     user8
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/544c3c3781e0db92.svg",  # sheldon  user9
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/21f488d3249d6f03.svg",  # penny    user10
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d590fac5df89924d.svg",  # leonard  user11
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/9f716d4b83f1173e.svg",  # raj      user12
+    # amy      user13   user15
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/76cd7fa5fcf22251.svg",
+    "https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/d96375ed3fb7384c.svg",  # user7    user14
+]
 
 
 def capitalize_first_char(words):
@@ -90,10 +102,13 @@ def sign_up():
             first_name=capitalize_first_char(form.data['first_name']),
             username=capitalize_first_char(form.data['first_name']),
             last_name=capitalize_first_char(form.data['last_name']),
+            image_url=random.choice(user_images),
             address=form.data['address'],
             city=form.data['city'],
             state=form.data['state'],
-            zip=form.data['zip']
+            zip=form.data['zip'],
+            lat=form.data['lat'],
+            lng=form.data['lng']
         )
         db.session.add(user)
         db.session.commit()

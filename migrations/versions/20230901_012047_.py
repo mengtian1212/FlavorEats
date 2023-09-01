@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ff05df70094b
+Revision ID: 8c591daecea6
 Revises:
-Create Date: 2023-08-31 00:25:12.015009
+Create Date: 2023-09-01 01:20:47.706800
 
 """
 from alembic import op
@@ -11,9 +11,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = 'ff05df70094b'
+revision = '8c591daecea6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -50,8 +49,7 @@ def upgrade():
                     sa.Column('updated_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.PrimaryKeyConstraint('id'),
-                    sa.UniqueConstraint('email'),
-                    sa.UniqueConstraint('username')
+                    sa.UniqueConstraint('email')
                     )
     op.create_table('restaurants',
                     sa.Column('id', sa.Integer(), nullable=False),
@@ -124,8 +122,10 @@ def upgrade():
                     sa.Column('is_complete', sa.Boolean(), nullable=False),
                     sa.Column('delivery_address', sa.String(
                         length=255), nullable=True),
-                    sa.Column('delivery_lat', sa.Integer(), nullable=True),
-                    sa.Column('delivery_lng', sa.Integer(), nullable=True),
+                    sa.Column('delivery_lat', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
+                    sa.Column('delivery_lng', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),

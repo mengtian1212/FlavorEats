@@ -10,6 +10,8 @@ import {
 } from "../../../utils/helper-functions";
 import { editRestaurantThunk } from "../../../store/restaurants";
 import { useModal } from "../../../context/Modal";
+import { getKey } from "../../../store/maps";
+import ResAddressAutoComplete from "../CreateRestaurant/ResAddressAutoComplete";
 function EditResModal({ restaurant }) {
   const location = useLocation();
   const history = useHistory();
@@ -24,20 +26,29 @@ function EditResModal({ restaurant }) {
   const [photoUrl, setPhotoUrl] = useState(restaurant?.image_url || null);
   const [noPicture, setNoPicture] = useState(false);
 
+  const [myAddress, setMyAddress] = useState("");
   const [address, setAddress] = useState(
     restaurant?.address.split(",")[0] || ""
   );
   const [city, setCity] = useState(restaurant?.city || "");
   const [state, setState] = useState(restaurant?.state || "");
+  const [zip, setZip] = useState(null);
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
 
   const [name, setName] = useState(restaurant?.name || "");
-
   const [selectedTypes, setSelectedTypes] = useState(
     restaurant?.cusine_types.split("#") || []
   );
   const [imageLoading, setImageLoading] = useState(false);
 
   const [validationErrors, setValidationErrors] = useState({});
+  const key = useSelector((state) => state.maps.key);
+  useEffect(() => {
+    if (!key) {
+      dispatch(getKey());
+    }
+  });
 
   // for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
@@ -75,9 +86,13 @@ function EditResModal({ restaurant }) {
     setPhotoUrl(null);
     setNoPicture(false);
 
+    setMyAddress("");
     setAddress("");
     setCity("");
     setState("");
+    setZip(null);
+    setLat(0);
+    setLng(0);
 
     setName("");
     setSelectedTypes("");
@@ -98,16 +113,17 @@ function EditResModal({ restaurant }) {
     }
 
     const err = {};
-    if (address.trim().length === 0) err.address = "Store address is required";
-    if (address.trim().length > 255)
+    if (!address || address.trim().length === 0)
+      err.address = "Store address is required";
+    if (address && address.trim().length > 255)
       err.address = "Store address should not exceed 255 characters";
-    if (address.includes(",")) {
-      err.address = "Please enter an address without special characters";
-    }
-    if (city.trim().length === 0) err.city = "City is required";
+    // if (address.includes(",")) {
+    //   err.address = "Please enter an address without special characters";
+    // }
+    if (!city || city.trim().length === 0) err.city = "City is required";
     if (!state) err.state = "State is required";
-    if (name.trim().length === 0) err.name = "Name is required";
-    if (name.trim().length > 120)
+    if (!name || name.trim().length === 0) err.name = "Name is required";
+    if (name && name.trim().length > 120)
       err.name = "Store name should not exceed 120 characters";
     if (selectedTypes.length === 0)
       err.selectedTypes = "Please select at least one cuisine type";
@@ -136,6 +152,9 @@ function EditResModal({ restaurant }) {
     formData.append("address", addressData);
     formData.append("city", cityData);
     formData.append("state", state);
+    formData.append("lat", lat);
+    formData.append("lng", lng);
+
     formData.append("name", nameData);
     formData.append("cusine_types", selectedTypes.join("#").trim());
     console.log("formData", formData);
@@ -150,6 +169,17 @@ function EditResModal({ restaurant }) {
       window.scroll(0, 0);
     }
   };
+
+  useEffect(() => {
+    if (myAddress !== "") {
+      setAddress(myAddress[1]);
+      setCity(myAddress[2]);
+      setState(myAddress[3]);
+      setZip(myAddress[4]);
+      setLat(myAddress[5]);
+      setLng(myAddress[6]);
+    }
+  }, [myAddress]);
 
   if (!sessionUser) {
     setTimeout(() => history.push("/"), 3000);
@@ -209,6 +239,9 @@ function EditResModal({ restaurant }) {
       {/* for restaurant address */}
       <div className="title-container">
         <div className="create-t">Store address</div>
+        {key && (
+          <ResAddressAutoComplete apiKey={key} onAddressChange={setMyAddress} />
+        )}
         <input
           className={`create-input ${
             validationErrors.address ? "error-bg" : ""
@@ -216,7 +249,7 @@ function EditResModal({ restaurant }) {
           placeholder="Example: 123 Main street"
           type="text"
           value={address}
-          onChange={(e) => setAddress(e.target.value)}
+          // onChange={(e) => setAddress(e.target.value)}
         />
         {validationErrors.address && (
           <div className="errors">{validationErrors.address}</div>
@@ -230,7 +263,7 @@ function EditResModal({ restaurant }) {
             placeholder="City"
             type="text"
             value={city}
-            onChange={(e) => setCity(e.target.value)}
+            // onChange={(e) => setCity(e.target.value)}
           />
           <select
             id="state-select"
@@ -238,7 +271,7 @@ function EditResModal({ restaurant }) {
               validationErrors.state ? "error-bg" : ""
             }`}
             value={state}
-            onChange={(e) => setState(e.target.value)}
+            // onChange={(e) => setState(e.target.value)}
           >
             <option value="">-- Select State --</option>
             {USSTATES.map((state) => (

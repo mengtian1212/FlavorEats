@@ -19,23 +19,22 @@ function SignupFormPage() {
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const location = useLocation();
+  const landingAddressProp = location.state && location.state.landingAddress;
+
+  const landingAddressData = landingAddressProp?.slice(0, -2).join(", ");
+  const landingAddress = landingAddressData
+    ? landingAddressData.split(", ").slice(1).join(", ")
+    : "";
+  const [myAddress, setMyAddress] = useState(landingAddressData || "");
+
+  console.log("landingAddress in signup page", landingAddress);
 
   const [email, setEmail] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [visiblepw, setVisiblepw] = useState(false);
-  const [visiblepwc, setVisiblepwc] = useState(false);
-
-  const [errors, setErrors] = useState([]);
-  const [submitBtn, setSubmitBtn] = useState(false);
-
-  // for address
-  const landingAddressProp = location.state && location.state.landingAddress;
-  const [myAddress, setMyAddress] = useState(landingAddressProp || "");
   const [address, setAddress] = useState(
-    // landingAddressProp ? landingAddressProp?.slice(0, -2).join(", ") : ""
     landingAddressProp ? landingAddressProp[1] : ""
   );
   const [city, setCity] = useState(
@@ -47,25 +46,12 @@ function SignupFormPage() {
   const [zip, setZip] = useState(
     landingAddressProp ? landingAddressProp[4] : ""
   );
-  const [lat, setLat] = useState(
-    landingAddressProp ? landingAddressProp[5] : 0
-  );
-  const [lng, setLng] = useState(
-    landingAddressProp ? landingAddressProp[6] : 0
-  );
 
-  console.log(
-    "address input -------------",
-    landingAddressProp,
-    address,
-    city,
-    state,
-    zip,
-    lat,
-    lng
-  );
+  const [visiblepw, setVisiblepw] = useState(false);
+  const [visiblepwc, setVisiblepwc] = useState(false);
 
-  console.log("myAddress -------------", myAddress);
+  const [errors, setErrors] = useState([]);
+  const [submitBtn, setSubmitBtn] = useState(false);
 
   const demoUser = async (e) => {
     e.preventDefault();
@@ -75,7 +61,7 @@ function SignupFormPage() {
 
     setErrors({});
     const data = await dispatch(login(email, password));
-    if (!myAddress) {
+    if (!landingAddressData) {
       history.push("/restaurants");
       return;
     }
@@ -94,7 +80,7 @@ function SignupFormPage() {
   };
 
   const handleLogin = () => {
-    if (!myAddress) {
+    if (!landingAddressData) {
       history.push("/login");
     } else {
       history.push("/login", { landingAddress: landingAddressProp });
@@ -151,19 +137,18 @@ function SignupFormPage() {
         "Confirm password field must be the same as the password field";
     }
 
-    if (!address || (address && address.trim().length === 0))
+    if (address && address.trim().length === 0)
       err.address = "Address is required";
     if (address && address.trim().length > 255)
-      err.address = "Address should be less than 255 characters";
+      err.address = "Please enter an address less than 255 characters";
     // if (address.includes(",")) {
     //   err.address = "Please enter an address without special characters";
     // }
 
-    if (!city || (city && city.trim().length === 0))
-      err.city = "City is required";
-    if (!state) err.state = "State is required";
-    if (!zip || (zip && zip.trim().length !== 5))
-      err.zip = "Zipcode is required";
+    if (city && city.trim().length === 0) err.city = "City is required";
+    // if (!state) err.state = "State is required";
+    if (zip && zip.trim().length !== 5)
+      err.zip = "Please enter a 5 digit zipcode";
 
     setErrors(err);
   }, [
@@ -173,23 +158,12 @@ function SignupFormPage() {
     confirmPassword,
     first_name,
     last_name,
-    address,
-    city,
-    state,
-    zip,
+    // address,
+    // city,
+    // state,
+    // zip,
     myAddress,
   ]);
-
-  useEffect(() => {
-    if (myAddress !== "") {
-      setAddress(myAddress[1]);
-      setCity(myAddress[2]);
-      setState(myAddress[3]);
-      setZip(myAddress[4]);
-      setLat(myAddress[5]);
-      setLng(myAddress[6]);
-    }
-  }, [myAddress]);
 
   const submitBtnClassName = submitBtn ? "enabledBtn cursor" : `disabledBtn`;
 
@@ -199,6 +173,11 @@ function SignupFormPage() {
     if (!key) {
       dispatch(getKey());
     }
+  }, [dispatch, key]);
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: key,
+    libraries: ["places"],
   });
 
   const handleSubmit = async (e) => {
@@ -207,23 +186,19 @@ function SignupFormPage() {
       const firstNamePayload = capitalizeFirstChar(first_name);
       const lastNamePayload = capitalizeFirstChar(last_name);
       const username = capitalizeFirstChar(first_name);
-      console.log(firstNamePayload, email, password, confirmPassword);
-
       const cityPayload = capitalizeFirstChar(city);
       const zipPayload = zip.trim();
       const addressPayload =
-        // capitalizeFirstChar(address) +
-        myAddress[0] +
+        capitalizeFirstChar(address) +
         ", " +
-        myAddress[1] +
+        capitalizeFirstChar(address) +
         ", " +
         cityPayload +
         ", " +
         state +
         " " +
         zip;
-
-      console.log("payload", addressPayload);
+      console.log(email, password, confirmPassword, firstNamePayload);
 
       setErrors({});
       const data = await dispatch(
@@ -236,9 +211,7 @@ function SignupFormPage() {
           addressPayload,
           cityPayload,
           state,
-          zipPayload,
-          lat,
-          lng
+          zipPayload
         )
       );
 
@@ -362,112 +335,74 @@ function SignupFormPage() {
 
             {/* step 4 address city state zip*/}
             <div className="signup-email-container">
-              {myAddress && (
+              {landingAddressData && (
                 <div className="login-title">
                   Step 4: Confirm your address to get food delivered to your
                   door
                 </div>
               )}
-              {!myAddress && (
+              {!landingAddressData && (
                 <div className="login-title">
                   Step 4: Add an address to get food delivered to your door
                 </div>
               )}
+
               <div>
                 This will be used as your default delivery address. You can
                 always change this later.
               </div>
-              {key && (
-                <SignupAddressAutoComplete
-                  apiKey={key}
-                  onAddressChange={setMyAddress}
-                />
-              )}
-              {myAddress && (
-                <>
-                  <div className="verify">
-                    Please verify the following address:
-                  </div>
-                  <div className="user-city-state-container">
-                    <div>Street address</div>
-                    <div>{address}</div>
-                    {errors.address && (
-                      <div className="error-message2">{errors.address}</div>
-                    )}
-                  </div>
-
-                  <div className="user-city-state-container">
-                    <div>City</div>
-                    <div>{city}</div>
-                    {errors.city && (
-                      <div className="error-message2">{errors.city}</div>
-                    )}
-                  </div>
-
-                  <div className="user-city-state-container">
-                    <div>State</div>
-                    <div>{state}</div>
-                    {errors.state && (
-                      <div className="error-message2">{errors.state}</div>
-                    )}
-                  </div>
-
-                  <div className="user-city-state-container">
-                    <div>Zipcode</div>
-                    <div>{zip}</div>
-                    {errors.zip && (
-                      <div className="error-message2">{errors.zip}</div>
-                    )}
-                  </div>
-                </>
-              )}
-              {/* <input
-                className="login-input1"
+              <SignupAddressAutoComplete
+                apiKey={key}
+                onAddressChange={setMyAddress}
+              />
+              <input
+                className="login-input"
                 placeholder="Example: 123 Main street"
                 type="text"
-                value={address}
+                value={myAddress[0] + ", " + myAddress[1]}
                 onChange={(e) => setAddress(e.target.value)}
                 required
               />
               {errors.address && (
                 <p className="error-message">{errors.address}</p>
               )}
-              <div className="user-city-state-container">
-                <input
-                  className="login-input1"
-                  placeholder="City"
-                  type="text"
-                  value={city}
-                  required
-                />
-                <select
-                  id="state-select1"
-                  className={`${state === "" ? "first-option" : ""} ${
-                    errors.state ? "error-bg" : ""
-                  }`}
-                  value={state}
-                  // onChange={(e) => setState(e.target.value)}
-                  required
-                >
-                  <option value="">-- Select State --</option>
-                  {USSTATES.map((state) => (
-                    <option key={state} value={state}>
-                      {state}
-                    </option>
-                  ))}
-                </select>
-              </div>
+
+              <input
+                className="login-input"
+                placeholder="City"
+                type="text"
+                value={myAddress[2]}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+
+              <select
+                id="state-select1"
+                className={`${state === "" ? "first-option" : ""} ${
+                  errors.state ? "error-bg" : ""
+                }`}
+                value={myAddress[3]}
+                onChange={(e) => setState(e.target.value)}
+                required
+              >
+                <option value="">-- Select State --</option>
+                {USSTATES.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
               {errors.city && <p className="error-message">{errors.city}</p>}
               {errors.state && <p className="error-message">{errors.state}</p>}
 
               <input
-                className="login-input1"
+                className="login-input"
                 placeholder="Zipcode"
                 type="text"
-                value={zip}
+                value={myAddress[4]}
                 onChange={(e) => setZip(e.target.value)}
               />
-              {errors.zip && <p className="error-message">{errors.zip}</p>} */}
+              {errors.zip && <p className="error-message">{errors.zip}</p>}
             </div>
 
             <button
