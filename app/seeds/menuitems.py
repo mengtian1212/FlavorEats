@@ -953,6 +953,742 @@ def seed_menuitems():
             "description": "Espresso shots topped with hot water create a light layer of crema culminating in this wonderfully rich cup with depth and nuance. Pro Tip: For an additional boost, ask your barista to try this with an extra shot."
         },
         {  # 107
+            "restaurant_id": 6,
+            "item_name": "Crunchwrap Supreme",
+            "item_type": "Specialties",
+            "price": 8.16,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/5a47aabd2435a27eab20c06fcccb4d58/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A flour tortilla layered with seasoned beef, warm nacho cheese sauce, a crispy tostada shell, crispy lettuce, ripe tomatoes and topped with cool sour cream all wrapped in our signature crunchwrap fold and grilled to go."
+        },
+        {  # 108
+            "restaurant_id": 6,
+            "item_name": "Chicken Chipotle Melt",
+            "item_type": "Specialties",
+            "price": 3.04,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2e66417b72c8a4094d11d25fbef03c3c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Grilled chicken, creamy chipotle sauce, and real shredded cheddar cheese all wrapped up in a warm flour tortilla.",
+        },
+        {  # 109
+            "restaurant_id": 6,
+            "item_name": "Veggie Mexican Pizza",
+            "item_type": "Specialties",
+            "price": 6.94,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/71861ff4356cd76da733a56246d82dc7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Refried beans between two Mexican Pizza shells with Mexican Pizza sauce, three-cheese blend, and tomatoes on top.",
+        },
+        {  # 110
+            "restaurant_id": 6,
+            "item_name": "Mexican Pizza",
+            "item_type": "Specialties",
+            "price": 6.94,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/250847b5ca42fd98f8974b948874cd5a/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Seasoned beef and refried beans between two Mexican Pizza shells with Mexican Pizza sauce, three-cheese blend, and tomatoes on top.",
+        },
+        {  # 111
+            "restaurant_id": 6,
+            "item_name": "Cheesy Roll Up",
+            "item_type": "Specialties",
+            "price": 1.22,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d3fbaf82d7738e1b326adaab24d6a4d1/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A warm flour tortilla filled with our 3-cheese blend. Item is lacto-ovo, allowing for dairy & egg consumption. Preparation methods may lead to cross contact with meat. See ta.co for full details.",
+        },
+        {  # 112
+            "restaurant_id": 6,
+            "item_name": "Crunchy Taco",
+            "item_type": "Tacos",
+            "price": 2.43,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/587b09dfd7aa0db8512e89a0cd510c11/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A crunchy taco shell filled with seasoned beef, crispy lettuce and shredded cheddar cheese.",
+        },
+        {  # 113
+            "restaurant_id": 6,
+            "item_name": "Shredded Beef Grilled Cheese Dipping Taco",
+            "item_type": "Tacos",
+            "price": 4.87,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/bbb19895ac8d183201ce3b53e565a7b4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Includes a shredded beef Grilled Cheese Dipping Taco with Nacho Cheese sauce and Red sauce to dip.",
+        },
+        {  # 114
+            "restaurant_id": 6,
+            "item_name": "Soft Taco",
+            "item_type": "Tacos",
+            "price": 2.43,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/54cb390ed58a0e0027fc9374e94f14c8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A warm flour tortilla filled with seasoned beef, crispy lettuce and shredded cheddar cheese.",
+        },
+        {  # 115
+            "restaurant_id": 6,
+            "item_name": "Cheesy Gordita Crunch",
+            "item_type": "Tacos",
+            "price": 6.82,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/03ee79d5adec765dc6433d8701435a52/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A warm flatbread layered with three-cheese blend and wrapped around a crunchy taco filled with seasoned beef, spicy ranch sauce, crispy lettuce and shredded cheddar cheese.",
+        },
+        {  # 116
+            "restaurant_id": 6,
+            "item_name": "Nacho Cheese Doritos® Locos Tacos",
+            "item_type": "Tacos",
+            "price": 3.65,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/89daf55409c95a383d07dfff7ff52195/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A crunchy taco shell made from Nacho Cheese Doritos® is filled with seasoned beef, crispy lettuce, and pico de gallo.",
+        },
+        {  # 117
+            "restaurant_id": 6,
+            "item_name": "Spicy Potato Soft Taco",
+            "item_type": "Tacos",
+            "price": 1.22,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9cee8e4bae39c8f9edf6a372ba0cadf3/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A flour tortilla filled with crispy potato bites, lettuce, real shredded cheddar cheese, and creamy chipotle sauce.",
+        },
+        {  # 118
+            "restaurant_id": 6,
+            "item_name": "Nacho Cheese Doritos® Locos Tacos Supreme®",
+            "item_type": "Tacos",
+            "price": 4.87,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/5cb7bf3f9f2dba348808cf963f484e30/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A crunchy taco shell made from Nacho Cheese Doritos® is filled with seasoned beef, cool sour cream, crispy lettuce, shredded cheddar cheese and ripe tomatoes.",
+        },
+        {  # 119
+            "restaurant_id": 6,
+            "item_name": "Doritos® Cheesy Gordita Crunch - Nacho Cheese",
+            "item_type": "Tacos",
+            "price": 6.94,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2efdaf15d132a2ef6bdc12735d964393/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A Nacho Cheese Doritos® Locos Tacos wrapped up in a soft piece of flatbread with Seasoned Beef, Spicy Ranch Sauce, Lettuce, Cheddar Cheese, and a Three Cheese Blend.",
+        },
+        {  # 120
+            "restaurant_id": 6,
+            "item_name": "Chalupa Supreme®",
+            "item_type": "Tacos",
+            "price": 6.82,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d5a53c44dd5fac8d70a1cebf3d713ea0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Chewy fried chalupa bread filled with seasoned beef, sour cream, crispy lettuce, three-cheese blend and ripe tomatoes.",
+        },
+        {  # 121
+            "restaurant_id": 6,
+            "item_name": "Cheesy Bean and Rice Burrito",
+            "item_type": "Burritos",
+            "price": 1.22,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/97d87a881f9315d5d84d9e47e8dca2ef/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A warm flour tortilla filled with refried beans, seasoned rice, nacho cheese sauce and creamy jalapeño sauce. Item is lacto-ovo, allowing for dairy & egg consumption. Preparation methods may lead to cross contact with meat. See ta.co for full details.",
+        },
+        {  # 122
+            "restaurant_id": 6,
+            "item_name": "Beefy Melt Burrito",
+            "item_type": "Burritos",
+            "price": 2.44,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6f29d8bf21503fcdd70817de3518fb3f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Seasoned Rice, Seasoned Beef, Nacho Cheese Sauce, Fiesta Strips, Three Cheese Blend, Reduced Fat Sour Cream wrapped in a warm tortilla.",
+        },
+        {  # 123
+            "restaurant_id": 6,
+            "item_name": "Chipotle Ranch Grilled Chicken Burrito",
+            "item_type": "Burritos",
+            "price": 2.44,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f4571c0ef5af79ae043c8679d69c8650/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Grilled chicken, fiesta strips, avocado ranch sauce, creamy chipotle sauce, lettuce, tomatoes, and real shredded cheddar cheese wrapped inside a warm flour tortilla.",
+        },
+        {  # 124
+            "restaurant_id": 6,
+            "item_name": "Fiesta Veggie Burrito",
+            "item_type": "Burritos",
+            "price": 2.44,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/87b7fd3afd22301bc39532c6288acc26/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "The Fiesta Veggie Burrito comes with Seasoned Rice, Black Beans, Red Strips, Creamy Chipotle Sauce, Reduced-Fat Sour Cream, a Three-Cheese Blend, Tomatoes, and Guacamole.",
+        },
+        {  # 125
+            "restaurant_id": 6,
+            "item_name": "Grilled Cheese Burrito",
+            "item_type": "Burritos",
+            "price": 5.48,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/5b9d85664e7090f3be6e30cceabb15a5/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Seasoned beef, nacho cheese sauce, seasoned rice, fiesta strips, creamy chipotle sauce, reduced-fat sour cream, and three-cheese blend wrapped inside a warm flour tortilla, with even more three-cheese blend grilled on the top.",
+        },
+        {  # 126
+            "restaurant_id": 6,
+            "item_name": "Burrito Supreme®",
+            "item_type": "Burritos",
+            "price": 7.06,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d21b42ca69b4120a412c29df11c10118/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A warm flour tortilla loaded with seasoned beef, refried beans, tomatoes, onions, iceberg lettuce, reduced-fat sour cream, red sauce and cheddar cheese.",
+        },
+        {  # 127
+            "restaurant_id": 6,
+            "item_name": "Chicken Quesadilla",
+            "item_type": "Quesadillas",
+            "price": 8.04,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/eb27c8839134cda5acbcbaedc23f8696/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "An extra flour tortilla filled with melty three-cheese blend, fire grilled chicken, creamy jalapeño sauce folded and grilled to perfection.",
+        },
+        {  # 128
+            "restaurant_id": 6,
+            "item_name": "Cheese Quesadilla",
+            "item_type": "Quesadillas",
+            "price": 6.33,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ec570f146a092badc5c4b9b9ae9c1f90/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Large flour tortilla filled with melty three-cheese blend, creamy jalapeño sauce, perfectly folded & grilled. Item is lacto-ovo, allowing for dairy & egg consumption. Preparation methods may lead to cross contact with meat. See ta.co for full details.",
+        },
+        {  # 129
+            "restaurant_id": 6,
+            "item_name": "Nachos BellGrande®",
+            "item_type": "Nachos",
+            "price": 8.04,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/08fb79b5ab7d2b9956fe87733e742687/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A portion of crispy tortilla chips topped with warm nacho cheese sauce, refried beans, seasoned beef, ripe tomatoes and cool sour cream.",
+        },
+        {  # 130
+            "restaurant_id": 6,
+            "item_name": "Chips and Nacho Cheese Sauce",
+            "item_type": "Nachos",
+            "price": 2.92,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4c54a4348004bf227debbec81d6520ee/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Nacho chips with a side of warm nacho cheese sauce for dipping.",
+        },
+        {  # 131
+            "restaurant_id": 6,
+            "item_name": "Blue Raspberry Freeze",
+            "item_type": "Drinks",
+            "price": 4.62,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/45df69d5669fe68ea795ad97170a6ef0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A sweet and tart, blue raspberry-flavored Freeze.",
+        },
+        {  # 132
+            "restaurant_id": 6,
+            "item_name": "Pepsi®",
+            "item_type": "Drinks",
+            "price": 3.40,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/037334ae68d199496afd7135327410b5/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 133
+            "restaurant_id": 6,
+            "item_name": "Starry®",
+            "item_type": "Drinks",
+            "price": 3.40,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/549d6d50c48ed93bb1fe49dc9406bbe5/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "A crisp, clear lemon lime flavored soda.",
+        },
+        {  # 134
+            "restaurant_id": 6,
+            "item_name": "Iced Cinnabon Delights® Coffee",
+            "item_type": "Drinks",
+            "price": 2.79,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b6035a5d2f54f770c78004f97f65ca3f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Premium roast coffee with vanilla creamer and Cinnabon® flavor served on ice.",
+        },
+        {  # 135
+            "restaurant_id": 6,
+            "item_name": "G2 Gatorade® Fruit Punch",
+            "item_type": "Drinks",
+            "price": 3.40,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c23ce764789c2006889244bb2707d6c7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 136
+            "restaurant_id": 6,
+            "item_name": "Milk",
+            "item_type": "Drinks",
+            "price": 1.21,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/01ec5624abdcd0403a370a60e83e5df0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 137
+            "restaurant_id": 6,
+            "item_name": "Premium Hot Coffee",
+            "item_type": "Drinks",
+            "price": 2.79,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/5c554802ac00a278004ee1f215e127e7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Rainforest alliance certified™ coffee.",
+        },
+        {  # 138
+            "restaurant_id": 7,
+            "item_name": "The Original Orange Chicken",
+            "item_type": "A La Carte",
+            "price": 6.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9131deb7981ca796cf97b96f7914ed49/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 139
+            "restaurant_id": 7,
+            "item_name": "Chow Mein",
+            "item_type": "A La Carte",
+            "price": 5.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6cf0bc6f0d3cb7064d8611963cf4b941/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 140
+            "restaurant_id": 7,
+            "item_name": "Fried Rice",
+            "item_type": "A La Carte",
+            "price": 5.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6571b524b4da06a957bca9a49b9eb934/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 141
+            "restaurant_id": 7,
+            "item_name": "Honey Walnut Shrimp",
+            "item_type": "A La Carte",
+            "price": 8.35,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/49490b4ebaa0cf0e63dcc117795c5916/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 142
+            "restaurant_id": 7,
+            "item_name": "Beijing Beef",
+            "item_type": "A La Carte",
+            "price": 6.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f38c130c345442fb75e1814a0818b8f7/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 143
+            "restaurant_id": 7,
+            "item_name": "Grilled Teriyaki Chicken",
+            "item_type": "A La Carte",
+            "price": 6.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6ebeb672d35d87ff0c77d020c4a1e811/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 144
+            "restaurant_id": 7,
+            "item_name": "Broccoli Beef",
+            "item_type": "A La Carte",
+            "price": 6.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/cc9b5d483eb80983a8ffc1a664c5f4bb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 145
+            "restaurant_id": 7,
+            "item_name": "Honey Sesame Chicken Breast",
+            "item_type": "A La Carte",
+            "price": 6.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f7145522944b06096a67ac918d07629b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 146
+            "restaurant_id": 7,
+            "item_name": "Kung Pao Chicken",
+            "item_type": "A La Carte",
+            "price": 6.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c142bc0165bd8d615a64a8aeca3fd06c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 147
+            "restaurant_id": 7,
+            "item_name": "Black Pepper Angus Steak",
+            "item_type": "A La Carte",
+            "price": 8.35,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/14b15947a83cf832a2a10f5e6a844433/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 148
+            "restaurant_id": 7,
+            "item_name": "Super Greens",
+            "item_type": "A La Carte",
+            "price": 5.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/46ae45bdc28a86dedb64d2037cd21790/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 149
+            "restaurant_id": 7,
+            "item_name": "White Steamed Rice",
+            "item_type": "A La Carte",
+            "price": 5.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4fc4ba21de4b244e41d8db500e0f5bf2/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 150
+            "restaurant_id": 7,
+            "item_name": "Mushroom Chicken",
+            "item_type": "A La Carte",
+            "price": 6.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a7aeb22e65839318873794e8a41599ec/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 151
+            "restaurant_id": 7,
+            "item_name": "Veggie Spring Roll",
+            "item_type": "Appetizers and More",
+            "price": 2.50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f38e313377061b097fa6198a2436f199/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 152
+            "restaurant_id": 7,
+            "item_name": "Cream Cheese Rangoon",
+            "item_type": "Appetizers and More",
+            "price": 2.50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/807da8c30395c295bc1e3f0d277b7863/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 153
+            "restaurant_id": 7,
+            "item_name": "Chicken Egg Roll",
+            "item_type": "Appetizers and More",
+            "price": 2.50,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3a20a1788d260d315bf5dc3a1b7d178b/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 154
+            "restaurant_id": 7,
+            "item_name": "Coca Cola",
+            "item_type": "Drinks",
+            "price": 2.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3b2563e4c242c5c3e5a8f04319b617e2/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 155
+            "restaurant_id": 7,
+            "item_name": "Fanta Orange",
+            "item_type": "Drinks",
+            "price": 3.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c8407af64755f9eeb2e3b350093889c8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 156
+            "restaurant_id": 7,
+            "item_name": "Diet Coke",
+            "item_type": "Drinks",
+            "price": 2.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/6c578a2c46b3109b35cf7eea686e10e1/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 157
+            "restaurant_id": 7,
+            "item_name": "Sprite",
+            "item_type": "Drinks",
+            "price": 2.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4a63fb4855cbe9f7feb78906625654db/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 158
+            "restaurant_id": 7,
+            "item_name": "Dr Pepper",
+            "item_type": "Drinks",
+            "price": 2.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/5e8d12af59783925372ab71c400c5326/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 159
+            "restaurant_id": 7,
+            "item_name": "Minute Maid Lemonade",
+            "item_type": "Drinks",
+            "price": 2.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/73e5daf79d64a5b6c2feda58c5c22901/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 160
+            "restaurant_id": 7,
+            "item_name": "Dasani",
+            "item_type": "Drinks",
+            "price": 3.00,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9a8fea9379f320b44d4b99474215927f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 161
+            "restaurant_id": 7,
+            "item_name": "Fuze Raspberry Iced Tea",
+            "item_type": "Drinks",
+            "price": 2.75,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ec5c6ed835452e9b1f63d5233ebbf757/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+        },
+        {  # 162
+            "restaurant_id": 8,
+            "item_name": "SOUTHWEST STEAK BOWL",
+            "item_type": "DIGITAL EXCLUSIVES",
+            "price": 18.09,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/35b3d90577ccad7e922a63f93057ad25/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Brown Rice, Roasted Corn, Black Beans, Red Bell Pepper, Tillamook White Cheddar, Green Onion, Crispy Onion, Avocado, Steak, Chipotle Tomatillo Sauce",
+        },
+        {  # 163
+            "restaurant_id": 8,
+            "item_name": "PROTEIN POWERED",
+            "item_type": "DIGITAL EXCLUSIVES",
+            "price": 17.69,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/790ab8e1c3cb2a7b48a9e8f9d214e1c3/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine + Kale, Brown Rice, Jalapeno, Green Onion, Radish, Hard Boiled Egg, Gorgonzola, Cashews, Steak, Lemon Wedge, Peppercorn Ranch",
+        },
+        {  # 164
+            "restaurant_id": 8,
+            "item_name": "TOFU VEGAN CRUNCH",
+            "item_type": "DIGITAL EXCLUSIVES",
+            "price": 15.09,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/fd7bd91c7cf35f3ee50add8fd1d7f38f/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine, Radish, green Onion, Tofu, Tomato, Spicy Pickled Peppers, Cucumber, Corn, Cilantro, Cilantro Lime dressing",
+        },
+        {  # 165
+            "restaurant_id": 8,
+            "item_name": "FAST & THE CURRYOUS",
+            "item_type": "WARM BOWLS",
+            "price": 18.59,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/24d3bf4983585f96f7933fac5fbbd428/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Jasmine Rice, Zucchini, Carrot, Red Bell Pepper, Crushed Pineapple, Green Onion, Crispy Onion, Steak, Spicy Green Curry (Sauce contains traces of fish & shellfish)",
+        },
+        {  # 166
+            "restaurant_id": 8,
+            "item_name": "JALAPEÑO BUSINESS",
+            "item_type": "WARM BOWLS",
+            "price": 18.09,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d93db148aaa957cd98272984acb5b6ca/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Brown Rice, Black Beans, Grape Tomatoes, Fire Roasted Corn, Jalapeño, 2x Chicken, Local White Cheddar, Chipotle Tomatillo Sauce",
+        },
+        {  # 167
+            "restaurant_id": 8,
+            "item_name": "EL SOMBRERO",
+            "item_type": "SALADS",
+            "price": 15.59,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b8bbe999433dc42a75bb3c547eee4b0c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine, Avocado, Grape Tomatoes, Fire Roasted Corn, Jalapeño, Black Beans, Tortilla Chips, Local White Cheddar, Cilantro Lime Vini",
+        },
+        {  # 168
+            "restaurant_id": 8,
+            "item_name": "SPICY+KALE CAESAR",
+            "item_type": "SALADS",
+            "price": 14.59,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/077c68d890114b5db853e69ed2ea83ff/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine + Kale, Grape Tomatoes, Jalapeño, Garlic Croutons, Aged Parmesan, Fresh Lemon, Evergreens Caesar",
+        },
+        {  # 169
+            "restaurant_id": 8,
+            "item_name": "SOUTHERN SAUCEPITALITY",
+            "item_type": "SALADS",
+            "price": 14.99,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/79343a292c97fc628737bff7d8614406/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine + Mixed Greens, House Pickles, Fire Roasted Corn, Local White Cheddar, Red Bell Pepper, Pickled Red Onion, Crispy Onion, Smoked Spices, BBQ Sauce, Peppercorn Ranch",
+        },
+        {  # 170
+            "restaurant_id": 8,
+            "item_name": "COBB YOUR ENTHUSIASM",
+            "item_type": "SALADS",
+            "price": 15.59,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9b0554d7106a6c80f008dbcad6d563f3/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine, Pickled Red Onion, Avocado, Bacon, Hard Boiled Egg, Gorgonzola, Red Wine Vini",
+        },
+        {  # 171
+            "restaurant_id": 8,
+            "item_name": "CAUL ME MAYBE",
+            "item_type": "SALADS",
+            "price": 15.59,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/12a6839b59a75a2e037845ff0c30de25/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine + Spinach, Roasted Cauliflower, Roasted Sweet Potato, Garbanzo Beans, Feta Cheese, Golden Raisins, Cilantro, Sunflower Seeds, Chermoula Sauce, Greek Yogurt Dressing",
+        },
+        {  # 172
+            "restaurant_id": 8,
+            "item_name": "POST MELON",
+            "item_type": "SALADS",
+            "price": 15.99,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/637774e99bce1bb053aa06ebeb0b94c3/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine + Arugula, Yumi Watermelon, Cucumber, Radish, Jalapeno, Cilantro, Feta Cheese, Pepitas, Tajin Spice, Greek Yogurt Dressing",
+        },
+        {  # 173
+            "restaurant_id": 8,
+            "item_name": "SPICY+KALE CAESAR WRAP",
+            "item_type": "WRAPS",
+            "price": 15.59,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4a6659a961cf85a8073da827c221707d/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Whole Wheat Wrap, Romaine, Kale, Grape Tomatoes, Jalapeño, Garlic Croutons, Aged Parmesan, Fresh Lemon, Evergreens Caesar",
+        },
+        {  # 174
+            "restaurant_id": 8,
+            "item_name": "COBB YOUR ENTHUSIASM WRAP",
+            "item_type": "WRAPS",
+            "price": 15.99,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0fc932b63b684cbfec3ca607b0f46799/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Whole Wheat Wrap, Romaine, Pickled Red Onion, Avocado, Bacon, Hard Boiled Egg, Gorgonzola, Red Wine Vini",
+        },
+        {  # 175
+            "restaurant_id": 8,
+            "item_name": "SOUTHERN SAUCEPITALITY WRAP",
+            "item_type": "WRAPS",
+            "price": 15.59,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1964f195af088a00deceb52f188d5c46/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Romaine + Mixed Greens, House Pickles, Fire Roasted Corn, Local White Cheddar, Red Bell Pepper, Pickled Red Onion, Crispy Onion, Smoked Spices, BBQ Sauce, Peppercorn Ranch",
+        },
+        {  # 176
+            "restaurant_id": 8,
+            "item_name": "FRESH BAKED COOKIES",
+            "item_type": "SNACKS & DESSERTS",
+            "price": 3.13,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ad435a2954103acfdd022e987e6dbfef/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "House-baked cookies with no preservatives",
+        },
+        {  # 177
+            "restaurant_id": 8,
+            "item_name": "TROPHY CUPCAKE",
+            "item_type": "SNACKS & DESSERTS",
+            "price": 6.88,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/8b5d90059ac72e63d342882d89e80800/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "description": "Satisfy your sweet tooth with select flavors from our local partner",
+        },
+        {  # 178
+            "restaurant_id": 8,
+            "item_name": "TROPHY CUPCAKE",
+            "item_type": "SNACKS & DESSERTS",
+            "price": 3.13,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/8cce1e13-55bb-4a4f-8e85-b8677fd6c9cf.jpeg",
+            "description": "All Natural Kettle Style Potato Chips",
+        },
+        {  # 179
+            "restaurant_id": 9,
+            "item_name": "Chicken Shawarma Plate",
+            "item_type": "Plates",
+            "price": 15.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/cd62855a-e5f4-429d-8dcb-abf62ac17b12",
+            "description": "Marinated chicken grilled with tomato and onion, over basmati rice. Served with pita bread ,hummus, Greek salad, and topped with garlic sauce.",
+        },
+        {  # 180
+            "restaurant_id": 9,
+            "item_name": "Beef and Lamb Gyro Plate",
+            "item_type": "Plates",
+            "price": 15.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/db1bbeb5-ee77-4c07-bcdb-d4a59762b445.jpeg",
+            "description": "Traditional lamb and beef gyro cooked with tomato and onion over basmati rice. Served with pita bread, Greek salad, topped with garlic and tzatziki sauce.",
+        },
+        {  # 181
+            "restaurant_id": 9,
+            "item_name": "Lamb Shawarma Plate",
+            "item_type": "Plates",
+            "price": 16.65,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/16bd15e9-e517-456e-92f8-75acdc37f493.jpeg",
+            "description": "Well marinated lamb over basmati rice, topped with garlic sauce. Served with hummus, Greek salad and pita bread.",
+        },
+        {  # 182
+            "restaurant_id": 9,
+            "item_name": "Chicken Kebab",
+            "item_type": "Plates",
+            "price": 16.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/68a15f3c-3006-4dfc-ba13-41893689c02c.jpeg",
+            "description": "Chicken kebab over basmati rice. Served with hummus, Greek salad and a pita bread.",
+        },
+        {  # 183
+            "restaurant_id": 9,
+            "item_name": "Hummus Plate",
+            "item_type": "Plates",
+            "price": 13.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/3daf307f-9fe4-416c-8719-ee1b30bd9cbf.jpeg",
+            "description": "Hummus topped with your choice of protein. Served with warm pita bread.",
+        },
+        {  # 184
+            "restaurant_id": 9,
+            "item_name": "Kofta Plate",
+            "item_type": "Plates",
+            "price": 15.95,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/dd8fc3c1-5882-4a8e-b931-cefc6e864a97.jpeg",
+            "description": "Sizzling ground beef minced with onion, parsley over basmati rice, hummus and Greek salad. Topped with garlic sauce.",
+        },
+        {  # 185
+            "restaurant_id": 9,
+            "item_name": "Babaganoush Plate",
+            "item_type": "Plates",
+            "price": 13.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/abf99f8e-2ae4-452f-a571-920112aa1dc1.jpeg",
+            "description": "Babaganush (roasted eggplant mixed with tahini) topped with your choice of beef & lamb gyro, chicken or lamb topped with garlic sauce.",
+        },
+        {  # 186
+            "restaurant_id": 9,
+            "item_name": "Falafel Plate",
+            "item_type": "Vegan Plates",
+            "price": 15.25,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/8732b0ad-fd15-4fd4-8ff0-66e966714183.jpeg",
+            "description": "Falafel over basmati rice. Served with hummus, pita bread, and Greek salad.Topped with tahini sauce.",
+        },
+        {  # 187
+            "restaurant_id": 9,
+            "item_name": "Mixed Veggie Plate",
+            "item_type": "Vegan Plates",
+            "price": 13.25,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/ce08afe5-4bfc-42e7-9f88-eb66e260506b.jpeg",
+            "description": "Falafels(3 pieces) over Greek salad and topped with tahini sauce. Served with hummus, babaganoush and warm pita bread.",
+        },
+        {  # 188
+            "restaurant_id": 9,
+            "item_name": "Vegetarian Mezze",
+            "item_type": "Vegan Plates",
+            "price": 15.00,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/659f9bde-3d23-4c3d-b7e7-9afefee5f9a5.jpeg",
+            "description": "Dolmas over Greek salad served with hummus, babaganush and pita bread.",
+        },
+        {  # 189
+            "restaurant_id": 9,
+            "item_name": "Chicken Shawarma Sandwich",
+            "item_type": "Sandwiches",
+            "price": 10.65,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/ae0833be-e2f5-4628-86c6-4e93a341ec9c.jpeg",
+            "description": "Marinated grilled chicken. Served with tomatoes, onions, lettuce, cucumber, hummus, and garlic sauce. Wrapped in warm pita bread.",
+        },
+        {  # 190
+            "restaurant_id": 9,
+            "item_name": "Beef and Lamb Gyro Sandwich",
+            "item_type": "Sandwiches",
+            "price": 13.65,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/ef3df922-6ed9-4ae1-91bf-406b5514bd20",
+            "description": "Traditional lamb and beef gyro wrapped in pita bread. Served with tomatoes, onions, lettuce, cucumbers.Topped with garlic and tzatziki sauce.",
+        },
+        {  # 191
+            "restaurant_id": 9,
+            "item_name": "Arabic Shawarma Sandwich",
+            "item_type": "Sandwiches",
+            "price": 12.65,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/d5933b12-1613-41ff-bc62-4a976d1ed23c.jpeg",
+            "description": "Choice of Chicken Shawarma, Beef & Lamb Gyro or Lamb (+2) wrapped in large pita bread. Served with tomatoes, cucumbers, onions and pickles. Topped with garlic sauce.",
+        },
+        {  # 192
+            "restaurant_id": 9,
+            "item_name": "Greek Fries",
+            "item_type": "Fries",
+            "price": 6.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/2374816f-17f5-4944-b8ad-9e1bff797f33.jpeg",
+            "description": "French fries topped with mixed spices, garlic sauce, and feta cheese.",
+        },
+        {  # 193
+            "restaurant_id": 9,
+            "item_name": "Gyro Fries with pita bread",
+            "item_type": "Fries",
+            "price": 10.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/f6606f89-91c1-476c-a273-bb71275544fc.jpeg",
+            "description": "French fries topped with garlic sauce, feta cheese, beef & lamb gyro and pita bread.",
+        },
+        {  # 194
+            "restaurant_id": 9,
+            "item_name": "Chicken Shawarma Salad",
+            "item_type": "Salads",
+            "price": 13.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/12434bd2-d599-4676-8110-d3303d1a053a.jpeg",
+            "description": "Marinated grilled chicken. Served over a Greek salad and topped with garlic sauce.",
+        },
+        {  # 195
+            "restaurant_id": 9,
+            "item_name": "Greek Salad",
+            "item_type": "Salads",
+            "price": 10.25,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/6d24e586-9d87-447f-a9cb-675d19e6be50.jpeg",
+            "description": "Romaine lettuce, tomatoes, cucumbers,onion, feta cheese, and olives with Italian vinaigrette and topped with tzatziki sauce.",
+        },
+        {  # 196
+            "restaurant_id": 9,
+            "item_name": "Beef and Lamb Gyro Salad",
+            "item_type": "Salads",
+            "price": 13.75,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/6113d0d0-2029-422f-acda-c997d964dc50.jpeg",
+            "description": "Traditional lamb and beef gyro cooked with tomato and onion. Served over a Greek salad and topped with garlic sauce.",
+        },
+        {  # 197
+            "restaurant_id": 9,
+            "item_name": "Falafel Salad",
+            "item_type": "Salads",
+            "price": 13.45,
+            "image_url": "https://d1ralsognjng37.cloudfront.net/c932d3a1-6ed4-4b46-9022-05c3cce30a81",
+            "description": "Falafel(5 pieces) served over a Greek salad. Topped with tahini sauce.",
+        },
+        {  # 198
+            "restaurant_id": 9,
+            "item_name": "Baklava",
+            "item_type": "Desserts",
+            "price": 5.15,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a2c421455c9f08c36eb70ead0878e619/b4facf495c22df52f3ca635379ebe613.jpeg",
+            "description": "2 pieces of Pistachio Baklava",
+        },
+        {  # 199
+            "restaurant_id": 9,
+            "item_name": "Kataifi",
+            "item_type": "Desserts",
+            "price": 6.15,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7dc52dc012a533d277eef0ae89434d07/b4facf495c22df52f3ca635379ebe613.jpeg",
+        },
+        {  # 200
+            "restaurant_id": 9,
+            "item_name": "Slice Cake",
+            "item_type": "Desserts",
+            "price": 5.45,
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/694ccf4b0ed97bc263b77b09be2bc43d/4218ca1d09174218364162cd0b1a8cc1.jpeg",
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {  # 138
             "restaurant_id": 15,
             "item_name": "Lobster Roll",
             "item_type": "Kitchen - Lobster",
@@ -960,7 +1696,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2b681dd14ccb305361c0d940e90adacb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Claw and tail meat, celery, scallions, lemon & mayo, on a toasted top-split bun"
         },
-        {  # 108
+        {  # 139
             "restaurant_id": 15,
             "item_name": "Lobster Bake for 2 (2 lb lobster)",
             "item_type": "Kitchen - Lobster",
@@ -968,7 +1704,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d508e97cf5034aaff30673b639d31511/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Fresh steamed north-Atlantic lobster, clams, mussels, chorizo, potatoes & corn-on-the-cob served in a rich seafood broth (serves 2)"
         },
-        {  # 109
+        {  # 140
             "restaurant_id": 15,
             "item_name": "Lobster Roll Combo",
             "item_type": "Kitchen - Lobster",
@@ -976,7 +1712,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/c41d3aa453ffae5047dc65a9fc2fc764/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Maine style lobster roll, chips & choice of soup. Perfect for a picnic!"
         },
-        {  # 110
+        {  # 141
             "restaurant_id": 15,
             "item_name": "Steamed Lobster 1.25 LB",
             "item_type": "Kitchen - Lobster",
@@ -984,7 +1720,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/07492de654b7f72da5f51ec13f177cb8/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Freshly steamed north Atlantic hard-shell lobster served with butter & lemon"
         },
-        {  # 111
+        {  # 142
             "restaurant_id": 15,
             "item_name": "Fish & Shrimp Fry",
             "item_type": "Kitchen - Kitchen",
@@ -992,7 +1728,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/30466d13a2774b7d1d068ad44f9235f6/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Crispy sole, fried shrimp, fries, old bay, lemon & tartar sauce"
         },
-        {  # 112
+        {  # 143
             "restaurant_id": 15,
             "item_name": "Broiled Miso Oysters",
             "item_type": "Kitchen - Kitchen",
@@ -1000,7 +1736,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9a10fa7415ff95d5ce7645b7457fb498/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Garlic butter, bacon, pickled shallot, breadcrumbs, sautéed kale"
         },
-        {  # 113
+        {  # 144
             "restaurant_id": 15,
             "item_name": "Peel-N-Eat Shrimp",
             "item_type": "Kitchen - Kitchen",
@@ -1008,7 +1744,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/56ecdc454549e577c9af2cc002c08440/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Steamed & Chilled Shrimp Tossed in Old Bay and served with Lemon"
         },
-        {  # 114
+        {  # 145
             "restaurant_id": 15,
             "item_name": "Chopped Salad",
             "item_type": "Kitchen - Kitchen",
@@ -1016,7 +1752,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4d4951e429397ce30e82624775abc2be/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Romaine, kale, green beans, cherry tomatoes, scallion, cucumber, red onion, feta cheese, dill & balsamic dressing."
         },
-        {  # 115
+        {  # 146
             "restaurant_id": 15,
             "item_name": "Crab Cake",
             "item_type": "Kitchen - Kitchen",
@@ -1024,7 +1760,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2c9cb9cf999f4114dd12a05e6660f279/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Lump crab meat, boston lettuce, tomato & house remoulade, on a grilled potato bun."
         },
-        {  # 116
+        {  # 147
             "restaurant_id": 15,
             "item_name": "Grain Bowl",
             "item_type": "Kitchen - Kitchen",
@@ -1032,7 +1768,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/97a13d5a4edc422a155cecd64d9e1c7e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Bulgar wheat mixed with salsa verde, sautéed kale and chickpeas (Choice of: Grilled Salmon or Grilled Shrimp)."
         },
-        {  # 117
+        {  # 148
             "restaurant_id": 15,
             "item_name": "Salmon Burger",
             "item_type": "Kitchen - Kitchen",
@@ -1040,7 +1776,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e4cc40f4dedbb9bd0c16eb3242ef6143/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Atlantic salmon, pickled peppers, tomato, Boston lettuce & smoked aioli, on a grilled potato bun."
         },
-        {  # 118
+        {  # 149
             "restaurant_id": 15,
             "item_name": "Salmon Avocado Roll",
             "item_type": "Sushi Bar - Sushi Rolls",
@@ -1048,7 +1784,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/1a09c76a48a9f9644f197c13f3631ccb/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Salmon, avocado, nori, white rice & sesame seeds."
         },
-        {  # 119
+        {  # 150
             "restaurant_id": 15,
             "item_name": "Shrimp Tempura Roll",
             "item_type": "Sushi Bar - Sushi Rolls",
@@ -1056,7 +1792,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3367b0bcd333ffe2512b9f9e7357c4e4/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Tempura fried shrimp w/avocado, cucumber, masago & topped with eel sauce."
         },
-        {  # 120
+        {  # 151
             "restaurant_id": 15,
             "item_name": "Spicy Lobster Roll",
             "item_type": "Sushi Bar - Sushi Rolls",
@@ -1064,7 +1800,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ae9fa16ae6a10140842f267dc58a4093/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Lobster meat w/ avocado, spicy sauce & masago."
         },
-        {  # 121
+        {  # 152
             "restaurant_id": 15,
             "item_name": "Spicy Tuna Roll",
             "item_type": "Sushi Bar - Sushi Rolls",
@@ -1072,7 +1808,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/3e2f5f4ca74ceb47eef3b014763df5c2/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Spicy yellowfin tuna, nori, white rice & sesame seeds."
         },
-        {  # 122
+        {  # 153
             "restaurant_id": 15,
             "item_name": "California Red Crab Roll",
             "item_type": "Sushi Bar - Sushi Rolls",
@@ -1080,7 +1816,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2166fa1598b6a9add4db74b62477f628/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Red crab meat w/ avocado, cucumber & spicy sauce."
         },
-        {  # 123
+        {  # 154
             "restaurant_id": 15,
             "item_name": "Yellowtail Scallion Roll",
             "item_type": "Sushi Bar - Sushi Rolls",
@@ -1088,7 +1824,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/19dc96e50902520bea54e0a1e2b55e9e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Yellowtail (hamachi), scallion, white rice & nori."
         },
-        {  # 124
+        {  # 155
             "restaurant_id": 15,
             "item_name": "Vegetable Roll",
             "item_type": "Sushi Bar - Sushi Rolls",
@@ -1096,7 +1832,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/658ba720f06c7aa8b0f2607f0e04207c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Avocado, cucumber, nori, white rice & sesame seeds."
         },
-        {  # 125
+        {  # 156
             "restaurant_id": 15,
             "item_name": "Sake",
             "item_type": "Sushi Bar - Nigiri & Sashimi",
@@ -1104,7 +1840,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a4d9c074dbd4aec16593bbba3591c3e5/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Atlantic Salmon."
         },
-        {  # 126
+        {  # 157
             "restaurant_id": 15,
             "item_name": "Small Sashimi Box",
             "item_type": "Sushi Bar - Nigiri & Sashimi",
@@ -1112,7 +1848,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/638c366c5c23e3d16bbd5d79a877d0dc/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Mix of salmon, tuna & yellowtail sashimi (6 pieces total)."
         },
-        {  # 127
+        {  # 158
             "restaurant_id": 15,
             "item_name": "Large Sashimi Box",
             "item_type": "Sushi Bar - Nigiri & Sashimi",
@@ -1120,7 +1856,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a291047f401ccb11e6fc2bd46f2150a0/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Mix of salmon, tuna & yellowtail (12 pieces total)."
         },
-        {  # 128
+        {  # 159
             "restaurant_id": 15,
             "item_name": "Maguro",
             "item_type": "Sushi Bar - Nigiri & Sashimi",
@@ -1128,7 +1864,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7bfdf1694cd02a6d1ea023e7fb843c0e/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Yellowfin tuna."
         },
-        {  # 129
+        {  # 160
             "restaurant_id": 15,
             "item_name": "Hamachi",
             "item_type": "Sushi Bar - Nigiri & Sashimi",
@@ -1136,7 +1872,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/d6443ab6c0552c6df0052a7ff03ef678/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Yellowtail."
         },
-        {  # 130
+        {  # 161
             "restaurant_id": 15,
             "item_name": "Aburi Sake",
             "item_type": "Sushi Bar - Nigiri & Sashimi",
@@ -1144,7 +1880,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/7c41c1f80feb7c074162e74f1c15c224/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Salmon Belly."
         },
-        {  # 131
+        {  # 162
             "restaurant_id": 15,
             "item_name": "Bara Chirashi",
             "item_type": "Sushi Bar - Rice Bowls",
@@ -1152,7 +1888,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2df30c7445777b551f6272d2d6b7db70/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Tuna, salmon, yellowtail, wakame, jalapeño, cucumber, furikake, avocado w/ chili-soy sauce served over seasoned rice."
         },
-        {  # 132
+        {  # 163
             "restaurant_id": 15,
             "item_name": "Ponzu Sake Don",
             "item_type": "Sushi Bar - Rice Bowls",
@@ -1160,7 +1896,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/64d5c59b94207cf40cdcbb8be99f2019/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Salmon, hijiki, avocado, red radish furikake & masago mixed w/ ponzu sauce."
         },
-        {  # 133
+        {  # 164
             "restaurant_id": 15,
             "item_name": "Negi Toro Don",
             "item_type": "Sushi Bar - Rice Bowls",
@@ -1168,7 +1904,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a964a2ebfff9fc64862ae588f642e102/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Chopped tuna belly, nori, scallion, furikake, served over seasoned sushi rice."
         },
-        {  # 134
+        {  # 165
             "restaurant_id": 15,
             "item_name": "Miso Soup",
             "item_type": "Sides & Extras",
@@ -1176,7 +1912,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/812c714bd73dcee9b89e32f97003c242/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Miso, dashi, tofu, scallion, wakame (16oz)."
         },
-        {  # 135
+        {  # 166
             "restaurant_id": 15,
             "item_name": "Edamame",
             "item_type": "Sides & Extras",
@@ -1184,7 +1920,7 @@ def seed_menuitems():
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/9b851e0eeabd23e2c2de342ae71481ce/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Japanese soybean, sea salt."
         },
-        {  # 136
+        {  # 167
             "restaurant_id": 15,
             "item_name": "Seaweed Salad",
             "item_type": "Sides & Extras",

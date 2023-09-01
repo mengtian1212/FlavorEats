@@ -7,6 +7,8 @@ import { USSTATES, formatAddress } from "../../utils/helper-functions";
 import { editUserAddressThunk } from "../../store/session";
 import { checkoutCartThunk } from "../../store/orders";
 import Navigation from "../Navigation";
+import NavAddressAutoComplete from "../Navigation/NavAddressAutoComplete";
+import { getKey } from "../../store/maps";
 
 function OrderItem({ order_item }) {
   return (
@@ -28,6 +30,14 @@ function CheckoutPage() {
   const location = useLocation();
   const currentCart = location.state.currentCart;
   const dispatch = useDispatch();
+
+  const key = useSelector((state) => state.maps.key);
+
+  useEffect(() => {
+    if (!key) {
+      dispatch(getKey());
+    }
+  }, [dispatch, key]);
 
   // get necessary data from store;
   const sessionUser = useSelector((state) => state.session.user);
@@ -84,9 +94,10 @@ function CheckoutPage() {
   ///// state variables defined above
 
   // for edit address
+  console.log("my checkout address", myAddress);
   const validateAddressInput = () => {
     const err = {};
-    const data = myAddress.trim();
+    const data = myAddress;
     // should not be a long empty string '      '
     if (data.length === 0) {
       err.errors = "Address invalid";
@@ -99,9 +110,8 @@ function CheckoutPage() {
       return false;
     }
 
-    const parts = data.split(",").map((part) => part.trim());
     // must have 4 components
-    if (parts.length !== 4) {
+    if (data.length !== 7) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
@@ -113,7 +123,7 @@ function CheckoutPage() {
       return false;
     }
     // each component should not be empty
-    if (parts.includes("")) {
+    if (data.includes("")) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
       setEditAddressError(err.errors);
@@ -126,19 +136,7 @@ function CheckoutPage() {
     }
 
     // check state 1. should be 2 characters. 2.should in 52 US states.
-    const state_zip = parts[3].split(" ");
-    if (state_zip.length !== 2) {
-      err.errors =
-        "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
-      setEditAddressError(err.errors);
-      setMyAddress(sessionUser.address);
-      setShowEditAddress(false);
-      setTimeout(() => {
-        setEditAddressError({});
-      }, 3000);
-      return false;
-    }
-    const state = state_zip[0].trim();
+    const state = data[3].trim();
     if (state.length !== 2 || !USSTATES.includes(state.toUpperCase())) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
@@ -152,7 +150,7 @@ function CheckoutPage() {
     }
 
     // check zip code: should be 5 characters.
-    const zip = state_zip[1].trim();
+    const zip = data[4].trim();
     if (zip.length !== 5) {
       err.errors =
         "Invalid format : e.g. Address name, 123 main street, New York, NY 10000";
@@ -170,11 +168,9 @@ function CheckoutPage() {
 
   const handleSubmitAddress = async (e) => {
     if (!validateAddressInput()) return;
-    const addressFormatedList = formatAddress(myAddress, "list");
-    const addressFormatedString = formatAddress(myAddress, "string");
     if (
       myAddress.length !== 0 &&
-      addressFormatedString === sessionUser.address
+      myAddress.slice(0, -2).join(", ") === sessionUser.address
     ) {
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);
@@ -182,10 +178,12 @@ function CheckoutPage() {
     }
 
     const formData = {
-      address: addressFormatedString,
-      city: addressFormatedList[2],
-      state: addressFormatedList[3],
-      zip: addressFormatedList[4],
+      address: myAddress.slice(0, -2).join(", "),
+      city: myAddress[2],
+      state: myAddress[3],
+      zip: myAddress[4],
+      lat: myAddress[5],
+      lng: myAddress[6],
     };
     console.log(formData);
 
@@ -226,13 +224,13 @@ function CheckoutPage() {
       id: currentCart.id,
       user_id: sessionUser.id,
       restaurant_id: currentCart.restaurant_id,
-      tip: parseFloat(tipState),
+      tip: Math.round(parseFloat(tipState) * 100) / 100,
       is_pickup: !isDeliveryT,
       is_priority: isPriority,
       is_complete: true,
       delivery_address: sessionUser?.address,
-      delivery_lat: null,
-      delivery_lag: null,
+      delivery_lat: sessionUser?.lat,
+      delivery_lng: sessionUser?.lng,
     };
     await dispatch(checkoutCartThunk(payload));
     setTimeout(() => {
@@ -250,6 +248,10 @@ function CheckoutPage() {
         <div>Redirect to Home page...</div>
       </div>
     );
+  }
+
+  if (!key) {
+    return null;
   }
 
   return (
@@ -317,15 +319,27 @@ function CheckoutPage() {
                   <>
                     <div className="checkout-a-sub">
                       <i className="fa-solid fa-location-dot loc-dot"></i>
-                      <input
+                      {/* <input
                         className="edit-address-input1"
                         type="text"
                         value={myAddress}
                         onChange={(e) => setMyAddress(e.target.value)}
                         onBlur={handleSubmitAddress}
                         placeholder="Enter address"
-                      />
+                      /> */}
+                      <div className="edit-address-input3">
+                        <NavAddressAutoComplete
+                          apiKey={key}
+                          onAddressChange={setMyAddress}
+                        />
+                      </div>
                     </div>
+                    <button
+                      className="change-address-btn1 cursor"
+                      onClick={() => setShowEditAddress(false)}
+                    >
+                      Cancel
+                    </button>
                     <button
                       className="change-address-btn1 cursor"
                       onClick={handleSubmitAddress}

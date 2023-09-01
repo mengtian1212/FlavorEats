@@ -59,6 +59,8 @@ def new_restaurant():
             form.data['city'] + ', ' + form.data['state'],
             city=form.data['city'],
             state=form.data['state'],
+            lat=form.data['lat'],
+            lng=form.data['lng'],
         )
 
         db.session.add(new_restaurant)
@@ -98,6 +100,9 @@ def edit_restaurant(restaurantId):
             ', ' + form.data['city'] + ', ' + form.data['state']
         targetRestaurant.city = form.data['city']
         targetRestaurant.state = form.data['state']
+
+        targetRestaurant.lat = form.data['lat']
+        targetRestaurant.lng = form.data['lng']
 
         db.session.commit()
         return targetRestaurant.to_dict()

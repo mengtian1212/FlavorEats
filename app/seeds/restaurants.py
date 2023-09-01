@@ -4,7 +4,7 @@ from sqlalchemy.sql import text
 
 def seed_restaurants():
     restaurants = [
-        {  # 1
+        {  # 1  new york
             "owner_id": 1,
             "name": "McDonald's",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/41e448619de9527990482249b90f154c/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
@@ -15,10 +15,10 @@ def seed_restaurants():
             "address": "26 E 23rd St, New York, NY 10010",
             "city": "New York",
             "state": "NY",
-            "lat": 40.740166,
-            "lng": -73.987967
+            "lat": 40.7406637,
+            "lng": -73.9878848
         },
-        {  # 2
+        {  # 2   new york
             "owner_id": 1,
             "name": "Gyu-Kaku Japanese BBQ",
             "image_url": "https://d1ralsognjng37.cloudfront.net/ece58bad-1d56-4102-893c-a087f7897c39.jpeg",
@@ -29,11 +29,11 @@ def seed_restaurants():
             "address": "34 Cooper Sq, New York, NY 10003",
             "city": "New York",
             "state": "NY",
-            "lat": 40.727246,
-            "lng": -73.992232
+            "lat": 40.7275287,
+            "lng": -73.9925333
         },
-        {  # 3
-            "owner_id": 1,
+        {  # 3   new york
+            "owner_id": 2,
             "name": "Shake Shack",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/66e0f9d70b3fb76cbec9ec5203d4cfea/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
             "description": "Shake Shack is an American fast casual restaurant chain based in New York City. It started out as a hot dog cart inside Madison Square Park in 2001, and its popularity steadily grew. ",
@@ -43,11 +43,11 @@ def seed_restaurants():
             "address": "23rd And Madison Avenue, New York, NY 10010",
             "city": "New York",
             "state": "NY",
-            "lat": 40.741922,
-            "lng": -73.986337
+            "lat": 40.7413836,
+            "lng": -73.9864856
         },
-        {  # 4
-            "owner_id": 2,
+        {  # 4   new york
+            "owner_id": 1,
             "name": "P.F. Chang's",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/2892d0438d2d0db230564521ee2ac04b/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
             "delivery_fee": 0,
@@ -56,10 +56,10 @@ def seed_restaurants():
             "address": "113 University Place, New York, NY 10003",
             "city": "New York",
             "state": "NY",
-            "lat": 40.733773,
-            "lng": -73.993939
+            "lat": 40.7330491,
+            "lng": -73.9949616
         },
-        {  # 5
+        {  # 5  new york
             "owner_id": 1,
             "name": "Starbucks",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ab8e3f337605a518833ff1c0aebe10da/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
@@ -69,10 +69,10 @@ def seed_restaurants():
             "address": "10 Union Square East, New York, NY 10003",
             "city": "New York",
             "state": "NY",
-            "lat": 40.734190,
-            "lng": -73.989319
+            "lat": 40.7351506,
+            "lng": -73.9917738
         },
-        {  # 6
+        {  # 6   seattle
             "owner_id": 2,
             "name": "Taco Bell",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/087213ee09a12d82eab4f192aa53b8cc/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
@@ -82,10 +82,10 @@ def seed_restaurants():
             "address": "1960 148th Avenue N.E., Redmond, WA 98052",
             "city": "Redmond",
             "state": "WA",
-            "lat": 47.634407,
-            "lng": -122.131828
+            "lat": 47.6310725,
+            "lng": -122.1341079
         },
-        {  # 7
+        {  # 7  new york
             "owner_id": 2,
             "name": "Panda Express",
             "image_url": "https://d1ralsognjng37.cloudfront.net/2c9841a7-c2e5-4202-bcb4-dc7cff46c668.jpeg",
@@ -95,10 +95,10 @@ def seed_restaurants():
             "address": "414 Eighth Avenue, New York, NY 10001",
             "city": "New York",
             "state": "NY",
-            "lat": 40.752320,
-            "lng": -73.994640
+            "lat": 40.7528154,
+            "lng": -73.9950309
         },
-        {  # 8
+        {  # 8   seattle
             "owner_id": 2,
             "name": "Evergreens",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/95d9b91355723d0fe9f80a96ff17944a/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
@@ -108,23 +108,23 @@ def seed_restaurants():
             "address": "10503 Ne 4th St, Bellevue, WA 98004",
             "city": "Bellevue",
             "state": "WA",
-            "lat": 47.615880,
-            "lng": -122.192130
+            "lat": 47.6149382,
+            "lng": -122.1940891
         },
-        {  # 9
+        {  # 9  seattle
             "owner_id": 3,
             "name": "Mediterranean Grill",
             "image_url": "https://duyt4h9nfnj50.cloudfront.net/resized/4b5b96a41c0399956cde3035209e087d-w2880-81.jpg",
             "delivery_fee": 2.29,
-            "cusine_types": "Vegetarian#Halal#Fast Food",
+            "cusine_types": "Vegetarian#Halal#Fast Food#Vegan",
             "price_ranges": "$",
             "address": "15253 Bel-Red Rd, Ste C, Bellevue, WA 98007",
             "city": "Bellevue",
             "state": "WA",
-            "lat": 47.629225,
-            "lng": -122.155993
+            "lat":  47.6176931,
+            "lng": -122.1940891
         },
-        {  # 10
+        {  # 10  san jose
             "owner_id": 3,
             "name": "Gluten Free Garden Pizza",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/4c08bac83cd442fcb8da740d86061f56/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
@@ -134,10 +134,10 @@ def seed_restaurants():
             "address": "949 Ruff Dr, San Jose, CA 95110",
             "city": "San Jose",
             "state": "CA",
-            "lat": 0,
-            "lng": 0
+            "lat": 37.3605573,
+            "lng": -121.8911417
         },
-        {  # 11
+        {  # 11  seattle
             "owner_id": 4,
             "name": "Sharetea",
             "image_url": "https://d1ralsognjng37.cloudfront.net/f1b3f67d-583d-495c-a70d-01fd1de965a1.jpeg",
@@ -147,10 +147,10 @@ def seed_restaurants():
             "address": "7325 166th Avenue Northeast, F130, Redmond, WA 98052",
             "city": "Redmond",
             "state": "WA",
-            "lat": 0,
-            "lng": 0
+            "lat": 47.6712195,
+            "lng": -122.1249384
         },
-        {  # 12
+        {  # 12  new york
             "owner_id": 4,
             "name": "Mastro's Steakhouse",
             "image_url": "https://d1ralsognjng37.cloudfront.net/9e7abfa0-5b8c-40d2-b073-f068e7ce2fa1.jpeg",
@@ -160,10 +160,10 @@ def seed_restaurants():
             "address": "1285 Avenue Of The Americas, New York, NY 10019",
             "city": "New York",
             "state": "NY",
-            "lat": 0,
-            "lng": 0
+            "lat": 40.7616784,
+            "lng": -73.9790489
         },
-        {  # 13
+        {  # 13  new york
             "owner_id": 4,
             "name": "MakiMaki",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/db7d06e3bc76ba5795780c6268dfa8b5/c73ecc27d2a9eaa735b1ee95304ba588.jpeg",
@@ -173,23 +173,23 @@ def seed_restaurants():
             "address": "350 Hudson Street, New York, NY 10014",
             "city": "New York",
             "state": "NY",
-            "lat": 0,
-            "lng": 0
+            "lat": 47.4370272,
+            "lng": -122.1979131
         },
-        {  # 14
+        {  # 14  seattle
             "owner_id": 4,
             "name": "Applebee's",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e89b16893e36f765fde687ad3d3a88cd/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
             "delivery_fee": 2.59,
             "cusine_types": "American#Burgers#Salads#Dessert",
             "price_ranges": "$$$",
-            "address": "234 W 42nd St, New York, NY 10036",
-            "city": "New York",
-            "state": "NY",
-            "lat": 0,
-            "lng": 0
+            "address": "375 S Grady Way, Renton, WA 98057",
+            "city": "Renton",
+            "state": "WA",
+            "lat": 47.4637277,
+            "lng": -122.2209327
         },
-        {  # 15
+        {  # 15  new york
             "owner_id": 4,
             "name": "The Lobster Place",
             "image_url": "https://d1ralsognjng37.cloudfront.net/425fc969-8196-4a03-b535-db9cf2f260c7.jpeg",
@@ -199,8 +199,8 @@ def seed_restaurants():
             "address": "448 W 16th St, New York, NY 10011",
             "city": "New York",
             "state": "NY",
-            "lat": 0,
-            "lng": 0
+            "lat": 40.7423997,
+            "lng": -74.0073088
         },
     ]
 

@@ -56,7 +56,6 @@ export const createNewRestaurantThunk = (restaurant) => async (dispatch) => {
     method: "POST",
     body: restaurant,
   });
-  console.log("RESPONSE FROM SERVER", response);
 
   const data = await response.json();
   if (response.ok) {
@@ -66,7 +65,6 @@ export const createNewRestaurantThunk = (restaurant) => async (dispatch) => {
 };
 
 export const editRestaurantThunk = (restaurant) => async (dispatch) => {
-  console.log("restaurant in thunk ", restaurant);
   const response = await fetch(
     `/api/restaurants/${restaurant.get("id")}/edit`,
     {
@@ -74,13 +72,11 @@ export const editRestaurantThunk = (restaurant) => async (dispatch) => {
       body: restaurant,
     }
   );
-  console.log("RESPONSE FROM SERVER", response);
 
   const data = await response.json();
   if (response.ok) {
     dispatch(editRestaurantAction(data));
   }
-  console.log(data);
   return data;
 };
 

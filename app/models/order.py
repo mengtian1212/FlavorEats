@@ -18,8 +18,10 @@ class Order(db.Model):
     is_priority = db.Column(db.Boolean, nullable=False, default=False)
     is_complete = db.Column(db.Boolean, nullable=False, default=False)
     delivery_address = db.Column(db.String(255), nullable=True)
-    delivery_lat = db.Column(db.Integer, nullable=True)
-    delivery_lng = db.Column(db.Integer, nullable=True)
+    delivery_lat = db.Column(db.Numeric(
+        scale=13, asdecimal=False), nullable=True)
+    delivery_lng = db.Column(db.Numeric(
+        scale=13, asdecimal=False), nullable=True)
 
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
@@ -77,11 +79,15 @@ class Order(db.Model):
             'restaurant_name': self.restaurant.name,
             'restaurant_image': self.restaurant.image_url,
             'restaurant_address': self.restaurant.address,
+            'restaurant_lat': self.restaurant.lat,
+            'restaurant_lng': self.restaurant.lng,
             'tip': float(self.tip),
             'is_pickup': self.is_pickup,
             'is_complete': self.is_complete,
             'is_priority': self.is_priority,
             'delivery_address': self.delivery_address,
+            'delivery_lat': self.delivery_lat,
+            'delivery_lng': self.delivery_lng,
             'delivery_fee': self.restaurant.delivery_fee,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
@@ -92,7 +98,8 @@ class Order(db.Model):
         }
 
         if geo:
-            res['delivery_lat'] = self.delivery_lat
-            res['delivery_lng'] = self.delivery_lng
+            # res['delivery_lat'] = self.delivery_lat
+            # res['delivery_lng'] = self.delivery_lng
+            pass
 
         return res

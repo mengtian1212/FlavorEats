@@ -83,3 +83,5 @@ class EditUserAddressForm(FlaskForm):
                        DataRequired(), Length(min=1, max=40)])
     state = StringField('State', validators=[DataRequired(), validate_state])
     zip = StringField('Zip', validators=[DataRequired(), validate_zip])
+    lat = StringField('Latitute', validators=[DataRequired()])
+    lng = StringField('Longitude', validators=[DataRequired()])

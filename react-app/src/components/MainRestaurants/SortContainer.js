@@ -64,6 +64,7 @@ function SortContainer({
     if (isHalal) dietary.push("Halal");
     setDietary(dietary);
   }, [isVegetarian, isVegan, isGluten, isHalal, setDietary]);
+
   return (
     <div className="sort-container">
       <div className="all-res">All Restaurants</div>

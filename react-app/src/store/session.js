@@ -102,7 +102,9 @@ export const signUp =
     addressPayload,
     cityPayload,
     state,
-    zipPayload
+    zipPayload,
+    lat,
+    lng
   ) =>
   async (dispatch) => {
     console.log("hererererere");
@@ -121,6 +123,8 @@ export const signUp =
         city: cityPayload,
         state,
         zip: zipPayload,
+        lat,
+        lng,
       }),
     });
 

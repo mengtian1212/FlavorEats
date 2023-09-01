@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 91cef82efbd3
+Revision ID: 8c591daecea6
 Revises:
-Create Date: 2023-08-28 23:22:28.045246
+Create Date: 2023-09-01 01:20:47.706800
 
 """
 from alembic import op
@@ -11,9 +11,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = '91cef82efbd3'
+revision = '8c591daecea6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,8 +37,10 @@ def upgrade():
                         length=255), nullable=True),
                     sa.Column('address', sa.String(
                         length=255), nullable=False),
-                    sa.Column('lat', sa.Integer(), nullable=True),
-                    sa.Column('lng', sa.Integer(), nullable=True),
+                    sa.Column('lat', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
+                    sa.Column('lng', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
                     sa.Column('zip', sa.String(length=12), nullable=True),
                     sa.Column('city', sa.String(length=40), nullable=True),
                     sa.Column('state', sa.String(length=2), nullable=True),
@@ -48,8 +49,7 @@ def upgrade():
                     sa.Column('updated_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.PrimaryKeyConstraint('id'),
-                    sa.UniqueConstraint('email'),
-                    sa.UniqueConstraint('username')
+                    sa.UniqueConstraint('email')
                     )
     op.create_table('restaurants',
                     sa.Column('id', sa.Integer(), nullable=False),
@@ -67,8 +67,10 @@ def upgrade():
                         length=255), nullable=False),
                     sa.Column('city', sa.String(length=40), nullable=True),
                     sa.Column('state', sa.String(length=2), nullable=True),
-                    sa.Column('lat', sa.Float(), nullable=True),
-                    sa.Column('lng', sa.Float(), nullable=True),
+                    sa.Column('lat', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
+                    sa.Column('lng', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),
@@ -120,8 +122,10 @@ def upgrade():
                     sa.Column('is_complete', sa.Boolean(), nullable=False),
                     sa.Column('delivery_address', sa.String(
                         length=255), nullable=True),
-                    sa.Column('delivery_lat', sa.Integer(), nullable=True),
-                    sa.Column('delivery_lng', sa.Integer(), nullable=True),
+                    sa.Column('delivery_lat', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
+                    sa.Column('delivery_lng', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),

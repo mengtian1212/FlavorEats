@@ -9,6 +9,7 @@ import Navigation from "../Navigation";
 import MenuItems from "./MenuItems";
 import ReviewSection from "../ReviewSection";
 import { fetchAllReviewsThunk } from "../../store/reviews";
+import RestaurantMap from "./RestaurantMap";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
@@ -85,6 +86,7 @@ function SingleRestaurant() {
 
   const ids = Object.keys(items);
   const activeId = useScrollspy(ids, 54); // 54 is navigation height
+
   return (
     <div className="mw">
       <Navigation />
@@ -147,6 +149,10 @@ function SingleRestaurant() {
       <div id="reviews-block">
         {targetRestaurant && <ReviewSection resName={targetRestaurant?.name} />}
       </div>
+      {/* <RestaurantMap /> */}
+      {/* {targetRestaurant && (
+        <MapContainer lat={targetRestaurant?.lat} lng={targetRestaurant?.lng} />
+      )} */}
     </div>
   );
 }

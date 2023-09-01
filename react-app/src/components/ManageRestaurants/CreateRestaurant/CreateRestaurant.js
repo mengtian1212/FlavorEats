@@ -10,6 +10,8 @@ import {
 } from "../../../utils/helper-functions";
 import { createNewRestaurantThunk } from "../../../store/restaurants";
 import Header from "../../Header";
+import { getKey } from "../../../store/maps";
+import ResAddressAutoComplete from "./ResAddressAutoComplete";
 
 function CreateRestaurant() {
   const location = useLocation();
@@ -33,15 +35,26 @@ function CreateRestaurant() {
   const [photoUrl, setPhotoUrl] = useState(null);
   const [noPicture, setNoPicture] = useState(false);
 
+  const [myAddress, setMyAddress] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
+  const [zip, setZip] = useState(null);
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
 
   const [name, setName] = useState("");
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [imageLoading, setImageLoading] = useState(false);
 
   const [validationErrors, setValidationErrors] = useState({});
+
+  const key = useSelector((state) => state.maps.key);
+  useEffect(() => {
+    if (!key) {
+      dispatch(getKey());
+    }
+  });
 
   // for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
@@ -79,9 +92,13 @@ function CreateRestaurant() {
     setPhotoUrl(null);
     setNoPicture(false);
 
+    setMyAddress("");
     setAddress("");
     setCity("");
     setState("");
+    setZip(null);
+    setLat(0);
+    setLng(0);
 
     setName("");
     setSelectedTypes("");
@@ -102,16 +119,17 @@ function CreateRestaurant() {
     }
 
     const err = {};
-    if (address.trim().length === 0) err.address = "Store address is required";
-    if (address.trim().length > 255)
+    if (!address || address.trim().length === 0)
+      err.address = "Store address is required";
+    if (address && address.trim().length > 255)
       err.address = "Store address should not exceed 255 characters";
-    if (address.includes(",")) {
-      err.address = "Please enter an address without special characters";
-    }
-    if (city.trim().length === 0) err.city = "City is required";
+    // if (address.includes(",")) {
+    //   err.address = "Please enter an address without special characters";
+    // }
+    if (!city || city.trim().length === 0) err.city = "City is required";
     if (!state) err.state = "State is required";
-    if (name.trim().length === 0) err.name = "Name is required";
-    if (name.trim().length > 120)
+    if (!name || name.trim().length === 0) err.name = "Name is required";
+    if (name && name.trim().length > 120)
       err.name = "Store name should not exceed 120 characters";
     if (selectedTypes.length === 0)
       err.selectedTypes = "Please select at least one cuisine type";
@@ -136,9 +154,12 @@ function CreateRestaurant() {
     formData.append("address", addressData);
     formData.append("city", cityData);
     formData.append("state", state);
+    formData.append("lat", lat);
+    formData.append("lng", lng);
+
     formData.append("name", nameData);
     formData.append("cusine_types", selectedTypes.join("#").trim());
-    console.log(formData);
+    console.log(formData, lng);
 
     const data = await dispatch(createNewRestaurantThunk(formData));
     if (data.errors) {
@@ -149,6 +170,17 @@ function CreateRestaurant() {
       window.scroll(0, 0);
     }
   };
+
+  useEffect(() => {
+    if (myAddress !== "") {
+      setAddress(myAddress[1]);
+      setCity(myAddress[2]);
+      setState(myAddress[3]);
+      setZip(myAddress[4]);
+      setLat(myAddress[5]);
+      setLng(myAddress[6]);
+    }
+  }, [myAddress]);
 
   if (!sessionUser) {
     setTimeout(() => history.push("/"), 3000);
@@ -221,6 +253,12 @@ function CreateRestaurant() {
           {/* for restaurant address */}
           <div className="title-container">
             <div className="create-t">Store address</div>
+            {key && (
+              <ResAddressAutoComplete
+                apiKey={key}
+                onAddressChange={setMyAddress}
+              />
+            )}
             <input
               className={`create-input ${
                 validationErrors.address ? "error-bg" : ""
@@ -228,7 +266,7 @@ function CreateRestaurant() {
               placeholder="Example: 123 Main street"
               type="text"
               value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              // onChange={(e) => setAddress(e.target.value)}
             />
             {validationErrors.address && (
               <div className="errors">{validationErrors.address}</div>
@@ -242,7 +280,7 @@ function CreateRestaurant() {
                 placeholder="City"
                 type="text"
                 value={city}
-                onChange={(e) => setCity(e.target.value)}
+                // onChange={(e) => setCity(e.target.value)}
               />
               <select
                 id="state-select"
@@ -250,10 +288,10 @@ function CreateRestaurant() {
                   validationErrors.state ? "error-bg" : ""
                 }`}
                 value={state}
-                onChange={(e) => setState(e.target.value)}
+                // onChange={(e) => setState(e.target.value)}
               >
                 {/* <option value="">-- Select State --</option> */}
-                <option value="">Select State</option>
+                <option value="">State</option>
 
                 {USSTATES.map((state) => (
                   <option key={state} value={state}>

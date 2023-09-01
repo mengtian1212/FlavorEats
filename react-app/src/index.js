@@ -8,7 +8,6 @@ import App from "./App";
 
 import { ModalProvider, Modal } from "./context/Modal";
 import DeliveryMethodProvider from "./context/DeliveryMethodContext";
-
 import "./index.css";
 
 const store = configureStore();

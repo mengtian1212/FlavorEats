@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    username = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     first_name = db.Column(db.String(255), nullable=False)
@@ -20,8 +20,11 @@ class User(db.Model, UserMixin):
     phone_number = db.Column(db.String(255), nullable=True)
     image_url = db.Column(db.String(255), nullable=True)
     address = db.Column(db.String(255), nullable=False)
-    lat = db.Column(db.Integer, nullable=True)
-    lng = db.Column(db.Integer, nullable=True)
+    # lat = db.Column(db.Float, nullable=True)
+    # lng = db.Column(db.Float, nullable=True)
+    lat = db.Column(db.Numeric(scale=13, asdecimal=False), nullable=True)
+    lng = db.Column(db.Numeric(scale=13, asdecimal=False), nullable=True)
+
     zip = db.Column(db.String(12), nullable=True)
     city = db.Column(db.String(40), nullable=True)
     state = db.Column(db.String(2), nullable=True)
