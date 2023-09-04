@@ -53,6 +53,11 @@ function RestaurantsCategories({ filterType, setFilterType }) {
         "https://d4p17acsd5wyj.cloudfront.net/shortcuts/cuisines/indian.png",
     },
     {
+      name: "Seafood",
+      photo:
+        "https://duyt4h9nfnj50.cloudfront.net/new_search_home_eats_icon/Seafood_BrowseHome@3x.png",
+    },
+    {
       name: "Coffee & Tea",
       photo:
         "https://duyt4h9nfnj50.cloudfront.net/new_search_home_eats_icon/CoffeeTea_BrowseHome@3x.png",
