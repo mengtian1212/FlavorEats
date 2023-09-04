@@ -163,8 +163,8 @@ function SingleRestaurant() {
           </div>
           {/* <RestaurantMap /> */}
           {/* {targetRestaurant && (
-        <MapContainer lat={targetRestaurant?.lat} lng={targetRestaurant?.lng} />
-      )} */}
+          <MapContainer lat={targetRestaurant?.lat} lng={targetRestaurant?.lng} />
+          )} */}
         </div>
       )}
     </>
