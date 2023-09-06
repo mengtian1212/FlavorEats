@@ -175,8 +175,8 @@ def upgrade():
         op.execute(f"ALTER TABLE restaurants SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE favorites SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE menuitems SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE orderitems SET SCHEMA {SCHEMA};")
 
 
