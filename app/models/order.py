@@ -13,6 +13,9 @@ class Order(db.Model):
         add_prefix_for_prod("users.id")), nullable=False)
     restaurant_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("restaurants.id")), nullable=False)
+    review_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod("reviews.id")), nullable=True)
+
     tip = db.Column(db.Numeric(4, 2), nullable=False, default=0)
     is_pickup = db.Column(db.Boolean, nullable=False, default=0)
     is_priority = db.Column(db.Boolean, nullable=False, default=False)
@@ -33,6 +36,9 @@ class Order(db.Model):
     restaurant = db.relationship("Restaurant", back_populates="orders")
     orderitems = db.relationship(
         "OrderItem", back_populates="order", cascade="all, delete-orphan")
+
+    # one-to-one
+    review = db.relationship("Review", back_populates="order", uselist=False)
 
     def calculate_num_items(self):
         num_items = 0
@@ -94,7 +100,8 @@ class Order(db.Model):
             'order_items': self.items(),
             'num_items': self.calculate_num_items(),
             'total_price': self.calculate_total_price(),
-            'subtotal': self.calculate_subtotal()
+            'subtotal': self.calculate_subtotal(),
+            'review_rating': self.review.rating if self.review_id else 0
         }
 
         if geo:

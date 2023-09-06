@@ -19,7 +19,7 @@ def seed_restaurants():
             "lng": -73.9878848
         },
         {  # 2   new york
-            "owner_id": 1,
+            "owner_id": 2,
             "name": "Gyu-Kaku Japanese BBQ",
             "image_url": "https://d1ralsognjng37.cloudfront.net/ece58bad-1d56-4102-893c-a087f7897c39.jpeg",
             "description": "Gyu-Kaku is a renowned Japanese barbecue (yakiniku) restaurant that offers an interactive and flavorful dining experience. Originating from Japan, Gyu-Kaku invites diners to grill their own high-quality meats and vegetables right at their table, fostering a sense of fun and community. ",
@@ -242,7 +242,7 @@ def seed_restaurants():
             "lng": -121.974332
         },
         {  # 19  san jose
-            "owner_id": 1,
+            "owner_id": 3,
             "name": "Inchin's Bamboo Garden",
             "image_url": "https://d1ralsognjng37.cloudfront.net/ab923441-03f8-431c-9b58-00587a5c9ddb.jpeg",
             "delivery_fee": 3.99,
@@ -294,7 +294,7 @@ def seed_restaurants():
             "lng": -121.897950
         },
         {  # 23  la
-            "owner_id": 1,
+            "owner_id": 3,
             "name": "Caffe Roma",
             "image_url": "https://duyt4h9nfnj50.cloudfront.net/resized/1525961969839-w2880-ac.jpg",
             "delivery_fee": 5.50,

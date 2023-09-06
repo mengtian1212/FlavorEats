@@ -18,6 +18,7 @@ import MyResAllMenuitems from "./components/ManageRestaurants/MyResAllMenuitems/
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotFound from "./components/NotFound/NotFound";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -89,6 +90,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      {/* <Footer /> */}
     </>
   );
 }

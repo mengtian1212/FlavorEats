@@ -2,6 +2,7 @@ from app.models import db, Order, OrderItem, MenuItem
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from sqlalchemy import and_
+from sqlalchemy.sql import func
 
 order_routes = Blueprint('orders', __name__)
 
@@ -160,6 +161,8 @@ def checkout_cart(orderId):
     target_order.delivery_address = orderPlaced["delivery_address"]
     target_order.delivery_lat = orderPlaced["delivery_lat"]
     target_order.delivery_lng = orderPlaced["delivery_lng"]
+    target_order.created_at = func.now()
+    target_order.updated_at = func.now()
 
     db.session.commit()
     new_past_order = Order.query.get(orderId)
@@ -200,3 +203,41 @@ def reorder(orderId):
     #         "quantity": cart_item.quantity
     #     })
     # db.session.commit()
+
+
+@order_routes.route('/<int:orderId>/item-reviews', methods=['POST'])
+@login_required
+def add_like_dislike_to_orderitems(orderId):
+    itemFeedback = request.json
+    target_order = Order.query.filter(
+        and_(Order.is_complete == True, Order.user_id == current_user.id, Order.id == orderId)).first()
+
+    if not target_order:
+        return jsonify({"message": "Past order not found for the current user"}), 404
+
+    if not target_order.user_id == current_user.id:
+        return {"errors": "Unauthorized"}, 403
+
+    for item_id, feedback in itemFeedback.items():
+        menu_item = MenuItem.query.get(item_id)
+        if not menu_item:
+            return jsonify({"message": "menu_item not found"}), 404
+        if menu_item:
+            if feedback["isLike"] and feedback["isDislike"]:
+                return jsonify({"message": "item review cannot be like and dislike at the same time."}), 500
+            elif feedback["isLike"]:
+                menu_item.num_likes += 1
+            elif feedback["isDislike"]:
+                menu_item.num_dislikes += 1
+            db.session.commit()
+
+        order_item = OrderItem.query.filter(
+            and_(OrderItem.order_id == orderId, OrderItem.item_id == item_id)).first()
+        if not order_item:
+            return jsonify({"message": "order_item not found"}), 404
+        if order_item:
+            order_item.is_like = feedback["isLike"]
+            order_item.is_dislike = feedback["isDislike"]
+            db.session.commit()
+
+    return jsonify({"message": "order_item reviews are added successfully"}), 200

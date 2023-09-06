@@ -1,11 +1,11 @@
 #reviews-section {
-  margin: 24px 0px 100px 0px;
+  margin: 24px 0px 24px 0px;
   padding: 24px 40px;
   padding-right: 16px;
   display: flex;
   flex-direction: row;
   gap: 80px;
-  margin-bottom: 200px;
+  /* margin-bottom: 200px; */
 }
 
 .reviews-section-left {

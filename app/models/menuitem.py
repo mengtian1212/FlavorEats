@@ -17,6 +17,8 @@ class MenuItem(db.Model):
     description = db.Column(db.String, nullable=True)
     item_type = db.Column(db.String, nullable=True)
     calory = db.Column(db.Integer, nullable=True)
+    num_likes = db.Column(db.Integer, nullable=False, default=0)
+    num_dislikes = db.Column(db.Integer, nullable=False, default=0)
 
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
@@ -28,16 +30,20 @@ class MenuItem(db.Model):
     orderitems = db.relationship(
         "OrderItem", back_populates="menuitem", cascade="all, delete-orphan")
 
-    menuitem_likes = db.relationship(
-        "MenuItemLike", back_populates="menuitem", cascade="all, delete-orphan")
+    # menuitem_likes = db.relationship(
+    #     "MenuItemLike", back_populates="menuitem", cascade="all, delete-orphan")
 
     def calculate_like_dislike_ratio(self):
-        likes_count = sum(1 for like in self.menuitem_likes if like.is_like)
-        dislikes_count = sum(
-            1 for like in self.menuitem_likes if not like.is_like)
+        # likes_count = sum(1 for like in self.menuitem_likes if like.is_like)
+        # dislikes_count = sum(
+        #     1 for like in self.menuitem_likes if not like.is_like)
 
-        total_likes_dislikes = likes_count + dislikes_count
-        like_ratio = likes_count / total_likes_dislikes if total_likes_dislikes > 0 else 0
+        # total_likes_dislikes = likes_count + dislikes_count
+        # like_ratio = likes_count / total_likes_dislikes if total_likes_dislikes > 0 else 0
+        # return like_ratio
+
+        total_likes_dislikes = self.num_likes + self.num_dislikes
+        like_ratio = self.num_likes / total_likes_dislikes if total_likes_dislikes > 0 else 0
         return like_ratio
 
     def to_dict(self):
@@ -53,6 +59,8 @@ class MenuItem(db.Model):
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'like_ratio': self.calculate_like_dislike_ratio(),
-            'num_likes': sum(1 for like in self.menuitem_likes if like.is_like)
+            # 'num_likes': sum(1 for like in self.menuitem_likes if like.is_like)
+            'num_likes': self.num_likes,
+            'num_dislikes': self.num_dislikes
         }
         return res

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { formatDate } from "../../utils/helper-functions";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,12 +7,22 @@ import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
 import CartModal from "../Carts/CartModal";
 import NewCartModal from "./NewCartModal";
 import { reorderThunk } from "../../store/orders";
+import PastOrderReviewModal from "./PastOrderReviewModal";
+import { fetchSinglePastOrderThunk } from "../../store/pastOrders";
 
 function OrderItem({ order_item }) {
   return (
     <div className="single-item-container">
-      <div className="single-item-quantity">{order_item.quantity}</div>
-      <div className="single-item-name">{order_item.item_name}</div>
+      <div className="sing-item-qn">
+        <div className="single-item-quantity">{order_item.quantity}</div>
+        <div className="single-item-name">{order_item.item_name}</div>
+      </div>
+      {order_item?.is_like && (
+        <i className="fa-solid fa-thumbs-up past-thumb"></i>
+      )}
+      {order_item?.is_dislike && (
+        <i className="fa-solid fa-thumbs-down past-thumb"></i>
+      )}
     </div>
   );
 }
@@ -21,6 +31,7 @@ function PastOrderCard({ pastOrder }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+
   const order_items = Object.values(pastOrder?.order_items);
   const handleClickRestaurant = () => {
     history.push(`/restaurants/${pastOrder?.restaurant_id}`);
@@ -59,6 +70,24 @@ function PastOrderCard({ pastOrder }) {
     }
   };
 
+  const [starColor, setStarColor] = useState("");
+  const [percentage, setPercentage] = useState(0);
+
+  useEffect(() => {
+    setPercentage((pastOrder.review_rating / 5) * 100);
+    if (Math.floor(pastOrder.review_rating) === 5) {
+      setStarColor("rgb(251, 80, 60)");
+    } else if (Math.floor(pastOrder.review_rating) === 4) {
+      setStarColor("rgb(255, 100, 61)");
+    } else if (Math.floor(pastOrder.review_rating) === 3) {
+      setStarColor("rgb(255, 135, 66)");
+    } else if (Math.floor(pastOrder.review_rating) === 2) {
+      setStarColor("rgb(255, 173, 72)");
+    } else if (Math.floor(pastOrder.review_rating) === 1) {
+      setStarColor("rgb(255, 204, 75)");
+    }
+  }, [pastOrder]);
+
   return (
     <>
       <div className="single-order-container">
@@ -78,8 +107,27 @@ function PastOrderCard({ pastOrder }) {
             </button>
           </div>
           <div className="order-content-container">
-            <div className="order-name cursor" onClick={handleClickRestaurant}>
-              {pastOrder?.restaurant_name}
+            <div className="order-name-container">
+              <div
+                className="order-name cursor"
+                onClick={handleClickRestaurant}
+              >
+                {pastOrder?.restaurant_name}
+              </div>
+              <div>
+                {pastOrder?.review_rating > 0 && (
+                  <div className="ratings3">
+                    <div className="empty-stars3"></div>
+                    <div
+                      className="full-stars3"
+                      style={{
+                        width: `${percentage}%`,
+                        color: `${starColor}`,
+                      }}
+                    ></div>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="order-stat">
               <div>
@@ -117,8 +165,20 @@ function PastOrderCard({ pastOrder }) {
               <div>Reordering</div>
             </div>
           )}
-          {sessionUser && (
-            <div className="reorder-btn1">
+          {sessionUser && pastOrder?.review_rating === 0 && (
+            <div
+              className="reorder-btn1"
+              onClick={() => {
+                setModalContent(
+                  <PastOrderReviewModal
+                    pastOrderId={pastOrder?.id}
+                    restaurantId={pastOrder?.restaurant_id}
+                    resName={pastOrder?.restaurant_name}
+                  />
+                );
+                setModalClass("reviewheight");
+              }}
+            >
               <div>Rate your order</div>
             </div>
           )}
