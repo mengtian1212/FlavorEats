@@ -34,7 +34,7 @@ function PastOrders() {
     );
   }
 
-  pastOrders.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+  pastOrders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
   const handleStartShop = () => {
     history.push("/restaurants");

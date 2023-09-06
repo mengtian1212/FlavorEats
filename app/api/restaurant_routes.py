@@ -1,4 +1,4 @@
-from app.models import db, Restaurant, Review
+from app.models import db, Restaurant, Review, Order
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .AWS_helpers import upload_file_to_s3, get_unique_filename
@@ -153,6 +153,13 @@ def add_review_to_restaurant(restaurantId):
         )
         db.session.add(new_review)
         db.session.commit()
+
+        if "order_id" in form.data:
+            order = Order.query.get(form.data["order_id"])
+            if order:
+                order.review_id = new_review.id
+                db.session.commit()
+
         response = new_review.to_dict()
         print("fdfdfddf", new_review.user.image_url)
         response["reviewer"] = {"image_url": new_review.user.image_url,

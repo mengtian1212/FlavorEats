@@ -361,6 +361,12 @@
   color: #000000;
 }
 
+.github1 {
+  gap: 16px;
+  text-decoration: none;
+  color: #000000;
+}
+
 /* user menu when logout */
 .menu-logout-container {
   display: flex;
@@ -438,4 +444,21 @@
   background-color: #eeeeee;
   font-weight: 500;
   padding-left: 6px;
+}
+
+.header-icons {
+  display: flex;
+  margin: auto 1.25em;
+  gap: 1em;
+}
+
+.header-icon {
+  color: black;
+  font-size: 19px;
+  line-height: 24px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none !important;
 }

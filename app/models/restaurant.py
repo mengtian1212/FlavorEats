@@ -73,7 +73,8 @@ class Restaurant(db.Model):
         popularItems = sorted(
             items, key=lambda item: (
                 -float(item.get("like_ratio", 0)),
-                -float(item.get("num_likes", 0))
+                -float(item.get("num_likes", 0)),
+                float(item.get("num_dislikes", 0)),
             )
         )[:5]
         popular_items = {str(item["id"]): item for item in popularItems}

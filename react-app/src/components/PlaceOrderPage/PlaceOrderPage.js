@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchLastPastOrderThunk } from "../../store/pastOrders";
 import Header from "../Header";
 import MapContainer from "./Maps";
+import LeaveReview from "./LeaveReview";
 
 function PlaceOrderPage() {
   const dispatch = useDispatch();
@@ -162,12 +163,21 @@ const Step3 = ({ orderJustPlaced, sessionUser }) => {
 
 const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
   const orderItems = Object.values(orderJustPlaced?.order_items);
+  const [showLeaveReview, setShowLeaveReview] = useState(true);
+
   return (
     <div className="checkout-delivery-box3">
       <div className="checkout-tt">
         Thank you for ordering with Flavor Eats, {sessionUser?.first_name}{" "}
         {sessionUser?.last_name}!
       </div>
+      {showLeaveReview && (
+        <LeaveReview
+          setShowLeaveReview={setShowLeaveReview}
+          restaurantId={orderJustPlaced.restaurant_id}
+          resName={orderJustPlaced.restaurant_name}
+        />
+      )}
       <div className="check-space-line"></div>
       {!orderJustPlaced.is_pickup && (
         <div className="checkout-delivery-box6">

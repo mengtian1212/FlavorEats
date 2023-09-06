@@ -10,6 +10,8 @@ def seed_menuitems():
             "item_type": "Burgers",
             "price": 7.79,
             "calory": 590,
+            "num_likes": 4,
+            "num_dislikes": 1,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "Ever wondered what's on a Big Mac? The McDonald's Big Mac® is a 100% beef burger with a taste like no other. The mouthwatering perfection starts with two 100% pure all beef patties and Big Mac® sauce sandwiched between a sesame seed bun."
         },
@@ -46,6 +48,8 @@ def seed_menuitems():
             "item_type": "Burgers",
             "price": 11.79,
             "calory": 870,
+            "num_likes": 3,
+            "num_dislikes": 0,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/Header_CheesyJalapenoBaconQPC_Single_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "Introducing McDonald's new Cheesy Jalapeño Bacon QPC, featuring our 100% fresh beef Quarter Pounder patty that's cooked right when you order so it's hot and juicy every time. "
         },
@@ -100,6 +104,8 @@ def seed_menuitems():
             "item_type": "Fries",
             "price": 4.69,
             "calory": 320,
+            "num_likes": 5,
+            "num_dislikes": 0,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_8932_MediumFries_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "McDonald's World Famous Fries are made with premium potatoes such as the Russet Burbank and the Shepody. With 0g of trans fat per labeled serving, these epic fries are crispy and golden on the outside and fluffy on the inside. "
         },
@@ -133,6 +139,8 @@ def seed_menuitems():
             "item_type": "Combo Meals",
             "price": 12.59,
             "calory": 870,
+            "num_likes": 4,
+            "num_dislikes": 1,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/71ead9db896ec112fd16e0dfa247efe9/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Our Chicken McNugget Happy Meal features ten tender Chicken McNuggets made with white meat, World Famous Fries and a side of beverage."
         },
@@ -245,6 +253,8 @@ def seed_menuitems():
             "item_name": "Spicy Beef Ramen",
             "item_type": "Gyu-Kaku Signature Ramen",
             "price": 14.00,
+            "num_likes": 2,
+            "num_dislikes": 1,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/03ef5869edb7c76b00e9a0a46b3d38a0/4218ca1d09174218364162cd0b1a8cc1.jpeg",
             "description": "Gyu-Kaku original recipe: Japanese BBQ meets Ramen! Rich kalbi beef soup and medium thickness ramen noodles topped with thin-sliced beef, boiled egg, green onions, spinach, daikon radish, and sesame seeds. Ramen noodles and hot soup are packaged separately to maintain their maximum deliciousness. Please reheat soup in the microwave (if necessary) and pour over noodles."
         },
@@ -277,6 +287,8 @@ def seed_menuitems():
             "item_name": "Takoyaki",
             "item_type": "Appetizers",
             "price": 8.95,
+            "num_likes": 4,
+            "num_dislikes": 1,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/a3a52ffeae1752320fab4f2c53b6947f/4218ca1d09174218364162cd0b1a8cc1.jpeg",
             "description": "Fried Octopus Balls! A street food classic straight from Osaka. Six fried octopus fritters drizzled with Takoyaki sauce and Japanese mayo. Topped with crushed bonito flakes and green onions."
         },

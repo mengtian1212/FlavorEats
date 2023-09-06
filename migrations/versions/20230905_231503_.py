@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8c591daecea6
+Revision ID: 99d530d2e265
 Revises:
-Create Date: 2023-09-01 01:20:47.706800
+Create Date: 2023-09-05 23:15:03.672915
 
 """
 from alembic import op
@@ -12,7 +12,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '8c591daecea6'
+revision = '99d530d2e265'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -103,36 +103,14 @@ def upgrade():
                     sa.Column('description', sa.String(), nullable=True),
                     sa.Column('item_type', sa.String(), nullable=True),
                     sa.Column('calory', sa.Integer(), nullable=True),
+                    sa.Column('num_likes', sa.Integer(), nullable=False),
+                    sa.Column('num_dislikes', sa.Integer(), nullable=False),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.ForeignKeyConstraint(
                         ['restaurant_id'], ['restaurants.id'], ),
-                    sa.PrimaryKeyConstraint('id')
-                    )
-    op.create_table('orders',
-                    sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('user_id', sa.Integer(), nullable=False),
-                    sa.Column('restaurant_id', sa.Integer(), nullable=False),
-                    sa.Column('tip', sa.Numeric(
-                        precision=4, scale=2), nullable=False),
-                    sa.Column('is_pickup', sa.Boolean(), nullable=False),
-                    sa.Column('is_priority', sa.Boolean(), nullable=False),
-                    sa.Column('is_complete', sa.Boolean(), nullable=False),
-                    sa.Column('delivery_address', sa.String(
-                        length=255), nullable=True),
-                    sa.Column('delivery_lat', sa.Numeric(
-                        scale=13, asdecimal=False), nullable=True),
-                    sa.Column('delivery_lng', sa.Numeric(
-                        scale=13, asdecimal=False), nullable=True),
-                    sa.Column('created_at', sa.DateTime(timezone=True),
-                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
-                    sa.Column('updated_at', sa.DateTime(timezone=True),
-                              server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
-                    sa.ForeignKeyConstraint(
-                        ['restaurant_id'], ['restaurants.id'], ),
-                    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
     op.create_table('reviews',
@@ -150,18 +128,30 @@ def upgrade():
                     sa.ForeignKeyConstraint(['reviewer_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
-    op.create_table('menuitemlikes',
+    op.create_table('orders',
                     sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('reviewer_id', sa.Integer(), nullable=False),
-                    sa.Column('menuitem_id', sa.Integer(), nullable=False),
-                    sa.Column('is_like', sa.Boolean(), nullable=False),
+                    sa.Column('user_id', sa.Integer(), nullable=False),
+                    sa.Column('restaurant_id', sa.Integer(), nullable=False),
+                    sa.Column('review_id', sa.Integer(), nullable=True),
+                    sa.Column('tip', sa.Numeric(
+                        precision=4, scale=2), nullable=False),
+                    sa.Column('is_pickup', sa.Boolean(), nullable=False),
+                    sa.Column('is_priority', sa.Boolean(), nullable=False),
+                    sa.Column('is_complete', sa.Boolean(), nullable=False),
+                    sa.Column('delivery_address', sa.String(
+                        length=255), nullable=True),
+                    sa.Column('delivery_lat', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
+                    sa.Column('delivery_lng', sa.Numeric(
+                        scale=13, asdecimal=False), nullable=True),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.ForeignKeyConstraint(
-                        ['menuitem_id'], ['menuitems.id'], ),
-                    sa.ForeignKeyConstraint(['reviewer_id'], ['users.id'], ),
+                        ['restaurant_id'], ['restaurants.id'], ),
+                    sa.ForeignKeyConstraint(['review_id'], ['reviews.id'], ),
+                    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
     op.create_table('orderitems',
@@ -169,6 +159,8 @@ def upgrade():
                     sa.Column('order_id', sa.Integer(), nullable=False),
                     sa.Column('item_id', sa.Integer(), nullable=False),
                     sa.Column('quantity', sa.Integer(), nullable=False),
+                    sa.Column('is_like', sa.Boolean(), nullable=False),
+                    sa.Column('is_dislike', sa.Boolean(), nullable=False),
                     sa.Column('created_at', sa.DateTime(timezone=True),
                               server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
                     sa.Column('updated_at', sa.DateTime(timezone=True),
@@ -186,15 +178,13 @@ def upgrade():
         op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
         op.execute(f"ALTER TABLE orderitems SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE menuitemlikes SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
     # ### commands auto generated by Alembic - please adjust! ###
     op.drop_table('orderitems')
-    op.drop_table('menuitemlikes')
-    op.drop_table('reviews')
     op.drop_table('orders')
+    op.drop_table('reviews')
     op.drop_table('menuitems')
     op.drop_table('favorites')
     op.drop_table('restaurants')

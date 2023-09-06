@@ -6,8 +6,8 @@ def seed_reviews():
     reviews = [
         {"reviewer_id": 2, "restaurant_id": 1, "rating": 4,
          "message": "Nobody at a fast food restaurant treats you like the only customer they care about, but here, that's how you feel. Drive Thru attentive, no mistakes on my order at this location, and they don't push you about meals and drinks. They let you order at your comfort and convenience. This is how it should be."},
-        {"reviewer_id": 1, "restaurant_id": 1, "rating": 5,
-         "message": "McDonald's is my go-to spot for a quick and satisfying meal. The classic Big Mac never disappoints, and their fries are always perfectly crispy. Fast service and a reliable menu make it a comfort food haven!"},
+        {"reviewer_id": 1, "restaurant_id": 1, "rating": 4,
+         "message": "McDonald's is my go-to spot for a quick and satisfying meal. The classic Big Mac never disappoints, and their fries are always perfectly crispy. Their reliable menu makes it a comfort food haven. I do have one minor wish: I hope my coke could have more ice. "},
         {"reviewer_id": 4, "restaurant_id": 1, "rating": 2,
          "message": "Visited this McDonald's during lunchtime, and the long lines were a bit overwhelming. It took quite a while to get my order, and the restaurant was a bit messy. They could use some better organization during peak hours."},
         {"reviewer_id": 2, "restaurant_id": 1, "rating": 4,
@@ -20,7 +20,7 @@ def seed_reviews():
         {"reviewer_id": 2, "restaurant_id": 2, "rating": 5,
          "message": "Had a fantastic time at Gyu-Karu! The ambiance is modern and inviting, and the waitstaff is attentive. The assortment of meats and veggies for grilling satisfied both meat lovers and vegetarians in our group."},
         {"reviewer_id": 1, "restaurant_id": 2, "rating": 2,
-         "message": "The BBQ meats were dry and lacked the tenderness I had experienced before. Hopefully, they can improve the consistency of their delivery orders."},
+         "message": "The Fried Chicken was dry and lacked the tenderness I had experienced before. Hopefully, they can improve the consistency of their delivery orders."},
         {"reviewer_id": 6, "restaurant_id": 2, "rating": 4,
          "message": "Gyu-Karu never disappoints! The sizzle of meat on the grill and the aroma of the sauces create an immersive dining experience. The variety of dipping sauces adds a personalized touch to each bite. A must-visit for BBQ lovers!"},
         {"reviewer_id": 4, "restaurant_id": 2, "rating": 5,
@@ -45,6 +45,8 @@ def seed_reviews():
          "message": "The delivery person was speedy and nice."},
 
         {"reviewer_id": 1, "restaurant_id": 5, "rating": 5,
+         "message": "Absolutely refreshing and bursting with tropical flavors! The Starbucks Dragon Drink is my go-to choice for a quick energy boost."},
+        {"reviewer_id": 6, "restaurant_id": 5, "rating": 5,
          "message": "Best Americana hot or cold anywhere!"},
         {"reviewer_id": 4, "restaurant_id": 5, "rating": 5,
          "message": "Absolutely love Starbucks! Their coffee is always consistent and the staff is friendly. My go-to place for my daily caffeine fix"},

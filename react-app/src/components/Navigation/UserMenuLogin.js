@@ -49,7 +49,12 @@ const UserMenuLogin = ({ user, closeMenu }) => {
         <div className="_16"></div>
         <div>
           <div>{sessionUser.username}</div>
-          <div className="manage-account">Manage account</div>
+          <div
+            className="manage-account cursor"
+            onClick={() => alert("Feature Coming Soon...")}
+          >
+            Manage account *
+          </div>
         </div>
       </div>
       <div className="menu-item cursor" onClick={handleOrders}>

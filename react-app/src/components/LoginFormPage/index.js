@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useLocation } from "react-router-dom";
 import "./LoginForm.css";
 import Header from "../Header/Header";
+import Footer from "../Footer";
+
 function LoginFormPage() {
   const dispatch = useDispatch();
   const location = useLocation();

@@ -25,6 +25,9 @@ class Review(db.Model):
     user = db.relationship("User", back_populates="reviews")
     restaurant = db.relationship("Restaurant", back_populates="reviews")
 
+    # one-to-one
+    order = db.relationship("Order", back_populates="review", uselist=False)
+
     def to_dict(self):
         res = {
             'id': self.id,

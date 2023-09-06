@@ -6,5 +6,4 @@ from .menuitem import MenuItem
 from .order import Order
 from .orderitem import OrderItem
 from .review import Review
-from .menuitemlike import MenuItemLike
 from .favorite import Favorite

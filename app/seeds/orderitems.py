@@ -10,20 +10,28 @@ def seed_orderitems():
         {"order_id": 1, "item_id": 17, "quantity": 1},
         {"order_id": 1, "item_id": 19, "quantity": 1},
         # order 2 restaurant 1
-        {"order_id": 2, "item_id": 5, "quantity": 3},
-        {"order_id": 2, "item_id": 11, "quantity": 2},
-        {"order_id": 2, "item_id": 20, "quantity": 2},
-        # order 3 restaurant 2
-        {"order_id": 3, "item_id": 27, "quantity": 3},
+        {"order_id": 2, "item_id": 5, "quantity": 3,
+            "is_like": True, "is_dislike": False},
+        {"order_id": 2, "item_id": 11, "quantity": 2,
+            "is_like": True, "is_dislike": False},
+        {"order_id": 2, "item_id": 20, "quantity": 2,
+            "is_like": False, "is_dislike": True},
+        # order 3 restaurant 5
+        {"order_id": 3, "item_id": 97, "quantity": 2},
         # order 4 restaurant 2
         {"order_id": 4, "item_id": 28, "quantity": 1},
         {"order_id": 4, "item_id": 32, "quantity": 1},
-        # order 5 restaurant 5
-        {"order_id": 5, "item_id": 97, "quantity": 2},
+        # order 5 restaurant 2
+        {"order_id": 5, "item_id": 27, "quantity": 3,
+            "is_like": False, "is_dislike": True},
         # order 6 restaurant 5
         {"order_id": 6, "item_id": 91, "quantity": 1},
         {"order_id": 6, "item_id": 104, "quantity": 1},
-
+        # order 7 restaurant 7
+        {"order_id": 7, "item_id": 144, "quantity": 1},
+        {"order_id": 7, "item_id": 145, "quantity": 1},
+        {"order_id": 7, "item_id": 151, "quantity": 1},
+        {"order_id": 7, "item_id": 157, "quantity": 2},
     ]
 
     seed_menuitems = [db.session.add(

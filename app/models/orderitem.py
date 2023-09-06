@@ -14,6 +14,8 @@ class OrderItem(db.Model):
     item_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod("menuitems.id")), nullable=False)
     quantity = db.Column(db.Integer, nullable=False, default=1)
+    is_like = db.Column(db.Boolean, nullable=False, default=False)
+    is_dislike = db.Column(db.Boolean, nullable=False, default=False)
 
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.now())
@@ -37,6 +39,8 @@ class OrderItem(db.Model):
             "item_subtotal": float(self.menuitem.price) * self.quantity,
             "image_url": self.menuitem.image_url,
             'order_id': self.order_id,
+            'is_like': self.is_like,
+            'is_dislike': self.is_dislike,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             # 'description': self.menuitem.description,

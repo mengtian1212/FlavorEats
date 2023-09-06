@@ -23,6 +23,7 @@
 .order-left-container {
   display: flex;
   gap: 24px;
+  flex: 1;
 }
 
 .past-order-res-img {
@@ -64,9 +65,17 @@
   padding-top: 16px;
 }
 
+.order-name-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
 .order-name {
   color: rgb(51, 51, 51);
-  margin-bottom: 4px;
   line-height: 28px;
   font-weight: 700;
   font-size: 20px;
@@ -86,9 +95,16 @@
 
 .single-item-container {
   display: flex;
+  flex-direction: row;
   gap: 16px;
   padding-bottom: 16px;
   align-items: center;
+  justify-content: space-between;
+}
+
+.sing-item-qn {
+  display: flex;
+  gap: 16px;
 }
 
 .single-item-name {
@@ -342,4 +358,13 @@
   font-size: 20px;
   line-height: 28px;
   cursor: pointer;
+}
+
+.order-content-container {
+  max-width: 502px;
+  width: 502px;
+}
+
+.past-thumb {
+  color: rgb(107, 107, 107);
 }

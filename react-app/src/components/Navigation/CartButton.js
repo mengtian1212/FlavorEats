@@ -39,6 +39,20 @@ function CartButton({ user }) {
       )}
       {!user && (
         <>
+          <div className="header-icons">
+            <a href="https://www.maggietian.com/" className="header-icon">
+              <i className="fa-solid fa-globe header-icon"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/mengtian1212/"
+              className="header-icon"
+            >
+              <i className="fa-brands fa-linkedin header-icon"></i>
+            </a>
+            <a href="https://github.com/mengtian1212" className="header-icon">
+              <i className="fa-brands fa-github header-icon"></i>
+            </a>
+          </div>
           <button
             onClick={() => history.push("/login")}
             className="btn-white cursor"

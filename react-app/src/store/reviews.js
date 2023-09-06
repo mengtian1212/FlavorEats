@@ -1,3 +1,5 @@
+import { fetchPastOrdersThunk, fetchSinglePastOrderThunk } from "./pastOrders";
+
 /** Action Type Constants: */
 export const LOAD_REVIEWS = "reviews/LOAD_REVIEWS";
 export const CREATE_REVIEW = "reviews/CREATE_REVIEW";
@@ -42,6 +44,26 @@ export const createReviewThunk =
       const review = await response.json();
       dispatch(createReviewAction(review));
       return review;
+    } else {
+      const errors = await response.json();
+      return errors;
+    }
+  };
+
+export const createOrderItemReviewThunk =
+  (itemFeedback, orderId) => async (dispatch) => {
+    const response = await fetch(`/api/orders/${orderId}/item-reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(itemFeedback),
+    });
+    if (response.ok) {
+      const message = await response.json();
+      dispatch(fetchSinglePastOrderThunk(orderId));
+      dispatch(fetchPastOrdersThunk());
+      return message;
     } else {
       const errors = await response.json();
       return errors;

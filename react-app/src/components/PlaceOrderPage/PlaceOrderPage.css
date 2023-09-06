@@ -45,25 +45,25 @@
 }
 
 /* width of scroll bar  */
-.thanks-container::-webkit-scrollbar {
+/* .thanks-container::-webkit-scrollbar {
   width: 8px;
-}
+} */
 
 /* style scrollbar thumb */
-.thanks-container::-webkit-scrollbar-thumb {
-  background-color: #e2e2e2; /* Color of the thumb */
-  border-radius: 5px; /* Rounded corners for the thumb */
-}
+/* .thanks-container::-webkit-scrollbar-thumb {
+  background-color: #e2e2e2;
+  border-radius: 5px;
+} */
 
 /* hide scrollbar track for Firefox */
-.thanks-container {
+/* .thanks-container {
   scrollbar-width: auto;
-}
+} */
 
 /* style scrollbar thumb for Firefox */
-.thanks-container {
+/* .thanks-container {
   scrollbar-color: #eeeeee transparent;
-}
+} */
 
 /* line-height: 24px;
 font-size: 16px;
@@ -150,3 +150,112 @@ color: #000000; */
   right: 10px !important;
   z-index: 1000; /* Ensure the controls are on top of the map */
 /* } */
+
+/* review box  */
+.leave-review-box {
+  background-color: #f6f6f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.rating-box1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.rating-b1 {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.rating-input3 {
+  display: flex;
+  margin-right: 12px;
+  font-size: 24px;
+  gap: 4px;
+}
+
+.rating-input3 .filled3 {
+  color: rgb(255, 135, 66);
+}
+
+.rating-input3 .empty3 {
+  color: white;
+  text-shadow: 0 0 2px #000;
+}
+
+.next-right {
+  font-size: 20px;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.next-right:hover {
+  background-color: white;
+  font-size: 20px;
+}
+
+.item-review-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.item-review-inner {
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto;
+  gap: 16px;
+}
+
+.item-review-single {
+  /* margin: auto 20px; */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.item-review-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.item-like-dislike {
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.thumbs {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-weight: 500;
+  line-height: 20px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(238, 238, 238);
+}
+
+.thumbs:hover {
+  background-color: #d5d5d5;
+}

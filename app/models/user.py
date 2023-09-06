@@ -41,8 +41,8 @@ class User(db.Model, UserMixin):
     # many-to-many
     reviews = db.relationship(
         "Review", back_populates="user", cascade="all, delete-orphan")
-    menuitem_likes = db.relationship(
-        "MenuItemLike", back_populates="user", cascade="all, delete-orphan")
+    # menuitem_likes = db.relationship(
+    #     "MenuItemLike", back_populates="user", cascade="all, delete-orphan")
     # user_favs = db.relationship(
     #     "Restaurant", secondary=favorites, back_populates="restaurant_favs")
     favorites = db.relationship(
