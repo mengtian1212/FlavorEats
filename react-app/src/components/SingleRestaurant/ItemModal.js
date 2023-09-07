@@ -115,7 +115,7 @@ function ItemModal({ item }) {
         {item.like_ratio > 0 && (
           <div className="item-likes-container1">
             <i className="fa-solid fa-thumbs-up"></i>
-            <div>{item.like_ratio.toFixed(2) * 100}%</div>
+            <div>{Math.floor(item.like_ratio.toFixed(2) * 100)}%</div>
             <div>({item.num_likes > 0 && item.num_likes})</div>
           </div>
         )}

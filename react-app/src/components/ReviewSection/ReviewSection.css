@@ -226,8 +226,18 @@
   border-bottom: 1px solid #e2e2e2;
 }
 
+.review-c {
+  display: flex;
+  justify-content: space-between;
+}
+
 .review-ct {
   display: flex;
+}
+
+.review-cbtn {
+  display: flex;
+  gap: 1em;
 }
 
 .reviewer-img {

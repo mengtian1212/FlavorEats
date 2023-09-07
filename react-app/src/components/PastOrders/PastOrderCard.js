@@ -66,7 +66,7 @@ function PastOrderCard({ pastOrder }) {
         setModalContent(<CartModal restaurantId={newCart?.restaurant_id} />);
         setModalClass("cart-modal");
         setIsAdded(false);
-      }, 1000);
+      }, 300);
     }
   };
 

@@ -52,7 +52,7 @@ function LeaveReviewModal({
 
   const [errorsRating, setErrorsRating] = useState("");
   const [errorsReview, setErrorsReview] = useState("");
-  const { setModalContent, setModalClass } = useModal();
+  const { setModalContent } = useModal();
   const handleSubmitReview = async (e) => {
     e.preventDefault();
     if (rating === 0) {

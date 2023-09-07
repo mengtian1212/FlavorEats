@@ -297,7 +297,7 @@ def seed_restaurants():
             "owner_id": 3,
             "name": "Caffe Roma",
             "image_url": "https://duyt4h9nfnj50.cloudfront.net/resized/1525961969839-w2880-ac.jpg",
-            "delivery_fee": 5.50,
+            "delivery_fee": 5.59,
             "cusine_types": "Italian#European#Pizza#Salads#Seafood",
             "price_ranges": "$$$$",
             "address": "350 N Canon Dr Ste 13, Beverly Hills, CA 90210",

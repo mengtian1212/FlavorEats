@@ -10,6 +10,9 @@ function ThankReview({ rating }) {
         src="https://d3ktknrqa34sgg.cloudfront.net/uploads/images/f6cSh4SFiGpJKI2LBNBdZdAiE/AFcHgsOneI+EsYz4E=/2022-07-01/promo_billboard_image_v3%403x-8e8bcdb0-f966-11ec-8b6b-65dc0eb062ea.png"
         alt=""
       /> */}
+      <div className="xmark-container" onClick={closeModal}>
+        <i className="fa-solid fa-xmark"></i>
+      </div>
       <img
         src="https://media.discordapp.net/attachments/1139263822469795862/1148947697852764242/19._shopping_bag.PNG"
         alt=""
