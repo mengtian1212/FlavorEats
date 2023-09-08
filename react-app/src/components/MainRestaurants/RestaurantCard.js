@@ -32,7 +32,8 @@ function RestaurantCard({ restaurant }) {
       <img src={restaurant.image_url} alt="" className="restaurant-preview" />
       <div className="restaurant-card-name">{restaurant.name}</div>
       <div className="restaurant-delivery">
-        ${restaurant.delivery_fee} Delivery Fee • {restaurant.price_ranges}
+        ${restaurant.delivery_fee === "0.00" ? 0 : restaurant.delivery_fee}{" "}
+        Delivery Fee • {restaurant.price_ranges}
       </div>
       {isNewRestaurant && <div className="item-plus4">New</div>}
       <div className="restaurant-card-stars">

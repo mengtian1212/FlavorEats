@@ -22,7 +22,7 @@ function CreateReview({ restaurantId, resName }) {
     console.log("useEffect ran", rating, activeRating);
   }, [rating]);
 
-  const { setModalContent, setModalClass, setOnModalClose } = useModal();
+  const { setModalContent, setOnModalClose } = useModal();
 
   const starIcon = (number) => {
     const props = {};

@@ -44,7 +44,19 @@ export const fetchOneRestaurantThunk = (restaurantId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(loadOneRestaurantAction(data));
-    // return data;
+    return data;
+  } else {
+    const errors = await res.json();
+    return errors;
+  }
+};
+
+export const fetchNewestRestaurantThunk = () => async (dispatch) => {
+  const res = await fetch(`/api/restaurants/newest`);
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(loadOneRestaurantAction(data));
+    return data;
   } else {
     const errors = await res.json();
     return errors;

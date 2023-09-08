@@ -2,12 +2,17 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { calculatedTimePassed } from "../../utils/helper-functions";
+import { useModal } from "../../context/Modal";
+import EditReviewModal from "./EditReviewModal";
+import DeleteReviewModal from "./DeleteReviewModal";
+
 function ReviewCard({ review }) {
   const dispatch = useDispatch();
   const [starColor, setStarColor] = useState("");
   const sessionUser = useSelector((state) => state.session.user);
 
   const percentage = (review.rating / 5) * 100;
+  const { setModalContent } = useModal();
 
   useEffect(() => {
     if (Math.floor(review.rating) === 5) {
@@ -56,11 +61,25 @@ function ReviewCard({ review }) {
           </div>
         </div>
         <div className="review-cbtn">
-          {sessionUser?.id === review.reviewer.id && (
-            <div className="comment-stat-i reply cursor">Edit</div>
+          {sessionUser?.id === review.reviewer_id && (
+            <div
+              className="btn-black4 cursor"
+              onClick={() =>
+                setModalContent(<EditReviewModal review={review} />)
+              }
+            >
+              Edit
+            </div>
           )}
-          {sessionUser?.id === review.reviewer.id && (
-            <div className="comment-stat-i reply cursor">Delete</div>
+          {sessionUser?.id === review.reviewer_id && (
+            <div
+              className="btn-black4 cursor"
+              onClick={() =>
+                setModalContent(<DeleteReviewModal reviewId={review.id} />)
+              }
+            >
+              Delete
+            </div>
           )}
         </div>
       </div>

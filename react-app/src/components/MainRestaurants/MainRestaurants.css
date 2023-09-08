@@ -2,6 +2,7 @@
   padding-top: 24px;
   padding: 16px 16px;
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   gap: 16px;
 }
@@ -272,4 +273,21 @@ input[type="radio"] {
 
 .full-stars:before {
   -webkit-text-stroke: 1px transparent;
+}
+
+.cuisine-types-underline {
+  flex-grow: 1;
+  background: #e2e2e2;
+  color: #afafaf;
+  content: "";
+  height: 1px;
+  margin: 20px 40px 40px;
+}
+
+.main-contain {
+  flex: 1;
+}
+
+.newest-res-card {
+  width: fit-content;
 }

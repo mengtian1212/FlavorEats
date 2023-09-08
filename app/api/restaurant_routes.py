@@ -7,7 +7,7 @@ from .auth_routes import validation_errors_to_error_messages
 from app.forms.create_restaurant_form import NewRestaurantForm
 from app.forms.edit_restaurant_form import EditRestaurantForm
 from app.forms.create_review_form import ReviewForm
-from sqlalchemy import and_, case
+from sqlalchemy import and_, case, desc
 from sqlalchemy.sql import func
 import random
 
@@ -21,6 +21,19 @@ def get_all_restaurants():
     """
     restaurants = Restaurant.query.all()
     return {"restaurants": {restaurant.id: restaurant.to_dict_simple() for restaurant in restaurants}}
+
+
+@restaurant_routes.route('/newest')
+def get_newest_restaurant():
+    """
+    Query for newest restaurant
+    """
+    restaurant = Restaurant.query.order_by(
+        desc(Restaurant.created_at), desc(Restaurant.id)).first()
+    if not restaurant:
+        return jsonify({"message": "Restaurant not found"}), 404
+    response = restaurant.to_dict()
+    return response
 
 
 @restaurant_routes.route('/<int:restaurantId>')

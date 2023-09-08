@@ -12,7 +12,7 @@ function RestaurantsContainer({
   if (cuisineType === "") {
     type = "All";
   } else if (cuisineType === "Popular") {
-    type = "Popular near you";
+    type = "Top Eats";
   } else {
     type = cuisineType;
   }
@@ -38,12 +38,15 @@ function RestaurantsContainer({
   }
 
   return (
-    <div className="over-res">
+    <div className="over-res" id="over-res0">
       <div className="res-list-title">
         <span className="res-list-title">{type} </span>
         <span className="res-list-title">
           {restaurants.length} {restaurants.length === 1 ? "store" : "stores"}
         </span>
+        {cuisineType === "Popular" && (
+          <p className="item-d">Top-rated and guaranteed high quality</p>
+        )}
       </div>
       <div className="all-res-container">
         {restaurants &&

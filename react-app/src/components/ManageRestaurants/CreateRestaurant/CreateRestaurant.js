@@ -183,7 +183,7 @@ function CreateRestaurant() {
   }, [myAddress]);
 
   if (!sessionUser) {
-    setTimeout(() => history.push("/"), 3000);
+    setTimeout(() => history.push("/restaurants"), 3000);
     window.scroll(0, 0);
     return (
       <div className="need-log-in">
