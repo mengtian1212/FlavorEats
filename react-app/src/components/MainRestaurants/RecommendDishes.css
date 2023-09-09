@@ -1,0 +1,124 @@
+.dishes-container {
+  max-width: 100%;
+  position: relative;
+}
+
+.slider-container-near1 {
+  margin: 16px -12px;
+}
+
+.slide-outer-near1 {
+  min-height: 335px;
+  position: relative;
+  margin: 0px 12px !important;
+}
+
+.slide-outer-near1::before {
+  min-height: 335px;
+  width: 100%;
+  content: "";
+  display: block;
+}
+
+.slide-near1 {
+  min-height: 140px;
+  height: max-content;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.menu-container2 {
+  background-color: white;
+  padding: 8px;
+  transition: box-shadow 0.3s ease-in-out;
+  /* width: max-content; */
+  min-width: 80%;
+}
+
+.menu-container2:hover {
+  box-shadow: 2px -8px 10px #efefef, -8px 3px 10px #efefef, 3px 8px 10px #f7f7f7,
+    0px 3px 10px #f7f7f7;
+}
+
+.item-img-container1 {
+  position: relative;
+  height: 188px;
+  min-width: 100%;
+  overflow: hidden;
+}
+
+.img-quick-view2 {
+  position: absolute;
+  bottom: 10px;
+  left: 30%;
+  background-color: white;
+  padding: 9px 12px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+  border: 1px solid #e2e2e2;
+  transition: opacity 0.3s ease-in-out 0s;
+  height: 36px;
+  width: fit-content;
+  border-radius: 500px;
+  line-height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  vertical-align: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.img-quick-view2:hover {
+  background-color: #e2e2e2;
+}
+
+.slide-near1.menu-container2:hover .img-quick-view2 {
+  opacity: 1;
+}
+
+/* button  */
+.item-name-text1 {
+  font-weight: 500;
+  line-height: 20px;
+  font-size: 16px;
+  padding-top: 8px;
+  /* text-overflow: ellipsis; */
+  overflow: hidden;
+  /* white-space: nowrap; */
+  -webkit-line-clamp: 2;
+}
+
+.controller-near1 {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  top: 0;
+  right: 0;
+}
+
+.previous-near1,
+.next-near1 {
+  border: none;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.previous-near1:hover,
+.next-near1:hover {
+  background-color: #d2d2d2;
+}
+
+.side-show-arrow-near1 {
+  font-size: 18px;
+}

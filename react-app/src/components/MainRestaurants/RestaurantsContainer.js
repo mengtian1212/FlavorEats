@@ -38,14 +38,16 @@ function RestaurantsContainer({
   }
 
   return (
-    <div className="over-res" id="over-res0">
+    <div className="over-res">
       <div className="res-list-title">
         <span className="res-list-title">{type} </span>
         <span className="res-list-title">
           {restaurants.length} {restaurants.length === 1 ? "store" : "stores"}
         </span>
         {cuisineType === "Popular" && (
-          <p className="item-d">Top-rated and guaranteed high quality</p>
+          <p className="item-dcap">
+            Top ratings and consistently great service
+          </p>
         )}
       </div>
       <div className="all-res-container">

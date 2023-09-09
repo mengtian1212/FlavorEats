@@ -8,9 +8,9 @@
   position: relative;
 }
 
-.tns-outer button {
+/* .tns-outer button {
   display: none;
-}
+} */
 
 .controller {
   position: absolute;
@@ -35,6 +35,10 @@
 .previous:hover,
 .next:hover {
   background-color: #d2d2d2;
+}
+
+.side-show-arrow {
+  font-size: 18px;
 }
 
 .slide-outer {

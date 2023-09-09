@@ -18,7 +18,10 @@ function NewRestaurantSubSection() {
 
   return (
     <div>
-      <div className="res-list-title">New on FlavorEats</div>
+      <div className="res-list-title">
+        <span className="res-list-title">New on FlavorEats</span>
+        <p className="item-dcap">Be one of the first to support them</p>
+      </div>
       <div className="newest-res-card">
         <RestaurantCard restaurant={targetRestaurant} />
       </div>

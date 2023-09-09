@@ -136,7 +136,6 @@ function EditResModal({ restaurant }) {
     console.log("bbbbbbbbbbbbbbbb");
     e.preventDefault();
     if (!validateForm()) return;
-    console.log("dccccc");
 
     let formData = new FormData();
     setImageLoading(true);

@@ -1,13 +1,55 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { tns } from "tiny-slider";
 import "./SideShow.css";
+import { fetchAllRestaurantsThunk } from "../../store/restaurants";
+import { calculateDistance } from "../../utils/helper-functions";
 
 function SideShow({ setFilterType }) {
   const sessionUser = useSelector((state) => state.session.user);
   const address = sessionUser && sessionUser.address.split(",")[0];
+  const dispatch = useDispatch();
+
+  let restaurants = useSelector((state) =>
+    state.restaurants.allRestaurants ? state.restaurants.allRestaurants : {}
+  );
+
+  useEffect(() => {
+    dispatch(fetchAllRestaurantsThunk());
+    window.scroll(0, 0);
+  }, [dispatch]);
+  const [nearestRes, setNearestRes] = useState(null);
+
+  useEffect(() => {
+    if (sessionUser && restaurants) {
+      const cald = restaurants;
+      Object.values(restaurants).forEach((res) => {
+        const distance = calculateDistance(
+          sessionUser.lat,
+          sessionUser.lng,
+          res?.lat,
+          res?.lng
+        );
+        cald[res.id].distance = distance;
+      });
+      const sortedCald = Object.values(cald).sort(
+        (a, b) => a.distance - b.distance
+      );
+      setNearestRes(sortedCald[0]);
+    }
+  }, [restaurants, sessionUser]);
 
   const SLIDER = {
+    1: {
+      // maggie personal website
+      text: "Meet Developer of FlavorEats",
+      caption: "My portfolio, projects, and more",
+      btnText: "Let's connect",
+      img: "https://cn-geo1.uber.com/static/mobile-content/membership/UberOne_GenericSavings.png",
+      path: "https://www.maggietian.com/",
+      backgroundColor: "rgb(255, 192, 67)",
+    },
+
     2: {
       // favorite restaurant
       text: "Explore your favorite restaurants",
@@ -28,7 +70,7 @@ function SideShow({ setFilterType }) {
       img: "https://d1g1f25tn8m2e6.cloudfront.net/a50898b5-a9de-4c28-97e9-e8863db76078.png",
       // img: "https://d1g1f25tn8m2e6.cloudfront.net/ad9ec127-d970-4a2b-a210-d8406cbd002b.png",
       // path: "#/restaurant/12",
-      path: "",
+      path: nearestRes ? `/restaurants/${nearestRes?.id}` : `/auth`,
       backgroundColor: "rgb(255, 227, 172)",
     },
 
@@ -51,7 +93,7 @@ function SideShow({ setFilterType }) {
       btnText: "Shop drinks",
       img: "https://d1g1f25tn8m2e6.cloudfront.net/fb760ad5-438e-4893-be20-d15c3c605eb5.jpg",
       // path: "/restaurants/5",
-      path: "",
+      // path: "",
       backgroundColor: "rgb(222, 233, 254)",
     },
 
@@ -62,18 +104,9 @@ function SideShow({ setFilterType }) {
       btnText: "Get started",
       img: "https://cdn.discordapp.com/attachments/1139263822469795862/1149586364359258162/23._new_restaurant_snip.PNG",
       path: "/business/restaurant-builder",
-      backgroundColor: "#262626",
+      // backgroundColor: "#262626",
+      backgroundColor: "rgb(20,35,40)",
       fontColor: "white",
-    },
-
-    1: {
-      // maggie personal website
-      text: "Meet Developer of FlavorEats",
-      caption: "My portfolio, projects, and more",
-      btnText: "Let's connect",
-      img: "https://cn-geo1.uber.com/static/mobile-content/membership/UberOne_GenericSavings.png",
-      path: "https://www.maggietian.com/",
-      backgroundColor: "rgb(255, 192, 67)",
     },
   };
 
@@ -111,7 +144,7 @@ function SideShow({ setFilterType }) {
       <div id="slider">
         <div className="my-slider">
           {Object.values(SLIDER).map((slide, i) => {
-            if (i !== 4) {
+            if (i === 0) {
               return (
                 <a href={slide.path} key={i} target="_blank" rel="noreferrer">
                   <div className="slide-outer">
@@ -146,7 +179,7 @@ function SideShow({ setFilterType }) {
                   </div>
                 </a>
               );
-            } else {
+            } else if (i === 4) {
               const scrollToResults = () => {
                 const targetSection = document.getElementById("over-res0");
 
@@ -191,6 +224,41 @@ function SideShow({ setFilterType }) {
                     </div>
                   </div>
                 </div>
+              );
+            } else {
+              return (
+                <a href={slide.path} key={i}>
+                  <div className="slide-outer">
+                    <div
+                      className="slide"
+                      style={{ backgroundColor: slide.backgroundColor }}
+                    >
+                      <div className={`slide-text-container`}>
+                        <div>
+                          <div
+                            className="slide-text"
+                            style={{ color: slide.fontColor }}
+                          >
+                            {slide.text}
+                          </div>
+                          <div
+                            className="slide-caption"
+                            style={{ color: slide.fontColor }}
+                          >
+                            {slide.caption}
+                          </div>
+                        </div>
+                        <div className="slide-btn">
+                          <span>{slide.btnText}</span>
+                          <i className="fa-solid fa-arrow-right"></i>
+                        </div>
+                      </div>
+                      <div className="slide-img-container">
+                        <img className="slide-img" src={slide.img} alt="" />
+                      </div>
+                    </div>
+                  </div>
+                </a>
               );
             }
           })}

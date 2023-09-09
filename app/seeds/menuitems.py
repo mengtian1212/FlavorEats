@@ -104,7 +104,7 @@ def seed_menuitems():
             "item_type": "Fries",
             "price": 4.69,
             "calory": 320,
-            "num_likes": 5,
+            "num_likes": 26,
             "num_dislikes": 0,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202002_8932_MediumFries_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "McDonald's World Famous Fries are made with premium potatoes such as the Russet Burbank and the Shepody. With 0g of trans fat per labeled serving, these epic fries are crispy and golden on the outside and fluffy on the inside. "
@@ -833,8 +833,8 @@ def seed_menuitems():
             "item_type": "Cold Coffees",
             "price": 5.75,
             "calory": 180,
-            "num_likes": 22,
-            "num_dislikes": 2,
+            "num_likes": 27,
+            "num_dislikes": 0,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/0f807b4e32b914f08da3ac400015ba36/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "We combine our rich, full-bodied espresso with vanilla-flavored syrup, milk and ice, then top it off with a caramel drizzle for an oh-so-sweet finish."
         },
@@ -937,8 +937,8 @@ def seed_menuitems():
             "item_type": "Frappuccino Blended Beverages",
             "price": 5.75,
             "calory": 260,
-            "num_likes": 5,
-            "num_dislikes": 0,
+            "num_likes": 22,
+            "num_dislikes": 2,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/e0d6a1fd09ac2d49a366b88ae0ab807c/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Caramel syrup meets coffee, milk and ice for a rendezvous in the blender, while whipped cream and buttery caramel sauce layer the love on top. To change things up, try it affogato-style with a hot espresso shot poured right over the top."
         },
@@ -5281,7 +5281,7 @@ def seed_menuitems():
             "item_name": "Chicken Tikka Masala",
             "item_type": "Chicken",
             "price": 17.95,
-            "num_likes": 31,
+            "num_likes": 26,
             "num_dislikes": 0,
             "image_url": "https://d1ralsognjng37.cloudfront.net/304898e0-ef3f-4fcd-a293-1d0989e0b2f4.jpeg",
             "description": "Tender morsels of boneless chicken breast marinated in a blend of freshly ground herbs, baked over charcoal, then cooked in the chef's special masala sauce. Signature Dish."

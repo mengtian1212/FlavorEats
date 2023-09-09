@@ -19,6 +19,7 @@ import MyResAllMenuitems from "./components/ManageRestaurants/MyResAllMenuitems/
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer";
+import PleaseLoginPage from "./components/auth/PleaseLoginPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -81,6 +82,9 @@ function App() {
           <Route exact path="/business/:restaurantId/items/:itemId/edit">
             <Navigation isLoaded={isLoaded} />
             {/* <EditMyResOneMenuItem /> */}
+          </Route>
+          <Route exact path="/auth">
+            <PleaseLoginPage />
           </Route>
           <Route exact path="/">
             <LandingPage />

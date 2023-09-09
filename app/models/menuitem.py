@@ -50,6 +50,7 @@ class MenuItem(db.Model):
         res = {
             'id': self.id,
             'restaurant_id': self.restaurant_id,
+            'i_resName': self.restaurant.name,
             'item_name': self.item_name,
             'price': self.price,
             'image_url': self.image_url,

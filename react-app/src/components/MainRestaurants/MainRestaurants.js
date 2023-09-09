@@ -11,6 +11,7 @@ import RestaurantsContainer from "./RestaurantsContainer";
 import Navigation from "../Navigation";
 import NewRestaurantSubSection from "./NewRestaurantSubSection";
 import NearestResSubSection from "./NearestResSubSection";
+import RecommendDishes from "./RecommendDishes";
 
 function MainRestaurants() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -144,7 +145,7 @@ function MainRestaurants() {
         <div className="main-contain">
           {showSubSection && <NearestResSubSection />}
           {showSubSection && <NewRestaurantSubSection />}
-          {showSubSection && <div>Recommended dishes</div>}
+          {showSubSection && <RecommendDishes />}
           <RestaurantsContainer
             cuisineType={filterType}
             restaurants={filterType ? filterRestaurants : restaurants}
