@@ -110,7 +110,7 @@ function RestaurantsCategories({ filterType, setFilterType }) {
             }`}
           />
         </div>
-        <div>Popular</div>
+        <div>Best Overall</div>
       </div>
       {selectedCuisineTypes.map((cuisineType, index) => (
         <div

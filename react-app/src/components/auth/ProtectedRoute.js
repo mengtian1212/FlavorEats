@@ -19,7 +19,7 @@ const DelayedRedirect = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      history.push("/");
+      history.push("/restaurants");
     }, 3000);
 
     return () => clearTimeout(timeout);

@@ -1,0 +1,136 @@
+.tns-nav {
+  display: none;
+}
+
+.slider-container {
+  margin: 16px 40px;
+  height: 100%;
+  position: relative;
+}
+
+/* .tns-outer button {
+  display: none;
+} */
+
+.controller {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 42.5%;
+  left: -12px;
+  right: -12px;
+}
+
+.previous,
+.next {
+  border: none;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.previous:hover,
+.next:hover {
+  background-color: #d2d2d2;
+}
+
+.side-show-arrow {
+  font-size: 18px;
+}
+
+.slide-outer {
+  min-height: 140px;
+  height: 100%;
+  position: relative;
+  margin: 0px 12px !important;
+}
+
+.slide-outer::before {
+  padding-top: 42.5%;
+  width: 100%;
+  content: "";
+  display: block;
+}
+
+.slide {
+  min-height: 140px;
+  height: 100%;
+  /* background: rgb(222, 233, 254); */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgb(226, 226, 226);
+}
+
+.slide-text-container {
+  flex: 1 1 0px;
+  padding: 16px 8px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slide-img-container {
+  width: 35%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-img {
+  /* width: 580px; */
+  /* height: 247px; */
+  /* background-position: center; */
+  /* background-size: cover; */
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+/* text format  */
+.slide-text {
+  font-size: 1.4vw;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #000000;
+}
+
+@media screen and (min-width: 1960px) {
+  .slide-text {
+    font-size: 1.2vw;
+  }
+}
+
+.slide-caption {
+  line-height: 20px;
+  font-size: 14px;
+  color: #000000;
+  font-weight: normal;
+  margin-top: 4px;
+}
+
+.slide-btn {
+  padding: 8px 12px 8px 12px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border-radius: 500px;
+  line-height: 16px;
+  font-weight: 500;
+  font-size: 14px;
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-function RestaurantCard({ restaurant }) {
+function RestaurantCard({ restaurant, hasDistance }) {
   const history = useHistory();
   const percentage = (restaurant.avg_rating / 5) * 100;
   const [isFavorite, setIsFavorite] = useState(false);
@@ -29,10 +29,31 @@ function RestaurantCard({ restaurant }) {
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       ></i>
-      <img src={restaurant.image_url} alt="" className="restaurant-preview" />
-      <div className="restaurant-card-name">{restaurant.name}</div>
+      <img
+        src={restaurant.image_url}
+        alt=""
+        className="restaurant-preview"
+        style={hasDistance ? { height: "128px", width: "325.5px" } : {}}
+      />
+      <div
+        className="restaurant-card-name"
+        style={hasDistance ? { width: "325.5px" } : {}}
+      >
+        {restaurant.name}
+      </div>
       <div className="restaurant-delivery">
-        ${restaurant.delivery_fee} Delivery Fee • {restaurant.price_ranges}
+        ${restaurant.delivery_fee === "0.00" ? 0 : restaurant.delivery_fee}{" "}
+        Delivery Fee • {restaurant.price_ranges}{" "}
+        {hasDistance &&
+          restaurant.distance <= 1 &&
+          `• Distance: ${Math.floor(restaurant.distance * 1000)}m`}
+        {hasDistance &&
+          restaurant.distance > 1 &&
+          restaurant.distance < 1000 &&
+          `• Distance: ${restaurant.distance.toFixed(1)}km`}
+        {hasDistance &&
+          restaurant.distance >= 1000 &&
+          `• Distance: ${Math.floor(restaurant.distance)}km`}
       </div>
       {isNewRestaurant && <div className="item-plus4">New</div>}
       <div className="restaurant-card-stars">
@@ -47,6 +68,15 @@ function RestaurantCard({ restaurant }) {
           </div>
         )}
       </div>
+      {hasDistance && (
+        <div className="dis-types-container">
+          {restaurant.cusine_types.split("#").map((type, i) => (
+            <div key={i} className="dis-type">
+              {type}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -1,0 +1,64 @@
+.near-container {
+  max-width: 100%;
+  position: relative;
+}
+
+.slider-container-near {
+  margin: 16px -12px;
+}
+
+.slide-outer-near {
+  min-height: 240px;
+  position: relative;
+  margin: 0px 12px !important;
+}
+
+.slide-outer-near::before {
+  min-height: 240px;
+  width: 100%;
+  content: "";
+  display: block;
+}
+
+.slide-near {
+  min-height: 140px;
+  height: max-content;
+  /* background: rgb(222, 233, 254); */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+/* button  */
+.controller-near {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  top: 0;
+  right: 0;
+}
+
+.previous-near,
+.next-near {
+  border: none;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.previous-near:hover,
+.next-near:hover {
+  background-color: #d2d2d2;
+}
+
+.side-show-arrow-near {
+  font-size: 18px;
+}

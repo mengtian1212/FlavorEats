@@ -226,8 +226,18 @@
   border-bottom: 1px solid #e2e2e2;
 }
 
+.review-c {
+  display: flex;
+  justify-content: space-between;
+}
+
 .review-ct {
   display: flex;
+}
+
+.review-cbtn {
+  display: flex;
+  gap: 1em;
 }
 
 .reviewer-img {
@@ -304,4 +314,34 @@
   font-weight: normal;
   margin-top: 20px;
   margin-bottom: 32px;
+}
+
+.btn-black4 {
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  line-height: 20px;
+  min-width: fit-content;
+  border-radius: 500px;
+  font-weight: 500;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  padding: 8px 12px;
+  height: 2em;
+  gap: 8px;
+}
+
+.btn-black4:hover {
+  background-color: white;
+  color: black;
+}
+
+.reorder-btn2:disabled {
+  cursor: not-allowed;
+  /* background-color: #efefef;
+  color: #5f5f5f; */
 }

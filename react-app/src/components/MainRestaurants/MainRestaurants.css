@@ -2,6 +2,7 @@
   padding-top: 24px;
   padding: 16px 16px;
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   gap: 16px;
 }
@@ -48,6 +49,7 @@
   display: flex;
   justify-content: flex-start;
   gap: 100px;
+  max-width: 100%;
 }
 
 /* sort & filters  */
@@ -193,6 +195,7 @@ input[type="radio"] {
   display: flex;
   flex-direction: column;
   position: relative;
+  width: fit-content;
 }
 
 .fav {
@@ -231,6 +234,17 @@ input[type="radio"] {
   font-size: 14px;
   color: rgb(84, 84, 84);
   line-height: 20px;
+}
+
+.served {
+  font-size: 14px;
+  color: rgb(84, 84, 84);
+  line-height: 20px;
+  margin-top: 4px;
+  /* text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-line-clamp: 1; */
 }
 
 .restaurant-card-stars {
@@ -272,4 +286,36 @@ input[type="radio"] {
 
 .full-stars:before {
   -webkit-text-stroke: 1px transparent;
+}
+
+.cuisine-types-underline {
+  flex-grow: 1;
+  background: #e2e2e2;
+  color: #afafaf;
+  content: "";
+  height: 1px;
+  margin: 20px 40px 20px;
+}
+
+.main-contain {
+  flex: 1;
+  max-width: 100%;
+}
+
+.newest-res-card {
+  width: fit-content;
+}
+
+.dis-types-container {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+}
+
+.dis-type {
+  background-color: #eeeeee;
+  font-size: 12px;
+  color: #545454;
+  line-height: 20px;
+  padding: 2px 4px;
 }

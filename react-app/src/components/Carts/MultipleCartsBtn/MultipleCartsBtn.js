@@ -3,20 +3,18 @@ import { useSelector } from "react-redux";
 import { useState, useRef, useEffect } from "react";
 import { useModal } from "../../../context/Modal";
 import CartInDropdown from "./CartInDropdown";
-import CartModal from "../CartModal";
 import NoCartsModal from "./NoCartsModal";
 
 function MultipleCartsBtn({ restaurantId }) {
   const carts = useSelector((state) => (state.orders ? state.orders : {}));
   const cartsArr = carts && Object.values(carts);
-
+  cartsArr.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
   const ulRef = useRef();
   const [showMenu, setShowMenu] = useState(false);
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
-  const closeMenu = () => setShowMenu(false);
 
   useEffect(() => {
     if (!showMenu) return;

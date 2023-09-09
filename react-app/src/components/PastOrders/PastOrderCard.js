@@ -66,12 +66,13 @@ function PastOrderCard({ pastOrder }) {
         setModalContent(<CartModal restaurantId={newCart?.restaurant_id} />);
         setModalClass("cart-modal");
         setIsAdded(false);
-      }, 1000);
+      }, 300);
     }
   };
 
   const [starColor, setStarColor] = useState("");
   const [percentage, setPercentage] = useState(0);
+  const [isItemReviewed, setIsItemReviewed] = useState(false);
 
   useEffect(() => {
     setPercentage((pastOrder.review_rating / 5) * 100);
@@ -86,6 +87,12 @@ function PastOrderCard({ pastOrder }) {
     } else if (Math.floor(pastOrder.review_rating) === 1) {
       setStarColor("rgb(255, 204, 75)");
     }
+    console.log(pastOrder?.order_items, pastOrder?.order_items);
+    setIsItemReviewed(
+      Object.values(pastOrder?.order_items).some(
+        (value) => value.is_like === true || value.is_dislike === true
+      )
+    );
   }, [pastOrder]);
 
   return (
@@ -165,7 +172,7 @@ function PastOrderCard({ pastOrder }) {
               <div>Reordering</div>
             </div>
           )}
-          {sessionUser && pastOrder?.review_rating === 0 && (
+          {sessionUser && pastOrder?.review_rating === 0 && !isItemReviewed && (
             <div
               className="reorder-btn1"
               onClick={() => {

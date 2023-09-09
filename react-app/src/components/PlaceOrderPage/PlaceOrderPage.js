@@ -171,7 +171,7 @@ const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
         Thank you for ordering with Flavor Eats, {sessionUser?.first_name}{" "}
         {sessionUser?.last_name}!
       </div>
-      {showLeaveReview && (
+      {showLeaveReview && orderJustPlaced?.review_rating === 0 && (
         <LeaveReview
           setShowLeaveReview={setShowLeaveReview}
           restaurantId={orderJustPlaced.restaurant_id}

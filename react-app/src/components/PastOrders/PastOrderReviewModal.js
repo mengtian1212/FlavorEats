@@ -10,6 +10,7 @@ import {
   fetchPastOrdersThunk,
   fetchSinglePastOrderThunk,
 } from "../../store/pastOrders";
+import ThankReview from "../PlaceOrderPage/ThankReview";
 
 function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
   const { closeModal } = useModal();
@@ -51,6 +52,7 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
 
   const [errorsRating, setErrorsRating] = useState("");
   const [errorsReview, setErrorsReview] = useState("");
+  const { setModalContent } = useModal();
 
   const handleSubmitReview = async (e) => {
     e.preventDefault();
@@ -77,6 +79,7 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
       if (createdReview) setMessage("");
       setRating(0);
       closeModal();
+      setModalContent(<ThankReview rating={rating} />);
     }
   };
 

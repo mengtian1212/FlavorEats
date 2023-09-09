@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useHistory } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 import "./ItemModal.css";
 import { addCartItemThunk } from "../../store/orders";
@@ -9,6 +10,8 @@ import { useDeliveryMethod } from "../../context/DeliveryMethodContext";
 function ItemModal({ item }) {
   const dispatch = useDispatch();
   const [isAdded, setIsAdded] = useState(false);
+  const location = useLocation();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [showLoginNotice, setShowLoginNotice] = useState(false);
 
@@ -55,7 +58,7 @@ function ItemModal({ item }) {
   // before checkout, toggle delivery/pickup will have no effect to current order
   // will only apply to new order
   const { setModalContent, setModalClass } = useModal();
-  const handleAddItem = (e) => {
+  const handleAddItem = async (e) => {
     if (sessionUser) {
       setIsAdded(true);
       const newOrderItemData = {
@@ -63,9 +66,12 @@ function ItemModal({ item }) {
         quantity: parseInt(quantity),
         is_delivery: isDeliveryT,
       };
-      dispatch(addCartItemThunk(newOrderItemData));
+      await dispatch(addCartItemThunk(newOrderItemData));
       setTimeout(() => {
-        closeModal();
+        // closeModal();
+        if (location.pathname === "/restaurants") {
+          history.push(`/restaurants/${item.restaurant_id}`);
+        }
         setModalContent(<CartModal restaurantId={item.restaurant_id} />);
         setModalClass("cart-modal");
       }, 300);
@@ -115,7 +121,7 @@ function ItemModal({ item }) {
         {item.like_ratio > 0 && (
           <div className="item-likes-container1">
             <i className="fa-solid fa-thumbs-up"></i>
-            <div>{item.like_ratio.toFixed(2) * 100}%</div>
+            <div>{Math.floor(item.like_ratio.toFixed(2) * 100)}%</div>
             <div>({item.num_likes > 0 && item.num_likes})</div>
           </div>
         )}

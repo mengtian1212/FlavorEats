@@ -56,11 +56,13 @@
   font-weight: 500;
   padding-bottom: 2px;
   /* border-bottom: 2px solid #3e9920; */
-  color: #3e9920;
+  /* color: #3e9920; */
+  color: rgb(4, 136, 72);
 }
 
 .lih2 {
-  color: #3e9920;
+  /* color: #3e9920; */
+  color: rgb(4, 136, 72);
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
 }
