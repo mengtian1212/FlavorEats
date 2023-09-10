@@ -29,7 +29,9 @@ def search_all():
     res_or_clauses = []
     for word in search_words:
         res_or_clauses.append(or_(Restaurant.name.ilike(f'%{word}%'), Restaurant.cusine_types.ilike(
-            f'%{word}%'), Restaurant.description.ilike(f'%{word}%'), Restaurant.price_ranges == word))
+            f'%{word}%'), Restaurant.description.ilike(f'%{word}%'),
+            # Restaurant.price_ranges == word
+        ))
 
     # consider change to and_  if it is and_, then this restaurant must contain each search word in any of its fields
     res_clauses = or_(*res_or_clauses)
