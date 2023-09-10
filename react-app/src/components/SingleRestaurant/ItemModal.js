@@ -69,7 +69,10 @@ function ItemModal({ item }) {
       await dispatch(addCartItemThunk(newOrderItemData));
       setTimeout(() => {
         // closeModal();
-        if (location.pathname === "/restaurants") {
+        if (
+          location.pathname === "/restaurants" ||
+          location.pathname.startsWith("/search")
+        ) {
           history.push(`/restaurants/${item.restaurant_id}`);
         }
         setModalContent(<CartModal restaurantId={item.restaurant_id} />);

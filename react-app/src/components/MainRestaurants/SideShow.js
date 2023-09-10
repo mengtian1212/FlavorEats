@@ -90,10 +90,9 @@ function SideShow({ setFilterType }) {
       // coffee & tea page
       text: "Grab a refreshing drink",
       caption: "Stay Cool and Hydrated!",
-      btnText: "Shop drinks",
+      btnText: "See search results",
       img: "https://d1g1f25tn8m2e6.cloudfront.net/fb760ad5-438e-4893-be20-d15c3c605eb5.jpg",
-      // path: "/restaurants/5",
-      // path: "",
+      path: "/search?query=drink%20coffee",
       backgroundColor: "rgb(222, 233, 254)",
     },
 
@@ -178,52 +177,6 @@ function SideShow({ setFilterType }) {
                     </div>
                   </div>
                 </a>
-              );
-            } else if (i === 4) {
-              const scrollToResults = () => {
-                const targetSection = document.getElementById("over-res0");
-
-                if (targetSection) {
-                  window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: "smooth",
-                  });
-                  setFilterType("Coffee & Tea");
-                }
-              };
-              return (
-                <div key={i} onClick={scrollToResults} className="cursor">
-                  <div className="slide-outer">
-                    <div
-                      className="slide"
-                      style={{ backgroundColor: slide.backgroundColor }}
-                    >
-                      <div className={`slide-text-container`}>
-                        <div>
-                          <div
-                            className="slide-text"
-                            style={{ color: slide.fontColor }}
-                          >
-                            {slide.text}
-                          </div>
-                          <div
-                            className="slide-caption"
-                            style={{ color: slide.fontColor }}
-                          >
-                            {slide.caption}
-                          </div>
-                        </div>
-                        <div className="slide-btn">
-                          <span>{slide.btnText}</span>
-                          <i className="fa-solid fa-arrow-right"></i>
-                        </div>
-                      </div>
-                      <div className="slide-img-container">
-                        <img className="slide-img" src={slide.img} alt="" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
               );
             } else {
               return (

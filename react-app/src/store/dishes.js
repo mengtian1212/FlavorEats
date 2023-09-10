@@ -15,7 +15,7 @@ export const fetchRecommendDishesThunk = () => async (dispatch) => {
   return dishes;
 };
 
-/** Restaurants Reducer: */
+/** Dishes Reducer: */
 const initialState = { recommendDishes: {} };
 const dishesReducer = (state = initialState, action) => {
   switch (action.type) {

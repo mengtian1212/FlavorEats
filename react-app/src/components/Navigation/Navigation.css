@@ -230,7 +230,7 @@
 
 .btn-black:hover {
   background-color: #262626;
-  opacity: 90%;
+  opacity: 95%;
 }
 
 .btn-white {
@@ -336,6 +336,10 @@
   /* justify-content: flex-start; */
   align-items: center;
   font-weight: 500;
+}
+
+.userhover:hover {
+  color: rgb(4, 136, 72);
 }
 
 .menu-item > div {

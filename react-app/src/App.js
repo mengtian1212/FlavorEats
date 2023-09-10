@@ -20,6 +20,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer";
 import PleaseLoginPage from "./components/auth/PleaseLoginPage";
+import SearchResults from "./components/SearchResults/SearchResults";
 
 function App() {
   const dispatch = useDispatch();
@@ -83,6 +84,9 @@ function App() {
             <Navigation isLoaded={isLoaded} />
             {/* <EditMyResOneMenuItem /> */}
           </Route>
+          <ProtectedRoute exact path="/search">
+            <SearchResults />
+          </ProtectedRoute>
           <Route exact path="/auth">
             <PleaseLoginPage />
           </Route>

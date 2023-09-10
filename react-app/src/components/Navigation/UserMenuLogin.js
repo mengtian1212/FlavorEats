@@ -57,36 +57,41 @@ const UserMenuLogin = ({ user, closeMenu }) => {
           </div>
         </div>
       </div>
-      <div className="menu-item cursor" onClick={handleOrders}>
+      <div className="menu-item cursor userhover" onClick={handleOrders}>
         <div className="menu-icons">
           <i className="fa-solid fa-receipt"></i>
         </div>
         <div className="_16"></div>
         <div>Orders</div>
       </div>
-      <div className="menu-item cursor" onClick={handleFavorites}>
+      <div className="menu-item cursor userhover" onClick={handleFavorites}>
         <div className="menu-icons">
           <i className="fa-solid fa-heart"></i>
         </div>
         <div className="_16"></div>
         <div>Favorites</div>
       </div>
-      <div className="menu-item cursor" onClick={handleMyRestaurants}>
+      <div className="menu-item cursor userhover" onClick={handleMyRestaurants}>
         <div className="menu-icons">
           <i className="fa-solid fa-store"></i>
         </div>
         <div className="_16"></div>
         <div>Manage restaurants</div>
       </div>
-      <div className="menu-item cursor" onClick={handleCreateRestaurant}>
+      <div
+        className="menu-item cursor userhover"
+        onClick={handleCreateRestaurant}
+      >
         <div className="menu-icons">
           <i className="fa-solid fa-circle-plus"></i>
         </div>
         <div className="_16"></div>
         <div>Create your restaurant</div>
       </div>
-      <div onClick={handleLogout} className="menu-item cursor">
-        <div className="sign-out">Sign out</div>
+      <div className="menu-item">
+        <div className="sign-out userhover cursor" onClick={handleLogout}>
+          Sign out
+        </div>
       </div>
     </>
   );

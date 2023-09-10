@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function SortContainer({
   filterType,
@@ -24,6 +25,10 @@ function SortContainer({
   setIsGluten,
   isHalal,
   setIsHalal,
+  searchQuery,
+  numResults,
+  numRestaurants,
+  numDishes,
 }) {
   // const [isOne, setIsOne] = useState(false);
   // const [isTwo, setIsTwo] = useState(false);
@@ -34,6 +39,7 @@ function SortContainer({
   // const [isVegan, setIsVegan] = useState(false);
   // const [isGluten, setIsGluten] = useState(false);
   // const [isHalal, setIsHalal] = useState(false);
+  const location = useLocation();
 
   const handleClear = () => {
     setIsOne(false);
@@ -67,7 +73,36 @@ function SortContainer({
 
   return (
     <div className="sort-container">
-      <div className="all-res">All Restaurants</div>
+      {!location.pathname.startsWith("/search") && filterType === "" && (
+        <div className="all-res">All Restaurants</div>
+      )}
+      {!location.pathname.startsWith("/search") && filterType !== "" && (
+        <div className="all-res">Results</div>
+      )}
+      {location.pathname.startsWith("/search") && (
+        <>
+          <div className="all-res">"{searchQuery}"</div>
+          {numResults > 0 && (
+            <>
+              <div className="all-res-cap">
+                {numResults} Results for "{searchQuery}"
+              </div>
+              <div className="all-res-cap1">
+                {numRestaurants > 0 && (
+                  <span className="all-res-cap1">{numRestaurants} stores</span>
+                )}{" "}
+                &nbsp;
+                {numDishes > 0 && (
+                  <span className="all-res-cap1">{numDishes} dishes</span>
+                )}
+              </div>
+            </>
+          )}
+          {numResults === 0 && (
+            <div className="all-res-cap">0 Results for "{searchQuery}"</div>
+          )}
+        </>
+      )}
       <div className="clear-filter cursor" onClick={handleClear}>
         Clear all
       </div>
