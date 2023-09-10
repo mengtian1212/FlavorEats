@@ -1,0 +1,52 @@
+.no-results-container {
+  max-width: 656px;
+  padding: 56px 16px 80px;
+  margin: 0 auto;
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.avocado-img {
+  width: 226px;
+  padding-bottom: 56px;
+}
+
+.reviews-left-title1 {
+  line-height: 44px;
+  font-weight: 700;
+  font-size: 36px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.no-results-try {
+  padding-bottom: 24px;
+  max-width: 410px;
+  text-align: center;
+
+  line-height: 24px;
+  display: block;
+}
+
+.no-view-all {
+  width: 410px;
+  border-radius: 8px;
+  padding: 12px 16px;
+  min-height: 56px;
+  font-size: 18px;
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  line-height: 24px;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.no-view-all:hover {
+  background-color: #262626;
+}

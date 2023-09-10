@@ -16,6 +16,18 @@ function Navigation({ isLoaded }) {
   const history = useHistory();
   const location = useLocation();
 
+  // for search
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === "NumpadEnter") {
+      e.preventDefault();
+      if (searchKeyword.trim() !== "") {
+        history.push(`/search?query=${encodeURIComponent(searchKeyword)}`);
+      }
+      setSearchKeyword("");
+    }
+  };
+
   const [myAddress, setMyAddress] = useState(sessionUser?.address);
   console.log("myAddress ON NAV", myAddress);
   const userAddress =
@@ -290,9 +302,12 @@ function Navigation({ isLoaded }) {
                 <div className="nav-search">
                   <i className="fas fa-search"></i>
                   <input
-                    className="search-input cursor"
+                    type="text"
+                    value={searchKeyword}
+                    onChange={(e) => setSearchKeyword(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    className="search-input"
                     placeholder="Search restaurants, dishes, cuisine types, etc"
-                    onClick={() => alert("Feature Coming Soon...")}
                   />
                 </div>
               </>

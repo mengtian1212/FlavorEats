@@ -77,6 +77,24 @@
   margin-bottom: 24px;
 }
 
+.all-res-cap {
+  font-size: 16px;
+  line-height: 20px;
+  color: #545454;
+  font-weight: 500;
+  padding: 0 0 24px;
+  margin-top: -12px;
+}
+
+.all-res-cap1 {
+  font-size: 16px;
+  line-height: 20px;
+  color: #545454;
+  font-weight: 500;
+  padding: 0 0 24px;
+  margin-top: -20px;
+}
+
 .sort-title {
   font-size: 18px;
   font-weight: 500;
