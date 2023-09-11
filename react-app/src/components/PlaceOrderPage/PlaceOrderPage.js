@@ -6,6 +6,8 @@ import { fetchLastPastOrderThunk } from "../../store/pastOrders";
 import Header from "../Header";
 import MapContainer from "./Maps";
 import LeaveReview from "./LeaveReview";
+import PastOrderReceiptModal from "../PastOrders/PastOrderReceiptModal";
+import { useModal } from "../../context/Modal";
 
 function PlaceOrderPage() {
   const dispatch = useDispatch();
@@ -164,6 +166,7 @@ const Step3 = ({ orderJustPlaced, sessionUser }) => {
 const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
   const orderItems = Object.values(orderJustPlaced?.order_items);
   const [showLeaveReview, setShowLeaveReview] = useState(true);
+  const { setModalContent, setModalClass } = useModal();
 
   return (
     <div className="checkout-delivery-box3">
@@ -205,7 +208,24 @@ const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
       )}
       <div className="check-space-line"></div>
       <div className="checkout-delivery-box7">
-        <div className="checkout-t">Order Summary</div>
+        <div className="place-order-sum">
+          <div className="checkout-t">Order Summary</div>
+          <button
+            className="change-address-btn1 cursor place-receipt"
+            onClick={() => {
+              setModalContent(
+                <PastOrderReceiptModal
+                  pastOrderId={orderJustPlaced?.id}
+                  restaurantId={orderJustPlaced?.restaurant_id}
+                  resName={orderJustPlaced?.restaurant_name}
+                />
+              );
+              setModalClass("reviewheight");
+            }}
+          >
+            View Receipt
+          </button>
+        </div>
         <div className="pad">
           From {orderJustPlaced.restaurant_name} (
           {orderJustPlaced.restaurant_city})
