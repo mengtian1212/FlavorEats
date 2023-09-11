@@ -34,7 +34,7 @@
   display: flex;
   flex-direction: column;
   width: 500px;
-  height: 80vh;
+  max-height: 80vh;
   left: 36px;
   top: 120px;
   margin-left: 72px;
@@ -71,6 +71,10 @@ color: #000000; */
 
 .checkout-delivery-box3 {
   padding: 48px 24px 0px 24px;
+}
+
+.checkout-delivery-box8 {
+  padding: 48px 24px 12px 24px;
 }
 
 .checkout-delivery-box4 {
@@ -122,7 +126,16 @@ color: #000000; */
 .pad {
   padding: 16px 0px;
 }
+
 .pad1 {
+  padding: 16px 0px 8px 0px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pad2 {
   padding: 16px 0px;
 
   display: flex;
@@ -269,3 +282,23 @@ color: #000000; */
 .place-receipt {
   text-align: right;
 }
+
+.dis-dur-container2 {
+  padding: 4px 16px;
+  border-right: 1px solid black;
+  font-size: 20px;
+}
+
+.dis-dur-container3 {
+  position: absolute;
+  right: 0;
+  display: flex;
+  font-size: 14px;
+  /* background-color: #d5e2f6; */
+  background-color: white;
+  border: 1px solid black;
+}
+
+/* .gm-svpc {
+  display: none;
+} */

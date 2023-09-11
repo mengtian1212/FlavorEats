@@ -1,4 +1,5 @@
 // frontend/src/components/Maps/Maps.js
+import "./Maps.css";
 import React, { useCallback, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,24 +11,6 @@ import {
   useJsApiLoader,
   // ControlPosition,
 } from "@react-google-maps/api";
-function calculateDistance(lat1, lng1, lat2, lng2) {
-  const earthRadius = 6371; // Earth's radius in kilometers
-
-  const dLat = (lat2 - lat1) * (Math.PI / 180);
-  const dLng = (lng2 - lng1) * (Math.PI / 180);
-
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(lat1 * (Math.PI / 180)) *
-      Math.cos(lat2 * (Math.PI / 180)) *
-      Math.sin(dLng / 2) *
-      Math.sin(dLng / 2);
-
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  const distance = earthRadius * c;
-  return distance; // Distance in kilometers
-}
 
 const Maps = ({
   apiKey,
@@ -37,10 +20,9 @@ const Maps = ({
   resName,
   resLat,
   resLng,
-  resImg,
-  setDeliveryDuration,
 }) => {
   const sessionUser = useSelector((state) => state.session.user);
+
   const containerStyle = {
     // width: "800px",
     // height: "800px",
@@ -58,20 +40,18 @@ const Maps = ({
   });
 
   const [response, setResponse] = useState(null);
+  const libraries = ["places"];
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKey,
-    libraries: ["places"],
+    libraries: libraries,
   });
 
   const directionsCallback = (response) => {
     if (response !== null) {
       if (response.status === "OK") {
         console.log("Route: okokokokok");
-
         setResponse(response);
-        setDeliveryDuration(response.routes[0].legs[0].duration);
-        console.log("setDeliveryDuration", response.routes[0].legs[0].duration);
       } else {
         console.log("Route: " + response.status);
       }
@@ -89,14 +69,6 @@ const Maps = ({
       lat: parseFloat(resLat),
       lng: parseFloat(resLng),
     });
-
-    const distance = calculateDistance(
-      deliveryLat,
-      deliveryLng,
-      resLat,
-      resLng
-    );
-    console.log("distance", distance);
     // setResponse(null);
   }, [deliveryLat, deliveryLng, resLat, resLng]);
 
@@ -123,20 +95,27 @@ const Maps = ({
             lat: userLocation.lat,
             lng: userLocation.lng,
           }}
-          zoom={15}
           onLoad={onMapLoad}
           onUnmount={onUnmount}
+          zoom={12}
+          // draggable={false}
+          // zoomControl={false}
+          // gestureHandling="none"
+          // disableDefaultUI={true}
           // mapTypeControl={false}
+          // scaleControl={false}
           // mapTypeControlOptions={{
           //   // style: MapTypeControlStyle.HORIZONTAL_BAR,
           //   position: ControlPosition.TOP_CENTER,
           // }}
-          // options={(maps) => ({
-          //   mapTypeControl: false,
-          //   mapTypeControlOptions: {
-          //     position: maps.ControlPosition.BOTTOM_RIGHT,
-          //   },
-          // })}
+          options={(maps) => ({
+            mapTypeControl: false,
+            streetViewControl: false,
+            disableDefaultUI: true,
+            draggleble: false,
+            gestureHandling: "none",
+            fullscreenControl: false,
+          })}
         >
           <Marker
             position={currentPosition}
@@ -172,7 +151,13 @@ const Maps = ({
               callback={directionsCallback}
             />
           )}
-          {mapLoaded && (
+          {/* <i className="fa fa-user" style={{ marginRight: "8px" }}></i> */}
+
+          {/* <i
+                    className="fa-solid fa-store"
+                    style={{ marginRight: "8px" }}
+                  ></i> */}
+          {/* {mapLoaded && (
             <InfoWindow
               position={{
                 lat: userLocation.lat,
@@ -182,7 +167,6 @@ const Maps = ({
               title={delivery_add}
             >
               <div>
-                {/* <i className="fa fa-user" style={{ marginRight: "8px" }}></i> */}
                 <span style={{ color: `black` }}>{delivery_add}</span>
               </div>
             </InfoWindow>
@@ -196,23 +180,15 @@ const Maps = ({
               options={{ pixelOffset: { width: 0, height: -48 } }}
             >
               <div>
-                <span
-                  style={{ color: `black` }}
-                  // pixelOffset={{ width: 0, height: -50 }}
-                >
-                  {/* <i
-                    className="fa-solid fa-store"
-                    style={{ marginRight: "8px" }}
-                  ></i> */}
-                  {resName}
-                </span>
+                <span style={{ color: `black` }}>{resName}</span>
               </div>
             </InfoWindow>
-          )}
+          )} */}
           {response !== null && (
             <DirectionsRenderer
               options={{
                 directions: response,
+                disableDefaultUI: true,
                 // markerOptions: {
                 //   icon: {
                 //     // Use different icons for origin and destination
@@ -231,11 +207,11 @@ const Maps = ({
             />
           )}
           {response !== null && sessionUser && (
-            <div className="dis-dur-container3">
-              <div className="dis-dur-container2">
+            <div className="dis-dur-container">
+              <div className="dis-dur-container1">
                 Distance: {response.routes[0].legs[0].distance.text}
               </div>
-              <div className="dis-dur-container2">
+              <div className="dis-dur-container1">
                 Duration: {response.routes[0].legs[0].duration.text}
               </div>
             </div>

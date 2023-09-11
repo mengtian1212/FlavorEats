@@ -99,6 +99,13 @@
   color: #545454;
 }
 
+.address3d {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #545454;
+}
+
 .change-address-btn1 {
   background-color: #eeeeee;
   outline: none;

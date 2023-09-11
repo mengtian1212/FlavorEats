@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addFavoriteThunk,
   deleteFavThunk,
@@ -11,6 +11,7 @@ import {
 
 function RestaurantCard({ restaurant, hasDistance }) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const history = useHistory();
   const location = useLocation();
   const percentage = (restaurant.avg_rating / 5) * 100;
@@ -47,15 +48,19 @@ function RestaurantCard({ restaurant, hasDistance }) {
       className="restaurant-card-container cursor"
       onClick={() => history.push(`/restaurants/${restaurant.id}`)}
     >
-      <i
-        className={`fa-${
-          isFavorite ? `solid solidred` : isHover ? `solid` : `regular`
-        } fa-heart fav`}
-        onClick={handleToggleFavorite}
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-      ></i>
-      <div className="heart-container"></div>
+      {sessionUser && (
+        <>
+          <i
+            className={`fa-${
+              isFavorite ? `solid solidred` : isHover ? `solid` : `regular`
+            } fa-heart fav`}
+            onClick={handleToggleFavorite}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+          ></i>
+          <div className="heart-container"></div>
+        </>
+      )}
       <img
         src={restaurant.image_url}
         alt=""

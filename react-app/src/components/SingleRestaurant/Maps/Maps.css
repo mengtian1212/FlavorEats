@@ -1,0 +1,36 @@
+.gm-control-active.gm-fullscreen-control {
+  display: none !important;
+}
+
+/* Disable dragging */
+.gm-style-draggable {
+  /* cursor: default !important; */
+}
+
+.gm-style-mtc {
+  /* display: none; */
+}
+
+.dis-dur-container {
+  position: absolute;
+  right: 0;
+  display: flex;
+  font-size: 14px;
+  /* background-color: #d5e2f6; */
+  background-color: white;
+  border: 1px solid black;
+}
+
+.dis-dur-container1 {
+  padding: 2px 8px;
+  border-right: 1px solid black;
+  font-size: 14px;
+}
+
+.gmnoprint {
+  display: none;
+}
+
+.gm-style-cc {
+  display: none;
+}

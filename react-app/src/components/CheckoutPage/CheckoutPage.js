@@ -282,7 +282,7 @@ function CheckoutPage() {
                         className="change-address-btn1 cursor"
                         onClick={() => setShowEditAddress(true)}
                       >
-                        Change
+                        Edit
                       </button>
                     )}
                   </>
@@ -327,7 +327,7 @@ function CheckoutPage() {
                       className="change-address-btn1 cursor"
                       onClick={handleSubmitAddress}
                     >
-                      Change
+                      Edit
                     </button>
                   </>
                 )}

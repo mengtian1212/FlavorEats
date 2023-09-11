@@ -11,7 +11,7 @@
 }
 
 .info-sec1 {
-  padding: 16px 24px;
+  padding: 20px 24px 16px 24px;
 }
 
 .info-sec {
@@ -82,4 +82,22 @@
   background-color: rgb(226, 226, 226);
   height: 1px;
   margin-left: 73px;
+}
+
+/* map container  */
+.store-map-container {
+  pointer-events: none;
+  position: relative;
+}
+
+.store-map-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

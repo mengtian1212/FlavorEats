@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchOneRestaurantThunk } from "../../store/restaurants";
 import { fetchAllReviewsThunk } from "../../store/reviews";
+import StoreDirectionMapContainer from "./Maps";
 
 function StoreMapInfoModal({ restaurantId }) {
   const dispatch = useDispatch();
@@ -14,6 +15,33 @@ function StoreMapInfoModal({ restaurantId }) {
       : {}
   );
 
+  // function calculateDistance(lat1, lng1, lat2, lng2) {
+  //   const earthRadius = 6371; // Earth's radius in kilometers
+
+  //   const dLat = (lat2 - lat1) * (Math.PI / 180);
+  //   const dLng = (lng2 - lng1) * (Math.PI / 180);
+
+  //   const a =
+  //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+  //     Math.cos(lat1 * (Math.PI / 180)) *
+  //       Math.cos(lat2 * (Math.PI / 180)) *
+  //       Math.sin(dLng / 2) *
+  //       Math.sin(dLng / 2);
+
+  //   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  //   const distance = earthRadius * c;
+  //   return distance; // Distance in kilometers
+  // }
+
+  // const distance = calculateDistance(
+  //   sessionUser?.lat,
+  //   sessionUser?.lng,
+  //   restaurant?.lat,
+  //   restaurant?.lng
+  // );
+  // console.log("distance", distance);
+
   useEffect(() => {
     dispatch(fetchOneRestaurantThunk(restaurantId)).then(() =>
       setIsLoading(false)
@@ -24,7 +52,25 @@ function StoreMapInfoModal({ restaurantId }) {
     <>
       {!isLoading && (
         <div>
-          <div className="store-map-container">store map container</div>
+          <div className="store-map-container">
+            {/* <div className="store-map-cover info-item">{distance}mi</div> */}
+            <StoreDirectionMapContainer
+              delivery_add={
+                sessionUser && sessionUser?.address
+                  ? sessionUser?.address?.split(",")[0]
+                  : null
+              }
+              deliveryLat={
+                sessionUser && sessionUser?.lat ? sessionUser?.lat : null
+              }
+              deliveryLng={
+                sessionUser && sessionUser?.lng ? sessionUser?.lng : null
+              }
+              resName={restaurant?.name}
+              resLat={restaurant?.lat}
+              resLng={restaurant?.lng}
+            />
+          </div>
           <section className="store-info-wrap">
             <section className="info-sec1">
               <div className="res-name"> {restaurant.name}</div>
@@ -51,8 +97,11 @@ function StoreMapInfoModal({ restaurantId }) {
                     <i className="fa-solid fa-truck loc-dot1"></i>
                   </div>
                   <div className="info-item">
-                    ${parseFloat(restaurant.delivery_fee).toFixed(2)} Delivery
-                    Fee
+                    $
+                    {restaurant.delivery_fee === "0.00"
+                      ? 0
+                      : parseFloat(restaurant.delivery_fee).toFixed(2)}{" "}
+                    Delivery Fee
                   </div>
                 </div>
               )}

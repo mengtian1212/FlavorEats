@@ -163,14 +163,22 @@ function SingleRestaurant() {
                 alt=""
                 className="restaurant-photo"
               />
-              <i
-                className={`fa-${
-                  isFavorite ? `solid solidred` : isHover ? `solid` : `regular`
-                } fa-heart fav favsingle`}
-                onClick={handleToggleFavorite}
-                onMouseEnter={() => setIsHover(true)}
-                onMouseLeave={() => setIsHover(false)}
-              ></i>
+              {sessionUser && (
+                <>
+                  <i
+                    className={`fa-${
+                      isFavorite
+                        ? `solid solidred`
+                        : isHover
+                        ? `solid`
+                        : `regular`
+                    } fa-heart fav favsingle`}
+                    onClick={handleToggleFavorite}
+                    onMouseEnter={() => setIsHover(true)}
+                    onMouseLeave={() => setIsHover(false)}
+                  ></i>
+                </>
+              )}
             </div>
             <div className="res-title-container">
               <div className="res-name">{targetRestaurant?.name}</div>
@@ -256,7 +264,10 @@ function SingleRestaurant() {
           </div>
           {/* <RestaurantMap /> */}
           {/* {targetRestaurant && (
-          <MapContainer lat={targetRestaurant?.lat} lng={targetRestaurant?.lng} />
+            <MapContainer
+              lat={targetRestaurant?.lat}
+              lng={targetRestaurant?.lng}
+            />
           )} */}
         </div>
       )}
