@@ -200,6 +200,7 @@ function Navigation({ isLoaded }) {
   };
 
   const key = useSelector((state) => state.maps.key);
+  const geoKey = useSelector((state) => state.maps.geoKey);
 
   useEffect(() => {
     if (!key) {
@@ -269,6 +270,7 @@ function Navigation({ isLoaded }) {
                     /> */}
                     <NavAddressAutoComplete
                       apiKey={key}
+                      geoKey={geoKey}
                       onAddressChange={setMyAddress}
                     />
                     <button

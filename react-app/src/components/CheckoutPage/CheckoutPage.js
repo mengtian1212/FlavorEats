@@ -32,6 +32,7 @@ function CheckoutPage() {
   const dispatch = useDispatch();
 
   const key = useSelector((state) => state.maps.key);
+  const geoKey = useSelector((state) => state.maps.geoKey);
 
   useEffect(() => {
     if (!key) {
@@ -313,6 +314,7 @@ function CheckoutPage() {
                       <div className="edit-address-input3">
                         <NavAddressAutoComplete
                           apiKey={key}
+                          geoKey={geoKey}
                           onAddressChange={setMyAddress}
                         />
                       </div>

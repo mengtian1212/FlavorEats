@@ -15,9 +15,9 @@ const StoreDirectionMapContainer = ({
   resLng,
   resImg,
 }) => {
-  const key = useSelector((state) => state.maps.key);
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const key = useSelector((state) => state.maps.key);
 
   useEffect(() => {
     if (!key) {

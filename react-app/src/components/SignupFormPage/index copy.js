@@ -165,6 +165,7 @@ function SignupFormPage() {
   const submitBtnClassName = submitBtn ? "enabledBtn cursor" : `disabledBtn`;
 
   const key = useSelector((state) => state.maps.key);
+  const geoKey = useSelector((state) => state.maps.geoKey);
 
   useEffect(() => {
     if (!key) {
@@ -349,6 +350,7 @@ function SignupFormPage() {
               </div>
               <SignupAddressAutoComplete
                 apiKey={key}
+                geoKey={geoKey}
                 onAddressChange={setMyAddress}
               />
               <input

@@ -44,6 +44,7 @@ function EditResModal({ restaurant }) {
 
   const [validationErrors, setValidationErrors] = useState({});
   const key = useSelector((state) => state.maps.key);
+  const geoKey = useSelector((state) => state.maps.geoKey);
   useEffect(() => {
     if (!key) {
       dispatch(getKey());
@@ -233,7 +234,11 @@ function EditResModal({ restaurant }) {
       <div className="title-container">
         <div className="create-t">Store address</div>
         {key && (
-          <ResAddressAutoComplete apiKey={key} onAddressChange={setMyAddress} />
+          <ResAddressAutoComplete
+            apiKey={key}
+            geoKey={geoKey}
+            onAddressChange={setMyAddress}
+          />
         )}
         <input
           className={`create-input ${

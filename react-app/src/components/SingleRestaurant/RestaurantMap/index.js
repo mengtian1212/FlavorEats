@@ -6,8 +6,8 @@ import { getKey } from "../../../store/maps";
 import Maps from "./Maps";
 
 const MapContainer = ({ lat, lng }) => {
-  const key = useSelector((state) => state.maps.key);
   const dispatch = useDispatch();
+  const key = useSelector((state) => state.maps.key);
 
   useEffect(() => {
     if (!key) {
