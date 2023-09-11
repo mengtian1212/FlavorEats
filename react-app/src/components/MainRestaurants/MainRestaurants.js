@@ -40,11 +40,12 @@ function MainRestaurants() {
   const [sortBy, setSortBy] = useState("");
   const [priceRanges, setPriceRanges] = useState([]);
   const [dietary, setDietary] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [showSubSection, setShowSubSection] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchAllRestaurantsThunk());
+    dispatch(fetchAllRestaurantsThunk()).then(() => setIsLoading(false));
     window.scroll(0, 0);
   }, [dispatch]);
 
@@ -106,56 +107,60 @@ function MainRestaurants() {
   }, [history]);
 
   return (
-    <div className="mw">
-      <Navigation />
-      <RestaurantsCategories
-        filterType={filterType}
-        setFilterType={setFilterType}
-      />
-      <div className="cuisine-types-underline"></div>
-      <SideShow setFilterType={setFilterType} />
-      <section className="sec3">
-        <div>
-          <SortContainer
+    <>
+      {!isLoading && (
+        <div className="mw">
+          <Navigation />
+          <RestaurantsCategories
             filterType={filterType}
             setFilterType={setFilterType}
-            sortBy={sortBy}
-            setSortBy={setSortBy}
-            priceRanges={priceRanges}
-            setPriceRanges={setPriceRanges}
-            setDietary={setDietary}
-            isOne={isOne}
-            isTwo={isTwo}
-            isThree={isThree}
-            isFour={isFour}
-            setIsOne={setIsOne}
-            setIsTwo={setIsTwo}
-            setIsThree={setIsThree}
-            setIsFour={setIsFour}
-            isVegetarian={isVegetarian}
-            setIsVegetarian={setIsVegetarian}
-            isVegan={isVegan}
-            setIsVegan={setIsVegan}
-            isGluten={isGluten}
-            setIsGluten={setIsGluten}
-            isHalal={isHalal}
-            setIsHalal={setIsHalal}
           />
+          <div className="cuisine-types-underline"></div>
+          <SideShow setFilterType={setFilterType} />
+          <section className="sec3">
+            <div>
+              <SortContainer
+                filterType={filterType}
+                setFilterType={setFilterType}
+                sortBy={sortBy}
+                setSortBy={setSortBy}
+                priceRanges={priceRanges}
+                setPriceRanges={setPriceRanges}
+                setDietary={setDietary}
+                isOne={isOne}
+                isTwo={isTwo}
+                isThree={isThree}
+                isFour={isFour}
+                setIsOne={setIsOne}
+                setIsTwo={setIsTwo}
+                setIsThree={setIsThree}
+                setIsFour={setIsFour}
+                isVegetarian={isVegetarian}
+                setIsVegetarian={setIsVegetarian}
+                isVegan={isVegan}
+                setIsVegan={setIsVegan}
+                isGluten={isGluten}
+                setIsGluten={setIsGluten}
+                isHalal={isHalal}
+                setIsHalal={setIsHalal}
+              />
+            </div>
+            <div className="main-contain">
+              {showSubSection && <NearestResSubSection />}
+              {showSubSection && <NewRestaurantSubSection />}
+              {showSubSection && <RecommendDishes />}
+              <RestaurantsContainer
+                cuisineType={filterType}
+                restaurants={filterType ? filterRestaurants : restaurants}
+                sortBy={sortBy}
+                priceRanges={priceRanges}
+                dietary={dietary}
+              />
+            </div>
+          </section>
         </div>
-        <div className="main-contain">
-          {showSubSection && <NearestResSubSection />}
-          {showSubSection && <NewRestaurantSubSection />}
-          {showSubSection && <RecommendDishes />}
-          <RestaurantsContainer
-            cuisineType={filterType}
-            restaurants={filterType ? filterRestaurants : restaurants}
-            sortBy={sortBy}
-            priceRanges={priceRanges}
-            dietary={dietary}
-          />
-        </div>
-      </section>
-    </div>
+      )}
+    </>
   );
 }
 

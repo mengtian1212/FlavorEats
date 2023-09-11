@@ -65,8 +65,6 @@ function SignupFormPage() {
     lng
   );
 
-  console.log("myAddress -------------", myAddress);
-
   const demoUser = async (e) => {
     e.preventDefault();
 
@@ -88,7 +86,7 @@ function SignupFormPage() {
       lat: landingAddressProp[5],
       lng: landingAddressProp[6],
     };
-    console.log(formData);
+
     await dispatch(editUserAddressThunk(formData, data.id));
     history.push("/restaurants");
   };
@@ -207,7 +205,6 @@ function SignupFormPage() {
       const firstNamePayload = capitalizeFirstChar(first_name);
       const lastNamePayload = capitalizeFirstChar(last_name);
       const username = capitalizeFirstChar(first_name);
-      console.log(firstNamePayload, email, password, confirmPassword);
 
       const cityPayload = capitalizeFirstChar(city);
       const zipPayload = zip.trim();
@@ -222,8 +219,6 @@ function SignupFormPage() {
         state +
         " " +
         zip;
-
-      console.log("payload", addressPayload);
 
       setErrors({});
       const data = await dispatch(

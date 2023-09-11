@@ -16,7 +16,7 @@ function PlaceOrderPage() {
   let orderJustPlaced = useSelector((state) =>
     state.pastOrders?.last_past_order ? state.pastOrders?.last_past_order : {}
   );
-  console.log("orderJustPlaced", orderJustPlaced);
+  const [deliveryDuration, setDeliveryDuration] = useState(0);
 
   useEffect(() => {
     dispatch(fetchLastPastOrderThunk());
@@ -73,6 +73,7 @@ function PlaceOrderPage() {
           resLat={orderJustPlaced?.restaurant_lat}
           resLng={orderJustPlaced?.restaurant_lng}
           resImg={orderJustPlaced?.restaurant_image}
+          setDeliveryDuration={setDeliveryDuration}
         />
       </div>
       <div className="checkout-nav">
@@ -87,6 +88,7 @@ function PlaceOrderPage() {
           <FinalComponent
             orderJustPlaced={orderJustPlaced}
             sessionUser={sessionUser}
+            deliveryDuration={deliveryDuration}
           />
         )}
       </div>
@@ -163,13 +165,17 @@ const Step3 = ({ orderJustPlaced, sessionUser }) => {
   );
 };
 
-const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
+const FinalComponent = ({ orderJustPlaced, sessionUser, deliveryDuration }) => {
   const orderItems = Object.values(orderJustPlaced?.order_items);
   const [showLeaveReview, setShowLeaveReview] = useState(true);
   const { setModalContent, setModalClass } = useModal();
+  const currentTime = new Date();
+  const deliveryTime = new Date(
+    currentTime.getTime() + parseInt(deliveryDuration.value) * 1000
+  ).toLocaleString();
 
   return (
-    <div className="checkout-delivery-box3">
+    <div className="checkout-delivery-box8">
       <div className="checkout-tt">
         Thank you for ordering with Flavor Eats, {sessionUser?.first_name}{" "}
         {sessionUser?.last_name}!
@@ -186,7 +192,15 @@ const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
         <div className="checkout-delivery-box6">
           <div className="checkout-t">Delivery details</div>
           <div className="pad">{orderJustPlaced.delivery_address}</div>
+
           <div className="pad1">
+            <div>Estimated arrived by</div>
+            <div className="address3d">
+              {deliveryTime} ({deliveryDuration.text} later)
+            </div>
+          </div>
+
+          <div className="pad2">
             <div>Service</div>
             <div className="address2d">
               {orderJustPlaced.is_priority ? "Priority delivery" : "Standard"}
@@ -198,7 +212,7 @@ const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
         <div className="checkout-delivery-box6">
           <div className="checkout-t">Pickup details</div>
           <div className="pad">{orderJustPlaced.restaurant_address}</div>
-          <div className="pad1">
+          <div className="pad2">
             <div>Service</div>
             <div className="address2d">
               {orderJustPlaced.is_priority ? "Priority delivery" : "Standard"}

@@ -13,6 +13,7 @@ const MapContainer = ({
   resLat,
   resLng,
   resImg,
+  setDeliveryDuration,
 }) => {
   const key = useSelector((state) => state.maps.key);
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const MapContainer = ({
       resLat={resLat}
       resLng={resLng}
       resImg={resImg}
+      setDeliveryDuration={setDeliveryDuration}
     />
   );
 };

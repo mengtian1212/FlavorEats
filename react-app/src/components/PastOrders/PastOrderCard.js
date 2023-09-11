@@ -46,10 +46,8 @@ function PastOrderCard({ pastOrder }) {
   const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
   const [isAdded, setIsAdded] = useState(false);
   const handleReorder = async (pastOrder) => {
-    console.log("hererer");
     const currCart = carts[pastOrder.restaurant_id];
     if (currCart) {
-      console.log("currCart exists");
       // current cart exist.
       // popup modal to ask to start a new cart or cancel.
       // if start a new cart: then dispatch thunk to create a new order and add new items, after that popup cart modal
@@ -88,7 +86,7 @@ function PastOrderCard({ pastOrder }) {
     } else if (Math.floor(pastOrder.review_rating) === 1) {
       setStarColor("rgb(255, 204, 75)");
     }
-    console.log(pastOrder?.order_items, pastOrder?.order_items);
+
     setIsItemReviewed(
       Object.values(pastOrder?.order_items).some(
         (value) => value.is_like === true || value.is_dislike === true

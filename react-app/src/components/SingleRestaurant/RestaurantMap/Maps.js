@@ -7,6 +7,7 @@ import {
   InfoWindow,
   DirectionsService,
   DirectionsRenderer,
+  useJsApiLoader,
 } from "@react-google-maps/api";
 
 function calculateDistance(lat1, lng1, lat2, lng2) {
@@ -54,6 +55,10 @@ const Maps = ({ apiKey }) => {
   });
 
   const [response, setResponse] = useState(null);
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: apiKey,
+  });
 
   const directionsCallback = (response) => {
     if (response !== null) {
@@ -85,7 +90,6 @@ const Maps = ({ apiKey }) => {
       targetRestaurant?.lat,
       targetRestaurant?.lng
     );
-    console.log("distance", distance);
     // setResponse(null);
   }, [targetRestaurant, sessionUser]);
 

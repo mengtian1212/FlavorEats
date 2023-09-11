@@ -47,9 +47,6 @@ function LeaveReviewModal({
     }
   }, [orderItems]);
 
-  console.log("orderItems", orderItems);
-  console.log("itemFeedback", itemFeedback);
-
   const [errorsRating, setErrorsRating] = useState("");
   const [errorsReview, setErrorsReview] = useState("");
   const { setModalContent } = useModal();
@@ -68,7 +65,6 @@ function LeaveReviewModal({
         rating: rating,
         order_id: orderJustPlaced.id,
       };
-      console.log("submit review", formData, restaurantId);
       const createdReview = await dispatch(
         createReviewThunk(formData, restaurantId)
       );
@@ -127,9 +123,6 @@ function LeaveReviewModal({
   }, [message, rating]);
 
   const updateItemFeedback = (itemId, like, dislike) => {
-    console.log("dddddddd");
-
-    console.log(itemId, like, dislike);
     if (itemFeedback.hasOwnProperty(itemId)) {
       const updatedItemFeedback = {
         ...itemFeedback,

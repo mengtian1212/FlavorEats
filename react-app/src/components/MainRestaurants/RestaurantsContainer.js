@@ -38,28 +38,32 @@ function RestaurantsContainer({
   }
 
   return (
-    <div className="over-res">
-      <div className="res-list-title">
-        <span className="res-list-title">{type} </span>
-        <span className="res-list-title">
-          {restaurants.length} {restaurants.length === 1 ? "store" : "stores"}
-        </span>
-        {cuisineType === "Popular" && (
-          <p className="item-dcap">
-            Top ratings and consistently great service
-          </p>
-        )}
+    <>
+      {/* {restaurants && restaurants.length !== 0 && ( */}
+      <div className="over-res">
+        <div className="res-list-title">
+          <span className="res-list-title">{type} </span>
+          <span className="res-list-title">
+            {restaurants.length} {restaurants.length === 1 ? "store" : "stores"}
+          </span>
+          {cuisineType === "Popular" && (
+            <p className="item-dcap">
+              Top ratings and consistently great service
+            </p>
+          )}
+        </div>
+        <div className="all-res-container">
+          {restaurants &&
+            restaurants?.map((restaurant, index) => (
+              <RestaurantCard restaurant={restaurant} key={index} />
+            ))}
+          {restaurants &&
+            restaurants.length === 0 &&
+            "No restaurants in this search"}
+        </div>
       </div>
-      <div className="all-res-container">
-        {restaurants &&
-          restaurants?.map((restaurant, index) => (
-            <RestaurantCard restaurant={restaurant} key={index} />
-          ))}
-        {restaurants &&
-          restaurants.length === 0 &&
-          "No restaurants in this search"}
-      </div>
-    </div>
+      {/* )} */}
+    </>
   );
 }
 

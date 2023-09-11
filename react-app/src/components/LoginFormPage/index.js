@@ -15,7 +15,6 @@ function LoginFormPage() {
     ? landingAddressData.split(",").slice(1).join(", ")
     : "";
 
-  console.log("landingAddress in login page", landingAddress);
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
@@ -75,7 +74,6 @@ function LoginFormPage() {
         lat: landingAddressProp[5],
         lng: landingAddressProp[6],
       };
-      console.log(formData);
       return await dispatch(editUserAddressThunk(formData, data.id));
     }
   };
@@ -101,7 +99,6 @@ function LoginFormPage() {
       lat: landingAddressProp[5],
       lng: landingAddressProp[6],
     };
-    console.log(formData);
     await dispatch(editUserAddressThunk(formData, data.id));
     history.push("/restaurants");
   };

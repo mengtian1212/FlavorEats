@@ -49,9 +49,7 @@ function AddressAutoComplete({ apiKey, onAddressChange }) {
             let { lat, lng } = response.results[0].geometry.location;
             resAddress.push(lat);
             resAddress.push(lng);
-            console.log("resAddress", resAddress);
             onAddressChange(resAddress);
-            console.log("Selected Place:", place);
           },
           (error) => {
             console.error(error);

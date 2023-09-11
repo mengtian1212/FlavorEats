@@ -67,6 +67,8 @@ def get_newest_restaurant():
         # If a Favorite record exists, add "fav_created_at" key with the created_at value
         restaurant_data["is_fav"] = True if favorite_record else False
         restaurant_data["fav_created_at"] = favorite_record.created_at if favorite_record else None
+    else:
+        restaurant_data = restaurant.to_dict()
     return restaurant_data
 
 
@@ -92,6 +94,8 @@ def get_one_restaurant(restaurantId):
         # If a Favorite record exists, add "fav_created_at" key with the created_at value
         restaurant_data["is_fav"] = True if favorite_record else False
         restaurant_data["fav_created_at"] = favorite_record.created_at if favorite_record else None
+    else:
+        restaurant_data = restaurant.to_dict()
     return restaurant_data
 
 

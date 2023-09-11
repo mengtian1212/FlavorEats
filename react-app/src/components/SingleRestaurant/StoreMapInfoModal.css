@@ -1,0 +1,103 @@
+.storeinfomodal {
+  width: 458px;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.store-map-container {
+  width: 458px;
+  height: 192px;
+}
+
+.info-sec1 {
+  padding: 20px 24px 16px 24px;
+}
+
+.info-sec {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.info-entry {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0px 24px 0px 24px;
+}
+
+.info-item {
+  min-height: 44px;
+  padding: 12px 0px 12px 0px;
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.info-item1 {
+  min-height: 44px;
+  padding: 12px 0px 12px 0px;
+  line-height: 20px;
+  font-size: 14px;
+  flex: 1;
+  color: rgb(84, 84, 84);
+}
+
+.info-icon {
+  padding-right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loc-dot1 {
+  /* width: 40px; */
+  min-width: 25px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-bestoverall {
+  width: 24px;
+}
+
+.info-bestoverall1 {
+  width: 24px;
+  height: 24px;
+}
+
+.vert-line2 {
+  background-color: rgb(226, 226, 226);
+  /* background-color: #bdbdbd; */
+  height: 2px;
+  margin: 0px 0px 0px 0px;
+}
+
+.vert-line3 {
+  background-color: rgb(226, 226, 226);
+  height: 1px;
+  margin-left: 73px;
+}
+
+/* map container  */
+.store-map-container {
+  pointer-events: none;
+  position: relative;
+}
+
+.store-map-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
