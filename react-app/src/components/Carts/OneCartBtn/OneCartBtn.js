@@ -13,7 +13,7 @@ function OneCartBtn({ restaurantId }) {
   const { setModalContent, setModalClass } = useModal();
   const handleClickOneCart = () => {
     setModalContent(<CartModal restaurantId={restaurantId} />);
-    setModalClass("cart-modal");
+    setModalClass("cart-modal open");
   };
 
   const carts = useSelector((state) => (state.orders ? state.orders : {}));

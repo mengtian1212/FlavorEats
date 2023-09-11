@@ -1,0 +1,8 @@
+.all-res-container1 {
+  flex: 1;
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-columns: repeat(auto-fill, 591.67px);
+
+  gap: 40px 24px;
+}

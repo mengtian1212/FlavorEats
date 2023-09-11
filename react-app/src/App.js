@@ -21,6 +21,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer";
 import PleaseLoginPage from "./components/auth/PleaseLoginPage";
 import SearchResults from "./components/SearchResults/SearchResults";
+import FavoritePage from "./components/FavoritePage/FavoritePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -84,6 +85,9 @@ function App() {
             <Navigation isLoaded={isLoaded} />
             {/* <EditMyResOneMenuItem /> */}
           </Route>
+          <ProtectedRoute exact path="/favorites">
+            <FavoritePage />
+          </ProtectedRoute>
           <ProtectedRoute exact path="/search">
             <SearchResults />
           </ProtectedRoute>

@@ -1,8 +1,9 @@
 .past-orders-container {
   min-width: 1024px;
   margin: 0 auto;
-  padding: 2px 48px;
+  padding: 2px 40px;
   padding-bottom: 36px;
+  padding-top: 24px;
 }
 
 #past-orders-title {
@@ -186,7 +187,6 @@
   background-color: white;
 }
 
-
 .xmark-container2 i {
   font-size: 20px;
 }
@@ -342,7 +342,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5em;
+  gap: 1em;
 }
 
 .no-past-title {
@@ -351,6 +351,10 @@
   font-size: 20px;
   color: #000000;
   text-align: center;
+}
+
+.no-past-gap {
+  margin-bottom: -24px;
 }
 
 .no-past-shop {
@@ -368,4 +372,11 @@
 
 .past-thumb {
   color: rgb(107, 107, 107);
+}
+
+.view-receipt {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 500;
+  cursor: pointer;
 }

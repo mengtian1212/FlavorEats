@@ -9,6 +9,7 @@ import NewCartModal from "./NewCartModal";
 import { reorderThunk } from "../../store/orders";
 import PastOrderReviewModal from "./PastOrderReviewModal";
 import { fetchSinglePastOrderThunk } from "../../store/pastOrders";
+import PastOrderReceiptModal from "./PastOrderReceiptModal";
 
 function OrderItem({ order_item }) {
   return (
@@ -144,7 +145,21 @@ function PastOrderCard({ pastOrder }) {
               <div>• </div>
               <div>{formatDate(pastOrder?.updated_at)}</div>
               <div>• </div>
-              <div>View receipt</div>
+              <div
+                className="view-receipt"
+                onClick={() => {
+                  setModalContent(
+                    <PastOrderReceiptModal
+                      pastOrderId={pastOrder?.id}
+                      restaurantId={pastOrder?.restaurant_id}
+                      resName={pastOrder?.restaurant_name}
+                    />
+                  );
+                  setModalClass("reviewheight");
+                }}
+              >
+                View receipt
+              </div>
             </div>
             <div className="order-item-container">
               {pastOrder?.order_items &&

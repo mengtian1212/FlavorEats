@@ -1,8 +1,16 @@
 import "./SingleRestaurant.css";
+import "../MainRestaurants/MainRestaurants.css";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchOneRestaurantThunk } from "../../store/restaurants";
+import {
+  addFavoriteThunk,
+  deleteFavThunk,
+  fetchAllRestaurantsThunk,
+  fetchFavRestaurantsThunk,
+  fetchNewestRestaurantThunk,
+  fetchOneRestaurantThunk,
+} from "../../store/restaurants";
 import { useLayoutEffect } from "react";
 import { getMenuItemsByType } from "../../utils/helper-functions";
 import Navigation from "../Navigation";
@@ -30,6 +38,45 @@ function SingleRestaurant() {
   }
 
   let groups = targetRestaurant?.cusine_types?.split("#");
+
+  // for favorite/unfavorite restaurant
+  const [sentenceText, setSentenceText] = useState("");
+  const [heartIcon, setHeartIcon] = useState("");
+  const [slideEffect, setSlideEffect] = useState("");
+
+  const [isFavorite, setIsFavorite] = useState(targetRestaurant.is_fav);
+  const [isHover, setIsHover] = useState(false);
+  const handleToggleFavorite = async (e) => {
+    e.stopPropagation();
+    if (isFavorite) {
+      setIsFavorite(false);
+      setSlideEffect("slide-in");
+      setSentenceText("Removed from favorites");
+      setHeartIcon("regular");
+      await dispatch(deleteFavThunk(targetRestaurant.id));
+      await dispatch(fetchFavRestaurantsThunk());
+      await dispatch(fetchAllRestaurantsThunk());
+      await dispatch(fetchNewestRestaurantThunk());
+    } else {
+      setIsFavorite(true);
+      setSlideEffect("slide-in");
+      setSentenceText("Added to favorites");
+      setHeartIcon("solid");
+      await dispatch(addFavoriteThunk(targetRestaurant.id));
+      await dispatch(fetchAllRestaurantsThunk());
+      await dispatch(fetchFavRestaurantsThunk());
+      await dispatch(fetchNewestRestaurantThunk());
+    }
+
+    setTimeout(() => {
+      setSlideEffect("slide-out");
+    }, 1000);
+  };
+
+  useEffect(() => {
+    setIsFavorite(targetRestaurant.is_fav);
+  }, [targetRestaurant]);
+  // end for favorite/unfavorite restaurant
 
   const capitalize = (text) => {
     return text.charAt(0).toUpperCase() + text.substr(1);
@@ -96,15 +143,31 @@ function SingleRestaurant() {
   }
   return (
     <>
+      <div className={`fav-notice-container ${slideEffect}`}>
+        <i className={`fa-${heartIcon} fa-heart fasize`}></i>
+        <div>{sentenceText}</div>
+      </div>
+
       {!isLoading && (
         <div className="mw">
           <Navigation />
           <div>
-            <img
-              src={targetRestaurant.image_url}
-              alt=""
-              className="restaurant-photo"
-            />
+            <div className="restaurant-photo-container">
+              {/* <div className="heart-container"></div> */}
+              <img
+                src={targetRestaurant.image_url}
+                alt=""
+                className="restaurant-photo"
+              />
+              <i
+                className={`fa-${
+                  isFavorite ? `solid solidred` : isHover ? `solid` : `regular`
+                } fa-heart fav favsingle`}
+                onClick={handleToggleFavorite}
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
+              ></i>
+            </div>
             <div className="res-title-container">
               <div className="res-name">{targetRestaurant?.name}</div>
               <div className="res-stat-container">
@@ -121,11 +184,11 @@ function SingleRestaurant() {
                 <div>• </div>
                 <div>{targetRestaurant.price_ranges}</div>
                 <div>• </div>
-                <a className="read-reviews" href="#reviews-block">
+                <a className="read-reviews view-receipt" href="#reviews-block">
                   Read Reviews{" "}
                 </a>
                 <div>• </div>
-                <div>More info</div>
+                <div className="view-receipt">View Map</div>
               </div>
               <div className="res-add">{targetRestaurant?.address}</div>
             </div>

@@ -214,16 +214,37 @@ input[type="radio"] {
   flex-direction: column;
   position: relative;
   width: fit-content;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
 }
 
 .fav {
   position: absolute;
+  z-index: 1;
   right: 12px;
-  top: 8px;
+  top: 12px;
   color: white;
   font-size: 20px;
   cursor: pointer;
   /* background: (at center center, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%); */
+}
+
+.heart-container {
+  position: absolute;
+  top: -30px;
+  right: -20px;
+  height: 80px;
+  width: 80px;
+  border-radius: 50px;
+  background: radial-gradient(
+    at center center,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+.solidred {
+  color: rgb(235, 23, 0);
 }
 
 .fav:hover {

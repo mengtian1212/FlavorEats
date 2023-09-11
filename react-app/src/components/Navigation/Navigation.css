@@ -297,6 +297,21 @@
   transform: translateX(0px);
   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
   z-index: 999;
+
+  animation: profile-dropdown 0.3s forwards; /* Apply the animation */
+}
+
+@keyframes profile-dropdown {
+  from {
+    transform: translateX(
+      -100%
+    ); /* Start from the right side of the viewport */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); /* End at the original position */
+    opacity: 1;
+  }
 }
 
 .modal-background {

@@ -1,9 +1,15 @@
 /** Action Type Constants: */
 export const LOAD_ALL_RESTAURANTS = "restaurants/LOAD_ALL_RESTAURANTS";
+export const LOAD_FAVORITE_RESTAURANTS =
+  "restaurants/LOAD_FAVORITE_RESTAURANTS";
 export const LOAD_ONE_RESTAURANT = "restaurants/LOAD_ONE_RESTAURANT";
+export const LOAD_NEWEST_RESTAURANT = "restaurants/LOAD_NEWEST_RESTAURANT";
 export const CREATE_RESTAURANT = "restaurants/CREATE_RESTAURANT";
 export const EDIT_RESTAURANT = "restaurants/EDIT_RESTAURANT";
 export const DELETE_RESTAURANT = "restaurants/DELETE_RESTAURANT";
+export const ADD_RESTAURANT_FAVORITE = "restaurants/ADD_RESTAURANT_FAVORITE";
+export const DELETE_RESTAURANT_FAVORITE =
+  "restaurants/DELETE_RESTAURANT_FAVORITE";
 
 /**  Action Creators: */
 export const loadAllRestaurantsAction = (restaurants) => ({
@@ -11,8 +17,18 @@ export const loadAllRestaurantsAction = (restaurants) => ({
   restaurants,
 });
 
+export const loadFavRestaurantsAction = (restaurants) => ({
+  type: LOAD_FAVORITE_RESTAURANTS,
+  restaurants,
+});
+
 export const loadOneRestaurantAction = (restaurant) => ({
   type: LOAD_ONE_RESTAURANT,
+  restaurant,
+});
+
+export const loadNewestRestaurantAction = (restaurant) => ({
+  type: LOAD_NEWEST_RESTAURANT,
   restaurant,
 });
 
@@ -31,12 +47,29 @@ export const deleteRestaurantAction = (restaurantId) => ({
   restaurantId,
 });
 
+export const addFavorite = (payload) => ({
+  type: ADD_RESTAURANT_FAVORITE,
+  payload,
+});
+
+export const deleteFavorite = (payload) => ({
+  type: DELETE_RESTAURANT_FAVORITE,
+  payload,
+});
+
 /** Thunk Action Creators: */
 export const fetchAllRestaurantsThunk = () => async (dispatch) => {
   const res = await fetch("/api/restaurants");
   const { restaurants } = await res.json();
   dispatch(loadAllRestaurantsAction(restaurants));
   return restaurants;
+};
+
+export const fetchFavRestaurantsThunk = () => async (dispatch) => {
+  const res = await fetch("/api/restaurants/favorites");
+  const { favorited_restaurants } = await res.json();
+  dispatch(loadFavRestaurantsAction(favorited_restaurants));
+  return favorited_restaurants;
 };
 
 export const fetchOneRestaurantThunk = (restaurantId) => async (dispatch) => {
@@ -55,7 +88,7 @@ export const fetchNewestRestaurantThunk = () => async (dispatch) => {
   const res = await fetch(`/api/restaurants/newest`);
   if (res.ok) {
     const data = await res.json();
-    dispatch(loadOneRestaurantAction(data));
+    dispatch(loadNewestRestaurantAction(data));
     return data;
   } else {
     const errors = await res.json();
@@ -103,8 +136,55 @@ export const deleteRestaurantThunk = (restaurantId) => async (dispatch) => {
   }
 };
 
+export const addFavoriteThunk = (restaurantId) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/favorites/${restaurantId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (res.ok) {
+      const favorite = await res.json();
+      dispatch(addFavorite(favorite));
+      return favorite;
+    } else {
+      console.log("Failed to add favorite restaurant");
+    }
+  } catch (err) {
+    console.log(
+      "There was something wrong with adding the favorite restaurant",
+      err
+    );
+  }
+};
+
+export const deleteFavThunk = (restaurantId) => async (dispatch) => {
+  try {
+    const res = await fetch(`/api/favorites/${restaurantId}`, {
+      method: "DELETE",
+    });
+    if (res.ok) {
+      const unfavorite = await res.json();
+      dispatch(deleteFavorite(unfavorite));
+      return unfavorite;
+    }
+  } catch (err) {
+    console.log(
+      "There was something wrong with unfavoriting this restaurant",
+      err
+    );
+  }
+};
+
 /** Restaurants Reducer: */
-const initialState = { allRestaurants: {}, singleRestaurant: {} };
+const initialState = {
+  allRestaurants: {},
+  singleRestaurant: {},
+  newestRestaurant: {},
+  favRestaurants: {},
+};
 const restaurantsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL_RESTAURANTS:
@@ -112,8 +192,15 @@ const restaurantsReducer = (state = initialState, action) => {
         ...state,
         allRestaurants: action.restaurants,
       };
+    case LOAD_FAVORITE_RESTAURANTS:
+      return {
+        ...state,
+        favRestaurants: action.restaurants,
+      };
     case LOAD_ONE_RESTAURANT:
       return { ...state, singleRestaurant: { ...action.restaurant } };
+    case LOAD_NEWEST_RESTAURANT:
+      return { ...state, newestRestaurant: { ...action.restaurant } };
     case CREATE_RESTAURANT:
       const newAllRestaurants = {
         ...state.allRestaurants,

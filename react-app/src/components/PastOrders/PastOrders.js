@@ -60,6 +60,11 @@ function PastOrders() {
               </>
             ) : (
               <div className="no-past-order">
+                <img
+                  src="https://d1a3f4spazzrp4.cloudfront.net/receipt_v3/uber_one_eats.png"
+                  alt=""
+                  className="avocado-img1 no-past-gap"
+                />
                 <div className="no-past-title">
                   You haven't placed any orders yet
                 </div>

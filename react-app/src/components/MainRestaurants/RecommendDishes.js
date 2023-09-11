@@ -98,7 +98,7 @@ function RecommendDishes() {
           <div className="my-slider-near1">
             {dishes?.map((item, i) => {
               return (
-                <div key={i}>
+                <div key={i} className="slide-toppad">
                   <div className="slide-outer-near1">
                     <div className="slide-near1 menu-container2">
                       <div className="item-img-container1">
