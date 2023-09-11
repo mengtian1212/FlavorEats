@@ -12,3 +12,4 @@ class Config:
         'DATABASE_URL').replace('postgres://', 'postgresql://')
     SQLALCHEMY_ECHO = True
     GOOGLE_MAPS_API = os.environ.get("GOOGLE_MAPS_API")
+    GOOGLE_GEOCODING_API = os.environ.get("GOOGLE_GEOCODING_API")

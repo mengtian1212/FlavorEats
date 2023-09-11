@@ -131,6 +131,7 @@ function LandingPage() {
   };
 
   const key = useSelector((state) => state.maps.key);
+  const geoKey = useSelector((state) => state.maps.geoKey);
 
   useEffect(() => {
     if (!key) {
@@ -163,6 +164,7 @@ function LandingPage() {
                 /> */}
                 <AddressAutoComplete
                   apiKey={key}
+                  geoKey={geoKey}
                   onAddressChange={setLandingAddress}
                 />
               </div>

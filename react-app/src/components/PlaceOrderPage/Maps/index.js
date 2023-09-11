@@ -15,8 +15,9 @@ const MapContainer = ({
   resImg,
   setDeliveryDuration,
 }) => {
-  const key = useSelector((state) => state.maps.key);
   const dispatch = useDispatch();
+  const key = useSelector((state) => state.maps.key);
+  const geoKey = useSelector((state) => state.maps.geoKey);
 
   useEffect(() => {
     if (!key) {
@@ -31,6 +32,7 @@ const MapContainer = ({
   return (
     <Maps
       apiKey={key}
+      geoKey={geoKey}
       delivery_add={delivery_add}
       deliveryLat={deliveryLat}
       deliveryLng={deliveryLng}

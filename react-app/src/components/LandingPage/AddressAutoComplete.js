@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Geocode from "react-geocode";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
-function AddressAutoComplete({ apiKey, onAddressChange }) {
+function AddressAutoComplete({ apiKey, geoKey, onAddressChange }) {
   const [destinationAutocomplete, setDestinationAutocomplete] = useState(null);
   const destinationRef = React.useRef(null);
 
@@ -43,7 +43,7 @@ function AddressAutoComplete({ apiKey, onAddressChange }) {
         resAddress.push(state);
         resAddress.push(zip);
 
-        Geocode.setApiKey(apiKey);
+        Geocode.setApiKey(geoKey);
         Geocode.fromAddress(place.formatted_address).then(
           (response) => {
             let { lat, lng } = response.results[0].geometry.location;

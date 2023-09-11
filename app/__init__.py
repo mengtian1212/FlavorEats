@@ -53,7 +53,8 @@ CORS(app)
 @app.route('/api/maps/key', methods=['POST'])
 def get_maps_api_key():
     google_maps_api_key = os.environ.get('GOOGLE_MAPS_API')
-    return jsonify({'googleMapsAPIKey': google_maps_api_key})
+    google_geocoding_api_key = os.environ.get('GOOGLE_GEOCODING_API')
+    return jsonify({'googleMapsAPIKey': google_maps_api_key, 'googleGeocodingAPIKey': google_geocoding_api_key})
 
 
 # Since we are deploying with Docker and Flask,
