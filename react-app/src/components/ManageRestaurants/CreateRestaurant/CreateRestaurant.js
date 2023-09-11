@@ -76,7 +76,6 @@ function CreateRestaurant() {
   const isCtypeSelected = (t) => selectedTypes.includes(t);
 
   const toggleCtype = (ctype) => {
-    console.log("in toggleCtpe", ctype);
     if (selectedTypes.includes(ctype)) {
       setSelectedTypes(selectedTypes.filter((t) => t !== ctype));
     } else {
@@ -134,7 +133,6 @@ function CreateRestaurant() {
     if (selectedTypes.length === 0)
       err.selectedTypes = "Please select at least one cuisine type";
     setValidationErrors(err);
-    console.log("validationErrors", validationErrors);
     return Object.values(err).length === 0;
   };
 
@@ -159,7 +157,6 @@ function CreateRestaurant() {
 
     formData.append("name", nameData);
     formData.append("cusine_types", selectedTypes.join("#").trim());
-    console.log(formData, lng);
 
     const data = await dispatch(createNewRestaurantThunk(formData));
     if (data.errors) {

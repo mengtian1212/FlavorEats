@@ -27,8 +27,6 @@ function SignupFormPage() {
     : "";
   const [myAddress, setMyAddress] = useState(landingAddressData || "");
 
-  console.log("landingAddress in signup page", landingAddress);
-
   const [email, setEmail] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
@@ -74,7 +72,6 @@ function SignupFormPage() {
       lat: landingAddressProp[5],
       lng: landingAddressProp[6],
     };
-    console.log(formData);
     await dispatch(editUserAddressThunk(formData, data.id));
     history.push("/restaurants");
   };
@@ -198,7 +195,6 @@ function SignupFormPage() {
         state +
         " " +
         zip;
-      console.log(email, password, confirmPassword, firstNamePayload);
 
       setErrors({});
       const data = await dispatch(

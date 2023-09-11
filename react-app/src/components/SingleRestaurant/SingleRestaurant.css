@@ -44,6 +44,12 @@
   font-size: 36px;
 }
 
+.res-stat-best {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
 .res-stat-container {
   display: flex;
   gap: 5px;

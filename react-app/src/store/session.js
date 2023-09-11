@@ -107,7 +107,6 @@ export const signUp =
     lng
   ) =>
   async (dispatch) => {
-    console.log("hererererere");
     const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: {
@@ -135,7 +134,6 @@ export const signUp =
     } else if (response.status < 500) {
       const data = await response.json();
       if (data.errors) {
-        console.log("----------------", data.errors);
         return data;
       }
     } else {

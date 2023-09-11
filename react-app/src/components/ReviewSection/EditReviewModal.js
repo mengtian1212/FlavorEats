@@ -33,7 +33,6 @@ function EditReviewModal({ review }) {
         message: message,
         rating: rating,
       };
-      console.log("submit update review", formData);
       const updatedReview = await dispatch(
         updateReviewThunk(formData, review.id)
       );

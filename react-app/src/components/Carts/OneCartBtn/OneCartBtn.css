@@ -85,7 +85,19 @@
   border-radius: 16px;
   margin-top: 8px;
   overflow: hidden;
+  /* animation: shopping-dropdown1 0.15s forwards; */
 }
+
+/* @keyframes shopping-dropdown1 {
+  from {
+    transform: translateY(-5%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+} */
 
 .cart-n {
   text-overflow: ellipsis;

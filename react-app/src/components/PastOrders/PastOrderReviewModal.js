@@ -24,7 +24,6 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
       : {}
   );
   useEffect(() => {
-    console.log("pastOrderId useEffect", pastOrderId);
     dispatch(fetchSinglePastOrderThunk(pastOrderId));
     window.scroll(0, 0);
   }, []);
@@ -47,9 +46,6 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
     }
   }, [orderItems]);
 
-  console.log("orderItems", orderItems);
-  console.log("itemFeedback", itemFeedback);
-
   const [errorsRating, setErrorsRating] = useState("");
   const [errorsReview, setErrorsReview] = useState("");
   const { setModalContent } = useModal();
@@ -69,7 +65,7 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
         rating: rating,
         order_id: orderJustPlaced.id,
       };
-      console.log("submit review", formData, restaurantId);
+
       const createdReview = await dispatch(
         createReviewThunk(formData, restaurantId)
       );
@@ -126,9 +122,6 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
   }, [message, rating]);
 
   const updateItemFeedback = (itemId, like, dislike) => {
-    console.log("dddddddd");
-
-    console.log(itemId, like, dislike);
     if (itemFeedback.hasOwnProperty(itemId)) {
       const updatedItemFeedback = {
         ...itemFeedback,

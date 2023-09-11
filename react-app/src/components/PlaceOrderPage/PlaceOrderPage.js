@@ -16,7 +16,6 @@ function PlaceOrderPage() {
   let orderJustPlaced = useSelector((state) =>
     state.pastOrders?.last_past_order ? state.pastOrders?.last_past_order : {}
   );
-  console.log("orderJustPlaced", orderJustPlaced);
 
   useEffect(() => {
     dispatch(fetchLastPastOrderThunk());

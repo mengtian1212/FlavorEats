@@ -47,7 +47,7 @@
   padding: 9px 12px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
   border: 1px solid #e2e2e2;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
   height: 36px;
   width: fit-content;
   border-radius: 500px;

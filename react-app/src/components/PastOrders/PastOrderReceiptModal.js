@@ -32,13 +32,11 @@ function PastOrderReceiptModal({ pastOrderId, restaurantId, resName }) {
       : {}
   );
   useEffect(() => {
-    console.log("pastOrderId useEffect", pastOrderId);
     dispatch(fetchSinglePastOrderThunk(pastOrderId)).then(() =>
       setIsLoading(false)
     );
     window.scroll(0, 0);
   }, []);
-  console.log("orderJustPlaced", orderJustPlaced);
 
   const inputDate = new Date(orderJustPlaced.created_at);
 

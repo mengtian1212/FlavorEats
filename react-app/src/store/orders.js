@@ -114,7 +114,6 @@ export const updateCartItemThunk = (updatedOrderItem) => async (dispatch) => {
 //            1.2 if in the cart, update orderItem quantity in the orderItem table.
 // 2. if no, create a new cart, then add orderItem.
 export const addCartItemThunk = (newOrderItemData) => async (dispatch) => {
-  console.log("in addCartItemThunk!!!!!!");
   const response = await fetch(`/api/orders/new_item`, {
     method: "POST",
     headers: {

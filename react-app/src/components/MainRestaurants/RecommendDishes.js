@@ -31,8 +31,6 @@ function RecommendDishes() {
     return 0; // If all properties are equal
   });
 
-  console.log("recommend dishes", dishes);
-
   const sessionUser = useSelector((state) => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();

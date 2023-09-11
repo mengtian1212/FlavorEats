@@ -70,7 +70,6 @@ function EditResModal({ restaurant }) {
   const isCtypeSelected = (t) => selectedTypes.includes(t);
 
   const toggleCtype = (ctype) => {
-    console.log("in toggleCtpe", ctype);
     if (selectedTypes.includes(ctype)) {
       setSelectedTypes(selectedTypes.filter((t) => t !== ctype));
     } else {
@@ -128,24 +127,20 @@ function EditResModal({ restaurant }) {
     if (selectedTypes.length === 0)
       err.selectedTypes = "Please select at least one cuisine type";
     setValidationErrors(err);
-    console.log("validationErrors", validationErrors);
     return Object.values(err).length === 0;
   };
-  console.log("fdfdsfd", restaurant);
+
   const handleSubmit = async (e) => {
-    console.log("bbbbbbbbbbbbbbbb");
     e.preventDefault();
     if (!validateForm()) return;
 
     let formData = new FormData();
     setImageLoading(true);
-    console.log("dddddd");
 
     // format address & restaurant name
     const nameData = capitalizeFirstChar(name);
     const addressData = capitalizeFirstChar(address);
     const cityData = capitalizeFirstChar(city);
-    console.log("nameData", nameData, nameData);
     formData.append("id", restaurant["id"]);
     formData.append("image", image);
     formData.append("address", addressData);
@@ -156,7 +151,6 @@ function EditResModal({ restaurant }) {
 
     formData.append("name", nameData);
     formData.append("cusine_types", selectedTypes.join("#").trim());
-    console.log("formData", formData);
 
     const data = await dispatch(editRestaurantThunk(formData));
     if (data.errors) {

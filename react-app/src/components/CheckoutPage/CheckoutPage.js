@@ -47,7 +47,6 @@ function CheckoutPage() {
     " (" +
     currentCart?.restaurant_address.split(",")[0] +
     ")";
-  console.log("checkoutttt:", currentCart);
 
   // for edit user delivery address
   const [myAddress, setMyAddress] = useState(sessionUser?.address);
@@ -64,7 +63,6 @@ function CheckoutPage() {
   const [deliveryFeeState, setDeliveryFeeState] = useState(
     currentCart?.delivery_fee
   );
-  console.log("isDeliveryT", isDeliveryT);
 
   // for is_priority
   const [isPriority, setIsPriority] = useState(currentCart?.is_priority);
@@ -79,22 +77,9 @@ function CheckoutPage() {
   const [isTwenty, setIsTwenty] = useState(false);
   const [tipState, setTipState] = useState(0.1 * currentCart?.subtotal);
 
-  console.log(
-    "isDeliveryT:",
-    isDeliveryT,
-    "deliveryFeeState:",
-    deliveryFeeState,
-    "isPriority",
-    isPriority,
-    "priorityFeeState:",
-    priorityFeeState,
-    "tipState:",
-    tipState
-  );
   ///// state variables defined above
 
   // for edit address
-  console.log("my checkout address", myAddress);
   const validateAddressInput = () => {
     const err = {};
     const data = myAddress;
@@ -185,12 +170,10 @@ function CheckoutPage() {
       lat: myAddress[5],
       lng: myAddress[6],
     };
-    console.log(formData);
 
     // const formData = { updatedAddress: myAddress.trim() };
     const data = await dispatch(editUserAddressThunk(formData, sessionUser.id));
     if (data.errors) {
-      console.log("data error", data.errors);
       setEditAddressError(data.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);

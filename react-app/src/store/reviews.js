@@ -36,7 +36,6 @@ export const fetchAllReviewsThunk = (restaurantId) => async (dispatch) => {
     return dispatch(loadAllReviewsAction(reviews, restaurantId));
   } else {
     const errors = await response.json();
-    console.log(errors);
     return errors;
   }
 };

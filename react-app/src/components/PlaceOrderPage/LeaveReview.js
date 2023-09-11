@@ -20,7 +20,6 @@ function LeaveReview({ setShowLeaveReview, restaurantId, resName }) {
 
   useEffect(() => {
     setActiveRating(rating);
-    console.log("useEffect ran", rating, activeRating);
   }, [rating]);
 
   const { setModalContent, setModalClass, setOnModalClose } = useModal();
@@ -32,7 +31,6 @@ function LeaveReview({ setShowLeaveReview, restaurantId, resName }) {
     props.onMouseLeave = () => setActiveRating(rating);
     props.onClick = () => {
       setRating((prev) => parseInt(number));
-      console.log("ppppppp", rating, activeRating);
       setModalContent(
         <LeaveReviewModal
           setShowLeaveReview={setShowLeaveReview}

@@ -21,7 +21,6 @@ function SearchResults() {
 
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
-  console.log("queryParams", queryParams);
 
   useEffect(() => {
     dispatch(searchThunk(searchQuery));

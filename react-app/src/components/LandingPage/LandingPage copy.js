@@ -15,10 +15,8 @@ function LandingPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [landingAddress, setLandingAddress] = useState("");
-  console.log("landing address", landingAddress);
   const [validAddressError, setValidAddressError] = useState("");
   const { isDeliveryT, setIsDeliveryT } = useDeliveryMethod();
-  console.log("isDeliveryT", isDeliveryT);
 
   const ulRef = useRef();
   const [showMenu, setShowMenu] = useState(false);
@@ -144,7 +142,6 @@ function LandingPage() {
           state: addressFormatedList[3],
           zip: addressFormatedList[4],
         };
-        console.log("formDataformData", formData);
         await dispatch(editUserAddressThunk(formData, sessionUser.id));
         history.push("/restaurants");
       }

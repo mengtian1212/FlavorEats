@@ -19,12 +19,16 @@ import ReviewSection from "../ReviewSection";
 import { fetchAllReviewsThunk } from "../../store/reviews";
 import RestaurantMap from "./RestaurantMap";
 import LoadingPage from "../LoadingPage";
+import { useModal } from "../../context/Modal";
+import StoreMapInfoModal from "./StoreMapInfoModal";
 
 function SingleRestaurant() {
   const { restaurantId } = useParams();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const sessionUser = useSelector((state) => state.session.user);
+  const { setModalContent, setModalClass, closeModal } = useModal();
+
   const targetRestaurant = useSelector((state) =>
     state.restaurants?.singleRestaurant && !isLoading
       ? state.restaurants?.singleRestaurant
@@ -170,27 +174,53 @@ function SingleRestaurant() {
             </div>
             <div className="res-title-container">
               <div className="res-name">{targetRestaurant?.name}</div>
-              <div className="res-stat-container">
-                <div className="res-rating-container">
-                  {avgRating > 0 && <i className="fa-solid fa-star"></i>}
-                  {avgRating > 0 && avgRating.toFixed(1)}
-                </div>
+              <div className="res-stat-best">
+                {avgRating >= 4 && (
+                  <img
+                    src="https://d4p17acsd5wyj.cloudfront.net/bazaar/badge_top_eats.png"
+                    alt=""
+                    className="info-bestoverall1"
+                  />
+                )}
                 <div>
-                  ({reviews.length}{" "}
-                  {reviews.length === 1 ? "rating" : "ratings"})
+                  <div className="res-stat-container">
+                    <div className="res-rating-container">
+                      {avgRating > 0 && <i className="fa-solid fa-star"></i>}
+                      {avgRating > 0 && avgRating.toFixed(1)}
+                    </div>
+                    <div>
+                      ({reviews.length}{" "}
+                      {reviews.length === 1 ? "rating" : "ratings"})
+                    </div>
+                    <div>• </div>
+                    <div>{groups && groups[0]}</div>
+                    {targetRestaurant.price_ranges && <div>• </div>}
+                    <div>{targetRestaurant.price_ranges}</div>
+                    <div>• </div>
+                    <a
+                      className="read-reviews view-receipt"
+                      href="#reviews-block"
+                    >
+                      Read Reviews{" "}
+                    </a>
+                    <div>• </div>
+                    <div
+                      className="view-receipt"
+                      onClick={() => {
+                        setModalContent(
+                          <StoreMapInfoModal
+                            restaurantId={targetRestaurant.id}
+                          />
+                        );
+                        setModalClass("storeinfomodal");
+                      }}
+                    >
+                      View Map
+                    </div>
+                  </div>
+                  <div className="res-add">{targetRestaurant?.address}</div>
                 </div>
-                <div>• </div>
-                <div>{groups && groups[0]}</div>
-                <div>• </div>
-                <div>{targetRestaurant.price_ranges}</div>
-                <div>• </div>
-                <a className="read-reviews view-receipt" href="#reviews-block">
-                  Read Reviews{" "}
-                </a>
-                <div>• </div>
-                <div className="view-receipt">View Map</div>
               </div>
-              <div className="res-add">{targetRestaurant?.address}</div>
             </div>
           </div>
           <div className="res-bottom-container">

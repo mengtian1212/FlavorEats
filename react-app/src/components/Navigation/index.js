@@ -29,7 +29,6 @@ function Navigation({ isLoaded }) {
   };
 
   const [myAddress, setMyAddress] = useState(sessionUser?.address);
-  console.log("myAddress ON NAV", myAddress);
   const userAddress =
     sessionUser?.address && sessionUser?.address?.split(",")[0];
 
@@ -183,12 +182,10 @@ function Navigation({ isLoaded }) {
       lat: myAddress[5],
       lng: myAddress[6],
     };
-    console.log(formData);
 
     // const formData = { updatedAddress: myAddress.trim() };
     const data = await dispatch(editUserAddressThunk(formData, sessionUser.id));
     if (data.errors) {
-      console.log("data error", data.errors);
       setEditAddressError(data.errors);
       setMyAddress(sessionUser.address);
       setShowEditAddress(false);

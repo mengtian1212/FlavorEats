@@ -25,7 +25,6 @@ function CreateReviewModal({ restaurantId, resName, ratingP, setRatingP }) {
         message: message,
         rating: rating,
       };
-      console.log("submit review", formData, restaurantId);
       const createdReview = await dispatch(
         createReviewThunk(formData, restaurantId)
       );

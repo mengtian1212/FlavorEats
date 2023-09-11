@@ -85,7 +85,6 @@ const Maps = ({ apiKey }) => {
       targetRestaurant?.lat,
       targetRestaurant?.lng
     );
-    console.log("distance", distance);
     // setResponse(null);
   }, [targetRestaurant, sessionUser]);
 
