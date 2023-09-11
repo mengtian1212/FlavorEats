@@ -65,6 +65,13 @@
   font-weight: 600;
 }
 
+.logo-eats1 {
+  text-decoration: none;
+  /* color: rgb(4, 136, 72); */
+  font-size: 28px;
+  font-weight: 600;
+}
+
 .logo-eats:hover {
   /* color: rgb(3, 112, 60); */
   color: rgb(4, 136, 72);

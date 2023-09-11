@@ -208,7 +208,7 @@ const FinalComponent = ({ orderJustPlaced, sessionUser }) => {
         <div className="checkout-t">Order Summary</div>
         <div className="pad">
           From {orderJustPlaced.restaurant_name} (
-          {orderJustPlaced.restaurant_address.split(", ")[1]})
+          {orderJustPlaced.restaurant_city})
         </div>
         <div className="order-item-container">
           {orderItems &&

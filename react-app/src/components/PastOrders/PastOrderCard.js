@@ -145,6 +145,14 @@ function PastOrderCard({ pastOrder }) {
               <div>• </div>
               <div>{formatDate(pastOrder?.updated_at)}</div>
               <div>• </div>
+              <div>
+                {pastOrder?.is_pickup
+                  ? "Pick up"
+                  : pastOrder?.is_priority
+                  ? "Priority delivery"
+                  : "Standard delivery"}
+              </div>
+              <div>• </div>
               <div
                 className="view-receipt"
                 onClick={() => {

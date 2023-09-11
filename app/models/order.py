@@ -85,6 +85,7 @@ class Order(db.Model):
             'restaurant_name': self.restaurant.name,
             'restaurant_image': self.restaurant.image_url,
             'restaurant_address': self.restaurant.address,
+            'restaurant_city': self.restaurant.city,
             'restaurant_lat': self.restaurant.lat,
             'restaurant_lng': self.restaurant.lng,
             'tip': float(self.tip),
