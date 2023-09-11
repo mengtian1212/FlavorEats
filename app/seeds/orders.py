@@ -23,8 +23,8 @@ def seed_orders():
             "delivery_address": "Time Square, Manhattan, NY 10036",
             "delivery_lat": 40.758896,
             "delivery_lng": -73.985130,
-            "created_at": datetime(2023, 9, 9, 11, 50),
-            "updated_at": datetime(2023, 9, 9, 13, 50),
+            "created_at": datetime(2023, 9, 9, 16, 50),
+            "updated_at": datetime(2023, 9, 9, 16, 50),
         },
         {  # 3
             "user_id": 1,
@@ -35,8 +35,8 @@ def seed_orders():
             "delivery_address": "Empire State Building 350 5th Ave, New York, NY 10118",
             "delivery_lat": 40.748817,
             "delivery_lng": -73.985428,
-            "created_at": datetime(2023, 9, 6, 8, 30),
-            "updated_at": datetime(2023, 9, 6, 8, 30),
+            "created_at": datetime(2023, 9, 6, 14, 30),
+            "updated_at": datetime(2023, 9, 6, 14, 30),
         },
         {  # 4
             "user_id": 1,
@@ -52,8 +52,8 @@ def seed_orders():
             "is_pickup": True,
             "is_complete": True,
             "review_id": 8,
-            "created_at": datetime(2023, 9, 3, 17, 15),
-            "updated_at": datetime(2023, 9, 3, 17, 15),
+            "created_at": datetime(2023, 9, 3, 1, 15),
+            "updated_at": datetime(2023, 9, 3, 1, 15),
         },
         {  # 6
             "user_id": 1,
@@ -71,9 +71,8 @@ def seed_orders():
             "delivery_address": "510 Main Street, Apt 525, New York, NY 10044",
             "delivery_lat": 40.761593,
             "delivery_lng": -73.950595,
-            "created_at": datetime(2023, 8, 29, 20, 26),
-            "updated_at": datetime(2023, 8, 29, 20, 26),
-
+            "created_at": datetime(2023, 8, 29, 19, 26),
+            "updated_at": datetime(2023, 8, 29, 19, 26),
         },
 
     ]

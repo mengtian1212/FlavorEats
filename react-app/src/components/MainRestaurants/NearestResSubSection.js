@@ -16,14 +16,15 @@ function NearestResSubSection() {
     state.restaurants.allRestaurants ? state.restaurants.allRestaurants : {}
   );
   const [resWithDistances, setResWithDistances] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchAllRestaurantsThunk());
+    dispatch(fetchAllRestaurantsThunk()).then(() => setIsLoading(false));
     window.scroll(0, 0);
   }, [dispatch]);
 
   useEffect(() => {
-    if (sessionUser && restaurants) {
+    if (sessionUser && restaurants && !isLoading) {
       const cald = restaurants;
       Object.values(restaurants).forEach((res) => {
         const distance = calculateDistance(
@@ -41,54 +42,64 @@ function NearestResSubSection() {
     } else if (restaurants) {
       setResWithDistances((prev) => Object.values(restaurants).slice(0, 10));
     }
-    let slider = tns({
-      container: ".my-slider-near",
-      slideBy: 4,
-      speed: 300,
-      nav: false,
-      loop: false,
-      controlsContainer: ".controller-near",
-      items: 4,
-      gutter: 0,
-    });
-  }, [restaurants, sessionUser]);
+
+    if (!isLoading) {
+      let slider = tns({
+        container: ".my-slider-near",
+        slideBy: 4,
+        speed: 300,
+        nav: false,
+        loop: false,
+        controlsContainer: ".controller-near",
+        items: 4,
+        gutter: 0,
+      });
+    }
+  }, [restaurants, sessionUser, isLoading]);
 
   return (
-    <div className="near-container">
-      <div className="res-list-title">
-        {sessionUser
-          ? `Popular stores near your location (${address})`
-          : "Popular stores near you"}
-        <p className="item-dcap">
-          Discover local dining options in your neighborhood
-        </p>
-      </div>
-      <div className="slider-container-near">
-        <div className="controller-near">
-          <button className="previous-near">
-            <i className="fa-solid fa-arrow-left side-show-arrow-near"></i>
-          </button>
-          <button className="next-near">
-            <i className="fa-solid fa-arrow-right side-show-arrow-near"></i>
-          </button>
-        </div>
-        <div id="slider">
-          <div className="my-slider-near">
-            {resWithDistances?.map((slide, i) => {
-              return (
-                <a href={slide.path} key={i}>
-                  <div className="slide-outer-near" key={i}>
-                    <div className="slide-near">
-                      <RestaurantCard restaurant={slide} hasDistance={true} />
-                    </div>
-                  </div>
-                </a>
-              );
-            })}
+    <>
+      {!isLoading && (
+        <div className="near-container">
+          <div className="res-list-title">
+            {sessionUser
+              ? `Popular stores near your location (${address})`
+              : "Popular stores near you"}
+            <p className="item-dcap">
+              Discover local dining options in your neighborhood
+            </p>
+          </div>
+          <div className="slider-container-near">
+            <div className="controller-near">
+              <button className="previous-near">
+                <i className="fa-solid fa-arrow-left side-show-arrow-near"></i>
+              </button>
+              <button className="next-near">
+                <i className="fa-solid fa-arrow-right side-show-arrow-near"></i>
+              </button>
+            </div>
+            <div id="slider">
+              <div className="my-slider-near">
+                {resWithDistances?.map((slide, i) => {
+                  return (
+                    <a href={slide.path} key={i}>
+                      <div className="slide-outer-near" key={i}>
+                        <div className="slide-near">
+                          <RestaurantCard
+                            restaurant={slide}
+                            hasDistance={true}
+                          />
+                        </div>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
