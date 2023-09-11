@@ -51,6 +51,16 @@ function SideShow({ setFilterType }) {
     },
 
     2: {
+      // coffee & tea page
+      text: "Grab a refreshing drink",
+      caption: "Stay Cool and Hydrated!",
+      btnText: "See search results",
+      img: "https://d1g1f25tn8m2e6.cloudfront.net/fb760ad5-438e-4893-be20-d15c3c605eb5.jpg",
+      path: "/search?query=drink%20coffee",
+      backgroundColor: "rgb(222, 233, 254)",
+    },
+
+    3: {
       // favorite restaurant
       text: "Explore your favorite restaurants",
       caption: "Easy & delicious meals",
@@ -60,7 +70,7 @@ function SideShow({ setFilterType }) {
       backgroundColor: "rgb(246, 217, 214)",
     },
 
-    3: {
+    4: {
       // nearest restaurant page
       text: address
         ? `In a rush? Try the nearest restaurant to ${address}`
@@ -74,7 +84,7 @@ function SideShow({ setFilterType }) {
       backgroundColor: "rgb(255, 227, 172)",
     },
 
-    4: {
+    5: {
       //
       text: "Manage your business on the FlavorEats platform",
       caption:
@@ -84,16 +94,6 @@ function SideShow({ setFilterType }) {
       img: "https://www.uber-assets.com/image/upload/q_auto:eco,c_fill,w_360,h_240/v1622579254/assets/f8/3a023b-d455-4aab-97a0-12bc3026cebf/original/YouPrepare.svg",
       path: "/business/restaurants",
       backgroundColor: "rgb(202,238,221)",
-    },
-
-    5: {
-      // coffee & tea page
-      text: "Grab a refreshing drink",
-      caption: "Stay Cool and Hydrated!",
-      btnText: "See search results",
-      img: "https://d1g1f25tn8m2e6.cloudfront.net/fb760ad5-438e-4893-be20-d15c3c605eb5.jpg",
-      path: "/search?query=drink%20coffee",
-      backgroundColor: "rgb(222, 233, 254)",
     },
 
     6: {

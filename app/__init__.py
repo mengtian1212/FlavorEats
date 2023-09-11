@@ -14,6 +14,7 @@ from .api.order_routes import order_routes
 from .api.review_routes import review_routes
 from .api.dish_routes import dish_routes
 from .api.search_routes import search_routes
+from .api.favorite_route import favorite_routes
 
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
@@ -39,6 +40,7 @@ app.register_blueprint(order_routes, url_prefix='/api/orders')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(dish_routes, url_prefix='/api/dishes')
 app.register_blueprint(search_routes, url_prefix='/api/search')
+app.register_blueprint(favorite_routes, url_prefix='/api/favorites')
 
 
 db.init_app(app)

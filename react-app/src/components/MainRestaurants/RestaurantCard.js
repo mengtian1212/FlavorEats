@@ -1,15 +1,41 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  addFavoriteThunk,
+  deleteFavThunk,
+  fetchAllRestaurantsThunk,
+  fetchFavRestaurantsThunk,
+  fetchNewestRestaurantThunk,
+} from "../../store/restaurants";
 
 function RestaurantCard({ restaurant, hasDistance }) {
+  const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const percentage = (restaurant.avg_rating / 5) * 100;
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(restaurant.is_fav);
   const [isHover, setIsHover] = useState(false);
-  const handleToggleFavorite = (e) => {
+  const handleToggleFavorite = async (e) => {
     e.stopPropagation();
-    setIsFavorite((prev) => !prev);
+    if (isFavorite) {
+      setIsFavorite(false);
+      await dispatch(deleteFavThunk(restaurant.id));
+      await dispatch(fetchFavRestaurantsThunk());
+      await dispatch(fetchAllRestaurantsThunk());
+      await dispatch(fetchNewestRestaurantThunk());
+    } else {
+      setIsFavorite(true);
+      await dispatch(addFavoriteThunk(restaurant.id));
+      await dispatch(fetchAllRestaurantsThunk());
+      await dispatch(fetchFavRestaurantsThunk());
+      await dispatch(fetchNewestRestaurantThunk());
+    }
   };
+
+  useEffect(() => {
+    setIsFavorite(restaurant.is_fav);
+  }, [restaurant]);
 
   const currentDate = new Date();
   const oneHourAgo = new Date();
@@ -23,23 +49,40 @@ function RestaurantCard({ restaurant, hasDistance }) {
     >
       <i
         className={`fa-${
-          isFavorite ? `solid` : isHover ? `solid` : `regular`
+          isFavorite ? `solid solidred` : isHover ? `solid` : `regular`
         } fa-heart fav`}
         onClick={handleToggleFavorite}
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       ></i>
+      <div className="heart-container"></div>
       <img
         src={restaurant.image_url}
         alt=""
         className="restaurant-preview"
-        style={hasDistance ? { height: "128px", width: "325.5px" } : {}}
+        // style={hasDistance ? { height: "128px", width: "333.37px" } : {}}
+        style={
+          hasDistance
+            ? { height: "128px", width: "333.37px" }
+            : location.pathname === "/favorites"
+            ? { height: "128px", width: "591.67px" }
+            : {}
+        }
       />
       <div
         className="restaurant-card-name"
-        style={hasDistance ? { width: "325.5px" } : {}}
+        // style={hasDistance ? { width: "333.37px" } : {}}
+        style={
+          hasDistance
+            ? { width: "333.37px" }
+            : location.pathname === "/favorites"
+            ? { width: "591.67px" }
+            : {}
+        }
       >
-        {restaurant.name}
+        {restaurant.name}&nbsp;
+        {location.pathname === "/favorites" &&
+          `(${restaurant.address.split(",")[0]})`}
       </div>
       <div className="restaurant-delivery">
         ${restaurant.delivery_fee === "0.00" ? 0 : restaurant.delivery_fee}{" "}
@@ -68,7 +111,7 @@ function RestaurantCard({ restaurant, hasDistance }) {
           </div>
         )}
       </div>
-      {hasDistance && (
+      {(hasDistance || location.pathname === "/favorites") && (
         <div className="dis-types-container">
           {restaurant.cusine_types.split("#").map((type, i) => (
             <div key={i} className="dis-type">

@@ -4,6 +4,32 @@
   object-fit: cover;
 }
 
+.restaurant-photo-container {
+  position: relative;
+}
+
+.favsingle {
+  position: absolute;
+  z-index: 1;
+  right: 24px;
+  top: 24px;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 4px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.solidred {
+  color: rgb(235, 23, 0);
+}
+
 .res-title-container {
   padding: 24px 40px 0px 40px;
   line-height: 16px;
@@ -347,4 +373,39 @@ main {
 
 .read-reviews {
   color: #000000;
+}
+
+.fav-notice-container {
+  z-index: 100;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 330px;
+  border-radius: 12px;
+  border: none;
+
+  background-color: #1f1f1f;
+  display: flex;
+  gap: 16px;
+  color: #efefef;
+  padding: 16px;
+
+  /* top: 120px; */
+  top: -50px;
+  opacity: 0; /* Initial opacity set to 0 */
+  transition: top 0.25s, opacity 0.2s; /* Add transitions for top and opacity */
+}
+
+.fav-notice-container.slide-in {
+  top: 120px; /* Final position after sliding in */
+  opacity: 1; /* Fade in */
+}
+
+.fav-notice-container.slide-out {
+  top: -50px; /* Slide out to the top */
+  opacity: 0; /* Fade out */
+}
+
+.fasize {
+  font-size: 20px;
 }

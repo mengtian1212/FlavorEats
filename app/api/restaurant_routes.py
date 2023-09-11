@@ -1,4 +1,4 @@
-from app.models import db, Restaurant, Review, Order
+from app.models import db, Restaurant, Review, Order, Favorite
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .AWS_helpers import upload_file_to_s3, get_unique_filename
@@ -20,7 +20,28 @@ def get_all_restaurants():
     Query for all restaurants and returns them in a list of restaurant dictionaries
     """
     restaurants = Restaurant.query.all()
-    return {"restaurants": {restaurant.id: restaurant.to_dict_simple() for restaurant in restaurants}}
+    # return {"restaurants": {restaurant.id: restaurant.to_dict_simple() for restaurant in restaurants}}
+
+    all_restaurants_data = {}
+
+    for restaurant in restaurants:
+        if current_user.is_authenticated:
+            # Get the corresponding Favorite record for the restaurant and user
+            favorite_record = (
+                Favorite.query
+                .filter_by(user_id=current_user.id, restaurant_id=restaurant.id)
+                .first()
+            )
+
+            restaurant_data = restaurant.to_dict_simple()
+            # If a Favorite record exists, add "fav_created_at" key with the created_at value
+            restaurant_data["is_fav"] = True if favorite_record else False
+            restaurant_data["fav_created_at"] = favorite_record.created_at if favorite_record else None
+            all_restaurants_data[restaurant.id] = restaurant_data
+        else:
+            all_restaurants_data[restaurant.id] = restaurant.to_dict_simple()
+
+    return {"restaurants": all_restaurants_data}
 
 
 @restaurant_routes.route('/newest')
@@ -32,8 +53,21 @@ def get_newest_restaurant():
         desc(Restaurant.created_at), desc(Restaurant.id)).first()
     if not restaurant:
         return jsonify({"message": "Restaurant not found"}), 404
-    response = restaurant.to_dict()
-    return response
+    # response = restaurant.to_dict()
+
+    if current_user.is_authenticated:
+        # Get the corresponding Favorite record for the restaurant and user
+        favorite_record = (
+            Favorite.query
+            .filter_by(user_id=current_user.id, restaurant_id=restaurant.id)
+            .first()
+        )
+
+        restaurant_data = restaurant.to_dict()
+        # If a Favorite record exists, add "fav_created_at" key with the created_at value
+        restaurant_data["is_fav"] = True if favorite_record else False
+        restaurant_data["fav_created_at"] = favorite_record.created_at if favorite_record else None
+    return restaurant_data
 
 
 @restaurant_routes.route('/<int:restaurantId>')
@@ -44,8 +78,60 @@ def get_one_restaurant(restaurantId):
     restaurant = Restaurant.query.get(restaurantId)
     if not restaurant:
         return jsonify({"message": "Restaurant not found"}), 404
-    response = restaurant.to_dict()
-    return response
+    # response = restaurant.to_dict()
+
+    if current_user.is_authenticated:
+        # Get the corresponding Favorite record for the restaurant and user
+        favorite_record = (
+            Favorite.query
+            .filter_by(user_id=current_user.id, restaurant_id=restaurant.id)
+            .first()
+        )
+
+        restaurant_data = restaurant.to_dict()
+        # If a Favorite record exists, add "fav_created_at" key with the created_at value
+        restaurant_data["is_fav"] = True if favorite_record else False
+        restaurant_data["fav_created_at"] = favorite_record.created_at if favorite_record else None
+    return restaurant_data
+
+
+@restaurant_routes.route('/favorites')
+@login_required
+def get_favorite_restaurants():
+    """
+    Query for all favorite restaurants and returns them in a list of restaurant dictionaries
+    """
+    subquery = (
+        db.session.query(Favorite.restaurant_id)
+        .filter(Favorite.user_id == current_user.id)
+        .subquery()
+    )
+
+    # Query the Restaurant table to get the favorited restaurants.
+    favorited_restaurants = (
+        Restaurant.query
+        .filter(Restaurant.id.in_(subquery))
+        .all()
+    )
+
+    favorited_restaurants_data = {}
+
+    for restaurant in favorited_restaurants:
+        # Get the corresponding Favorite record for the restaurant and user
+        favorite_record = (
+            Favorite.query
+            .filter_by(user_id=current_user.id, restaurant_id=restaurant.id)
+            .first()
+        )
+
+        if favorite_record:
+            # If a Favorite record exists, add "fav_created_at" key with the created_at value
+            restaurant_data = restaurant.to_dict_simple()
+            restaurant_data["is_fav"] = True if favorite_record else False
+            restaurant_data["fav_created_at"] = favorite_record.created_at
+            favorited_restaurants_data[restaurant.id] = restaurant_data
+
+    return {"favorited_restaurants": favorited_restaurants_data}
 
 
 @restaurant_routes.route('/new', methods=["POST"])

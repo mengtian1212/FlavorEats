@@ -5,7 +5,8 @@ import UserMenuLogin from "./UserMenuLogin";
 import UserMenuLogout from "./UserMenuLogout";
 
 function UserButton({ user }) {
-  const { closeModal, setModalContent, setModalClass } = useModal();
+  const { closeModal, setModalContent, setOnModalClose, setModalClass } =
+    useModal();
   const handleClickUserMenu = () => {
     setModalContent(
       <>
