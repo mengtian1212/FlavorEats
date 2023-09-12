@@ -7,7 +7,7 @@ from ..api.AWS_helpers import ALLOWED_EXTENSIONS
 
 class EditRestaurantForm(FlaskForm):
     image = FileField("Image File", validators=[
-                      FileAllowed(list(ALLOWED_EXTENSIONS))])
+                      FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     address = StringField('Address', validators=[
                           DataRequired(), Length(min=1, max=255)])
     city = StringField('City', validators=[DataRequired()])

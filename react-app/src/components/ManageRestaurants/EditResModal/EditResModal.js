@@ -22,6 +22,7 @@ function EditResModal({ restaurant }) {
   // in edit resturant: then add more info for description, delivery_fee, price_ranges
   const uploadInput = useRef();
   const [image, setImage] = useState(restaurant?.image || null);
+  console.log("restaurant?.image", restaurant?.image);
   // const [photo, setPhoto] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(restaurant?.image_url || null);
   const [noPicture, setNoPicture] = useState(false);
@@ -85,6 +86,7 @@ function EditResModal({ restaurant }) {
     // setPhoto(null);
     setPhotoUrl(null);
     setNoPicture(false);
+    setImageLoading(false);
 
     setMyAddress("");
     setAddress("");
@@ -155,8 +157,10 @@ function EditResModal({ restaurant }) {
 
     const data = await dispatch(editRestaurantThunk(formData));
     if (data.errors) {
+      setImageLoading(false);
       setValidationErrors(data.errors);
     } else {
+      setImageLoading(false);
       resetForm();
       closeModal();
       history.push(`/business/${data.id}`);
@@ -191,7 +195,7 @@ function EditResModal({ restaurant }) {
       onSubmit={handleSubmit}
       encType="multipart/form-data"
     >
-      <div className="start">Get started</div>
+      <div className="start">Update your store profile</div>
 
       {/* for upload image  */}
       <div>
@@ -226,8 +230,8 @@ function EditResModal({ restaurant }) {
           {validationErrors.image && (
             <div className="errors">{validationErrors.image}</div>
           )}
-          {/* {imageLoading && <p>Loading...</p>} */}
         </div>
+        {imageLoading && <p>Image uploading...</p>}
       </div>
 
       {/* for restaurant address */}

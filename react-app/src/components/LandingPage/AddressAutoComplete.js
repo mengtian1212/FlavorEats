@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Geocode from "react-geocode";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
+
+const libraries = ["places"];
+
 function AddressAutoComplete({ apiKey, geoKey, onAddressChange }) {
   const [destinationAutocomplete, setDestinationAutocomplete] = useState(null);
   const destinationRef = React.useRef(null);
@@ -62,8 +65,9 @@ function AddressAutoComplete({ apiKey, geoKey, onAddressChange }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKey,
-    libraries: ["places"],
+    libraries: libraries,
   });
+
   return (
     <>
       {isLoaded && (

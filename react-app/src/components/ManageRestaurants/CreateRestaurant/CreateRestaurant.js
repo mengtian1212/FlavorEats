@@ -14,26 +14,20 @@ import { getKey } from "../../../store/maps";
 import ResAddressAutoComplete from "./ResAddressAutoComplete";
 
 function CreateRestaurant() {
+  const [isAdded, setIsAdded] = useState(false);
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  // useEffect(() => {
-  //   if (location.pathname === "/business/restaurant-builder") {
-  //     document.body.classList.add("black-background");
-  //   }
-  //   return () => {
-  //     document.body.classList.remove("black-background");
-  //   };
-  // }, [location]);
 
   // for create new restaurant: restaurant image_url, address, city, state, name, cusine_types
   // in edit resturant: then add more info for description, delivery_fee, price_ranges
   const uploadInput = useRef();
   const [image, setImage] = useState(null);
-  // const [photo, setPhoto] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
   const [noPicture, setNoPicture] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
+  const [showTrash, setShowTrash] = useState(false);
 
   const [myAddress, setMyAddress] = useState("");
   const [address, setAddress] = useState("");
@@ -42,10 +36,10 @@ function CreateRestaurant() {
   const [zip, setZip] = useState(null);
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
+  const [showVerifyAddress, setShowVerifyAddress] = useState(false);
 
   const [name, setName] = useState("");
   const [selectedTypes, setSelectedTypes] = useState([]);
-  const [imageLoading, setImageLoading] = useState(false);
 
   const [validationErrors, setValidationErrors] = useState({});
 
@@ -58,8 +52,14 @@ function CreateRestaurant() {
     }
   });
 
-  // for uploading image to aws
+  //////////// for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
+    console.log("currentTarget", currentTarget);
+    // <input type="file" accept="image/png, image/jpeg, image/jpg, image/gif" style="display: none;">
+
+    console.log("currentTarget.files[0]", currentTarget.files[0]);
+    // File {name: 'pic1.jpg', lastModified: 1690350018999, lastModifiedDate: Tue Jul 25 2023 22:40:18 GMT-0700 (Pacific Daylight Time), webkitRelativePath: '', size: 131767, …}
+
     if (currentTarget.files[0]) {
       setImage(currentTarget.files[0]);
       // setPhoto(currentTarget.files[0]);
@@ -67,6 +67,8 @@ function CreateRestaurant() {
       fileReader.readAsDataURL(currentTarget.files[0]);
       fileReader.onload = () => setPhotoUrl(fileReader.result);
       setNoPicture(false);
+
+      console.log("fileReader.result", fileReader.result);
     }
   };
 
@@ -74,7 +76,7 @@ function CreateRestaurant() {
   if (photoUrl)
     preview = <img src={photoUrl} id="preview-restaurant-img" alt="" />;
 
-  // for cuisine types checkbox
+  /////////// for cuisine types checkbox
   const isCtypeSelected = (t) => selectedTypes.includes(t);
 
   const toggleCtype = (ctype) => {
@@ -84,14 +86,15 @@ function CreateRestaurant() {
       setSelectedTypes([...selectedTypes, ctype]);
     }
   };
-  // end for cuisine types checkbox
+  //////////// end for cuisine types checkbox
 
-  // for reset form
+  //////////// for reset form
   const resetForm = () => {
     setImage(null);
-    // setPhoto(null);
     setPhotoUrl(null);
     setNoPicture(false);
+    setImageLoading(false);
+    setShowTrash(false);
 
     setMyAddress("");
     setAddress("");
@@ -103,6 +106,8 @@ function CreateRestaurant() {
 
     setName("");
     setSelectedTypes("");
+    setShowVerifyAddress(false);
+    document.getElementById("location-input").value = "";
     return;
   };
 
@@ -113,7 +118,7 @@ function CreateRestaurant() {
     window.scrollTo(0, 0);
   };
 
-  // for validate form
+  //////////// for validate form
   const validateForm = () => {
     if (image == null) {
       setNoPicture(true);
@@ -140,8 +145,10 @@ function CreateRestaurant() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShowVerifyAddress(true);
     if (!validateForm()) return;
 
+    setIsAdded(true);
     let formData = new FormData();
     setImageLoading(true);
 
@@ -160,10 +167,14 @@ function CreateRestaurant() {
     formData.append("name", nameData);
     formData.append("cusine_types", selectedTypes.join("#").trim());
 
+    console.log("formData", formData);
     const data = await dispatch(createNewRestaurantThunk(formData));
     if (data.errors) {
+      setImageLoading(false);
+      setIsAdded(false);
       setValidationErrors(data.errors);
     } else {
+      setImageLoading(false);
       resetForm();
       history.push(`/business/${data.id}`);
       window.scroll(0, 0);
@@ -178,8 +189,26 @@ function CreateRestaurant() {
       setZip(myAddress[4]);
       setLat(myAddress[5]);
       setLng(myAddress[6]);
+
+      setShowVerifyAddress(true);
     }
   }, [myAddress]);
+
+  useEffect(() => {
+    if (image) {
+      setShowTrash(true);
+    }
+  }, [image]);
+
+  const handleTrashPhoto = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setImage(null);
+    setPhotoUrl(null);
+    setNoPicture(false);
+    setImageLoading(false);
+    setShowTrash(false);
+  };
 
   if (!sessionUser) {
     setTimeout(() => history.push("/restaurants"), 3000);
@@ -220,6 +249,12 @@ function CreateRestaurant() {
               className={noPicture ? "no-picture" : ""}
               onClick={() => uploadInput.current.click()}
             >
+              {showTrash && (
+                <i
+                  className="fa-solid fa-trash show-trash"
+                  onClick={(e) => handleTrashPhoto(e)}
+                ></i>
+              )}
               <input
                 type="file"
                 // accept="image/*"
@@ -242,16 +277,21 @@ function CreateRestaurant() {
                   </div>
                 </div>
               )}
-              {validationErrors.image && (
-                <div className="errors">{validationErrors.image}</div>
-              )}
-              {/* {imageLoading && <p>Loading...</p>} */}
             </div>
+            {validationErrors.image && (
+              <div className="errors">{validationErrors.image[0]}</div>
+            )}
+            {imageLoading && (
+              <div className="errors">Image uploading... Please wait...</div>
+            )}
           </div>
 
           {/* for restaurant address */}
           <div className="title-container">
             <div className="create-t">Store address</div>
+            {/* <div className="create-p">
+              Example: Building name, 123 Main street, New York, NY 10000
+            </div> */}
             {key && (
               <ResAddressAutoComplete
                 apiKey={key}
@@ -259,52 +299,52 @@ function CreateRestaurant() {
                 onAddressChange={setMyAddress}
               />
             )}
-            <input
-              className={`create-input ${
-                validationErrors.address ? "error-bg" : ""
-              }`}
-              placeholder="Example: 123 Main street"
-              type="text"
-              value={address}
-              // onChange={(e) => setAddress(e.target.value)}
-            />
-            {validationErrors.address && (
-              <div className="errors">{validationErrors.address}</div>
-            )}
-            {/* for restaurant city & state */}
-            <div className="city-state-input-container">
-              <input
-                className={`create-input ${
-                  validationErrors.city ? "error-bg" : ""
-                }`}
-                placeholder="City"
-                type="text"
-                value={city}
-                // onChange={(e) => setCity(e.target.value)}
-              />
-              <select
-                id="state-select"
-                className={`${state === "" ? "first-option" : ""} ${
-                  validationErrors.state ? "error-bg" : ""
-                }`}
-                value={state}
-                // onChange={(e) => setState(e.target.value)}
-              >
-                {/* <option value="">-- Select State --</option> */}
-                <option value="">State</option>
 
-                {USSTATES.map((state) => (
-                  <option key={state} value={state}>
-                    {state}
-                  </option>
-                ))}
-              </select>
-            </div>
-            {validationErrors.city && (
-              <div className="errors">{validationErrors.city}</div>
-            )}
-            {validationErrors.state && (
-              <div className="errors">{validationErrors.state}</div>
+            {showVerifyAddress && (
+              <>
+                <div className="create-pp">
+                  Please verify the following address:
+                </div>
+                <div
+                  className={`create-input ${
+                    validationErrors.address ? "error-bg" : ""
+                  }`}
+                  style={!address ? { color: "#757575" } : { color: "black" }}
+                >
+                  {!address ? "Example: 123 Main street" : address}
+                </div>
+                {validationErrors.address && (
+                  <div className="errors">{validationErrors.address}</div>
+                )}
+
+                {/* for restaurant city & state */}
+                <div className="city-state-input-container">
+                  <div
+                    className={`create-input ${
+                      validationErrors.city ? "error-bg" : ""
+                    }`}
+                    style={!city ? { color: "#757575" } : { color: "black" }}
+                  >
+                    {!city ? "City" : city}
+                  </div>
+
+                  <div
+                    id="state-select"
+                    className={`create-input ${
+                      validationErrors.state ? "error-bg" : ""
+                    }`}
+                    style={!state ? { color: "#757575" } : { color: "black" }}
+                  >
+                    {!state ? "State" : state}
+                  </div>
+                </div>
+                {validationErrors.city && (
+                  <div className="errors">{validationErrors.city}</div>
+                )}
+                {validationErrors.state && (
+                  <div className="errors">{validationErrors.state}</div>
+                )}
+              </>
             )}
           </div>
 
@@ -356,16 +396,33 @@ function CreateRestaurant() {
           </div>
 
           <div className="btns-container">
-            <button type="submit" className="reorder-btn5">
-              Submit
-            </button>
-            <button
-              type="button"
-              className="reorder-btn4 cursor black1"
-              onClick={handleResetClick}
-            >
-              Reset
-            </button>
+            {!isAdded && (
+              <>
+                <button type="submit" className="reorder-btn5">
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  className={`reorder-btn10 ${isAdded ? "colorg" : ""}`}
+                  onClick={handleResetClick}
+                >
+                  Reset
+                </button>
+              </>
+            )}
+            {isAdded && (
+              <>
+                <button className={`reorder-btn5 ${isAdded ? "colorg" : ""}`}>
+                  Creating restaurant...
+                </button>
+                <button
+                  type="button"
+                  className={`reorder-btn10 ${isAdded ? "colorg" : ""}`}
+                >
+                  Reset
+                </button>
+              </>
+            )}
           </div>
         </form>
       </div>

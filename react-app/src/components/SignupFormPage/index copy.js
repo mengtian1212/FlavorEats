@@ -14,6 +14,8 @@ import { useJsApiLoader } from "@react-google-maps/api";
 import NavAddressAutoComplete from "../Navigation/NavAddressAutoComplete";
 import SignupAddressAutoComplete from "./SignupAddressAutoComplete";
 
+const libraries = ["places"];
+
 function SignupFormPage() {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -175,7 +177,7 @@ function SignupFormPage() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: key,
-    libraries: ["places"],
+    libraries: libraries,
   });
 
   const handleSubmit = async (e) => {

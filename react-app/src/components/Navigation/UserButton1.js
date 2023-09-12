@@ -57,6 +57,8 @@ function UserButton({ user }) {
         <a
           href="https://github.com/mengtian1212/FlavorEats"
           className="menu-item github0 cursor"
+          target="_blank"
+          rel="noreferrer"
         >
           <i className="fa-brands fa-github"></i>
           <div>Github</div>

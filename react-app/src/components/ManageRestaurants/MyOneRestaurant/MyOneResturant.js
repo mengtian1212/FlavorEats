@@ -68,11 +68,10 @@ function MyOneRestaurant() {
               <div className="res-name">{myRestaurant.name}</div>
               <div className="res-stat-container">
                 <div className="res-rating-container">
-                  {myRestaurant.avg_rating > 0 && (
-                    <i className="fa-solid fa-star"></i>
-                  )}
-                  {myRestaurant.avg_rating > 0 &&
-                    myRestaurant.avg_rating.toFixed(1)}
+                  <i className="fa-solid fa-star"></i>
+                  {myRestaurant.avg_rating > 0
+                    ? myRestaurant.avg_rating.toFixed(1)
+                    : "0"}
                 </div>
                 <div>
                   ({myRestaurant.num_rating}{" "}
@@ -82,10 +81,6 @@ function MyOneRestaurant() {
                 <div>{groups && groups[0]}</div>
                 <div>• </div>
                 <div>{myRestaurant.price_ranges}</div>
-                <div>• </div>
-                <div>Read Reviews </div>
-                <div>• </div>
-                <div>More info</div>
               </div>
               <div className="res-add">{myRestaurant?.address}</div>
             </div>
@@ -101,6 +96,12 @@ function MyOneRestaurant() {
               modalComponent={<DeleteResModal restaurant={myRestaurant} />}
               myClass="reorder-btn6"
             />
+            <button
+              className="reorder-btn6"
+              onClick={() => history.push(`/restaurants/${myRestaurant.id}`)}
+            >
+              View store page
+            </button>
           </div>
           {/* <div>Top Selling Items</div>
           <div>Menu Item Feedback</div>

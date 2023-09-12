@@ -150,6 +150,16 @@ def new_restaurant():
         image_file = form.data["image"]
         image_file.filename = get_unique_filename(image_file.filename)
         upload = upload_file_to_s3(image_file)
+        # <FileStorage: '0035a85284474ee39af8efbdeafa49d8.jpg' ('image/jpeg')>
+        print("image_file---------------------------------",
+              image_file)
+
+        # 0035a85284474ee39af8efbdeafa49d8.jpg  the aws file name and url name: https://flavoreatsbucket.s3.us-west-2.amazonaws.com/0035a85284474ee39af8efbdeafa49d8.jpg
+        print("image_file.filename-------------------------", image_file.filename)
+
+        # <FileStorage: '0035a85284474ee39af8efbdeafa49d8.jpg' ('image/jpeg')>
+        print("upload---------------------------------------", image_file)
+
         if "url" not in upload:
             return {"errors": upload}, 400
 
@@ -170,7 +180,8 @@ def new_restaurant():
         db.session.commit()
         return new_restaurant.to_dict()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+    # return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+    return {"errors": form.errors}, 400
 
 
 @restaurant_routes.route('/<int:restaurantId>/edit', methods=["PUT"])
@@ -187,8 +198,8 @@ def edit_restaurant(restaurantId):
         if not targetRestaurant.owner_id == current_user.id:
             return {"errors": "Unauthorized"}, 401
 
-        print("update restaurant data pass validation in the backend!")
         image_file = form.data["image"]
+        print("update restaurant data pass validation in the backend!", image_file)
         if image_file:
             image_file.filename = get_unique_filename(image_file.filename)
             upload = upload_file_to_s3(image_file)
@@ -210,7 +221,8 @@ def edit_restaurant(restaurantId):
         db.session.commit()
         return targetRestaurant.to_dict()
 
-    return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+    # return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+    return {"errors": form.errors}, 400
 
 
 @restaurant_routes.route('/<int:restaurantId>/delete', methods=["DELETE"])

@@ -34,6 +34,8 @@ function SingleRestaurant() {
       ? state.restaurants?.singleRestaurant
       : {}
   );
+  const [hasMenu, setHasMenu] = useState(true);
+
   const reviews = useSelector((state) => Object.values(state.reviews));
   let avgRating = 0;
   if (reviews.length > 0) {
@@ -79,6 +81,11 @@ function SingleRestaurant() {
 
   useEffect(() => {
     setIsFavorite(targetRestaurant.is_fav);
+    setHasMenu(
+      !isLoading &&
+        targetRestaurant &&
+        Object.values(targetRestaurant?.menuitems).length
+    );
   }, [targetRestaurant]);
   // end for favorite/unfavorite restaurant
 
@@ -127,9 +134,9 @@ function SingleRestaurant() {
   };
 
   useEffect(() => {
-    dispatch(fetchOneRestaurantThunk(restaurantId)).then(() =>
-      setIsLoading(false)
-    );
+    dispatch(fetchOneRestaurantThunk(restaurantId)).then(() => {
+      setIsLoading(false);
+    });
     dispatch(fetchAllReviewsThunk(restaurantId));
     window.scroll(0, 0);
   }, [restaurantId]);
@@ -193,8 +200,8 @@ function SingleRestaurant() {
                 <div>
                   <div className="res-stat-container">
                     <div className="res-rating-container">
-                      {avgRating > 0 && <i className="fa-solid fa-star"></i>}
-                      {avgRating > 0 && avgRating.toFixed(1)}
+                      <i className="fa-solid fa-star"></i>
+                      {avgRating > 0 ? avgRating.toFixed(1) : "0"}
                     </div>
                     <div>
                       ({reviews.length}{" "}
@@ -231,37 +238,49 @@ function SingleRestaurant() {
               </div>
             </div>
           </div>
-          <div className="res-bottom-container">
-            <div className="header">
-              <ul className="menu">
+          {hasMenu ? (
+            <div className="res-bottom-container">
+              <div className="header">
+                <ul className="menu">
+                  {ids.map((id) => (
+                    <li key={`menu-item-${id}`} className="menu-item">
+                      <a
+                        href={`#${id}`}
+                        className={`menu-link ${
+                          id === activeId ? "menu-link-active" : ""
+                        }`}
+                      >
+                        {capitalize(id)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <main>
                 {ids.map((id) => (
-                  <li key={`menu-item-${id}`} className="menu-item">
-                    <a
-                      href={`#${id}`}
-                      className={`menu-link ${
-                        id === activeId ? "menu-link-active" : ""
-                      }`}
-                    >
-                      {capitalize(id)}
-                    </a>
-                  </li>
+                  <section
+                    key={`section-${id}`}
+                    id={id}
+                    className="sectionItems"
+                  >
+                    <div className="item-type-name">{capitalize(id)}</div>
+                    <MenuItems type={id} items={items[id]} />
+                  </section>
                 ))}
-              </ul>
+              </main>
             </div>
-            <main>
-              {ids.map((id) => (
-                <section key={`section-${id}`} id={id} className="sectionItems">
-                  <div className="item-type-name">{capitalize(id)}</div>
-                  <MenuItems type={id} items={items[id]} />
-                </section>
-              ))}
-            </main>
-          </div>
-          <div id="reviews-block">
-            {targetRestaurant && (
+          ) : (
+            <div className="no-past-order1">
+              <div className="no-past-title">
+                Stay tuned, menu is coming soon!
+              </div>
+            </div>
+          )}
+          {!isLoading && (
+            <div id="reviews-block">
               <ReviewSection resName={targetRestaurant?.name} />
-            )}
-          </div>
+            </div>
+          )}
           {/* <RestaurantMap /> */}
           {/* {targetRestaurant && (
             <MapContainer

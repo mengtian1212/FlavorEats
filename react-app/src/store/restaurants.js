@@ -106,6 +106,7 @@ export const createNewRestaurantThunk = (restaurant) => async (dispatch) => {
   if (response.ok) {
     dispatch(receiveRestaurantAction(data));
   }
+  console.log("dddddd", data);
   return data;
 };
 

@@ -20,6 +20,10 @@ function MyAllRestaurants() {
   const myRestaurants = restaurants.filter(
     (res) => res.owner_id === sessionUser?.id
   );
+  myRestaurants?.sort(
+    (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
+  );
+
   const hasRes = myRestaurants.length > 0;
 
   useEffect(() => {

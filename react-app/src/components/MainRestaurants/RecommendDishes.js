@@ -9,6 +9,8 @@ import "./RecommendDishes.css";
 
 function RecommendDishes() {
   const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(true);
+
   let dishes = Object.values(
     useSelector((state) =>
       state.dishes.recommendDishes ? state.dishes.recommendDishes : {}
@@ -60,86 +62,104 @@ function RecommendDishes() {
   }, [showMenu]);
 
   useEffect(() => {
-    dispatch(fetchRecommendDishesThunk());
+    dispatch(fetchRecommendDishesThunk()).then(() => setIsLoading(false));
     window.scroll(0, 0);
   }, [dispatch]);
 
   useEffect(() => {
-    let slider = tns({
-      container: ".my-slider-near1",
-      slideBy: 5,
-      speed: 300,
-      nav: false,
-      loop: false,
-      controlsContainer: ".controller-near1",
-      items: 5,
-      gutter: 0,
-    });
-  }, [dishes]);
+    if (!isLoading) {
+      let slider = tns({
+        container: ".my-slider-near1",
+        slideBy: 5,
+        speed: 300,
+        nav: false,
+        loop: false,
+        controlsContainer: ".controller-near1",
+        items: 5,
+        gutter: 0,
+      });
+    }
+  }, [dishes, isLoading]);
 
   return (
-    <div className="dishes-container">
-      <div className="res-list-title">
-        Recommended Dishes
-        <p className="item-dcap">Checkout top picks by the public reviews</p>
-      </div>
-      <div className="slider-container-near1">
-        <div className="controller-near1">
-          <button className="previous-near1">
-            <i className="fa-solid fa-arrow-left side-show-arrow-near1"></i>
-          </button>
-          <button className="next-near1">
-            <i className="fa-solid fa-arrow-right side-show-arrow-near1"></i>
-          </button>
-        </div>
-        <div id="slider">
-          <div className="my-slider-near1">
-            {dishes?.map((item, i) => {
-              return (
-                <div key={i} className="slide-toppad">
-                  <div className="slide-outer-near1">
-                    <div className="slide-near1 menu-container2">
-                      <div className="item-img-container1">
-                        <img src={item.image_url} alt="" className="item-img" />
-                        <div className="item-background"></div>
-                        <OpenModalButton
-                          buttonText="Quick view"
-                          onItemClick={closeMenu}
-                          modalComponent={<ItemModal item={item} />}
-                          myClass="img-quick-view2 cursor"
-                        />
-                      </div>
-                      <div className="item-name-text1">{item.item_name}</div>
-                      <div className="price-calory">
-                        <div className="item-price">${item.price}</div>
-                        {item.calory !== null && (
-                          <div className="item-calory">•</div>
-                        )}
-                        {item.calory !== null && (
-                          <div className="item-calory">
-                            {parseInt(item.calory)} Cal.
+    <>
+      {!isLoading && (
+        <div className="dishes-container">
+          <div className="res-list-title">
+            Recommended Dishes
+            <p className="item-dcap">
+              Checkout top picks by the public reviews
+            </p>
+          </div>
+          <div className="slider-container-near1">
+            <div className="controller-near1">
+              <button className="previous-near1">
+                <i className="fa-solid fa-arrow-left side-show-arrow-near1"></i>
+              </button>
+              <button className="next-near1">
+                <i className="fa-solid fa-arrow-right side-show-arrow-near1"></i>
+              </button>
+            </div>
+            <div id="slider">
+              <div className="my-slider-near1">
+                {dishes?.map((item, i) => {
+                  return (
+                    <div key={i} className="slide-toppad">
+                      <div className="slide-outer-near1">
+                        <div className="slide-near1 menu-container2">
+                          <div className="item-img-container1">
+                            <img
+                              src={item.image_url}
+                              alt=""
+                              className="item-img"
+                            />
+                            <div className="item-background"></div>
+                            <OpenModalButton
+                              buttonText="Quick view"
+                              onItemClick={closeMenu}
+                              modalComponent={<ItemModal item={item} />}
+                              myClass="img-quick-view2 cursor"
+                            />
                           </div>
-                        )}
-                      </div>
-                      {item.like_ratio > 0 && (
-                        <div className="item-likes-container">
-                          <i className="fa-solid fa-thumbs-up"></i>
-                          <div>
-                            {Math.floor(item.like_ratio.toFixed(2) * 100)}%
+                          <div className="item-name-text1">
+                            {item.item_name}
                           </div>
-                          <div>({item.num_likes > 0 && item.num_likes})</div>
+                          <div className="price-calory">
+                            <div className="item-price">${item.price}</div>
+                            {item.calory !== null && (
+                              <div className="item-calory">•</div>
+                            )}
+                            {item.calory !== null && (
+                              <div className="item-calory">
+                                {parseInt(item.calory)} Cal.
+                              </div>
+                            )}
+                          </div>
+                          {item.like_ratio > 0 && (
+                            <div className="item-likes-container">
+                              <i className="fa-solid fa-thumbs-up"></i>
+                              <div>
+                                {Math.floor(item.like_ratio.toFixed(2) * 100)}%
+                              </div>
+                              <div>
+                                ({item.num_likes > 0 && item.num_likes})
+                              </div>
+                            </div>
+                          )}
+                          <div className="served">
+                            Served by {item.i_resName}
+                          </div>
                         </div>
-                      )}
-                      <div className="served">Served by {item.i_resName}</div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              );
-            })}
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 

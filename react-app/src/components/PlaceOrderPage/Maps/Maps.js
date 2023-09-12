@@ -10,6 +10,9 @@ import {
   useJsApiLoader,
   // ControlPosition,
 } from "@react-google-maps/api";
+
+const libraries = ["places"];
+
 function calculateDistance(lat1, lng1, lat2, lng2) {
   const earthRadius = 6371; // Earth's radius in kilometers
 
@@ -61,7 +64,7 @@ const Maps = ({
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: apiKey,
-    libraries: ["places"],
+    libraries: libraries,
   });
 
   const directionsCallback = (response) => {
