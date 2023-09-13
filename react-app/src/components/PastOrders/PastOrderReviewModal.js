@@ -23,8 +23,12 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
       ? state.pastOrders?.single_past_order
       : {}
   );
+
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    dispatch(fetchSinglePastOrderThunk(pastOrderId));
+    dispatch(fetchSinglePastOrderThunk(pastOrderId)).then(() =>
+      setIsLoading(false)
+    );
     window.scroll(0, 0);
   }, []);
 
@@ -135,78 +139,82 @@ function PastOrderReviewModal({ pastOrderId, restaurantId, resName }) {
   };
 
   return (
-    <div className="review-modal-container">
-      <div className="xmark-container" onClick={closeModal}>
-        <i className="fa-solid fa-xmark"></i>
-      </div>
-      <div className="review-t2">How do you like {resName}?</div>
-      <div>
-        <div className="rating-input2">
-          {[1, 2, 3, 4, 5].map((number) => {
-            return starIcon(number);
-          })}
-          <div className="rading-dddd">{startDes[activeRating]}</div>
+    <>
+      {!isLoading && (
+        <div className="review-modal-container">
+          <div className="xmark-container" onClick={closeModal}>
+            <i className="fa-solid fa-xmark"></i>
+          </div>
+          <div className="review-t2">How do you like {resName}?</div>
+          <div>
+            <div className="rating-input2">
+              {[1, 2, 3, 4, 5].map((number) => {
+                return starIcon(number);
+              })}
+              <div className="rading-dddd">{startDes[activeRating]}</div>
+            </div>
+            {errorsRating && <div className="errors ep">{errorsRating}</div>}
+          </div>
+          <div onSubmit={handleSubmitReview} className="comment-form">
+            <div className={`comment-input-box`}>
+              <textarea
+                className={`textarea-comment`}
+                placeholder="Add a public review."
+                type="text"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+              ></textarea>
+            </div>
+            <div className="review-min">Min characters: 10</div>
+            {errorsReview && <div className="errors ep">{errorsReview}</div>}
+          </div>
+          <div className="item-review-box">
+            <div className="review-titem">Did you like these items?</div>
+            <div className="item-review-inner">
+              {orderItems &&
+                orderItems.map((orderItem, index) => (
+                  <div key={index} className="item-review-single">
+                    <div className="item-review-left">
+                      <img
+                        src={orderItem?.image_url}
+                        alt=""
+                        className="item-review-img"
+                      />
+                      <div>{orderItem.item_name}</div>
+                    </div>
+                    <div className="item-like-dislike">
+                      <i
+                        className={`fa-regular fa-thumbs-down thumbs ${
+                          itemFeedback[orderItem.item_id]?.isDislike
+                            ? `dollarColor`
+                            : ""
+                        }`}
+                        onClick={() => {
+                          updateItemFeedback(orderItem.item_id, false, true);
+                        }}
+                      ></i>
+                      <i
+                        className={`fa-regular fa-thumbs-up thumbs ${
+                          itemFeedback[orderItem.item_id]?.isLike
+                            ? `dollarColor`
+                            : ""
+                        }`}
+                        onClick={() => {
+                          updateItemFeedback(orderItem.item_id, true, false);
+                        }}
+                      ></i>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+          <button className="reorder-btn2" onClick={handleSubmitReview}>
+            Submit Review
+          </button>
         </div>
-        {errorsRating && <div className="errors ep">{errorsRating}</div>}
-      </div>
-      <div onSubmit={handleSubmitReview} className="comment-form">
-        <div className={`comment-input-box`}>
-          <textarea
-            className={`textarea-comment`}
-            placeholder="Add a public review."
-            type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <div className="review-min">Min characters: 10</div>
-        {errorsReview && <div className="errors ep">{errorsReview}</div>}
-      </div>
-      <div className="item-review-box">
-        <div className="review-titem">Did you like these items?</div>
-        <div className="item-review-inner">
-          {orderItems &&
-            orderItems.map((orderItem, index) => (
-              <div key={index} className="item-review-single">
-                <div className="item-review-left">
-                  <img
-                    src={orderItem?.image_url}
-                    alt=""
-                    className="item-review-img"
-                  />
-                  <div>{orderItem.item_name}</div>
-                </div>
-                <div className="item-like-dislike">
-                  <i
-                    className={`fa-regular fa-thumbs-down thumbs ${
-                      itemFeedback[orderItem.item_id]?.isDislike
-                        ? `dollarColor`
-                        : ""
-                    }`}
-                    onClick={() => {
-                      updateItemFeedback(orderItem.item_id, false, true);
-                    }}
-                  ></i>
-                  <i
-                    className={`fa-regular fa-thumbs-up thumbs ${
-                      itemFeedback[orderItem.item_id]?.isLike
-                        ? `dollarColor`
-                        : ""
-                    }`}
-                    onClick={() => {
-                      updateItemFeedback(orderItem.item_id, true, false);
-                    }}
-                  ></i>
-                </div>
-              </div>
-            ))}
-        </div>
-      </div>
-      <button className="reorder-btn2" onClick={handleSubmitReview}>
-        Submit Review
-      </button>
-    </div>
+      )}
+    </>
   );
 }
 

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./auth.css";
 
-const DelayedRedirect = ({ message }) => {
+function NotFoundPage() {
   const history = useHistory();
   const [countdown, setCountdown] = useState(3);
 
@@ -13,6 +11,7 @@ const DelayedRedirect = ({ message }) => {
     //   history.push("/restaurants");
     // }, 3000);
     // window.scroll(0, 0);
+
     // return () => clearTimeout(timeout);
 
     const timeout = setTimeout(() => {
@@ -30,30 +29,20 @@ const DelayedRedirect = ({ message }) => {
   return (
     <div className="need-log-in-auth">
       <img
-        src="https://tb-static.uber.com/prod/bliss-helpdot/asset/images/Eats.png"
+        src="https://d3i4yxtzktqr9n.cloudfront.net/web-eats-v2/29ed4bc0793fd578.svg"
         alt=""
         className="need-log-in-img"
       />
-      <div className="need-log-in-title">{message}</div>
+
+      <div className="need-log-in-title">Page Not Found</div>
+      {/* <div className="need-log-in-text">
+        The page you are looking for doesn't exist.
+      </div> */}
       <div className="need-log-in-text">
         Redirecting to Home page in {countdown} seconds...
       </div>
     </div>
   );
-};
+}
 
-const ProtectedRoute = ({ message, ...rest }) => {
-  const user = useSelector((state) => state.session.user);
-
-  return (
-    <Route {...rest}>
-      {user ? (
-        rest.children
-      ) : (
-        <DelayedRedirect message={message || "Please log in"} />
-      )}
-    </Route>
-  );
-};
-
-export default ProtectedRoute;
+export default NotFoundPage;

@@ -12,6 +12,7 @@ import Navigation from "../Navigation";
 import NewRestaurantSubSection from "./NewRestaurantSubSection";
 import NearestResSubSection from "./NearestResSubSection";
 import RecommendDishes from "./RecommendDishes";
+import LoadingPage from "../auth/LoadingPage";
 
 function MainRestaurants() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -107,10 +108,10 @@ function MainRestaurants() {
   }, [history]);
 
   return (
-    <>
+    <div className="mw">
+      <Navigation />
       {!isLoading && (
-        <div className="mw">
-          <Navigation />
+        <>
           <RestaurantsCategories
             filterType={filterType}
             setFilterType={setFilterType}
@@ -158,9 +159,10 @@ function MainRestaurants() {
               />
             </div>
           </section>
-        </div>
+        </>
       )}
-    </>
+      {isLoading && <LoadingPage />}
+    </div>
   );
 }
 

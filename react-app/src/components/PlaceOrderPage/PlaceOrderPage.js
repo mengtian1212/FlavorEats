@@ -8,6 +8,7 @@ import MapContainer from "./Maps";
 import LeaveReview from "./LeaveReview";
 import PastOrderReceiptModal from "../PastOrders/PastOrderReceiptModal";
 import { useModal } from "../../context/Modal";
+import LoadingPage from "../auth/LoadingPage";
 
 function PlaceOrderPage() {
   const dispatch = useDispatch();
@@ -16,10 +17,12 @@ function PlaceOrderPage() {
   let orderJustPlaced = useSelector((state) =>
     state.pastOrders?.last_past_order ? state.pastOrders?.last_past_order : {}
   );
+  const [isLoading, setIsLoading] = useState(true);
+
   const [deliveryDuration, setDeliveryDuration] = useState(0);
 
   useEffect(() => {
-    dispatch(fetchLastPastOrderThunk());
+    dispatch(fetchLastPastOrderThunk()).then(() => setIsLoading(false));
     window.scroll(0, 0);
   }, []);
 
@@ -51,49 +54,75 @@ function PlaceOrderPage() {
     }
   }, [currentStep, steps.length]);
 
-  if (!sessionUser) {
-    setTimeout(() => history.push("/restaurants"), 3000);
-    window.scroll(0, 0);
+  const [countdown, setCountdown] = useState(3);
+  if (
+    !isLoading &&
+    orderJustPlaced &&
+    Object.values(orderJustPlaced).length === 0
+  ) {
+    // setTimeout(() => history.push("/restaurants"), 3000);
+    const timeout = setTimeout(() => {
+      if (countdown > 1) {
+        setCountdown(countdown - 1);
+      } else {
+        history.push("/restaurants");
+        window.scroll(0, 0);
+      }
+    }, 1000);
     return (
-      <div className="need-log-in">
-        <div className="">Please log in to place orders</div>
-        <div>Redirect to Home page...</div>
+      <div className="need-log-in-auth">
+        <img
+          src="https://img.cdn4dd.com/s/managed/consumer/search/NoResult.svg"
+          alt=""
+          className="need-log-in-img"
+        />
+        <div className="need-log-in-title">
+          Please select a cart to check out
+        </div>
+        <div className="need-log-in-text">
+          Redirecting to Home page in {countdown} seconds...
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="main-place-holder-container">
-      <div className="map-direction-container">
-        <MapContainer
-          delivery_add={orderJustPlaced?.delivery_address?.split(",")[0]}
-          deliveryLat={orderJustPlaced?.delivery_lat}
-          deliveryLng={orderJustPlaced?.delivery_lng}
-          resName={orderJustPlaced?.restaurant_name}
-          resLat={orderJustPlaced?.restaurant_lat}
-          resLng={orderJustPlaced?.restaurant_lng}
-          resImg={orderJustPlaced?.restaurant_image}
-          setDeliveryDuration={setDeliveryDuration}
-        />
-      </div>
-      <div className="checkout-nav">
-        <Header />
-      </div>
-      <div className="thanks-container">
-        {!showFinalComponent &&
-          steps
-            .slice(0, currentStep)
-            .map((step, index) => <div key={index}>{step}</div>)}
-        {showFinalComponent && (
-          <FinalComponent
-            orderJustPlaced={orderJustPlaced}
-            sessionUser={sessionUser}
-            deliveryDuration={deliveryDuration}
-          />
-        )}
-      </div>
-      {/* <div className="new-york-img"></div> */}
-    </div>
+    <>
+      {!isLoading && (
+        <div className="main-place-holder-container">
+          <div className="map-direction-container">
+            <MapContainer
+              delivery_add={orderJustPlaced?.delivery_address?.split(",")[0]}
+              deliveryLat={orderJustPlaced?.delivery_lat}
+              deliveryLng={orderJustPlaced?.delivery_lng}
+              resName={orderJustPlaced?.restaurant_name}
+              resLat={orderJustPlaced?.restaurant_lat}
+              resLng={orderJustPlaced?.restaurant_lng}
+              resImg={orderJustPlaced?.restaurant_image}
+              setDeliveryDuration={setDeliveryDuration}
+            />
+          </div>
+          <div className="checkout-nav">
+            <Header />
+          </div>
+          <div className="thanks-container">
+            {!showFinalComponent &&
+              steps
+                .slice(0, currentStep)
+                .map((step, index) => <div key={index}>{step}</div>)}
+            {showFinalComponent && (
+              <FinalComponent
+                orderJustPlaced={orderJustPlaced}
+                sessionUser={sessionUser}
+                deliveryDuration={deliveryDuration}
+              />
+            )}
+          </div>
+          {/* <div className="new-york-img"></div> */}
+        </div>
+      )}
+      {isLoading && <LoadingPage />}
+    </>
   );
 }
 

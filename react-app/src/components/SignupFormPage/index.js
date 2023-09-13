@@ -32,7 +32,7 @@ function SignupFormPage() {
   const [submitBtn, setSubmitBtn] = useState(false);
 
   // for address
-  const landingAddressProp = location.state && location.state.landingAddress;
+  const landingAddressProp = location.state && location.state?.landingAddress;
   const [myAddress, setMyAddress] = useState(landingAddressProp || "");
   const [address, setAddress] = useState(
     // landingAddressProp ? landingAddressProp?.slice(0, -2).join(", ") : ""
@@ -250,6 +250,7 @@ function SignupFormPage() {
   };
 
   if (sessionUser) return <Redirect to="/restaurants" />;
+
   return (
     <>
       <div className="black-background">

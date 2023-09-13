@@ -8,6 +8,7 @@ import { searchThunk } from "../../store/search";
 import NoSearchResults from "./NoSearchResults";
 import SearchResContainer from "./SearchResContainer";
 import { calculateDistance } from "../../utils/helper-functions";
+import LoadingPage from "../auth/LoadingPage";
 
 function SearchResults() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -21,9 +22,10 @@ function SearchResults() {
 
   const queryParams = new URLSearchParams(location.search);
   const searchQuery = queryParams.get("query");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(searchThunk(searchQuery));
+    dispatch(searchThunk(searchQuery)).then(() => setIsLoading(false));
   }, [searchQuery]);
 
   // for SortContainer.js
@@ -91,46 +93,51 @@ function SearchResults() {
     <>
       <div className="mw">
         <Navigation />
-        <section className="sec3">
-          <div>
-            <SortContainer
-              sortBy={sortBy}
-              setSortBy={setSortBy}
-              priceRanges={priceRanges}
-              setPriceRanges={setPriceRanges}
-              setDietary={setDietary}
-              isOne={isOne}
-              isTwo={isTwo}
-              isThree={isThree}
-              isFour={isFour}
-              setIsOne={setIsOne}
-              setIsTwo={setIsTwo}
-              setIsThree={setIsThree}
-              setIsFour={setIsFour}
-              isVegetarian={isVegetarian}
-              setIsVegetarian={setIsVegetarian}
-              isVegan={isVegan}
-              setIsVegan={setIsVegan}
-              isGluten={isGluten}
-              setIsGluten={setIsGluten}
-              isHalal={isHalal}
-              setIsHalal={setIsHalal}
-              searchQuery={searchQuery}
-              numResults={numResults}
-              numRestaurants={numRestaurants}
-              numDishes={numDishes}
-            />
-          </div>
-          <div className="main-contain">
-            <SearchResContainer
-              searchResults={resWithDistances}
-              sortBy={sortBy}
-              priceRanges={priceRanges}
-              dietary={dietary}
-            />
-            {numResults === 0 && <NoSearchResults searchQuery={searchQuery} />}
-          </div>
-        </section>
+        {!isLoading && (
+          <section className="sec3">
+            <div>
+              <SortContainer
+                sortBy={sortBy}
+                setSortBy={setSortBy}
+                priceRanges={priceRanges}
+                setPriceRanges={setPriceRanges}
+                setDietary={setDietary}
+                isOne={isOne}
+                isTwo={isTwo}
+                isThree={isThree}
+                isFour={isFour}
+                setIsOne={setIsOne}
+                setIsTwo={setIsTwo}
+                setIsThree={setIsThree}
+                setIsFour={setIsFour}
+                isVegetarian={isVegetarian}
+                setIsVegetarian={setIsVegetarian}
+                isVegan={isVegan}
+                setIsVegan={setIsVegan}
+                isGluten={isGluten}
+                setIsGluten={setIsGluten}
+                isHalal={isHalal}
+                setIsHalal={setIsHalal}
+                searchQuery={searchQuery}
+                numResults={numResults}
+                numRestaurants={numRestaurants}
+                numDishes={numDishes}
+              />
+            </div>
+            <div className="main-contain">
+              <SearchResContainer
+                searchResults={resWithDistances}
+                sortBy={sortBy}
+                priceRanges={priceRanges}
+                dietary={dietary}
+              />
+              {numResults === 0 && (
+                <NoSearchResults searchQuery={searchQuery} />
+              )}
+            </div>
+          </section>
+        )}
+        {isLoading && <LoadingPage />}
       </div>
     </>
   );

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import PastOrderCard from "./PastOrderCard";
 import { fetchPastOrdersThunk } from "../../store/pastOrders";
 import Navigation from "../Navigation";
+import LoadingPage from "../auth/LoadingPage";
 
 function PastOrders() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -23,17 +24,6 @@ function PastOrders() {
     window.scroll(0, 0);
   }, [dispatch]);
 
-  if (!sessionUser) {
-    setTimeout(() => history.push("/restaurants"), 3000);
-    window.scroll(0, 0);
-    return (
-      <div className="need-log-in">
-        <div className="">Please log in to check past orders</div>
-        <div>Redirect to Home page...</div>
-      </div>
-    );
-  }
-
   pastOrders.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
   const handleStartShop = () => {
@@ -43,9 +33,9 @@ function PastOrders() {
 
   return (
     <>
-      {!isLoading && (
-        <div className="mw">
-          <Navigation />
+      <div className="mw">
+        <Navigation />
+        {!isLoading && (
           <div className="past-orders-container">
             <div id="past-orders-title">Past Orders</div>
             {Object.values(pastOrders).length !== 0 ? (
@@ -74,8 +64,9 @@ function PastOrders() {
               </div>
             )}
           </div>
-        </div>
-      )}
+        )}
+        {isLoading && <LoadingPage />}
+      </div>
     </>
   );
 }

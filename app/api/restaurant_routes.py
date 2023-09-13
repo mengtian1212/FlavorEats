@@ -218,6 +218,10 @@ def edit_restaurant(restaurantId):
         targetRestaurant.lat = form.data['lat']
         targetRestaurant.lng = form.data['lng']
 
+        targetRestaurant.delivery_fee = form.data['delivery_fee']
+        targetRestaurant.price_ranges = form.data['price_ranges']
+        targetRestaurant.description = form.data['description']
+
         db.session.commit()
         return targetRestaurant.to_dict()
 

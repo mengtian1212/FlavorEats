@@ -28,7 +28,7 @@ function OrderItem({ order_item }) {
 function CheckoutPage() {
   const history = useHistory();
   const location = useLocation();
-  const currentCart = location.state.currentCart;
+  const currentCart = location.state?.currentCart;
   const dispatch = useDispatch();
 
   const key = useSelector((state) => state.maps.key);
@@ -222,14 +222,29 @@ function CheckoutPage() {
     }, 900);
   };
 
-  // problem here!
-  if (!sessionUser || !currentCart) {
-    setTimeout(() => history.push("/restaurants"), 3000);
-    window.scroll(0, 0);
+  const [countdown, setCountdown] = useState(3);
+  if (!currentCart) {
+    const timeout = setTimeout(() => {
+      if (countdown > 1) {
+        setCountdown(countdown - 1);
+      } else {
+        history.push("/restaurants");
+        window.scroll(0, 0);
+      }
+    }, 1000);
     return (
-      <div className="need-log-in">
-        <div className="">Please log in to checkout your cart</div>
-        <div>Redirect to Home page...</div>
+      <div className="need-log-in-auth">
+        <img
+          src="https://img.cdn4dd.com/s/managed/consumer/search/NoResult.svg"
+          alt=""
+          className="need-log-in-img"
+        />
+        <div className="need-log-in-title">
+          Please select a cart to check out
+        </div>
+        <div className="need-log-in-text">
+          Redirecting to Home page in {countdown} seconds...
+        </div>
       </div>
     );
   }

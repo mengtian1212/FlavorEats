@@ -1,14 +1,11 @@
 import { useHistory, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-function MyOneResSideBar({
-  myRestaurant,
-  showOverview,
-  setShowOverview,
-  showMenus,
-  setShowMenus,
-}) {
+function MyOneResSideBar({ myRestaurant }) {
   const history = useHistory();
   const location = useLocation();
+  const [showOverview, setShowOverview] = useState(true);
+  const [showMenus, setShowMenus] = useState(false);
 
   const handleClickAll = () => {
     setShowOverview(false);
@@ -28,17 +25,20 @@ function MyOneResSideBar({
     history.push(`/business/${myRestaurant.id}/items`);
   };
 
-  const overViewPathRegex = /^\/business\/\d+$/;
-  if (overViewPathRegex.test(location.pathname)) {
-    setShowOverview(true);
-    setShowMenus(false);
-  }
+  useEffect(() => {
+    const overViewPathRegex = /^\/business\/\d+$/;
+    if (overViewPathRegex.test(location.pathname)) {
+      setShowOverview(true);
+      setShowMenus(false);
+    }
 
-  const itemsPathRegex = /^\/business\/\d+\/items$/;
-  if (itemsPathRegex.test(location.pathname)) {
-    setShowOverview(false);
-    setShowMenus(true);
-  }
+    const itemsPathRegex = /^\/business\/\d+\/items$/;
+    if (itemsPathRegex.test(location.pathname)) {
+      setShowOverview(false);
+      setShowMenus(true);
+    }
+  }, [location]);
+
   return (
     <>
       <div className="menu-item2 cursor lih" onClick={handleClickAll}>

@@ -1,6 +1,5 @@
 import "./CreateRestaurant.css";
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
@@ -15,7 +14,6 @@ import ResAddressAutoComplete from "./ResAddressAutoComplete";
 
 function CreateRestaurant() {
   const [isAdded, setIsAdded] = useState(false);
-  const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
@@ -45,7 +43,6 @@ function CreateRestaurant() {
 
   const key = useSelector((state) => state.maps.key);
   const geoKey = useSelector((state) => state.maps.geoKey);
-
   useEffect(() => {
     if (!key) {
       dispatch(getKey());
@@ -210,17 +207,6 @@ function CreateRestaurant() {
     setShowTrash(false);
   };
 
-  if (!sessionUser) {
-    setTimeout(() => history.push("/restaurants"), 3000);
-    window.scroll(0, 0);
-    return (
-      <div className="need-log-in">
-        <div className="">Please log in to create a restaurant</div>
-        <div>Redirect to Home page...</div>
-      </div>
-    );
-  }
-
   return (
     <div className="main-place-holder-container1">
       <div className="black-background">
@@ -278,9 +264,10 @@ function CreateRestaurant() {
                 </div>
               )}
             </div>
-            {validationErrors.image && (
-              <div className="errors">{validationErrors.image[0]}</div>
-            )}
+            {validationErrors.image &&
+              validationErrors.image[0] !== "This field is required." && (
+                <div className="errors">{validationErrors.image[0]}</div>
+              )}
             {imageLoading && (
               <div className="errors">Image uploading... Please wait...</div>
             )}
@@ -413,7 +400,7 @@ function CreateRestaurant() {
             {isAdded && (
               <>
                 <button className={`reorder-btn5 ${isAdded ? "colorg" : ""}`}>
-                  Creating restaurant...
+                  Creating Restaurant...
                 </button>
                 <button
                   type="button"

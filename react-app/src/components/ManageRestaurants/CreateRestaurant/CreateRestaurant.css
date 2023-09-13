@@ -280,6 +280,5 @@ input[type="checkbox"] {
 
 .reorder-btn10.colorg {
   color: #918a8a;
-  pointer-events: none;
   cursor: not-allowed;
 }
