@@ -15,33 +15,6 @@ function StoreMapInfoModal({ restaurantId }) {
       : {}
   );
 
-  // function calculateDistance(lat1, lng1, lat2, lng2) {
-  //   const earthRadius = 6371; // Earth's radius in kilometers
-
-  //   const dLat = (lat2 - lat1) * (Math.PI / 180);
-  //   const dLng = (lng2 - lng1) * (Math.PI / 180);
-
-  //   const a =
-  //     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-  //     Math.cos(lat1 * (Math.PI / 180)) *
-  //       Math.cos(lat2 * (Math.PI / 180)) *
-  //       Math.sin(dLng / 2) *
-  //       Math.sin(dLng / 2);
-
-  //   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  //   const distance = earthRadius * c;
-  //   return distance; // Distance in kilometers
-  // }
-
-  // const distance = calculateDistance(
-  //   sessionUser?.lat,
-  //   sessionUser?.lng,
-  //   restaurant?.lat,
-  //   restaurant?.lng
-  // );
-  // console.log("distance", distance);
-
   useEffect(() => {
     dispatch(fetchOneRestaurantThunk(restaurantId)).then(() =>
       setIsLoading(false)
@@ -130,28 +103,32 @@ function StoreMapInfoModal({ restaurantId }) {
 
             {restaurant.description && <div className="vert-line2"></div>}
             {/* <section className="info-sec"> */}
-            <div className="info-entry">
-              <div className="info-icon">
-                <i className="fa-solid fa-book-open loc-dot1"></i>
+            {restaurant.description && (
+              <div className="info-entry">
+                <div className="info-icon">
+                  <i className="fa-solid fa-book-open loc-dot1"></i>
+                </div>
+                <div className="info-item1">{restaurant.description}</div>
               </div>
-              <div className="info-item1">{restaurant.description}</div>
-            </div>
+            )}
             {/* </section> */}
 
-            {restaurant.avg_rating !== 0 && <div className="vert-line2"></div>}
-            {restaurant.avg_rating !== 0 && (
-              <section className="info-sec">
-                <div className="info-entry">
-                  <div className="info-icon">
-                    <i className="fa-solid fa-star loc-dot1"></i>
-                  </div>
-                  <div className="info-item">
-                    {parseFloat(restaurant.avg_rating).toFixed(1)} (
-                    {restaurant.num_rating} ratings)
-                  </div>
+            <div className="vert-line2"></div>
+
+            <section className="info-sec">
+              <div className="info-entry">
+                <div className="info-icon">
+                  <i className="fa-solid fa-star loc-dot1"></i>
                 </div>
-              </section>
-            )}
+                <div className="info-item">
+                  {restaurant.avg_rating > 0
+                    ? parseFloat(restaurant.avg_rating).toFixed(1)
+                    : "0"}{" "}
+                  ({restaurant.num_rating}{" "}
+                  {restaurant.num_rating === 1 ? "rating" : "ratings"})
+                </div>
+              </div>
+            </section>
           </section>
         </div>
       )}

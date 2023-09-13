@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFavRestaurantsThunk } from "../../store/restaurants";
 import RestaurantCard from "../MainRestaurants/RestaurantCard";
+import LoadingPage from "../auth/LoadingPage";
 
 function FavoritePage() {
   const sessionUser = useSelector((state) => state.session.user);
@@ -25,17 +26,6 @@ function FavoritePage() {
     dispatch(fetchFavRestaurantsThunk()).then(() => setIsLoading(false));
     window.scroll(0, 0);
   }, [dispatch]);
-
-  if (!sessionUser) {
-    setTimeout(() => history.push("/restaurants"), 3000);
-    window.scroll(0, 0);
-    return (
-      <div className="need-log-in">
-        <div className="">Please log in to check favorited restaurants</div>
-        <div>Redirect to Home page...</div>
-      </div>
-    );
-  }
 
   const handleStartShop = () => {
     history.push("/restaurants");
@@ -76,6 +66,7 @@ function FavoritePage() {
           )}
         </div>
       )}
+      {isLoading && <LoadingPage />}
     </div>
   );
 }

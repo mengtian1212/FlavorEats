@@ -18,6 +18,8 @@ function UserButton({ user }) {
         <a
           href="https://www.maggietian.com/"
           className="menu-item github0 cursor userhover"
+          target="_blank"
+          rel="noreferrer"
         >
           <div className="menu-icons">
             <i className="fa-solid fa-globe"></i>
@@ -27,6 +29,8 @@ function UserButton({ user }) {
         <a
           href="https://github.com/mengtian1212/FlavorEats"
           className="menu-item github1 cursor userhover"
+          target="_blank"
+          rel="noreferrer"
         >
           <div className="menu-icons">
             <i className="fa-solid fa-code"></i>
@@ -36,6 +40,8 @@ function UserButton({ user }) {
         <a
           href="https://www.linkedin.com/in/mengtian1212/"
           className="menu-item github1 cursor userhover"
+          target="_blank"
+          rel="noreferrer"
         >
           <div className="menu-icons">
             <i className="fa-brands fa-linkedin"></i>
@@ -45,6 +51,8 @@ function UserButton({ user }) {
         <a
           href="https://github.com/mengtian1212"
           className="menu-item github1 cursor userhover"
+          target="_blank"
+          rel="noreferrer"
         >
           <div className="menu-icons">
             <i className="fa-brands fa-github"></i>

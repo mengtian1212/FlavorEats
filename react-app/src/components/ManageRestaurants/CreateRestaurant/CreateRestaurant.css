@@ -72,6 +72,25 @@
 
   margin: 16px 0;
   cursor: pointer;
+  position: relative;
+}
+
+.show-trash {
+  position: absolute;
+  top: 45%;
+  right: 2%;
+  font-size: 20px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+}
+
+.show-trash:hover {
+  color: #cc0000;
 }
 
 #aws-img-container.no-picture {
@@ -152,7 +171,6 @@
   border: 1px solid transparent;
   border-radius: 8px;
   width: 100%;
-  cursor: pointer;
 }
 
 .create-input:active::after {
@@ -199,6 +217,13 @@ select option {
   color: rgb(117, 117, 117);
 }
 
+.create-pp {
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  padding-top: 12px;
+}
+
 .create-p {
   font-size: 14px;
   line-height: 20px;
@@ -224,4 +249,36 @@ select option {
 
 input[type="checkbox"] {
   accent-color: #232323;
+}
+
+.reorder-btn10 {
+  margin: 0px auto;
+  width: fit-content;
+  background-color: transparent;
+  padding: 8px 0px;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.reorder-btn10 > * {
+  cursor: pointer;
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.reorder-btn10:hover {
+  color: #e60023;
+}
+
+.reorder-btn10.colorg {
+  color: #918a8a;
+  cursor: not-allowed;
 }

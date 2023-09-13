@@ -17,3 +17,8 @@ class EditRestaurantForm(FlaskForm):
     cusine_types = StringField('Cusine types', validators=[DataRequired()])
     lat = StringField('Latitute', validators=[DataRequired()])
     lng = StringField('Longitude', validators=[DataRequired()])
+
+    price_ranges = StringField("Price ranges", validators=[DataRequired()])
+    delivery_fee = StringField("Delivery fee", validators=[DataRequired()])
+    description = StringField("Description", validators=[
+                              Length(min=10, max=2000)])

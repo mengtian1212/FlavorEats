@@ -484,11 +484,15 @@
 
 .header-icon {
   color: black;
-  font-size: 19px;
+  font-size: 22px;
   line-height: 24px;
   height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none !important;
+}
+
+.header-icon:hover {
+  color: rgb(4, 136, 72);
 }

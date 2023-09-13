@@ -1,0 +1,20 @@
+.restaurant-form-container1 {
+  width: 690px;
+  /* padding: 26px;
+  padding-bottom: 22px;
+  padding-top: 40px; */
+}
+
+.previous1 {
+  border: none;
+  z-index: 1;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+.previous1:hover {
+  background-color: #d2d2d2;
+}
