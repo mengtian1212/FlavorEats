@@ -43,7 +43,7 @@
   border-radius: 8px;
   color: white;
   font-weight: 500;
-  background-color: red;
+  background-color: #cc0000;
   border: none;
   margin-left: 1.5rem;
   margin-top: 1rem;
@@ -53,5 +53,6 @@
 
 .del-btn:hover,
 .cancel-btn:hover {
-  filter: brightness(90%);
+  filter: brightness(92%);
+  /* opacity: 0.85; */
 }

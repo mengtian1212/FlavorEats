@@ -1,20 +1,101 @@
+.edit-manage-right {
+  padding-left: 80px;
+  z-index: 1;
+}
+
 .restaurant-form-container1 {
-  width: 690px;
+  /* width: 690px; */
   /* padding: 26px;
   padding-bottom: 22px;
   padding-top: 40px; */
+  display: flex;
+  gap: 80px;
+  padding-right: 80px;
+  max-width: 1800px;
+}
+
+.restaurant-form-container1-left {
+  width: 100%;
+}
+
+.update-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  margin-left: -80px;
 }
 
 .previous1 {
   border: none;
-  z-index: 1;
+  z-index: 1 !important;
   width: 48px;
   height: 48px;
   border-radius: 50%;
   background-color: #eeeeee;
   cursor: pointer;
+  /* margin-bottom: 16px;
+  margin-left: -24px;
+  margin-top: -60px; */
 }
 
 .previous1:hover {
   background-color: #d2d2d2;
+}
+
+/* description  */
+.description-container {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.textarea-comment1 {
+  background-color: rgb(238, 238, 238);
+
+  border-radius: 8px;
+  margin: 0px 0px 4px 0px;
+  padding: 12px 16px;
+
+  width: 100%;
+  min-height: 144px;
+  max-height: 300px;
+  outline: none;
+  border: 2px solid transparent;
+  resize: vertical;
+  overflow-y: auto;
+
+  line-height: 24px;
+}
+
+.textarea-comment1:focus {
+  border: 2px solid black;
+}
+
+/* delivery fee bar  */
+#delivery-fee {
+  margin: 14px 0;
+  width: 100%;
+  /* color: black; */
+  /* background-color: black; */
+}
+
+input[type="range"] {
+  accent-color: black;
+}
+
+.create-tt {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #333333;
+  padding: 14px 0;
+}
+
+.review-min1 {
+  font-size: 14px;
+  line-height: 16px;
+  color: rgb(118, 118, 118);
+  padding-top: 4px;
 }
