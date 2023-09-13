@@ -1,12 +1,13 @@
-import "./MyResAllMenuitems.css";
+import "./MyResMenuitems.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { fetchOneRestaurantThunk } from "../../../store/restaurants";
 import Header from "../../Header";
 import MyOneResSideBar from "../MyOneRestaurant/MyOneResSideBar";
+import LoadingPage from "../../auth/LoadingPage";
 
-function MyResAllMenuitems() {
+function MyResMenuitems() {
   const { restaurantId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -50,8 +51,9 @@ function MyResAllMenuitems() {
           </div>
         </div>
       )}
+      {isLoading && <LoadingPage />}
     </div>
   );
 }
 
-export default MyResAllMenuitems;
+export default MyResMenuitems;

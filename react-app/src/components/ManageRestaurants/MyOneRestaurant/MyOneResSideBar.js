@@ -44,10 +44,10 @@ function MyOneResSideBar({ myRestaurant }) {
       <div className="menu-item2 cursor lih" onClick={handleClickAll}>
         <i className="fa-solid fa-house menu-icons lih"></i>
         <div className="_16"></div>
-        <div className="lih">Manage my restaurants</div>
+        <div className="lih">Back to Managing Platform</div>
       </div>
       <div className="menu-item3">
-        Current restaurant <div className="_16"></div>
+        Current restaurant <div className="_4"></div>
         <i className={`fa-solid fa-chevron-down`}></i>
       </div>
       <div className="man">

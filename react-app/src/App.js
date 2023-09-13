@@ -22,7 +22,7 @@ import MyAllRestaurants from "./components/ManageRestaurants/MyAllRestaurants";
 import MyOneRestaurant from "./components/ManageRestaurants/MyOneRestaurant/MyOneResturant";
 import EditRestaurant from "./components/ManageRestaurants/EditRestaurant/EditRestaurant";
 
-import MyResAllMenuitems from "./components/ManageRestaurants/MyResAllMenuitems/MyResAllMenuitems";
+import MyResMenuitems from "./components/ManageRestaurants/MyResMenuitems";
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import PleaseLoginPage from "./components/auth/PleaseLoginPage";
@@ -145,23 +145,15 @@ function App() {
             path="/business/:restaurantId/items"
             message="Please log in to manage restaurants"
           >
-            <MyResAllMenuitems />
+            <MyResMenuitems />
           </ProtectedRoute>
           <ProtectedRoute
             exact
-            path="/business/:restaurantId/items/new"
+            path="/business/:restaurantId/item-builder"
             message="Please log in to manage restaurants"
           >
             <Navigation isLoaded={isLoaded} />
-            {/* <CreateMyMenuitem /> */}
-          </ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/business/:restaurantId/items/:itemId"
-            message="Please log in to manage restaurants"
-          >
-            <Navigation isLoaded={isLoaded} />
-            {/* <MyResOneMenuItem /> */}
+            {/* <CreateMenuitem /> */}
           </ProtectedRoute>
           <ProtectedRoute
             exact
@@ -169,7 +161,7 @@ function App() {
             message="Please log in to manage restaurants"
           >
             <Navigation isLoaded={isLoaded} />
-            {/* <EditMyResOneMenuItem /> */}
+            {/* <EditMenuItem /> */}
           </ProtectedRoute>
 
           <Route exact path="/auth">
