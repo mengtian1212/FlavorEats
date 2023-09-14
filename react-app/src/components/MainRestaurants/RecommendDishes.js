@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchRecommendDishesThunk } from "../../store/dishes";
 import { tns } from "tiny-slider";
-import OpenModalButton from "../OpenModalButton";
 import ItemModal from "../SingleRestaurant/ItemModal";
 import "../SingleRestaurant/SingleRestaurant.css";
 import "./RecommendDishes.css";
+import OpenModalText from "../OpenModalText";
 
 function RecommendDishes() {
   const dispatch = useDispatch();
@@ -114,7 +114,7 @@ function RecommendDishes() {
                               className="item-img"
                             />
                             <div className="item-background"></div>
-                            <OpenModalButton
+                            <OpenModalText
                               buttonText="Quick view"
                               onItemClick={closeMenu}
                               modalComponent={<ItemModal item={item} />}

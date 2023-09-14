@@ -10,6 +10,10 @@
   background-color: white;
 }
 
+.delete-width {
+  width: 560px;
+}
+
 .del-title {
   font-size: 24px;
   margin-bottom: 1rem;
@@ -55,4 +59,20 @@
 .cancel-btn:hover {
   filter: brightness(92%);
   /* opacity: 0.85; */
+}
+
+.review-t3 {
+  width: 100%;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: black;
+}
+
+.delete-res-name {
+  width: 100%;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: rgb(4, 136, 72);
 }

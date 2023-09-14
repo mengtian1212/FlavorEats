@@ -24,7 +24,7 @@ function MyOneRestaurant() {
       : {}
   );
   let groups = myRestaurant?.cusine_types?.split("#");
-
+  const percentage = (myRestaurant.avg_rating / 5) * 100;
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -65,33 +65,44 @@ function MyOneRestaurant() {
               <MyOneResSideBar myRestaurant={myRestaurant} />
             </div>
             <div className="manage-right-container">
-              <div>
+              <section className="my-one-res-head">
                 <img
                   src={myRestaurant.image_url}
                   alt=""
-                  className="restaurant-photo"
+                  className="my-one-res-photo cursor"
+                  onClick={() =>
+                    history.push(`/restaurants/${myRestaurant.id}`)
+                  }
                 />
-                <div className="res-title-container">
-                  <div className="res-name">{myRestaurant.name}</div>
+                <div className="my-one-res-head-sub">
+                  <div className="res-list-title2">{myRestaurant.name}</div>
+
+                  <div className="my-res-address-container">
+                    <i className="fa-solid fa-location-dot my-res-loc"></i>
+                    <div className="res-add">{myRestaurant?.address}</div>
+                  </div>
+
                   <div className="res-stat-container">
-                    <div className="res-rating-container">
-                      <i className="fa-solid fa-star"></i>
-                      {myRestaurant.avg_rating > 0
-                        ? myRestaurant.avg_rating.toFixed(1)
-                        : "0"}
+                    <div className="res-add">{groups.join(" • ")}</div>
+                  </div>
+
+                  <div className="my-res-rating-stat">
+                    <div className="ratings">
+                      <div className="empty-stars"></div>
+                      <div
+                        className="full-stars"
+                        style={{ width: `${percentage}%` }}
+                      ></div>
                     </div>
-                    <div>
-                      ({myRestaurant.num_rating}{" "}
+                    <div className="res-add">
+                      {myRestaurant.avg_rating.toFixed(1)} (
+                      {myRestaurant.num_rating}{" "}
                       {myRestaurant.num_rating === 1 ? "rating" : "ratings"})
                     </div>
-                    <div>• </div>
-                    <div>{groups && groups[0]}</div>
-                    <div>• </div>
-                    <div>{myRestaurant.price_ranges}</div>
                   </div>
-                  <div className="res-add">{myRestaurant?.address}</div>
                 </div>
-              </div>
+              </section>
+
               <div className="my-one-edit-btns">
                 <button
                   className="reorder-btn6"
@@ -99,10 +110,10 @@ function MyOneRestaurant() {
                     history.push(`/business/${myRestaurant.id}/edit`)
                   }
                 >
-                  Edit restaurant profile
+                  Edit store profile
                 </button>
                 <OpenModalButton
-                  buttonText="Delete restaurant"
+                  buttonText="Delete store"
                   modalComponent={<DeleteResModal restaurant={myRestaurant} />}
                   myClass="reorder-btn6"
                 />

@@ -46,7 +46,14 @@
 
 /* description  */
 .description-container {
-  padding: 16px 0;
+  padding: 8px 0 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.description-container1 {
+  padding: 8px 0 0px;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -71,6 +78,28 @@
 }
 
 .textarea-comment1:focus {
+  border: 2px solid black;
+}
+
+.textarea-comment2 {
+  background-color: rgb(238, 238, 238);
+
+  border-radius: 8px;
+  margin: 0px 0px 4px 0px;
+  padding: 12px 16px;
+
+  width: 100%;
+  min-height: 200px;
+  max-height: 300px;
+  outline: none;
+  border: 2px solid transparent;
+  resize: vertical;
+  overflow-y: auto;
+
+  line-height: 24px;
+}
+
+.textarea-comment2:focus {
   border: 2px solid black;
 }
 
@@ -99,4 +128,10 @@ input[type="range"] {
   line-height: 16px;
   color: rgb(118, 118, 118);
   padding-top: 4px;
+}
+
+.review-min2 {
+  font-size: 14px;
+  line-height: 16px;
+  color: rgb(118, 118, 118);
 }

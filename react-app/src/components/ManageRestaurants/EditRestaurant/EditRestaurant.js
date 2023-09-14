@@ -12,7 +12,6 @@ import {
   fetchOneRestaurantThunk,
 } from "../../../store/restaurants";
 import Header from "../../Header";
-import { useModal } from "../../../context/Modal";
 import { getKey } from "../../../store/maps";
 import ResAddressAutoComplete from "../CreateRestaurant/ResAddressAutoComplete";
 import MyOneResSideBar from "../MyOneRestaurant/MyOneResSideBar";
@@ -28,7 +27,6 @@ function EditRestaurant() {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const { closeModal } = useModal();
   const restaurant = useSelector((state) =>
     state.restaurants?.singleRestaurant
       ? state.restaurants?.singleRestaurant
@@ -43,7 +41,7 @@ function EditRestaurant() {
   // taking a image file for form.data, initially set to null
   const [image, setImage] = useState(null);
   // read initial image_url or loaded image file url for display
-  const [photoUrl, setPhotoUrl] = useState(restaurant?.image_url || null);
+  const [photoUrl, setPhotoUrl] = useState(restaurant?.image_url || "");
   // showing no picture error
   const [showNoPictureError, setShowNoPictureError] = useState(false);
   // after submit image loading to aws
@@ -59,7 +57,7 @@ function EditRestaurant() {
   );
   const [city, setCity] = useState(restaurant?.city || "");
   const [state, setState] = useState(restaurant?.state || "");
-  const [zip, setZip] = useState(null);
+  const [zip, setZip] = useState(restaurant?.zip || "");
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
   const [showVerifyAddress, setShowVerifyAddress] = useState(true);
@@ -90,30 +88,57 @@ function EditRestaurant() {
 
   useEffect(() => {
     dispatch(fetchOneRestaurantThunk(restaurantId)).then(() => {
+      // setPhotoUrl(restaurant?.image_url);
+      // setAddress(restaurant?.address?.split(",")[0]);
+      // setSelectedTypes(restaurant?.cusine_types?.split("#"));
+
+      // setCity(restaurant?.city || "");
+      // setState(restaurant?.state || "");
+      // setLat(restaurant?.lat || 0);
+      // setLng(restaurant?.lng || 0);
+      // setZip(restaurant?.zip || null);
+      // setPriceRange(restaurant?.price_ranges || "");
+      // setDeliveryFee(restaurant?.delivery_fee || "");
+      // setDescription(restaurant?.description || "");
       setIsLoading(false);
-      setPhotoUrl(restaurant?.image_url);
-      setAddress(restaurant?.address?.split(",")[0]);
-      setSelectedTypes(restaurant?.cusine_types?.split("#"));
     });
     window.scroll(0, 0);
   }, [restaurantId]);
 
-  // Check if the current user is the restaurant owner
   useEffect(() => {
-    if (
-      sessionUser &&
-      !isLoading &&
-      restaurant &&
-      Object.values(restaurant).length &&
-      sessionUser.id !== restaurant.owner_id
-    ) {
-      history.push("/unauthorized");
-    }
+    if (isLoading) return;
 
-    if (!isLoading && restaurant && Object.values(restaurant).length === 0) {
-      history.push("/not-found");
-    }
-  }, [sessionUser, restaurant]);
+    setPhotoUrl(restaurant?.image_url);
+    setAddress(restaurant?.address?.split(",")[0]);
+    setSelectedTypes(restaurant?.cusine_types?.split("#"));
+
+    setName(restaurant?.name || "");
+    setCity(restaurant?.city || "");
+    setState(restaurant?.state || "");
+    setZip(restaurant?.zip || "");
+    setLat(restaurant?.lat || 0);
+    setLng(restaurant?.lng || 0);
+    setPriceRange(restaurant?.price_ranges || "");
+    setDeliveryFee(restaurant?.delivery_fee || "");
+    setDescription(restaurant?.description || "");
+  }, [restaurant, isLoading]);
+
+  // // Check if the current user is the restaurant owner
+  // useEffect(() => {
+  //   if (
+  //     sessionUser &&
+  //     !isLoading &&
+  //     restaurant &&
+  //     Object.values(restaurant).length &&
+  //     sessionUser.id !== restaurant.owner_id
+  //   ) {
+  //     history.push("/unauthorized");
+  //   }
+
+  //   if (!isLoading && restaurant && Object.values(restaurant).length === 0) {
+  //     history.push("/not-found");
+  //   }
+  // }, [sessionUser, restaurant]);
 
   //////////// for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
@@ -140,7 +165,7 @@ function EditRestaurant() {
     e.stopPropagation();
     if (!isAdded) {
       setImage(null);
-      setPhotoUrl(null);
+      setPhotoUrl("");
       setShowNoPictureError(false);
       setImageLoading(false);
       setValidationErrors((prev) => ({ ...prev, image: "" }));
@@ -162,7 +187,7 @@ function EditRestaurant() {
   //////////// for reset form
   const resetForm = () => {
     setImage(null);
-    setPhotoUrl(null);
+    setPhotoUrl("");
     setShowNoPictureError(false);
     setImageLoading(false);
 
@@ -170,7 +195,7 @@ function EditRestaurant() {
     setAddress("");
     setCity("");
     setState("");
-    setZip(null);
+    setZip("");
     setLat(0);
     setLng(0);
 
@@ -194,7 +219,7 @@ function EditRestaurant() {
 
   //////////// for validate form
   const validateForm = () => {
-    if (photoUrl === null) {
+    if (photoUrl === "") {
       setShowNoPictureError(true);
     }
 
@@ -271,7 +296,6 @@ function EditRestaurant() {
     } else {
       setImageLoading(false);
       resetForm();
-      closeModal();
       history.push(`/business/${data.id}`);
       window.scroll(0, 0);
     }
@@ -340,7 +364,7 @@ function EditRestaurant() {
                   <div>
                     <div className="create-t">Store preview image</div>
                     <div
-                      id="aws-img-container"
+                      id="aws-img-container1"
                       className={showNoPictureError ? "no-picture" : ""}
                       onClick={() => uploadInput.current.click()}
                     >
@@ -361,7 +385,7 @@ function EditRestaurant() {
                       {photoUrl ? (
                         <img
                           src={photoUrl}
-                          id="preview-restaurant-img"
+                          id="preview-restaurant-img1"
                           alt=""
                         />
                       ) : (
@@ -381,11 +405,11 @@ function EditRestaurant() {
                     {validationErrors.image && !showNoPictureError && (
                       <div className="errors">{validationErrors.image[0]}</div>
                     )}
-                    {imageLoading && (
+                    {/* {imageLoading && (
                       <div className="errors">
                         Image uploading... Please wait...
                       </div>
-                    )}
+                    )} */}
                   </div>
 
                   {/* for restaurant name */}
@@ -409,6 +433,7 @@ function EditRestaurant() {
                       <div className="errors">{validationErrors.name}</div>
                     )}
                   </div>
+
                   {/* for restaurant address */}
                   <div className="title-container">
                     <div className="create-t">Store address</div>
@@ -478,7 +503,7 @@ function EditRestaurant() {
 
                 <div className="restaurant-form-container1-left">
                   {/* for restaurant price range */}
-                  <div className="title-container">
+                  <div className="title-container1">
                     <div className="create-t">Price range</div>
                     <div className="city-state-input-container">
                       <div className="price-range">
@@ -600,6 +625,11 @@ function EditRestaurant() {
                   </div>
 
                   <div className="btns-container">
+                    {imageLoading && (
+                      <div className="errors">
+                        Image uploading... Please wait...
+                      </div>
+                    )}
                     {!isAdded && (
                       <>
                         <button

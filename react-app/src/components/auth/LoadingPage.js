@@ -1,20 +1,32 @@
 import "./auth.css";
-import { TailSpin } from "react-loader-spinner";
+import { TailSpin, ColorRing } from "react-loader-spinner";
 
 function LoadingPage() {
   return (
     <div className="spinner">
       {/* <img src={`../../images/spin.gif`} alt="Loading in progress"></img> */}
       <TailSpin
-        height="50"
-        width="50"
-        color="#d5d5d5"
+        height="100"
+        width="100"
+        color="#eeeeee"
         ariaLabel="tail-spin-loading"
-        radius="8"
+        radius="1"
         wrapperStyle={{}}
         wrapperClass=""
         visible={true}
+        strokeWidth={3}
+        speedMultiplier="13"
       />
+      {/* <ColorRing
+        visible={true}
+        height="128"
+        width="128"
+        radius={1}
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+        colors={["#eeeeee", "#eeeeee", "#eeeeee", "#eeeeee", "#eeeeee"]}
+      /> */}
     </div>
   );
 }

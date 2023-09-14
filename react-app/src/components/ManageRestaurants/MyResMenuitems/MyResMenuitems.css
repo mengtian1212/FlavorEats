@@ -1,0 +1,35 @@
+.dish-table-container thead tr,
+.dish-table-container tbody tr {
+  grid-template-columns: 100px 150px 1fr 100px 150px;
+}
+
+.my-item-img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.dish-table-head {
+  display: flex;
+}
+
+.table-colname {
+  cursor: pointer;
+}
+
+.item-plus5 {
+  background-color: rgb(4, 136, 72);
+  /* position: absolute;
+  top: 12px; */
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 12px;
+  z-index: 1;
+  border-radius: 0px 12px 12px 0px;
+  font-weight: 500;
+  color: #ffffff;
+  text-align: center;
+  vertical-align: center;
+}

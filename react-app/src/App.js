@@ -23,11 +23,13 @@ import MyOneRestaurant from "./components/ManageRestaurants/MyOneRestaurant/MyOn
 import EditRestaurant from "./components/ManageRestaurants/EditRestaurant/EditRestaurant";
 
 import MyResMenuitems from "./components/ManageRestaurants/MyResMenuitems";
+import CreateItem from "./components/ManageRestaurants/CreateItem/CreateItem";
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import PleaseLoginPage from "./components/auth/PleaseLoginPage";
 import UnauthorizedPage from "./components/auth/UnauthorizedPage";
 import NotFoundPage from "./components/auth/NotFoundPage";
+import LoadingPage from "./components/auth/LoadingPage";
 
 // Protection checks:
 // Generally,
@@ -152,8 +154,7 @@ function App() {
             path="/business/:restaurantId/item-builder"
             message="Please log in to manage restaurants"
           >
-            <Navigation isLoaded={isLoaded} />
-            {/* <CreateMenuitem /> */}
+            <CreateItem />
           </ProtectedRoute>
           <ProtectedRoute
             exact
@@ -172,6 +173,9 @@ function App() {
           </Route>
           <Route exact path="/not-found">
             <NotFoundPage />
+          </Route>
+          <Route exact path="/loading">
+            <LoadingPage />
           </Route>
           <Route exact path="/">
             <LandingPage />

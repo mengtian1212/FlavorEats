@@ -1,12 +1,14 @@
-from app.models import db, Restaurant, Review, Order, Favorite
+from app.models import db, Restaurant, Review, Order, Favorite, MenuItem
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .AWS_helpers import upload_file_to_s3, get_unique_filename
 from .auth_routes import validation_errors_to_error_messages
+from .auth_routes import validation_errors_to_error_dict
 
 from app.forms.create_restaurant_form import NewRestaurantForm
 from app.forms.edit_restaurant_form import EditRestaurantForm
 from app.forms.create_review_form import ReviewForm
+from app.forms.create_dish_form import NewDishForm
 from sqlalchemy import and_, case, desc
 from sqlalchemy.sql import func
 import random
@@ -236,6 +238,47 @@ def delete_restaurant(restaurantId):
     db.session.delete(targetRestaurant)
     db.session.commit()
     return {"id": targetRestaurant.id}
+
+
+@restaurant_routes.route('/<int:restaurantId>/dishes')
+def get_restaurant_dishes_by_restaurantId(restaurantId):
+    targetRestaurant = Restaurant.query.get(restaurantId)
+    if not targetRestaurant:
+        return jsonify({"errors": "Restaurant not found"}), 404
+    dishes = MenuItem.query.filter(
+        MenuItem.restaurant_id == restaurantId).all()
+    # return {"dishes": {dish.id: dish.to_dict() for dish in dishes}}
+    return [dish.to_dict() for dish in dishes]
+
+
+@restaurant_routes.route('/<int:restaurantId>/dishes', methods=["POST"])
+@login_required
+def new_dish(restaurantId):
+    form = NewDishForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        image_file = form.data["image"]
+        image_file.filename = get_unique_filename(image_file.filename)
+        upload = upload_file_to_s3(image_file)
+        if "url" not in upload:
+            return {"errors": upload}, 400
+
+        new_dish = MenuItem(
+            image_url=upload["url"],
+            item_name=form.data['item_name'],
+            price=form.data['price'],
+            description=form.data['description'],
+            item_type=form.data['item_type'],
+            calory=form.data['calory'],
+            restaurant_id=form.data['restaurant_id']
+        )
+
+        db.session.add(new_dish)
+        db.session.commit()
+        return new_dish.to_dict()
+
+    return {"errors": validation_errors_to_error_dict(form.errors)}, 400
 
 
 @restaurant_routes.route('/<int:restaurantId>/reviews')

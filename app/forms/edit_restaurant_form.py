@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, SelectField, DecimalField, BooleanField, SubmitField
 from flask_wtf.file import FileField, FileAllowed, FileRequired
-from wtforms.validators import DataRequired, URL, NumberRange, Length
+from wtforms.validators import DataRequired, URL, NumberRange, Length, Optional
 from ..api.AWS_helpers import ALLOWED_EXTENSIONS
 
 
@@ -21,4 +21,4 @@ class EditRestaurantForm(FlaskForm):
     price_ranges = StringField("Price ranges", validators=[DataRequired()])
     delivery_fee = StringField("Delivery fee", validators=[DataRequired()])
     description = StringField("Description", validators=[
-                              Length(min=10, max=2000)])
+                              Optional(), Length(min=10, max=2000)])

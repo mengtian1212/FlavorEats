@@ -26,6 +26,11 @@ function MyOneResSideBar({ myRestaurant }) {
   };
 
   useEffect(() => {
+    if (location.pathname.includes("item-builder")) {
+      setShowOverview(false);
+      setShowMenus(true);
+    }
+
     const overViewPathRegex = /^\/business\/\d+$/;
     if (overViewPathRegex.test(location.pathname)) {
       setShowOverview(true);

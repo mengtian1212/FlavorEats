@@ -135,12 +135,55 @@
   color: #cc0000;
 }
 
+.errors1 {
+  color: #cc0000;
+  margin-top: -24px;
+  margin-bottom: 24px;
+}
+
+/* image size for edit restaurant page  */
+#aws-img-container1 {
+  width: 100%;
+  height: 470px;
+  border-radius: 8px;
+  background-color: rgb(238, 238, 238);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  object-fit: cover;
+
+  margin: 16px 0;
+  cursor: pointer;
+  position: relative;
+}
+
+#aws-img-container1.no-picture {
+  border: 2px solid #cc0000 !important;
+  background-color: #ffe8e7 !important;
+}
+
+#preview-restaurant-img1 {
+  height: 470px;
+  width: 100%;
+  object-fit: contain;
+  background-color: white;
+  border-radius: 8px;
+}
+
 /* cuisine types  */
 .cuisine-type-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
+
+.cuisine-type-container1 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
 .checkbox-label {
   display: flex;
   align-items: center;
@@ -150,6 +193,17 @@
   font-size: 14px;
   line-height: 24px;
   color: #333333;
+}
+
+.checkbox-label1 {
+  display: flex;
+  margin-right: 16px;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px;
+  color: #333333;
+  height: fit-content;
 }
 
 /*  */
@@ -197,6 +251,11 @@ select:active::before {
   display: flex;
   gap: 16px;
   width: 100%;
+}
+
+.city-state-input-container1 {
+  display: flex;
+  gap: 16px;
 }
 
 select,
@@ -248,6 +307,28 @@ select option {
   gap: 8px;
 }
 
+.title-container1 {
+  margin: 0px 0px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.title-container2 {
+  width: 100%;
+  margin: 0px 0px 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.title-container3 {
+  width: 100%;
+  margin: 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
 input[type="checkbox"] {
   accent-color: #232323;
 }
@@ -282,4 +363,105 @@ input[type="checkbox"] {
 .reorder-btn10.colorg {
   color: #918a8a;
   cursor: not-allowed;
+}
+
+.item-price-container {
+  display: flex;
+  align-items: center;
+}
+
+.item-price-container1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 200px;
+}
+
+.create-input1 {
+  /* padding: 10px 14px 10px 14px; */
+  /* line-height: 24px; */
+  font-size: 16px;
+  font-weight: normal;
+  background-color: #eeeeee;
+  border-left: 2px solid black;
+
+  border-top: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+
+  border-radius: 0 8px 8px 0;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+.create-input1:focus {
+  /* border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black; */
+  border: 2px solid black;
+  outline: none;
+}
+
+.dollar-container {
+  background-color: #000000;
+  color: white;
+  border-radius: 8px 0px 0px 8px;
+  padding: 12px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-cal {
+  color: white;
+  background-color: #000000;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 0px 8px 8px 0px;
+}
+
+.create-input2 {
+  /* padding: 10px 14px 10px 14px; */
+  /* line-height: 24px; */
+  font-size: 16px;
+  font-weight: normal;
+  background-color: #eeeeee;
+  border-left: 2px solid transparent;
+  border-top: 2px solid transparent;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+
+  border-radius: 8px 0 0 8px;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+.create-input2:focus {
+  border: 2px solid black;
+  /* border-color: 1px solid #75bfff !important; */
+  outline: none;
+}
+
+.exist {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.category {
+  font-style: italic !important;
+}
+
+.category1 {
+  font-style: italic !important;
+  font-size: 14px;
+  line-height: 24px;
+  color: #333333;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.fll {
+  display: block;
+  width: 100% !important;
 }
