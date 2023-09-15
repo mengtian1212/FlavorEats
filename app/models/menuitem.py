@@ -15,7 +15,7 @@ class MenuItem(db.Model):
     price = db.Column(db.Numeric(5, 2), nullable=False)
     image_url = db.Column(db.String(255), nullable=True)
     description = db.Column(db.String, nullable=True)
-    item_type = db.Column(db.String, nullable=True)
+    item_type = db.Column(db.String(50), nullable=True)
     calory = db.Column(db.Integer, nullable=True)
     num_likes = db.Column(db.Integer, nullable=False, default=0)
     num_dislikes = db.Column(db.Integer, nullable=False, default=0)

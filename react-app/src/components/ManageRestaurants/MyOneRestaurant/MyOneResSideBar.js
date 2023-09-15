@@ -26,6 +26,11 @@ function MyOneResSideBar({ myRestaurant }) {
   };
 
   useEffect(() => {
+    if (location.pathname.includes("item-builder")) {
+      setShowOverview(false);
+      setShowMenus(true);
+    }
+
     const overViewPathRegex = /^\/business\/\d+$/;
     if (overViewPathRegex.test(location.pathname)) {
       setShowOverview(true);
@@ -44,10 +49,10 @@ function MyOneResSideBar({ myRestaurant }) {
       <div className="menu-item2 cursor lih" onClick={handleClickAll}>
         <i className="fa-solid fa-house menu-icons lih"></i>
         <div className="_16"></div>
-        <div className="lih">Manage my restaurants</div>
+        <div className="lih">Back to Managing Platform</div>
       </div>
       <div className="menu-item3">
-        Current restaurant <div className="_16"></div>
+        Current store <div className="_4"></div>
         <i className={`fa-solid fa-chevron-down`}></i>
       </div>
       <div className="man">
@@ -61,7 +66,7 @@ function MyOneResSideBar({ myRestaurant }) {
         ></i>
         <div className="_16"></div>
         <div className={`lih ${showOverview ? "underfocus" : ""}`}>
-          Overview
+          Store overview
         </div>
       </div>
       <div
@@ -74,7 +79,7 @@ function MyOneResSideBar({ myRestaurant }) {
           }`}
         ></i>
         <div className="_16"></div>
-        <div className={`lih ${showMenus ? "underfocus" : ""}`}>Menu</div>
+        <div className={`lih ${showMenus ? "underfocus" : ""}`}>Store menu</div>
       </div>
     </>
   );

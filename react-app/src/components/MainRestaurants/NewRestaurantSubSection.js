@@ -27,6 +27,7 @@ function NewRestaurantSubSection() {
             <p className="item-dcap">Be one of the first to support them</p>
           </div>
           <div className="newest-res-card">
+            <div className="item-plus4">New</div>
             {targetRestaurant && Object.values(targetRestaurant) !== 0 && (
               <RestaurantCard restaurant={targetRestaurant} />
             )}

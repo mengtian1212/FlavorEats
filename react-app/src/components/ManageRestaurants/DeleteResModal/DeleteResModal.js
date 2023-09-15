@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./DeleteResModal.css";
 import { useModal } from "../../../context/Modal";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 import { deleteRestaurantThunk } from "../../../store/restaurants";
 
 function DeleteResModal({ restaurant }) {
@@ -17,8 +17,12 @@ function DeleteResModal({ restaurant }) {
   };
   return (
     <>
-      <div className="delete-pin">
-        <div className="review-t">Delete this reataurant?</div>
+      <div className="delete-pin delete-width">
+        <div className="review-t3">
+          Are you sure to delete{" "}
+          <span className="delete-res-name">{restaurant.name}</span> on &nbsp;
+          <span className="delete-res-name">{restaurant.address}</span>?
+        </div>
         <div className="delete-content">
           Once you delete a restaurant, you can't undo it!
         </div>

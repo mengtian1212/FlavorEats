@@ -137,6 +137,15 @@
   font-size: 16px;
 }
 
+.error-message3 {
+  height: max-content;
+  font-style: italic;
+  padding: 36px 0px 8px;
+  color: rgb(84, 84, 84);
+  font-weight: 500;
+  font-size: 16px;
+}
+
 .login-password {
   position: relative;
 }

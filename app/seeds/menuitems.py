@@ -4720,7 +4720,7 @@ def seed_menuitems():
             "item_name": "Roasted Broccoli",
             "item_type": "Appetizers",
             "price": 10.00,
-            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/114eb32dcee50c2c7df7c395f3d7fd20/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
+            "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/f0ab8c57185268c9fa72b47541166751/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Roasted broccoli, red onions, and our house-made gochujang sauce. (Gluten-free & Vegan)"
         },
         {  # 518

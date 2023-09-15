@@ -100,7 +100,7 @@ function PastOrderReceiptModal({ pastOrderId, restaurantId, resName }) {
             <div className="checkout-t">Order Details</div>
           </section>
 
-          <div class="vert-line1"></div>
+          <div className="vert-line1"></div>
           <div className="order-item-container1">
             {orderJustPlaced?.order_items &&
               Object.values(orderJustPlaced?.order_items).map(
@@ -114,7 +114,7 @@ function PastOrderReceiptModal({ pastOrderId, restaurantId, resName }) {
               )}
           </div>
 
-          <div class="vert-line1"></div>
+          <div className="vert-line1"></div>
           <div className="receipt-fees">
             <div className="single-fee-container">
               <div className="receipt-sub">Subtotal</div>
@@ -141,7 +141,7 @@ function PastOrderReceiptModal({ pastOrderId, restaurantId, resName }) {
               <div>${parseFloat(orderJustPlaced.tip).toFixed(2)}</div>
             </div>
           </div>
-          <div class="vert-line1"></div>
+          <div className="vert-line1"></div>
 
           <section className="receipt-sec5">
             <div className="checkout-t">Total</div>

@@ -10,6 +10,10 @@
   background-color: white;
 }
 
+.delete-width {
+  width: 560px;
+}
+
 .del-title {
   font-size: 24px;
   margin-bottom: 1rem;
@@ -43,7 +47,7 @@
   border-radius: 8px;
   color: white;
   font-weight: 500;
-  background-color: red;
+  background-color: #cc0000;
   border: none;
   margin-left: 1.5rem;
   margin-top: 1rem;
@@ -53,5 +57,22 @@
 
 .del-btn:hover,
 .cancel-btn:hover {
-  filter: brightness(90%);
+  filter: brightness(92%);
+  /* opacity: 0.85; */
+}
+
+.review-t3 {
+  width: 100%;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: black;
+}
+
+.delete-res-name {
+  width: 100%;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  color: rgb(4, 136, 72);
 }

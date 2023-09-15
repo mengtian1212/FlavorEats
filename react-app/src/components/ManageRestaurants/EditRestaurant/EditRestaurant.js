@@ -12,7 +12,6 @@ import {
   fetchOneRestaurantThunk,
 } from "../../../store/restaurants";
 import Header from "../../Header";
-import { useModal } from "../../../context/Modal";
 import { getKey } from "../../../store/maps";
 import ResAddressAutoComplete from "../CreateRestaurant/ResAddressAutoComplete";
 import MyOneResSideBar from "../MyOneRestaurant/MyOneResSideBar";
@@ -28,7 +27,6 @@ function EditRestaurant() {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const { closeModal } = useModal();
   const restaurant = useSelector((state) =>
     state.restaurants?.singleRestaurant
       ? state.restaurants?.singleRestaurant
@@ -43,7 +41,7 @@ function EditRestaurant() {
   // taking a image file for form.data, initially set to null
   const [image, setImage] = useState(null);
   // read initial image_url or loaded image file url for display
-  const [photoUrl, setPhotoUrl] = useState(restaurant?.image_url || null);
+  const [photoUrl, setPhotoUrl] = useState(restaurant?.image_url || "");
   // showing no picture error
   const [showNoPictureError, setShowNoPictureError] = useState(false);
   // after submit image loading to aws
@@ -59,7 +57,7 @@ function EditRestaurant() {
   );
   const [city, setCity] = useState(restaurant?.city || "");
   const [state, setState] = useState(restaurant?.state || "");
-  const [zip, setZip] = useState(null);
+  const [zip, setZip] = useState(restaurant?.zip || "");
   const [lat, setLat] = useState(0);
   const [lng, setLng] = useState(0);
   const [showVerifyAddress, setShowVerifyAddress] = useState(true);
@@ -90,30 +88,57 @@ function EditRestaurant() {
 
   useEffect(() => {
     dispatch(fetchOneRestaurantThunk(restaurantId)).then(() => {
+      // setPhotoUrl(restaurant?.image_url);
+      // setAddress(restaurant?.address?.split(",")[0]);
+      // setSelectedTypes(restaurant?.cusine_types?.split("#"));
+
+      // setCity(restaurant?.city || "");
+      // setState(restaurant?.state || "");
+      // setLat(restaurant?.lat || 0);
+      // setLng(restaurant?.lng || 0);
+      // setZip(restaurant?.zip || null);
+      // setPriceRange(restaurant?.price_ranges || "");
+      // setDeliveryFee(restaurant?.delivery_fee || "");
+      // setDescription(restaurant?.description || "");
       setIsLoading(false);
-      setPhotoUrl(restaurant?.image_url);
-      setAddress(restaurant?.address?.split(",")[0]);
-      setSelectedTypes(restaurant?.cusine_types?.split("#"));
     });
     window.scroll(0, 0);
   }, [restaurantId]);
 
-  // Check if the current user is the restaurant owner
   useEffect(() => {
-    if (
-      sessionUser &&
-      !isLoading &&
-      restaurant &&
-      Object.values(restaurant).length &&
-      sessionUser.id !== restaurant.owner_id
-    ) {
-      history.push("/unauthorized");
-    }
+    if (isLoading) return;
 
-    if (!isLoading && restaurant && Object.values(restaurant).length === 0) {
-      history.push("/not-found");
-    }
-  }, [sessionUser, restaurant]);
+    setPhotoUrl(restaurant?.image_url);
+    setAddress(restaurant?.address?.split(",")[0]);
+    setSelectedTypes(restaurant?.cusine_types?.split("#"));
+
+    setName(restaurant?.name || "");
+    setCity(restaurant?.city || "");
+    setState(restaurant?.state || "");
+    setZip(restaurant?.zip || "");
+    setLat(restaurant?.lat || 0);
+    setLng(restaurant?.lng || 0);
+    setPriceRange(restaurant?.price_ranges || "");
+    setDeliveryFee(restaurant?.delivery_fee || "");
+    setDescription(restaurant?.description || "");
+  }, [restaurant, isLoading]);
+
+  // // Check if the current user is the restaurant owner
+  // useEffect(() => {
+  //   if (
+  //     sessionUser &&
+  //     !isLoading &&
+  //     restaurant &&
+  //     Object.values(restaurant).length &&
+  //     sessionUser.id !== restaurant.owner_id
+  //   ) {
+  //     history.push("/unauthorized");
+  //   }
+
+  //   if (!isLoading && restaurant && Object.values(restaurant).length === 0) {
+  //     history.push("/not-found");
+  //   }
+  // }, [sessionUser, restaurant]);
 
   //////////// for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
@@ -140,7 +165,7 @@ function EditRestaurant() {
     e.stopPropagation();
     if (!isAdded) {
       setImage(null);
-      setPhotoUrl(null);
+      setPhotoUrl("");
       setShowNoPictureError(false);
       setImageLoading(false);
       setValidationErrors((prev) => ({ ...prev, image: "" }));
@@ -162,7 +187,7 @@ function EditRestaurant() {
   //////////// for reset form
   const resetForm = () => {
     setImage(null);
-    setPhotoUrl(null);
+    setPhotoUrl("");
     setShowNoPictureError(false);
     setImageLoading(false);
 
@@ -170,7 +195,7 @@ function EditRestaurant() {
     setAddress("");
     setCity("");
     setState("");
-    setZip(null);
+    setZip("");
     setLat(0);
     setLng(0);
 
@@ -194,7 +219,7 @@ function EditRestaurant() {
 
   //////////// for validate form
   const validateForm = () => {
-    if (photoUrl === null) {
+    if (photoUrl === "") {
       setShowNoPictureError(true);
     }
 
@@ -254,11 +279,11 @@ function EditRestaurant() {
     formData.append("lng", lng);
 
     formData.append("name", nameData);
-    formData.append("cusine_types", selectedTypes.join("#").trim());
+    formData.append("cusine_types", selectedTypes?.join("#").trim());
 
     formData.append("price_ranges", priceRange);
     formData.append("delivery_fee", deliveryFee);
-    if (description && description.trim().length !== 0) {
+    if (description && description?.trim().length !== 0) {
       formData.append("description", description.trim());
     }
 
@@ -271,7 +296,6 @@ function EditRestaurant() {
     } else {
       setImageLoading(false);
       resetForm();
-      closeModal();
       history.push(`/business/${data.id}`);
       window.scroll(0, 0);
     }
@@ -320,305 +344,329 @@ function EditRestaurant() {
             <div className="manage-left-container">
               <MyOneResSideBar myRestaurant={restaurant} />
             </div>
-            <div className="manage-right-container">
-              <button
-                className="previous1"
-                onClick={() => history.push(`/business/${restaurantId}`)}
-              >
-                <i className="fa-solid fa-arrow-left side-show-arrow"></i>
-              </button>
+            <div className="manage-right-container edit-manage-right">
+              <div className="update-title">
+                <button
+                  className="previous1"
+                  onClick={() => history.push(`/business/${restaurantId}`)}
+                >
+                  <i className="fa-solid fa-arrow-left side-show-arrow"></i>
+                </button>
+                <div className="start">Update your store profile</div>
+              </div>
               <form
                 className="restaurant-form-container1"
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
               >
-                <div className="start">Update your store profile</div>
-
-                {/* for upload image  */}
-                <div>
-                  <div className="create-t">Store preview image</div>
-                  <div
-                    id="aws-img-container"
-                    className={showNoPictureError ? "no-picture" : ""}
-                    onClick={() => uploadInput.current.click()}
-                  >
-                    {photoUrl && (
-                      <i
-                        className="fa-solid fa-trash show-trash"
-                        onClick={(e) => handleTrashPhoto(e)}
-                        disabled={isAdded}
-                      ></i>
-                    )}
-                    <input
-                      type="file"
-                      accept="image/png, image/jpeg, image/jpg, image/gif"
-                      onChange={handlePhoto}
-                      ref={uploadInput}
-                      style={{ display: "none" }}
-                    />
-                    {photoUrl ? (
-                      <img src={photoUrl} id="preview-restaurant-img" alt="" />
-                    ) : (
-                      <div
-                        id="upload-sign-box-text"
-                        className={showNoPictureError ? "no-picture" : ""}
-                      >
-                        <i className="fa-solid fa-upload"></i>
-                        <div>
-                          {showNoPictureError
-                            ? "An Image is required to create a restaurant."
-                            : "Click to upload"}
+                <div className="restaurant-form-container1-left">
+                  {/* for upload image  */}
+                  <div>
+                    <div className="create-t">Store preview image</div>
+                    <div
+                      id="aws-img-container1"
+                      className={showNoPictureError ? "no-picture" : ""}
+                      onClick={() => uploadInput.current.click()}
+                    >
+                      {photoUrl && (
+                        <i
+                          className="fa-solid fa-trash show-trash"
+                          onClick={(e) => handleTrashPhoto(e)}
+                          disabled={isAdded}
+                        ></i>
+                      )}
+                      <input
+                        type="file"
+                        accept="image/png, image/jpeg, image/jpg, image/gif"
+                        onChange={handlePhoto}
+                        ref={uploadInput}
+                        style={{ display: "none" }}
+                      />
+                      {photoUrl ? (
+                        <img
+                          src={photoUrl}
+                          id="preview-restaurant-img1"
+                          alt=""
+                        />
+                      ) : (
+                        <div
+                          id="upload-sign-box-text"
+                          className={showNoPictureError ? "no-picture" : ""}
+                        >
+                          <i className="fa-solid fa-upload"></i>
+                          <div>
+                            {showNoPictureError
+                              ? "An Image is required to create a restaurant."
+                              : "Click to upload"}
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                  {validationErrors.image && !showNoPictureError && (
-                    <div className="errors">{validationErrors.image[0]}</div>
-                  )}
-                  {imageLoading && (
-                    <div className="errors">
-                      Image uploading... Please wait...
+                      )}
                     </div>
-                  )}
-                </div>
-
-                {/* for restaurant address */}
-                <div className="title-container">
-                  <div className="create-t">Store address</div>
-                  {key && (
-                    <ResAddressAutoComplete
-                      apiKey={key}
-                      geoKey={geoKey}
-                      onAddressChange={setMyAddress}
-                    />
-                  )}
-                  {showVerifyAddress && (
-                    <>
-                      <div className="create-pp">
-                        Please verify the following address:
+                    {validationErrors.image && !showNoPictureError && (
+                      <div className="errors">{validationErrors.image[0]}</div>
+                    )}
+                    {/* {imageLoading && (
+                      <div className="errors">
+                        Image uploading... Please wait...
                       </div>
-                      <div
+                    )} */}
+                  </div>
+
+                  {/* for restaurant name */}
+                  <div className="title-container">
+                    <div className="create-t">Store name</div>
+                    <div className="create-p">
+                      This is how your store will appear in the app.
+                    </div>
+                    <div className="city-state-input-container">
+                      <input
                         className={`create-input ${
-                          validationErrors.address ? "error-bg" : ""
+                          validationErrors.name ? "error-bg" : ""
                         }`}
-                        style={
-                          !address ? { color: "#757575" } : { color: "black" }
-                        }
-                      >
-                        {!address ? "Example: 123 Main street" : address}
-                      </div>
-                      {validationErrors.address && (
-                        <div className="errors">{validationErrors.address}</div>
-                      )}
-
-                      {/* for restaurant city & state */}
-                      <div className="city-state-input-container">
-                        <div
-                          className={`create-input ${
-                            validationErrors.city ? "error-bg" : ""
-                          }`}
-                          style={
-                            !city ? { color: "#757575" } : { color: "black" }
-                          }
-                        >
-                          {!city ? "City" : city}
-                        </div>
-
-                        <div
-                          id="state-select"
-                          className={`create-input ${
-                            validationErrors.state ? "error-bg" : ""
-                          }`}
-                          style={
-                            !state ? { color: "#757575" } : { color: "black" }
-                          }
-                        >
-                          {!state ? "State" : state}
-                        </div>
-                      </div>
-                      {validationErrors.city && (
-                        <div className="errors">{validationErrors.city}</div>
-                      )}
-                      {validationErrors.state && (
-                        <div className="errors">{validationErrors.state}</div>
-                      )}
-                    </>
-                  )}
-                </div>
-
-                {/* for restaurant name */}
-                <div className="title-container">
-                  <div className="create-t">Store name</div>
-                  <div className="create-p">
-                    This is how your store will appear in the app.
-                  </div>
-                  <div className="city-state-input-container">
-                    <input
-                      className={`create-input ${
-                        validationErrors.name ? "error-bg" : ""
-                      }`}
-                      placeholder="Example: Sam's Pizza"
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                  </div>
-                  {validationErrors.name && (
-                    <div className="errors">{validationErrors.name}</div>
-                  )}
-                </div>
-
-                {/* for restaurant price range */}
-                <div className="title-container">
-                  <div className="create-t">Price range</div>
-                  <div className="city-state-input-container">
-                    <div className="price-range">
-                      <div
-                        className={`range-container btn-grey cursor ${
-                          priceRange === "$" ? `dollarColor` : ""
-                        }`}
-                        onClick={() => setPriceRange((prev) => "$")}
-                      >
-                        $
-                      </div>
-
-                      <div
-                        className={`range-container btn-grey cursor ${
-                          priceRange === "$$" ? `dollarColor` : ""
-                        }`}
-                        onClick={() => setPriceRange((prev) => "$$")}
-                      >
-                        $$
-                      </div>
-                      <div
-                        className={`range-container btn-grey cursor ${
-                          priceRange === "$$$" ? `dollarColor` : ""
-                        }`}
-                        onClick={() => setPriceRange((prev) => "$$$")}
-                      >
-                        $$$
-                      </div>
-                      <div
-                        className={`range-container btn-grey cursor ${
-                          priceRange === "$$$$" ? `dollarColor` : ""
-                        }`}
-                        onClick={() => setPriceRange((prev) => "$$$$")}
-                      >
-                        $$$$
-                      </div>
-                    </div>
-                  </div>
-                  {validationErrors.priceRange && (
-                    <div className="errors">{validationErrors.priceRange}</div>
-                  )}
-                </div>
-
-                {/* for restaurant delivery fee */}
-                <div className="title-container">
-                  <div className="create-t">Delivery fee</div>
-                  <div className="city-state-input-container">
-                    <input
-                      type="range"
-                      min="0"
-                      max="10"
-                      step="0.01"
-                      id="delivery"
-                      value={String(deliveryFee)}
-                      onChange={(e) => setDeliveryFee(e.target.value)}
-                    />
-                    <div>${Number(deliveryFee).toFixed(2)}</div>
-                  </div>
-                  {validationErrors.deliveryFee && (
-                    <div className="errors">{validationErrors.deliveryFee}</div>
-                  )}
-                </div>
-
-                {/* for cusine_types */}
-                <div className="title-container">
-                  <div className="create-t">Cuisine types</div>
-                  <div className="create-p">
-                    We'll use this to help organize information and optimze
-                    search results.
-                  </div>
-                  <div className="cuisine-type-container">
-                    {cuisine_types.map((ctype) => (
-                      <label key={ctype} className="checkbox-label">
-                        <input
-                          value={ctype}
-                          type="checkbox"
-                          checked={isCtypeSelected(ctype)}
-                          onChange={(e) => toggleCtype(ctype)}
-                        ></input>
-                        {ctype}
-                      </label>
-                    ))}
-                  </div>
-                  {validationErrors.selectedTypes && (
-                    <div className="errors">
-                      {validationErrors.selectedTypes}
-                    </div>
-                  )}
-                </div>
-
-                {/* for restaurant description */}
-                <div className="title-container">
-                  <div className="create-t">Description (optional)</div>
-                  <div className="city-state-input-container">
-                    <div className={`comment-input-box`}>
-                      <textarea
-                        className={`textarea-comment ${
-                          validationErrors.description ? "error-bg" : ""
-                        }`}
-                        placeholder="Enter description"
+                        placeholder="Example: Sam's Pizza"
                         type="text"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                      ></textarea>
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
                     </div>
-                    <div className="review-min">Characters: 10 - 2000</div>
+                    {validationErrors.name && (
+                      <div className="errors">{validationErrors.name}</div>
+                    )}
                   </div>
-                  {validationErrors.description && (
-                    <div className="errors">{validationErrors.description}</div>
-                  )}
+
+                  {/* for restaurant address */}
+                  <div className="title-container">
+                    <div className="create-t">Store address</div>
+                    {key && (
+                      <ResAddressAutoComplete
+                        apiKey={key}
+                        geoKey={geoKey}
+                        onAddressChange={setMyAddress}
+                      />
+                    )}
+                    {showVerifyAddress && (
+                      <>
+                        <div className="create-pp">
+                          Please verify the following address:
+                        </div>
+                        <div
+                          className={`create-input ${
+                            validationErrors.address ? "error-bg" : ""
+                          }`}
+                          style={
+                            !address ? { color: "#757575" } : { color: "black" }
+                          }
+                        >
+                          {!address ? "Example: 123 Main street" : address}
+                        </div>
+                        {validationErrors.address && (
+                          <div className="errors">
+                            {validationErrors.address}
+                          </div>
+                        )}
+
+                        {/* for restaurant city & state */}
+                        <div className="city-state-input-container">
+                          <div
+                            className={`create-input ${
+                              validationErrors.city ? "error-bg" : ""
+                            }`}
+                            style={
+                              !city ? { color: "#757575" } : { color: "black" }
+                            }
+                          >
+                            {!city ? "City" : city}
+                          </div>
+
+                          <div
+                            id="state-select"
+                            className={`create-input ${
+                              validationErrors.state ? "error-bg" : ""
+                            }`}
+                            style={
+                              !state ? { color: "#757575" } : { color: "black" }
+                            }
+                          >
+                            {!state ? "State" : state}
+                          </div>
+                        </div>
+                        {validationErrors.city && (
+                          <div className="errors">{validationErrors.city}</div>
+                        )}
+                        {validationErrors.state && (
+                          <div className="errors">{validationErrors.state}</div>
+                        )}
+                      </>
+                    )}
+                  </div>
                 </div>
 
-                <div className="btns-container">
-                  {!isAdded && (
-                    <>
-                      <button
-                        type="submit"
-                        className="reorder-btn5"
-                        disabled={isAdded}
-                      >
-                        Update Store
-                      </button>
-                      <button
-                        type="button"
-                        className={`reorder-btn10 ${isAdded ? "colorg" : ""}`}
-                        onClick={handleResetClick}
-                        disabled={isAdded}
-                      >
-                        Reset
-                      </button>
-                    </>
-                  )}
-                  {isAdded && (
-                    <>
-                      <button
-                        className={`reorder-btn5 ${isAdded ? "colorg" : ""}`}
-                        disabled={isAdded}
-                      >
-                        Updating restaurant...
-                      </button>
-                      <button
-                        type="button"
-                        className={`reorder-btn10 ${isAdded ? "colorg" : ""}`}
-                        disabled={isAdded}
-                      >
-                        Reset
-                      </button>
-                    </>
-                  )}
+                <div className="restaurant-form-container1-left">
+                  {/* for restaurant price range */}
+                  <div className="title-container1">
+                    <div className="create-t">Price range</div>
+                    <div className="city-state-input-container">
+                      <div className="price-range">
+                        <div
+                          className={`range-container btn-grey cursor ${
+                            priceRange === "$" ? `dollarColor` : ""
+                          }`}
+                          onClick={() => setPriceRange((prev) => "$")}
+                        >
+                          $
+                        </div>
+
+                        <div
+                          className={`range-container btn-grey cursor ${
+                            priceRange === "$$" ? `dollarColor` : ""
+                          }`}
+                          onClick={() => setPriceRange((prev) => "$$")}
+                        >
+                          $$
+                        </div>
+                        <div
+                          className={`range-container btn-grey cursor ${
+                            priceRange === "$$$" ? `dollarColor` : ""
+                          }`}
+                          onClick={() => setPriceRange((prev) => "$$$")}
+                        >
+                          $$$
+                        </div>
+                        <div
+                          className={`range-container btn-grey cursor ${
+                            priceRange === "$$$$" ? `dollarColor` : ""
+                          }`}
+                          onClick={() => setPriceRange((prev) => "$$$$")}
+                        >
+                          $$$$
+                        </div>
+                      </div>
+                    </div>
+                    {validationErrors.priceRange && (
+                      <div className="errors">
+                        {validationErrors.priceRange}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* for restaurant delivery fee */}
+                  <div className="title-container">
+                    <div className="create-t">Delivery fee</div>
+                    <div className="city-state-input-container">
+                      <input
+                        type="range"
+                        min="0"
+                        max="10"
+                        step="0.01"
+                        id="delivery-fee"
+                        value={String(deliveryFee)}
+                        onChange={(e) => setDeliveryFee(e.target.value)}
+                      />
+                      <div className="create-tt">
+                        ${Number(deliveryFee).toFixed(2)}
+                      </div>
+                    </div>
+                    {validationErrors.deliveryFee && (
+                      <div className="errors">
+                        {validationErrors.deliveryFee}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* for cusine_types */}
+                  <div className="title-container">
+                    <div className="create-t">Cuisine types</div>
+                    <div className="create-p">
+                      We'll use this to help organize information and optimze
+                      search results.
+                    </div>
+                    <div className="cuisine-type-container">
+                      {cuisine_types.map((ctype) => (
+                        <label key={ctype} className="checkbox-label">
+                          <input
+                            value={ctype}
+                            type="checkbox"
+                            checked={isCtypeSelected(ctype)}
+                            onChange={(e) => toggleCtype(ctype)}
+                          ></input>
+                          {ctype}
+                        </label>
+                      ))}
+                    </div>
+                    {validationErrors.selectedTypes && (
+                      <div className="errors">
+                        {validationErrors.selectedTypes}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* for restaurant description */}
+                  <div className="title-container">
+                    <div className="create-t">Description (optional)</div>
+                    <div className="city-state-input-container">
+                      <div className={`description-container`}>
+                        <textarea
+                          className={`textarea-comment1 ${
+                            validationErrors.description ? "error-bg" : ""
+                          }`}
+                          placeholder="Enter description"
+                          type="text"
+                          value={description}
+                          onChange={(e) => setDescription(e.target.value)}
+                        ></textarea>
+                        <div className="review-min1">Characters: 10 - 2000</div>
+                      </div>
+                    </div>
+                    {validationErrors.description && (
+                      <div className="errors">
+                        {validationErrors.description}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="btns-container">
+                    {imageLoading && (
+                      <div className="errors">
+                        Image uploading... Please wait...
+                      </div>
+                    )}
+                    {!isAdded && (
+                      <>
+                        <button
+                          type="submit"
+                          className="reorder-btn5"
+                          disabled={isAdded}
+                        >
+                          Update Store
+                        </button>
+                        <button
+                          type="button"
+                          className={`reorder-btn10 ${isAdded ? "colorg" : ""}`}
+                          onClick={handleResetClick}
+                          disabled={isAdded}
+                        >
+                          Reset
+                        </button>
+                      </>
+                    )}
+                    {isAdded && (
+                      <>
+                        <button
+                          className={`reorder-btn5 ${isAdded ? "colorg" : ""}`}
+                          disabled={isAdded}
+                        >
+                          Updating restaurant...
+                        </button>
+                        <button
+                          type="button"
+                          className={`reorder-btn10 ${isAdded ? "colorg" : ""}`}
+                          disabled={isAdded}
+                        >
+                          Reset
+                        </button>
+                      </>
+                    )}
+                  </div>
                 </div>
               </form>
             </div>

@@ -33,6 +33,14 @@ function MenuItems({ type, items }) {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  function isNew(inputDateTime) {
+    const currentDate = new Date();
+    const oneHourAgo = new Date();
+    const createdDate = new Date(inputDateTime);
+    oneHourAgo.setHours(currentDate.getHours() - 1);
+    return createdDate >= oneHourAgo;
+  }
+
   return (
     <>
       {type === "Most Popular" && (
@@ -79,6 +87,9 @@ function MenuItems({ type, items }) {
             items?.map((item) => (
               <div key={item?.id} className="menu-container">
                 <div className="item-img-container">
+                  {isNew(item.created_at) && (
+                    <div className="popular-sign">New</div>
+                  )}
                   <img src={item.image_url} alt="" className="item-img" />
                   <div className="item-background"></div>
                   <AddToCartBtn item={item} />

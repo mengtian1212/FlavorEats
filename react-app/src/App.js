@@ -22,12 +22,14 @@ import MyAllRestaurants from "./components/ManageRestaurants/MyAllRestaurants";
 import MyOneRestaurant from "./components/ManageRestaurants/MyOneRestaurant/MyOneResturant";
 import EditRestaurant from "./components/ManageRestaurants/EditRestaurant/EditRestaurant";
 
-import MyResAllMenuitems from "./components/ManageRestaurants/MyResAllMenuitems/MyResAllMenuitems";
+import MyResMenuitems from "./components/ManageRestaurants/MyResMenuitems";
+import CreateItem from "./components/ManageRestaurants/CreateItem/CreateItem";
 
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import PleaseLoginPage from "./components/auth/PleaseLoginPage";
 import UnauthorizedPage from "./components/auth/UnauthorizedPage";
 import NotFoundPage from "./components/auth/NotFoundPage";
+import LoadingPage from "./components/auth/LoadingPage";
 
 // Protection checks:
 // Generally,
@@ -145,23 +147,14 @@ function App() {
             path="/business/:restaurantId/items"
             message="Please log in to manage restaurants"
           >
-            <MyResAllMenuitems />
+            <MyResMenuitems />
           </ProtectedRoute>
           <ProtectedRoute
             exact
-            path="/business/:restaurantId/items/new"
+            path="/business/:restaurantId/item-builder"
             message="Please log in to manage restaurants"
           >
-            <Navigation isLoaded={isLoaded} />
-            {/* <CreateMyMenuitem /> */}
-          </ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/business/:restaurantId/items/:itemId"
-            message="Please log in to manage restaurants"
-          >
-            <Navigation isLoaded={isLoaded} />
-            {/* <MyResOneMenuItem /> */}
+            <CreateItem />
           </ProtectedRoute>
           <ProtectedRoute
             exact
@@ -169,7 +162,7 @@ function App() {
             message="Please log in to manage restaurants"
           >
             <Navigation isLoaded={isLoaded} />
-            {/* <EditMyResOneMenuItem /> */}
+            {/* <EditMenuItem /> */}
           </ProtectedRoute>
 
           <Route exact path="/auth">
@@ -180,6 +173,9 @@ function App() {
           </Route>
           <Route exact path="/not-found">
             <NotFoundPage />
+          </Route>
+          <Route exact path="/loading">
+            <LoadingPage />
           </Route>
           <Route exact path="/">
             <LandingPage />

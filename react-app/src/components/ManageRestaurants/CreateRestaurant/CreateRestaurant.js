@@ -268,9 +268,9 @@ function CreateRestaurant() {
               validationErrors.image[0] !== "This field is required." && (
                 <div className="errors">{validationErrors.image[0]}</div>
               )}
-            {imageLoading && (
+            {/* {imageLoading && (
               <div className="errors">Image uploading... Please wait...</div>
-            )}
+            )} */}
           </div>
 
           {/* for restaurant address */}
@@ -383,6 +383,9 @@ function CreateRestaurant() {
           </div>
 
           <div className="btns-container">
+            {imageLoading && (
+              <div className="errors">Image uploading... Please wait...</div>
+            )}
             {!isAdded && (
               <>
                 <button type="submit" className="reorder-btn5">
