@@ -140,7 +140,13 @@ function ItemModal({ item }) {
           ></i>
         </div>
         {!isAdded && (
-          <button className="reorder-btn5" onClick={handleAddItem}>
+          <button
+            className={`reorder-btn5 ${
+              location.pathname.includes("business") ? "btn-dis" : ""
+            }`}
+            onClick={handleAddItem}
+            disabled={location.pathname.includes("business")}
+          >
             Add {quantity} to order • $
             {(item.price * parseInt(quantity)).toFixed(2)}
           </button>
@@ -152,6 +158,11 @@ function ItemModal({ item }) {
         )}
         {showLoginNotice && (
           <div className="error-message1">Please sign in to add food</div>
+        )}
+        {location.pathname.includes("business") && (
+          <div className="error-message3">
+            Preview only. Please visit store page for ordering.
+          </div>
         )}
       </div>
     </div>

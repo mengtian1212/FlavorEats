@@ -268,6 +268,10 @@
   cursor: not-allowed;
 }
 
+.btn-dis {
+  cursor: not-allowed;
+}
+
 .reorder-btn9.colorg {
   background-color: #eeeeee;
   width: 100%;

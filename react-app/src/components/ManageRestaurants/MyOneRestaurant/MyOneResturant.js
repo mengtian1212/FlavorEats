@@ -103,29 +103,62 @@ function MyOneRestaurant() {
                 </div>
               </section>
 
-              <div className="my-one-edit-btns">
-                <button
-                  className="reorder-btn6"
-                  onClick={() =>
-                    history.push(`/business/${myRestaurant.id}/edit`)
-                  }
-                >
-                  Edit store profile
-                </button>
-                <OpenModalButton
-                  buttonText="Delete store"
-                  modalComponent={<DeleteResModal restaurant={myRestaurant} />}
-                  myClass="reorder-btn6"
-                />
-                <button
-                  className="reorder-btn6"
-                  onClick={() =>
-                    history.push(`/restaurants/${myRestaurant.id}`)
-                  }
-                >
-                  View store page
-                </button>
-              </div>
+              <section>
+                <div className="my-one-edit-btns">
+                  <button
+                    className="reorder-btn6"
+                    onClick={() =>
+                      history.push(`/business/${myRestaurant.id}/edit`)
+                    }
+                  >
+                    Edit store profile
+                  </button>
+                  <OpenModalButton
+                    buttonText="Delete store"
+                    modalComponent={
+                      <DeleteResModal restaurant={myRestaurant} />
+                    }
+                    myClass="reorder-btn6"
+                  />
+                  <button
+                    className="reorder-btn6"
+                    onClick={() =>
+                      history.push(`/restaurants/${myRestaurant.id}`)
+                    }
+                  >
+                    View store page
+                  </button>
+                </div>
+                {myRestaurant?.menuitems &&
+                  Object.values(myRestaurant?.menuitems).length === 0 && (
+                    <div className="taking-order-container">
+                      <div className="taking-order-left">
+                        <div className="res-list-title2">
+                          Your store is almost ready for orders.
+                        </div>
+                        <div className="create-p">
+                          Set up menu to start receiving orders.
+                        </div>
+                        <button
+                          className="reorder-btn12"
+                          onClick={() =>
+                            history.push(
+                              `/business/${restaurantId}/item-builder`
+                            )
+                          }
+                        >
+                          <i className="fa-solid fa-plus" />
+                          Add first menu item
+                        </button>
+                      </div>
+                      <img
+                        src="https://cdn.discordapp.com/attachments/1139263822469795862/1152037211777282148/26._you_store_ready_pic.PNG"
+                        alt=""
+                        className="walking-order"
+                      />
+                    </div>
+                  )}
+              </section>
               {/* <div>Top Selling Items</div>
           <div>Menu Item Feedback</div>
           <div>Customer reviews</div>

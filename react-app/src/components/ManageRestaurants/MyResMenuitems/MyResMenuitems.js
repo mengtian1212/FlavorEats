@@ -23,6 +23,7 @@ function MyResMenuitems() {
   const myMenuitems = useSelector((state) =>
     state.dishes?.allDishes ? Object.values(state.dishes?.allDishes) : []
   );
+  console.log("my menu items", myMenuitems);
   const [sortedItems, setSortedItems] = useState(myMenuitems || []);
   const [isLoading, setIsLoading] = useState(true);
   const [isSorting, setIsSorting] = useState(true);
@@ -42,7 +43,7 @@ function MyResMenuitems() {
   }, [myRestaurant]);
 
   // default sort by updated_at descending order
-  const [sortBy, setSortBy] = useState("updated_at");
+  const [sortBy, setSortBy] = useState("updatedAt");
   const [sortOrder, setSortOrder] = useState("desc");
   const handleSort = (columnName) => {
     if (sortBy === columnName) {
@@ -121,73 +122,143 @@ function MyResMenuitems() {
                   sortedItems.length !== 1 &&
                   `${sortedItems.length} Items`}
               </div>
-              <button
-                className="reorder-btn11"
-                onClick={() =>
-                  history.push(`/business/${restaurantId}/item-builder`)
-                }
-              >
-                <i className="fa-solid fa-plus" />
-                Add new item
-              </button>
+              {sortedItems.length !== 0 && (
+                <button
+                  className="reorder-btn14"
+                  onClick={() =>
+                    history.push(`/business/${restaurantId}/item-builder`)
+                  }
+                >
+                  <i className="fa-solid fa-plus" />
+                  Add new item
+                </button>
+              )}
             </div>
-            <div className="dish-table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th className="">Image</th>
-                    <th
-                      className="table-colname"
-                      onClick={() => handleSort("name")}
-                    >
-                      Name
-                    </th>
-                    <th
-                      className="table-colname"
-                      onClick={() => handleSort("category")}
-                    >
-                      Category
-                    </th>
-                    <th
-                      className="table-colname"
-                      onClick={() => handleSort("price")}
-                    >
-                      Price
-                    </th>
-                    <th
-                      className="table-colname"
-                      onClick={() => handleSort("likeRatio")}
-                    >
-                      Like Ratio
-                    </th>
-                    <th
-                      className="table-colname"
-                      onClick={() => handleSort("likes")}
-                    >
-                      # Likes
-                    </th>
-                    <th
-                      className="table-colname"
-                      onClick={() => handleSort("dislikes")}
-                    >
-                      # Dislikes
-                    </th>
-                    <th
-                      className="table-colname"
-                      onClick={() => handleSort("updatedAt")}
-                    >
-                      Last Updated
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sortedItems &&
-                    sortedItems?.map((menuitem, index) => (
-                      <MyItemEntry key={index} item={menuitem} />
-                    ))}
-                </tbody>
-              </table>
-            </div>
+            {sortedItems.length !== 0 && (
+              <div className="dish-table-container">
+                <table className="dish-table">
+                  <thead>
+                    <tr>
+                      <th className=""></th>
+                      <th
+                        className="table-colname table-name"
+                        onClick={() => handleSort("name")}
+                      >
+                        Name
+                        {/* <i className="fa-solid fa-arrow-up-long"></i>
+                        <i className="fa-solid fa-arrow-down-long"></i> */}
+                        <i
+                          className={`fa-solid fa-sort ${
+                            sortBy === "name" ? "sort-stroke" : ""
+                          }`}
+                        ></i>
+                      </th>
+                      <th
+                        className="table-colname table-category"
+                        onClick={() => handleSort("category")}
+                      >
+                        Category
+                        <i
+                          className={`fa-solid fa-sort ${
+                            sortBy === "category" ? "sort-stroke" : ""
+                          }`}
+                        ></i>
+                      </th>
+                      <th
+                        className="table-colname table-price"
+                        onClick={() => handleSort("price")}
+                      >
+                        Price
+                        <i
+                          className={`fa-solid fa-sort ${
+                            sortBy === "price" ? "sort-stroke" : ""
+                          }`}
+                        ></i>
+                      </th>
+                      <th
+                        className="table-colname table-likeratio"
+                        onClick={() => handleSort("likeRatio")}
+                      >
+                        Like Ratio
+                        <i
+                          className={`fa-solid fa-sort ${
+                            sortBy === "likeRatio" ? "sort-stroke" : ""
+                          }`}
+                        ></i>
+                      </th>
+                      <th
+                        className="table-colname table-likes"
+                        onClick={() => handleSort("likes")}
+                      >
+                        Likes
+                        <i
+                          className={`fa-solid fa-sort ${
+                            sortBy === "likes" ? "sort-stroke" : ""
+                          }`}
+                        ></i>
+                      </th>
+                      <th
+                        className="table-colname table-dislikes"
+                        onClick={() => handleSort("dislikes")}
+                      >
+                        Dislikes
+                        <i
+                          className={`fa-solid fa-sort ${
+                            sortBy === "dislikes" ? "sort-stroke" : ""
+                          }`}
+                        ></i>
+                      </th>
+                      <th
+                        className="table-colname table-updated"
+                        onClick={() => handleSort("updatedAt")}
+                      >
+                        Last Updated
+                        <i
+                          className={`fa-solid fa-sort ${
+                            sortBy === "updatedAt" ? "sort-stroke" : ""
+                          }`}
+                        ></i>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sortedItems &&
+                      sortedItems?.map((menuitem, index) => (
+                        <MyItemEntry key={index} item={menuitem} />
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
+            {sortedItems.length === 0 && (
+              <>
+                {/* <div className="need-log-in-auth"> */}
+                <div className="no-past-order">
+                  <img
+                    src="https://cn-geo1.uber.com/static/mobile-content/eats/promo_manager/savings_card_icons/ubereats/grocery@3x.png"
+                    alt=""
+                    className="need-log-in-img1"
+                  />
+
+                  <div className="res-list-title3">
+                    The menu is currently empty.
+                  </div>
+                  {/* <div className="need-log-in-text">
+                    Redirecting to Home page in seconds...
+                  </div> */}
+                  <button
+                    className="reorder-btn13"
+                    onClick={() =>
+                      history.push(`/business/${restaurantId}/item-builder`)
+                    }
+                  >
+                    <i className="fa-solid fa-plus" />
+                    Add a new item
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

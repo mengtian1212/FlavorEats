@@ -1,5 +1,8 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useModal } from "../../../context/Modal";
+import DeleteItemModal from "../DeleteItemModal/DeleteItemModal";
+import ItemModal from "../../SingleRestaurant/ItemModal";
 
 function MyItemEntry({ item }) {
   const { restaurantId } = useParams();
@@ -18,21 +21,31 @@ function MyItemEntry({ item }) {
   // console.log("oneHourAgo", currentDate, oneHourAgo, createdDate >= oneHourAgo);
   const isNewRestaurant = createdDate >= oneHourAgo;
 
+  const { setModalContent, setModalClass } = useModal();
+  // const handleClickDelete = () => {
+  //   setModalContent(<DeleteItemModal item={item} />);
+  // };
+
+  const handleClickItem = () => {
+    setModalContent(<ItemModal item={item} />);
+  };
   return (
     <>
-      <tr className="my-item-container">
+      <tr className="my-item-container" onClick={handleClickItem}>
         <td>
           <img src={item?.image_url} alt="" className="my-item-img" />
         </td>
         <td>
-          {isNewRestaurant && <div className="item-plus5">New</div>}
-          <div>{item?.item_name}</div>
+          <div className="table-nn">
+            {item?.item_name}
+            {isNewRestaurant && <div className="item-plus6">New</div>}
+          </div>
         </td>
         <td>
-          <div>{item?.item_type}</div>
+          <div className="table-cat-badge">{item?.item_type}</div>
         </td>
         <td>
-          <div>{item?.price}</div>
+          <div>${item?.price}</div>
         </td>
         <td>
           <div>
@@ -48,6 +61,12 @@ function MyItemEntry({ item }) {
         <td>
           <div>{outputUpdatedAt}</div>
         </td>
+        {/* <td className="entry-edit">
+          <i className="fa-solid fa-file-pen entry-btn"></i>
+        </td>
+        <td className="entry-edit" onClick={handleClickDelete}>
+          <i className="fa-solid fa-trash-can entry-btn"></i>
+        </td> */}
       </tr>
     </>
   );

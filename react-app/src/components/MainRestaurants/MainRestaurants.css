@@ -358,3 +358,7 @@ input[type="radio"] {
   line-height: 20px;
   padding: 2px 4px;
 }
+
+.newest-res-card {
+  position: relative;
+}

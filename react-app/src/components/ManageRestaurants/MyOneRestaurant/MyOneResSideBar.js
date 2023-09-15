@@ -52,7 +52,7 @@ function MyOneResSideBar({ myRestaurant }) {
         <div className="lih">Back to Managing Platform</div>
       </div>
       <div className="menu-item3">
-        Current restaurant <div className="_4"></div>
+        Current store <div className="_4"></div>
         <i className={`fa-solid fa-chevron-down`}></i>
       </div>
       <div className="man">
@@ -66,7 +66,7 @@ function MyOneResSideBar({ myRestaurant }) {
         ></i>
         <div className="_16"></div>
         <div className={`lih ${showOverview ? "underfocus" : ""}`}>
-          Overview
+          Store overview
         </div>
       </div>
       <div
@@ -79,7 +79,7 @@ function MyOneResSideBar({ myRestaurant }) {
           }`}
         ></i>
         <div className="_16"></div>
-        <div className={`lih ${showMenus ? "underfocus" : ""}`}>Menu</div>
+        <div className={`lih ${showMenus ? "underfocus" : ""}`}>Store menu</div>
       </div>
     </>
   );

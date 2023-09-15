@@ -68,7 +68,7 @@ def edit_dish(dishId):
     return {"errors": validation_errors_to_error_dict(form.errors)}, 400
 
 
-@dish_routes.route('/<int:dishId>/delete', methods=["DELETE"])
+@dish_routes.route('/<int:dishId>', methods=["DELETE"])
 @login_required
 def delete_dish(dishId):
     targetDish = MenuItem.query.get(dishId)

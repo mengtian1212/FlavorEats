@@ -266,7 +266,8 @@ function CreateItem() {
                 <i className="fa-solid fa-arrow-left side-show-arrow"></i>
               </button>
               <div className="start">
-                Add a new item for {myRestaurant.name}
+                Add a new item for{" "}
+                <span className="delete-res-name">{myRestaurant.name}</span>
               </div>
             </div>
             <form
@@ -379,52 +380,74 @@ function CreateItem() {
                 {/* for item type  */}
                 <div className="title-container1">
                   <div className="create-t">Item category</div>
-                  <div className="create-p">
-                    Select from the
-                    <span className="create-p exist">
-                      {" "}
-                      existing menu categories
-                    </span>{" "}
-                    of {myRestaurant.name}, or select{" "}
-                    <span className="create-p exist">New category!</span> and
-                    customize new category.
-                  </div>
-                  <div className="city-state-input-container1">
-                    <div className="cuisine-type-container1">
-                      {uniqueItemTypes.map((itype) => (
-                        <label key={itype} className="checkbox-label1">
-                          <input
-                            value={itype}
-                            type="radio"
-                            checked={selectedType === itype}
-                            onChange={handleItemTypeChange}
-                          />
-                          {itype}
-                        </label>
-                      ))}
-                      <label className={`checkbox-label1 fll`}>
-                        <input
-                          value="Other"
-                          type="radio"
-                          checked={selectedType === "Other"}
-                          onChange={handleItemTypeChange}
-                        />
-                        &nbsp;New category!
-                        {selectedType === "Other" && (
-                          <input
-                            className={`create-input
+                  {uniqueItemTypes.length !== 0 && (
+                    <>
+                      <div className="create-p">
+                        You can choose from the existing menu categories of{" "}
+                        <span className="create-p green">
+                          {myRestaurant.name}
+                        </span>
+                        , or select{" "}
+                        <span className="create-p exist">
+                          Create a new category!
+                        </span>{" "}
+                        to customize your own.
+                      </div>
+                      <div className="city-state-input-container1">
+                        <div className="cuisine-type-container1">
+                          {uniqueItemTypes.map((itype) => (
+                            <label key={itype} className="checkbox-label1">
+                              <input
+                                value={itype}
+                                type="radio"
+                                checked={selectedType === itype}
+                                onChange={handleItemTypeChange}
+                              />
+                              {itype}
+                            </label>
+                          ))}
+                          <label className={`checkbox-label1 fll`}>
+                            <input
+                              value="Other"
+                              type="radio"
+                              checked={selectedType === "Other"}
+                              onChange={handleItemTypeChange}
+                            />
+                            &nbsp;Create a new category!
+                            {selectedType === "Other" && (
+                              <input
+                                className={`create-input
                             ${selectedType === "Other" ? "fll" : ""}`}
-                            type="text"
-                            value={itemType}
-                            onChange={(e) => {
-                              setItemType(e.target.value);
-                            }}
-                            placeholder="Enter custom category"
-                          />
-                        )}
-                      </label>
-                    </div>
-                  </div>
+                                type="text"
+                                value={itemType}
+                                onChange={(e) => {
+                                  setItemType(e.target.value);
+                                }}
+                                placeholder="Enter custom category"
+                              />
+                            )}
+                          </label>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  {uniqueItemTypes.length === 0 && (
+                    <>
+                      <div className="create-p">
+                        Set up the first menu category.
+                      </div>
+                      <input
+                        className={`create-input
+                            ${selectedType === "Other" ? "fll" : ""}`}
+                        type="text"
+                        value={itemType}
+                        onChange={(e) => {
+                          setItemType(e.target.value);
+                        }}
+                        placeholder="Enter a custom category"
+                      />
+                    </>
+                  )}
                 </div>
                 {validationErrors.itemType && (
                   <div className="errors1">{validationErrors.itemType}</div>

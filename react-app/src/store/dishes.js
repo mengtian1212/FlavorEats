@@ -123,7 +123,7 @@ const dishesReducer = (state = initialState, action) => {
     case DELETE_DISH:
       const dishes = { ...state.allDishes };
       delete dishes[action.dishId];
-      return { ...state, allDishes: dishes };
+      return { ...state, allDishes: { ...dishes } };
     default:
       return state;
   }

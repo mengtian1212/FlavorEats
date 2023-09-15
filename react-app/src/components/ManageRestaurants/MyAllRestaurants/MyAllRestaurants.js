@@ -83,20 +83,49 @@ function MyAllRestaurants() {
             </div>
           </div>
           <div className="manage-right-container">
-            <div className="res-list-title1">
-              {myRestaurants.length}{" "}
-              {myRestaurants.length === 1 ? "restaurant" : "restaurants"}
-            </div>
-            <div className="my-res-cards-container">
-              {myRestaurants &&
-                myRestaurants?.map((myRes, index) => (
-                  <MyOneResCard
-                    key={index}
-                    restaurant={myRes}
-                    handleClickOne={handleClickOne}
+            {myRestaurants.length !== 0 && (
+              <>
+                <div className="res-list-title1">
+                  {myRestaurants.length}{" "}
+                  {myRestaurants.length === 1 ? "restaurant" : "restaurants"}
+                </div>
+                <div className="my-res-cards-container">
+                  {myRestaurants &&
+                    myRestaurants?.map((myRes, index) => (
+                      <MyOneResCard
+                        key={index}
+                        restaurant={myRes}
+                        handleClickOne={handleClickOne}
+                      />
+                    ))}
+                </div>
+              </>
+            )}
+            {myRestaurants.length === 0 && (
+              <>
+                {/* <div className="need-log-in-auth"> */}
+                <div className="no-past-order">
+                  <img
+                    src="https://cn-geo1.uber.com/static/mobile-content/eats/storefront_promo_cards/savings_card_icons/eats/storefront@3x.png"
+                    alt=""
+                    className="need-log-in-img"
                   />
-                ))}
-            </div>
+
+                  <div className="res-list-title4">
+                    You currently don't have any restaurants.
+                  </div>
+                  {/* <div className="need-log-in-text">
+                    Redirecting to Home page in seconds...
+                  </div> */}
+                  <div
+                    className="no-past-shop"
+                    onClick={() => history.push("/business/restaurant-builder")}
+                  >
+                    Click here to start creating one.
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

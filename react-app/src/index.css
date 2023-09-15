@@ -82,8 +82,22 @@ body {
   object-fit: cover;
 }
 
+.need-log-in-img1 {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
 .need-log-in-title {
   margin-top: 24px;
+  line-height: 44px !important;
+  font-weight: 700 !important;
+  font-size: 36px !important;
+  text-align: center !important;
+}
+
+.need-log-in-title1 {
+  margin-top: 12px;
   line-height: 44px !important;
   font-weight: 700 !important;
   font-size: 36px !important;
