@@ -141,7 +141,7 @@ function PastOrderCard({ pastOrder }) {
                 {parseFloat(pastOrder?.total_price).toFixed(2)}
               </div>
               <div>• </div>
-              <div>{formatDate(pastOrder?.updated_at)}</div>
+              <div>{formatDate(pastOrder?.created_at)}</div>
               <div>• </div>
               <div>
                 {pastOrder?.is_pickup

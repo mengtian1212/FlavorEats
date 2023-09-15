@@ -111,3 +111,17 @@ class Order(db.Model):
             pass
 
         return res
+
+    def to_dict_simple(self, geo=False):
+        res = {
+            'id': self.id,
+            'user_id': self.user_id,
+            'user_image_url': self.user.image_url,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at,
+            'num_items': self.calculate_num_items(),
+            'total_price': self.calculate_total_price(),
+            'review_rating': self.review.rating if self.review_id else 0
+        }
+
+        return res

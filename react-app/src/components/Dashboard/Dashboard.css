@@ -1,0 +1,39 @@
+.dash__menu-item-rating-container {
+  border: 1px solid black;
+}
+
+.dash__menu-item-rating {
+  display: flex;
+}
+
+.dashboard {
+  width: 1270px;
+  display: flex;
+  gap: 16px;
+}
+
+.dashboard-left-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-left-bottom {
+  display: flex;
+  gap: 16px;
+}
+
+.dashboard-left-bottom1 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dashboard-right-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

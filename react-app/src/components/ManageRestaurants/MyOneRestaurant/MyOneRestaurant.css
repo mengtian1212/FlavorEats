@@ -146,6 +146,7 @@
 .my-one-res-head {
   display: flex;
   gap: 24px;
+  width: 1270px;
 }
 
 .my-one-res-head-sub {

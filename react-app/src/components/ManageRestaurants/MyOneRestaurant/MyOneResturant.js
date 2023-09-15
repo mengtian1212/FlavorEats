@@ -11,6 +11,7 @@ import DeleteResModal from "../DeleteResModal/DeleteResModal";
 import UnauthorizedPage from "../../auth/UnauthorizedPage";
 import LoadingPage from "../../auth/LoadingPage";
 import NotFoundPage from "../../auth/NotFoundPage";
+import Dashbaord from "../../Dashboard/Dashboard";
 
 function MyOneRestaurant() {
   const { restaurantId } = useParams();
@@ -75,7 +76,16 @@ function MyOneRestaurant() {
                   }
                 />
                 <div className="my-one-res-head-sub">
-                  <div className="res-list-title2">{myRestaurant.name}</div>
+                  <div className="res-list-title2">
+                    {myRestaurant.name}
+                    {myRestaurant.avg_rating >= 4 && (
+                      <img
+                        src="https://d4p17acsd5wyj.cloudfront.net/bazaar/badge_top_eats.png"
+                        alt=""
+                        className="info-bestoverall2"
+                      />
+                    )}
+                  </div>
 
                   <div className="my-res-address-container">
                     <i className="fa-solid fa-location-dot my-res-loc"></i>
@@ -159,6 +169,7 @@ function MyOneRestaurant() {
                     </div>
                   )}
               </section>
+              <Dashbaord restaurant={myRestaurant} />
               {/* <div>Top Selling Items</div>
           <div>Menu Item Feedback</div>
           <div>Customer reviews</div>
