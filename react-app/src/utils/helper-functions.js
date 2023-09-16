@@ -260,3 +260,37 @@ export const calculateDistance = (lat1, lng1, lat2, lng2) => {
   const distance = earthRadius * c;
   return distance; // Distance in kilometers
 };
+
+// Outputs: "September 14, 2023 16:30:15"
+export const formatCurrentDateTime = () => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = months[currentDate.getMonth()];
+  const day = currentDate.getDate();
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+
+  // Add leading zeros for single-digit hours, minutes, and seconds
+  const formattedHours = hours.toString().padStart(2, "0");
+  const formattedMinutes = minutes.toString().padStart(2, "0");
+  const formattedSeconds = seconds.toString().padStart(2, "0");
+
+  const formattedDateTime = `${month} ${day}, ${year} ${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+  return formattedDateTime;
+};

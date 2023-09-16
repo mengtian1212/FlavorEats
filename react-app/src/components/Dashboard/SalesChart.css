@@ -1,0 +1,54 @@
+.custom-tooltip {
+  background-color: #c3d8ff;
+  padding: 4px;
+}
+
+.dash_perf {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dash_perf2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.as-of {
+  font-size: 12px;
+  color: #848484;
+  font-weight: 300;
+}
+
+.dash-total {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.custom-tooltip1 {
+  font-size: 12px;
+}
+
+.dash_mm {
+  position: relative;
+}
+
+.nooo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.recharts-wrapper {
+  margin-left: -30px;
+  margin-bottom: -16px;
+}
+
+.dash_topp1 {
+  flex: 30;
+}
+
+.dash_topp2 {
+  flex: 70;
+}

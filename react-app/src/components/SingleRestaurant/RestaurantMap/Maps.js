@@ -63,8 +63,6 @@ const Maps = ({ apiKey }) => {
   const directionsCallback = (response) => {
     if (response !== null) {
       if (response.status === "OK") {
-        console.log("Route: okokokokok");
-
         setResponse(response);
       } else {
         console.log("Route: " + response.status);

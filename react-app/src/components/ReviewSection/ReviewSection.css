@@ -80,6 +80,11 @@
   display: flex;
 }
 
+.stars-distribution1 {
+  display: flex;
+  padding-top: 8px;
+}
+
 /* ratings2   empty-bar   full-bar  */
 .rating-bars-container {
   display: flex;

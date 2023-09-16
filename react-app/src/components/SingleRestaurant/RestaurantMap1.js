@@ -16,12 +16,12 @@ const RestaurantMap = () => {
     id: "google-map-script",
     googleMapsApiKey: key,
   });
-  console.log(
-    "google maps",
-    process.env.REACT_APP_GOOGLE_MAPS_API,
-    process.env.SECRET_KEY,
-    process.env.REACT_APP_BASE_URL
-  );
+  // console.log(
+  //   "google maps",
+  //   process.env.REACT_APP_GOOGLE_MAPS_API,
+  //   process.env.SECRET_KEY,
+  //   process.env.REACT_APP_BASE_URL
+  // );
   const containerStyle = {
     width: "800px",
     height: "800px",

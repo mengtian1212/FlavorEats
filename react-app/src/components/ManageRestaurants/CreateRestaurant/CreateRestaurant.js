@@ -51,10 +51,10 @@ function CreateRestaurant() {
 
   //////////// for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
-    console.log("currentTarget", currentTarget);
+    // console.log("currentTarget", currentTarget);
     // <input type="file" accept="image/png, image/jpeg, image/jpg, image/gif" style="display: none;">
 
-    console.log("currentTarget.files[0]", currentTarget.files[0]);
+    // console.log("currentTarget.files[0]", currentTarget.files[0]);
     // File {name: 'pic1.jpg', lastModified: 1690350018999, lastModifiedDate: Tue Jul 25 2023 22:40:18 GMT-0700 (Pacific Daylight Time), webkitRelativePath: '', size: 131767, …}
 
     if (currentTarget.files[0]) {
@@ -64,8 +64,6 @@ function CreateRestaurant() {
       fileReader.readAsDataURL(currentTarget.files[0]);
       fileReader.onload = () => setPhotoUrl(fileReader.result);
       setNoPicture(false);
-
-      console.log("fileReader.result", fileReader.result);
     }
   };
 
@@ -164,7 +162,6 @@ function CreateRestaurant() {
     formData.append("name", nameData);
     formData.append("cusine_types", selectedTypes.join("#").trim());
 
-    console.log("formData", formData);
     const data = await dispatch(createNewRestaurantThunk(formData));
     if (data.errors) {
       setImageLoading(false);

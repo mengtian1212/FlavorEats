@@ -10,8 +10,8 @@ def seed_menuitems():
             "item_type": "Burgers",
             "price": 7.79,
             "calory": 590,
-            "num_likes": 4,
-            "num_dislikes": 1,
+            "num_likes": 16,
+            "num_dislikes": 4,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "Ever wondered what's on a Big Mac? The McDonald's Big Mac® is a 100% beef burger with a taste like no other. The mouthwatering perfection starts with two 100% pure all beef patties and Big Mac® sauce sandwiched between a sesame seed bun."
         },
@@ -39,6 +39,8 @@ def seed_menuitems():
             "item_type": "Burgers",
             "price": 4.19,
             "calory": 340,
+            "num_likes": 8,
+            "num_dislikes": 3,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202006_0001_Hamburger_Alt_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "The Classic McDonald's Hamburger starts with a 100% pure beef patty seasoned with just a pinch of salt and pepper. Then, the McDonald's burger is topped with a tangy pickle, chopped onions, ketchup, and mustard. "
         },
@@ -48,8 +50,8 @@ def seed_menuitems():
             "item_type": "Burgers",
             "price": 11.79,
             "calory": 870,
-            "num_likes": 3,
-            "num_dislikes": 0,
+            "num_likes": 9,
+            "num_dislikes": 3,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/Header_CheesyJalapenoBaconQPC_Single_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "Introducing McDonald's new Cheesy Jalapeño Bacon QPC, featuring our 100% fresh beef Quarter Pounder patty that's cooked right when you order so it's hot and juicy every time. "
         },
@@ -115,6 +117,8 @@ def seed_menuitems():
             "item_type": "Combo Meals",
             "price": 12.59,
             "calory": 1150,
+            "num_likes": 15,
+            "num_dislikes": 5,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/b9eb19b19727cbea4de310a92374e222/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
         },
         {  # 13
@@ -139,8 +143,8 @@ def seed_menuitems():
             "item_type": "Combo Meals",
             "price": 12.59,
             "calory": 870,
-            "num_likes": 4,
-            "num_dislikes": 1,
+            "num_likes": 12,
+            "num_dislikes": 3,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/71ead9db896ec112fd16e0dfa247efe9/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Our Chicken McNugget Happy Meal features ten tender Chicken McNuggets made with white meat, World Famous Fries and a side of beverage."
         },
@@ -159,6 +163,8 @@ def seed_menuitems():
             "item_type": "Sweets & Treats",
             "price": 1.99,
             "calory": 390,
+            "num_likes": 10,
+            "num_dislikes": 3,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_202106_0336_LargeVanillaCone_832x472:product-header-desktop?wid=830&hei=456&dpr=off",
             "description": "Treat yourself to a delicious Vanilla Cone Treat from McDonald's! Our Vanilla Cone features creamy vanilla soft serve in a crispy cone. It's the perfect sweet treat in addition to any McDonald's meal or on its own."
         },
@@ -168,6 +174,8 @@ def seed_menuitems():
             "item_type": "Sweets & Treats",
             "price": 6.19,
             "calory": 600,
+            "num_likes": 10,
+            "num_dislikes": 2,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_1513_MediumStrawberryShake_Glass_A1_832x472:product-header-desktop?wid=830&hei=456&dpr=off",
             "description": "Get a delicious McDonald's Strawberry Shake—the perfect sweet treat for any day. Our Strawberry Shake recipe features creamy vanilla soft serve blended with strawberry syrup and finished with whipped light cream. "
         },
@@ -5423,7 +5431,7 @@ def seed_menuitems():
             "description": "Shrimp cooked in creamy korma sauce flavored with exotic spices, paste of ground nuts and herbs."
         },
         {  # 603
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Bomb Breakfast Burrito",
             "item_type": "Breakfast Favorites",
             "price": 18.99,
@@ -5433,7 +5441,7 @@ def seed_menuitems():
             "description": "You are gonna kill it today. Fuel up with one of our team's favorites. A warmed organic wheat tortilla with organic cage-free scrambled eggs, organic hickory smoked bacon, melted organic cheddar cheese, organic breakfast potatoes, organic black beans, organic sliced avocado, and organic cilantro. Your choice of organic sauce is served on the side. Made using all organic ingredients. Every meal supports a cleaner future."
         },
         {  # 604
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "El Clasico",
             "item_type": "Breakfast Favorites",
             "price": 18.99,
@@ -5443,7 +5451,7 @@ def seed_menuitems():
             "description": "America's most wanted. A classic breakfast plate with all your favorites is done right. Organic cage-free scrambled eggs, your choice of organic toast, two slices of organic hickory smoked bacon, and organic breakfast potatoes. Your choice of organic sauce is served on the side. Made using all organic ingredients. Every meal supports a cleaner future."
         },
         {  # 605
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "The Sunrise Sandwich",
             "item_type": "Breakfast Favorites",
             "price": 18.99,
@@ -5453,7 +5461,7 @@ def seed_menuitems():
             "description": "Your choice of organic toast is filled with organic cage-free scrambled egg, organic cheddar cheese, organic hickory smoked bacon, organic romaine lettuce, organic tomato, and organic sliced avocado. Your choice of organic sauce and a scoop of breakfast potatoes served on the side. Made using all organic ingredients. Every meal supports a cleaner future."
         },
         {  # 606
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "The Cali Breakfast Bowl",
             "item_type": "Breakfast Favorites",
             "price": 18.99,
@@ -5463,7 +5471,7 @@ def seed_menuitems():
             "description": "A hometown favorite. A bed of organic steamed jasmine white rice and simmered organic black beans with organic cage-free scrambled eggs, organic hickory smoked bacon, organic avocado, organic grilled bell pepper, organic grilled onion, organic cilantro, and a side of warmed corn tortillas. Your choice of organic sauce is served on the side. Make your own fajitas. Made using all organic ingredients. Every meal supports a cleaner future."
         },
         {  # 607
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Bacon Breakfast Tacos",
             "item_type": "Breakfast Favorites",
             "price": 18.99,
@@ -5473,7 +5481,7 @@ def seed_menuitems():
             "description": "Feeling a little handsy. Grab an order of our organic bacon breakfast tacos and go to town. 3 organic and gluten-free corn tortillas filled with organic cage-free scrambled egg, organic breakfast potatoes, organic cheddar cheese, organic hickory smoked bacon, topped with organic cilantro, and organic pickled onion. Your choice of organic sauce is served on the side. Made using all organic ingredients. Every meal supports a cleaner future."
         },
         {  # 608
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Vegan Soyrizo Breakfast Burrito",
             "item_type": "Breakfast Favorites",
             "price": 18.99,
@@ -5483,7 +5491,7 @@ def seed_menuitems():
             "description": "Do you love fresh veggies and flavor. This will do the trick. A warm organic wheat tortilla filled with organic scrambled tofu, organic soyrizo, organic sauteed kale, organic black beans, organic breakfast potatoes, organic avocado, organic mushrooms, organic grilled bell pepper, and organic grilled onion. Your choice of organic sauce is served on the side. Made using all organic ingredients."
         },
         {  # 609
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Overnight Peanut Butter Chocolate Chia and Oat Pudding",
             "item_type": "Organic Pastries and Dessert",
             "price": 9.49,
@@ -5493,7 +5501,7 @@ def seed_menuitems():
             "description": "Gluten-free and vegetarian. Made with all organic and wild-caught ingredients. This tasty superfood dessert will satisfy your sweet tooth while providing your body with the energy it needs for a full day's work or a full night's sleep. Overnight oats and chia with coconut milk, almond milk, raw honey, raw cacao powder, peanut butter, and topped with coconut flakes. Gluten-free, organic, paleo, and vegetarian."
         },
         {  # 610
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Organic Bagel with Spread",
             "item_type": "Organic Pastries and Dessert",
             "price": 6.99,
@@ -5501,7 +5509,7 @@ def seed_menuitems():
             "description": "Your choice of organic bagel is cut in half and toasted. Served with your choice of organic spread. Made using all organic ingredients. Every order supports a cleaner future."
         },
         {  # 611
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Organic Toast with Spread",
             "item_type": "Organic Pastries and Dessert",
             "price": 6.99,
@@ -5509,7 +5517,7 @@ def seed_menuitems():
             "description": "Your choice of organic bread toasted up and served with the spread of your choice. Made using all organic ingredients. Every order supports a cleaner future."
         },
         {  # 612
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Organic Cold Brew Coffee",
             "item_type": "Organic Coffee",
             "price": 5.99,
@@ -5519,7 +5527,7 @@ def seed_menuitems():
             "description": "Organic coffee is served over purified ice cubes and served with your choice of organic milk and sugar. Made using award-winning organic peerless coffee and all organic ingredients. Every order creates a cleaner future."
         },
         {  # 613
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Iced Latte",
             "item_type": "Organic Coffee",
             "price": 7.99,
@@ -5529,7 +5537,7 @@ def seed_menuitems():
             "description": "Double shot of organic espresso poured over purified ice cubes and your choice of organic milk then gently stirred creating the perfect matrimony between bold and creamy. Made using award-winning organic peerless coffee espresso and all organic ingredients. Every order creates a cleaner future."
         },
         {  # 614
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Iced Vanilla Latte",
             "item_type": "Organic Coffee",
             "price": 8.99,
@@ -5539,7 +5547,7 @@ def seed_menuitems():
             "description": "Double shot of organic espresso poured over purified ice cubes, vanilla drizzle and your choice of organic milk then topped off with in-house whipped cream, organic vanilla powder, and more drizzle. Made using award-winning organic peerless coffee espresso and all organic ingredients. Every order creates a cleaner future."
         },
         {  # 615
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Iced Matcha Latte",
             "item_type": "Organic Coffee",
             "price": 8.99,
@@ -5549,14 +5557,14 @@ def seed_menuitems():
             "description": "Organic matcha shot poured over purified ice cubes and organic vanilla with your choice of organic milk then topped off with organic in-house whipped cream and organic matcha powder. Made using 100 percent organic matcha. Every order creates a cleaner future. Please see www.Organico.Co for more specific information regarding the exact ingredients"
         },
         {  # 616
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Organic Hot Herbal Tea",
             "item_type": "Organic Teas and Ades",
             "price": 8.99,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/ccb219056daafc8cb0fe1d67288f4133/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
         },
         {  # 617
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Passion Fruit Hibiscus Tea (Zevia)",
             "item_type": "Organic Teas and Ades",
             "price": 3.99,
@@ -5564,7 +5572,7 @@ def seed_menuitems():
             "description": "Kosher, vegan, and gluten-free. Revitalize and enjoy: for a delicious, convenient, ready-to-drink iced tea, choose organic, sugar-free iced teas. This caffeine-free hibiscus tea passion fruit blends herbal hibiscus tisane with the tartness of passion fruit for an on-the-go tea. (.12 ounces), organic, GMO-free, sugar-free, gluten-free, vegan, kosher, keto-friendly, paleo-friendly, intermittent fasting friendly, and nothing artificial. Every order creates a cleaner future.",
         },
         {  # 618
-            "restaurant_id": 25,
+            "restaurant_id": 26,
             "item_name": "Peach Black Tea (Zevia)",
             "item_type": "Organic Teas and Ades",
             "price": 3.99,

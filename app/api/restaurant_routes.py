@@ -1,4 +1,4 @@
-from app.models import db, Restaurant, Review, Order, Favorite, MenuItem
+from app.models import db, Restaurant, Review, Order, Favorite, MenuItem, OrderItem
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from .AWS_helpers import upload_file_to_s3, get_unique_filename
@@ -9,9 +9,11 @@ from app.forms.create_restaurant_form import NewRestaurantForm
 from app.forms.edit_restaurant_form import EditRestaurantForm
 from app.forms.create_review_form import ReviewForm
 from app.forms.create_dish_form import NewDishForm
-from sqlalchemy import and_, case, desc
-from sqlalchemy.sql import func
+from sqlalchemy import and_, case, desc, or_
+from sqlalchemy.sql import func, extract
+from datetime import datetime, timedelta
 import random
+
 
 restaurant_routes = Blueprint('restaurants', __name__)
 
@@ -331,3 +333,126 @@ def add_review_to_restaurant(restaurantId):
 
     if form.errors:
         return form.errors
+
+
+@restaurant_routes.route('/<int:restaurantId>/orders')
+@login_required
+def get_sales_by_restaurantId(restaurantId):
+    twelve_months_ago = datetime.now() - timedelta(days=365)
+    past_orders = Order.query.filter(and_(Order.is_complete == True, Order.restaurant_id == restaurantId, Order.created_at >= twelve_months_ago)).order_by(
+        Order.created_at.desc()).all()
+    # return {"restaurant_orders": {order.id: order.to_dict() for order in past_orders}}
+
+    monthly_totals = {}
+    # Iterate over the orders and calculate the monthly totals
+    for order in past_orders:
+        year = order.created_at.year
+        month = order.created_at.month
+        order_dollar_volume = order.calculate_total_price()
+
+        if (year, month) in monthly_totals:
+            monthly_totals[(year, month)] += order_dollar_volume
+        else:
+            monthly_totals[(year, month)] = order_dollar_volume
+
+    # Sort the monthly totals by year and month
+    sorted_monthly_totals = sorted(monthly_totals.items())
+    result = [
+        {"yearMonth": str(year) + '/' + str(month),
+         "year": year, "month": month, "value": total, "valueK": f'{total/1000:.1f}k'}
+        for (year, month), total in sorted_monthly_totals
+    ]
+
+    return {"monthly_totals": result}
+
+
+@restaurant_routes.route('/<int:restaurantId>/customers')
+@login_required
+def get_customers_info_by_restaurantId(restaurantId):
+    past_orders = Order.query.filter(and_(Order.is_complete == True, Order.restaurant_id == restaurantId)).order_by(
+        Order.created_at.desc()).all()
+
+    customer_tracking = {}
+
+    for order in past_orders:
+        user_id = order.user_id
+
+        if user_id in customer_tracking:
+            customer_tracking[user_id] = True  # returning customer
+        else:
+            customer_tracking[user_id] = False  # new customer
+
+    # Initialize counters for returning and new customers
+    returning_customers_count = 0
+    new_customers_count = 0
+
+    # Count the number of returning and new customers
+    for is_returning in customer_tracking.values():
+        if is_returning:
+            returning_customers_count += 1
+        else:
+            new_customers_count += 1
+    return {"returning_customers_count": returning_customers_count, "new_customers_count": new_customers_count}
+
+
+@restaurant_routes.route('/<int:restaurantId>/top-orders')
+@login_required
+def get_top_orders_by_restaurantId(restaurantId):
+    past_orders = Order.query.filter(and_(Order.is_complete == True, Order.restaurant_id == restaurantId)).order_by(
+        Order.created_at.desc()).all()
+    sorted_orders = sorted(
+        past_orders, key=lambda order: order.calculate_total_price(), reverse=True)[0:5]
+
+    return {"top_orders": [order.to_dict_simple() for order in sorted_orders]}
+
+
+@restaurant_routes.route('/<int:restaurantId>/top-selling-items')
+@login_required
+def get_top_selling_items_by_restaurantId(restaurantId):
+    # past_orders = Order.query.filter(and_(Order.is_complete == True, Order.restaurant_id == restaurantId)).order_by(
+    #     Order.created_at.desc()).all()
+
+    order_items = OrderItem.query.filter(
+        OrderItem.order.has(restaurant_id=restaurantId)).all()
+
+    item_quantities = {}
+    # Calculate the total quantity sold for each item
+    for order_item in order_items:
+        item_id = order_item.item_id
+        quantity = order_item.quantity
+        if item_id in item_quantities:
+            item_quantities[item_id] += quantity
+        else:
+            item_quantities[item_id] = quantity
+
+    sorted_items = sorted(item_quantities.items(),
+                          key=lambda x: x[1], reverse=True)
+
+    top_selling_items = sorted_items[:5]
+    result_list = []
+    for item_id, quantity in top_selling_items:
+        item = OrderItem.query.filter_by(item_id=item_id).first()
+        item_name = item.menuitem.item_name
+        result_list.append([item_id, quantity, item_name])
+
+    return {"top_selling_items": result_list}
+
+
+@restaurant_routes.route('/<int:restaurantId>/recent-reviewed-items')
+@login_required
+def get_recent_reviewed_items_by_restaurantId(restaurantId):
+    # past_orders = Order.query.filter(and_(Order.is_complete == True, Order.restaurant_id == restaurantId)).order_by(
+    #     Order.created_at.desc()).all()
+
+    orderItems = OrderItem.query.join(OrderItem.order).filter(
+        Order.restaurant_id == restaurantId)
+
+    # Filter the orderItems to get those that are liked or disliked
+    res = orderItems.filter(
+        or_(OrderItem.is_like == True, OrderItem.is_dislike == True)).order_by(OrderItem.updated_at.desc()).all()
+
+    return {"recent_reviewed_items": [{"item_name": item.menuitem.item_name,
+                                       "is_like": item.is_like,
+                                       "is_dislike": item.is_dislike,
+                                       "updated_at": item.updated_at,
+                                       } for item in res]}

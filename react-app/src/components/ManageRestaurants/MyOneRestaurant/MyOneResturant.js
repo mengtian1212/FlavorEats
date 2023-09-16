@@ -11,6 +11,7 @@ import DeleteResModal from "../DeleteResModal/DeleteResModal";
 import UnauthorizedPage from "../../auth/UnauthorizedPage";
 import LoadingPage from "../../auth/LoadingPage";
 import NotFoundPage from "../../auth/NotFoundPage";
+import Dashbaord from "../../Dashboard/Dashboard";
 
 function MyOneRestaurant() {
   const { restaurantId } = useParams();
@@ -75,7 +76,16 @@ function MyOneRestaurant() {
                   }
                 />
                 <div className="my-one-res-head-sub">
-                  <div className="res-list-title2">{myRestaurant.name}</div>
+                  <div className="res-list-title2">
+                    {myRestaurant.name}
+                    {myRestaurant.avg_rating >= 4 && (
+                      <img
+                        src="https://d4p17acsd5wyj.cloudfront.net/bazaar/badge_top_eats.png"
+                        alt=""
+                        className="info-bestoverall2"
+                      />
+                    )}
+                  </div>
 
                   <div className="my-res-address-container">
                     <i className="fa-solid fa-location-dot my-res-loc"></i>
@@ -108,6 +118,14 @@ function MyOneRestaurant() {
                   <button
                     className="reorder-btn6"
                     onClick={() =>
+                      history.push(`/restaurants/${myRestaurant.id}`)
+                    }
+                  >
+                    View store page
+                  </button>
+                  <button
+                    className="reorder-btn6"
+                    onClick={() =>
                       history.push(`/business/${myRestaurant.id}/edit`)
                     }
                   >
@@ -120,14 +138,6 @@ function MyOneRestaurant() {
                     }
                     myClass="reorder-btn6"
                   />
-                  <button
-                    className="reorder-btn6"
-                    onClick={() =>
-                      history.push(`/restaurants/${myRestaurant.id}`)
-                    }
-                  >
-                    View store page
-                  </button>
                 </div>
                 {myRestaurant?.menuitems &&
                   Object.values(myRestaurant?.menuitems).length === 0 && (
@@ -159,6 +169,7 @@ function MyOneRestaurant() {
                     </div>
                   )}
               </section>
+              <Dashbaord restaurant={myRestaurant} />
               {/* <div>Top Selling Items</div>
           <div>Menu Item Feedback</div>
           <div>Customer reviews</div>

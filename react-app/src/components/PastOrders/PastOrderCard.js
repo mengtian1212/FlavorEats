@@ -122,10 +122,10 @@ function PastOrderCard({ pastOrder }) {
               </div>
               <div>
                 {pastOrder?.review_rating > 0 && (
-                  <div className="ratings3">
-                    <div className="empty-stars3"></div>
+                  <div className="ratings">
+                    <div className="empty-stars"></div>
                     <div
-                      className="full-stars3"
+                      className="full-stars"
                       style={{
                         width: `${percentage}%`,
                         color: `${starColor}`,
@@ -141,7 +141,7 @@ function PastOrderCard({ pastOrder }) {
                 {parseFloat(pastOrder?.total_price).toFixed(2)}
               </div>
               <div>• </div>
-              <div>{formatDate(pastOrder?.updated_at)}</div>
+              <div>{formatDate(pastOrder?.created_at)}</div>
               <div>• </div>
               <div>
                 {pastOrder?.is_pickup

@@ -156,14 +156,6 @@ function App() {
           >
             <CreateItem />
           </ProtectedRoute>
-          <ProtectedRoute
-            exact
-            path="/business/:restaurantId/items/:itemId/edit"
-            message="Please log in to manage restaurants"
-          >
-            <Navigation isLoaded={isLoaded} />
-            {/* <EditMenuItem /> */}
-          </ProtectedRoute>
 
           <Route exact path="/auth">
             <PleaseLoginPage />

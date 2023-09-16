@@ -8,6 +8,8 @@ import MyOneResSideBar from "../MyOneRestaurant/MyOneResSideBar";
 import LoadingPage from "../../auth/LoadingPage";
 import { fetchAllDishesThunk } from "../../../store/dishes";
 import MyItemEntry from "./MyItemEntry";
+import NotFoundPage from "../../auth/NotFoundPage";
+import UnauthorizedPage from "../../auth/UnauthorizedPage";
 
 function MyResMenuitems() {
   const { restaurantId } = useParams();
@@ -23,7 +25,7 @@ function MyResMenuitems() {
   const myMenuitems = useSelector((state) =>
     state.dishes?.allDishes ? Object.values(state.dishes?.allDishes) : []
   );
-  console.log("my menu items", myMenuitems);
+
   const [sortedItems, setSortedItems] = useState(myMenuitems || []);
   const [isLoading, setIsLoading] = useState(true);
   const [isSorting, setIsSorting] = useState(true);
@@ -52,11 +54,9 @@ function MyResMenuitems() {
       setSortBy(columnName);
       setSortOrder("asc");
     }
-    console.log("sortBy", sortBy, "sortOrder", sortOrder);
   };
 
   useEffect(() => {
-    console.log("useEffect run");
     const sorted = [...sortedItems];
     if (sortBy === "name" && sortOrder === "asc") {
       sorted.sort((a, b) => a.item_name.localeCompare(b.item_name));
@@ -101,8 +101,26 @@ function MyResMenuitems() {
       sorted.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
     }
     setSortedItems(sorted);
-    console.log("sortedItems", sortedItems);
   }, [sortBy, sortOrder]);
+
+  // Example: restaurantId === 1000 || abc
+  if (
+    (restaurantId && !Number.isInteger(parseInt(restaurantId))) ||
+    (!isLoading && myRestaurant && Object.values(myRestaurant).length === 0)
+  ) {
+    return <NotFoundPage />;
+  }
+
+  // Check if the current user is the restaurant owner
+  if (
+    sessionUser &&
+    !isLoading &&
+    myRestaurant &&
+    Object.values(myRestaurant).length &&
+    sessionUser.id !== myRestaurant.owner_id
+  ) {
+    return <UnauthorizedPage />;
+  }
 
   return (
     <div className="main-place-holder-container1">

@@ -71,6 +71,13 @@
   height: 24px;
 }
 
+.info-bestoverall2 {
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
+  margin-bottom: -2px;
+}
+
 .vert-line2 {
   background-color: rgb(226, 226, 226);
   /* background-color: #bdbdbd; */

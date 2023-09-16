@@ -11,6 +11,13 @@ export const ADD_RESTAURANT_FAVORITE = "restaurants/ADD_RESTAURANT_FAVORITE";
 export const DELETE_RESTAURANT_FAVORITE =
   "restaurants/DELETE_RESTAURANT_FAVORITE";
 
+// for dashboard
+export const LOAD_SALES = "restaurants/LOAD_SALES";
+export const LOAD_CUSTOMERS_INFO = "restaurants/LOAD_CUSTOMERS_INFO";
+export const LOAD_TOP_ORDERS = "restaurants/LOAD_TOP_ORDERS";
+export const LOAD_TOP_SELLING_ITEMS = "restaurants/LOAD_TOP_SELLING_ITEMS";
+export const LOAD_RECENT_REVIEW_ITEMS = "restaurants/LOAD_RECENT_REVIEW_ITEMS";
+
 /**  Action Creators: */
 export const loadAllRestaurantsAction = (restaurants) => ({
   type: LOAD_ALL_RESTAURANTS,
@@ -54,6 +61,31 @@ export const addFavorite = (payload) => ({
 
 export const deleteFavorite = (payload) => ({
   type: DELETE_RESTAURANT_FAVORITE,
+  payload,
+});
+
+export const loadSalesAction = (payload) => ({
+  type: LOAD_SALES,
+  payload,
+});
+
+export const loadCustomersInfoAction = (payload) => ({
+  type: LOAD_CUSTOMERS_INFO,
+  payload,
+});
+
+export const loadTopOrdersAction = (payload) => ({
+  type: LOAD_TOP_ORDERS,
+  payload,
+});
+
+export const loadTopSellingItemsAction = (payload) => ({
+  type: LOAD_TOP_SELLING_ITEMS,
+  payload,
+});
+
+export const loadRecentReviewedItemsAction = (payload) => ({
+  type: LOAD_RECENT_REVIEW_ITEMS,
   payload,
 });
 
@@ -106,7 +138,6 @@ export const createNewRestaurantThunk = (restaurant) => async (dispatch) => {
   if (response.ok) {
     dispatch(receiveRestaurantAction(data));
   }
-  console.log("dddddd", data);
   return data;
 };
 
@@ -179,12 +210,54 @@ export const deleteFavThunk = (restaurantId) => async (dispatch) => {
   }
 };
 
+export const fetchSalesThunk = (restaurantId) => async (dispatch) => {
+  const res = await fetch(`/api/restaurants/${restaurantId}/orders`);
+  const { monthly_totals } = await res.json();
+  dispatch(loadSalesAction(monthly_totals));
+  return monthly_totals;
+};
+
+export const fetchCustomersInfoThunk = (restaurantId) => async (dispatch) => {
+  const res = await fetch(`/api/restaurants/${restaurantId}/customers`);
+  const data = await res.json();
+  dispatch(loadCustomersInfoAction(data));
+  return data;
+};
+
+export const fetchTopOrdersThunk = (restaurantId) => async (dispatch) => {
+  const res = await fetch(`/api/restaurants/${restaurantId}/top-orders`);
+  const { top_orders } = await res.json();
+  dispatch(loadTopOrdersAction(top_orders));
+  return top_orders;
+};
+
+export const fetchTopSellingItemsThunk = (restaurantId) => async (dispatch) => {
+  const res = await fetch(`/api/restaurants/${restaurantId}/top-selling-items`);
+  const { top_selling_items } = await res.json();
+  dispatch(loadTopSellingItemsAction(top_selling_items));
+  return top_selling_items;
+};
+
+export const fetchRecentReviewItemsThunk =
+  (restaurantId) => async (dispatch) => {
+    const res = await fetch(
+      `/api/restaurants/${restaurantId}/recent-reviewed-items`
+    );
+    const { recent_reviewed_items } = await res.json();
+    dispatch(loadRecentReviewedItemsAction(recent_reviewed_items));
+    return recent_reviewed_items;
+  };
+
 /** Restaurants Reducer: */
 const initialState = {
   allRestaurants: {},
   singleRestaurant: {},
   newestRestaurant: {},
   favRestaurants: {},
+  sales: [],
+  topOrders: {},
+  topSellingItems: [],
+  recentReviewItems: [],
 };
 const restaurantsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -239,6 +312,34 @@ const restaurantsReducer = (state = initialState, action) => {
         allRestaurants: allResState,
         singleRestaurant: singleRestaurantState,
       };
+    case LOAD_SALES:
+      return {
+        ...state,
+        sales: action.payload,
+      };
+
+    case LOAD_CUSTOMERS_INFO:
+      return {
+        ...state,
+        returnedCustomersCount: action.payload.returning_customers_count,
+        newCustomersCount: action.payload.new_customers_count,
+      };
+    case LOAD_TOP_ORDERS:
+      return {
+        ...state,
+        topOrders: action.payload,
+      };
+    case LOAD_TOP_SELLING_ITEMS:
+      return {
+        ...state,
+        topSellingItems: action.payload,
+      };
+    case LOAD_RECENT_REVIEW_ITEMS:
+      return {
+        ...state,
+        recentReviewItems: action.payload,
+      };
+
     default:
       return state;
   }

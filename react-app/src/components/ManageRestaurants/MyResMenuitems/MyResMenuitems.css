@@ -28,6 +28,12 @@ tr:nth-child(even) {
   padding: 8px 12px;
 }
 
+.my-item-img1 {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+}
+
 .dish-table-head {
   display: flex;
   align-items: center;

@@ -340,7 +340,21 @@ def seed_restaurants():
             "lat": 34.083753,
             "lng": -118.326449
         },
-        {  # 25  la
+        {  # 25  pittsburgh
+            "owner_id": 2,
+            "name": "Pizza Forever",
+            "image_url": "https://duyt4h9nfnj50.cloudfront.net/resized/34317c790cc8ae79127d7863385bb89f-w2880-27.jpg",
+            "delivery_fee": 1.00,
+            "description": "Welcome! We are a recently opened restaurant, and we're excited to announce that our menu will be available very soon.",
+            "cusine_types": "Pizza#Mexican",
+            "price_ranges": "$",
+            "address": "5439 Babcock Blvd, 106, Pittsburgh, PA 15237",
+            "city": "Pittsburgh",
+            "state": "PA",
+            "lat": 40.543169,
+            "lng": -80.028831
+        },
+        {  # 26  la
             "owner_id": 2,
             "name": "ORGANICO Breakfast",
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/974e0173eb95b5a35f0efe4b9230fac3/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg",
@@ -354,6 +368,7 @@ def seed_restaurants():
             "lat": 34.034418,
             "lng": -118.431976
         },
+
 
     ]
 
