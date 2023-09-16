@@ -42,7 +42,7 @@ function ReviewCard({ review }) {
             </div>
             <div className="review-r">
               {review.rating > 0 && (
-                <div className="ratings3">
+                <div className="ratings1">
                   <div className="empty-stars3"></div>
                   <div
                     className="full-stars3"

@@ -568,18 +568,160 @@ def seed_orderitems():
 
         # order 87 restaurant 21
         {"order_id": 87, "item_id": random.randint(
-            482, 511), "quantity": random.randint(30, 70)},
+            482, 511), "quantity": random.randint(90, 170)},
         {"order_id": 87, "item_id": random.randint(
-            482, 511), "quantity": random.randint(30, 70),
+            482, 511), "quantity": random.randint(90, 170),
          "is_like": False, "is_dislike": True,
          "created_at": datetime(2023, 9, 12, 22, 00),
          "updated_at": datetime(2023, 9, 12, 22, 00), },
 
         # order 88 restaurant 21
         {"order_id": 88, "item_id": random.randint(
-            482, 511), "quantity": random.randint(30, 70)},
+            482, 511), "quantity": random.randint(90, 170)},
         {"order_id": 88, "item_id": random.randint(
-            482, 511), "quantity": random.randint(30, 70),
+            482, 511), "quantity": random.randint(90, 170),
+            "is_like": True, "is_dislike": False,
+         "created_at": datetime(2023, 9, 15, 19, 00),
+         "updated_at": datetime(2023, 9, 15, 19, 00), },
+
+        # restaurant 22
+        # order 89 restaurant 22
+        {"order_id": 89, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 89, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 90 restaurant 22
+        {"order_id": 90, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 90, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 91 restaurant 22
+        {"order_id": 91, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 91, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 92 restaurant 22
+        {"order_id": 92, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 92, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 93 restaurant 22
+        {"order_id": 93, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 93, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 94 restaurant 22
+        {"order_id": 94, "item_id": random.randint(
+         512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 94, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 95 restaurant 22
+        {"order_id": 95, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 95, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 96 restaurant 22
+        {"order_id": 96, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 96, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 97 restaurant  22
+        {"order_id": 97, "item_id": random.randint(
+         512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 97, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 98 restaurant 22
+        {"order_id": 98, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 98, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 99 restaurant 22
+        {"order_id": 99, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 99, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 100 restaurant 22
+        {"order_id": 100, "item_id": random.randint(
+            512, 534), "quantity": random.randint(200, 250)},
+        {"order_id": 100, "item_id": random.randint(
+            512, 534), "quantity": random.randint(200, 250)},
+
+        # order 101 restaurant 22
+        {"order_id": 101, "item_id": random.randint(
+         512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 101, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 102 restaurant 22
+        {"order_id": 102, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 102, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 103 restaurant 22
+        {"order_id": 103, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 103, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 104 restaurant 22
+        {"order_id": 104, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 104, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+
+        # order 105 restaurant 22
+        {"order_id": 105, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 105, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170),
+         "is_like": False, "is_dislike": True,
+         "created_at": datetime(2023, 8, 18, 22, 00),
+         "updated_at": datetime(2023, 8, 18, 22, 00), },
+
+        # order 106 restaurant 22
+        {"order_id": 106, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 106, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170),
+         "is_like": True, "is_dislike": False,
+         "created_at": datetime(2023, 8, 15, 22, 00),
+         "updated_at": datetime(2023, 8, 15, 22, 00), },
+
+        # order 107 restaurant 22
+        {"order_id": 107, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 107, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170),
+         "is_like": True, "is_dislike": False,
+         "created_at": datetime(2023, 9, 1, 22, 00),
+         "updated_at": datetime(2023, 9, 1, 22, 00), },
+
+        # order 108 restaurant 22
+        {"order_id": 108, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 108, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170),
+         "is_like": False, "is_dislike": True,
+         "created_at": datetime(2023, 9, 10, 22, 00),
+         "updated_at": datetime(2023, 9, 10, 22, 00), },
+
+        # order 109 restaurant 22
+        {"order_id": 109, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170)},
+        {"order_id": 109, "item_id": random.randint(
+            512, 534), "quantity": random.randint(90, 170),
             "is_like": True, "is_dislike": False,
          "created_at": datetime(2023, 9, 15, 19, 00),
          "updated_at": datetime(2023, 9, 15, 19, 00), },

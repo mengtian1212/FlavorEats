@@ -54,17 +54,6 @@ function SignupFormPage() {
     landingAddressProp ? landingAddressProp[6] : 0
   );
 
-  console.log(
-    "address input -------------",
-    landingAddressProp,
-    address,
-    city,
-    state,
-    zip,
-    lat,
-    lng
-  );
-
   const demoUser = async (e) => {
     e.preventDefault();
 

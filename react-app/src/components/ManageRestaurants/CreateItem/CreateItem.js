@@ -48,7 +48,7 @@ function CreateItem() {
   //////////////// Get unique item categories for all the menu items in this restaurant
   const [uniqueItemTypes, setUniqueItemTypes] = useState([]);
   useEffect(() => {
-    if (isLoading || !myRestaurant) return;
+    if (isLoading || !myRestaurant || !myRestaurant?.menuitems) return;
     const uniqueItemTypesSet = new Set();
     Object.values(myRestaurant?.menuitems).forEach((menuitem) => {
       uniqueItemTypesSet.add(menuitem.item_type);
@@ -63,7 +63,6 @@ function CreateItem() {
 
   const handleItemTypeChange = (e) => {
     const currentType = e.target.value;
-    console.log("currentType", currentType);
     setSelectedType(currentType);
 
     if (currentType !== "Other") {
@@ -72,9 +71,6 @@ function CreateItem() {
       setItemType("");
     }
   };
-
-  console.log("selectedType", selectedType);
-  console.log("itemType", itemType);
 
   //////////// for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
@@ -133,16 +129,15 @@ function CreateItem() {
 
   //////////// for validate form
   const validateForm = () => {
-    console.log("before validating item data");
-    console.log(
-      "state variables",
-      itemName,
-      price,
-      calory,
-      itemType,
-      description,
-      photoUrl
-    );
+    // console.log(
+    //   "state variables",
+    //   itemName,
+    //   price,
+    //   calory,
+    //   itemType,
+    //   description,
+    //   photoUrl
+    // );
 
     if (photoUrl === "") {
       setShowNoPictureError(true);
@@ -178,22 +173,12 @@ function CreateItem() {
     }
 
     setValidationErrors(err);
-    console.log("validation errors", err);
     return Object.values(err).length === 0 && photoUrl;
   };
-
-  // Example: restaurantId === 1000 || abc
-  if (
-    (restaurantId && !Number.isInteger(parseInt(restaurantId))) ||
-    (!isLoading && myRestaurant && Object.values(myRestaurant).length === 0)
-  ) {
-    return <NotFoundPage />;
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    console.log("data validated for creating item!");
 
     setIsAdded(true);
     let formData = new FormData();
@@ -221,13 +206,11 @@ function CreateItem() {
       formData.append("calory", calory);
     }
 
-    console.log("create item submit formdata", formData);
     const data = await dispatch(createDishThunk(formData, restaurantId));
     if (data.errors) {
       setImageLoading(false);
       setIsAdded(false);
       setValidationErrors(data.errors);
-      console.log("Flask return errors:", data.errors);
     } else {
       setImageLoading(false);
       resetForm();
@@ -235,6 +218,14 @@ function CreateItem() {
       window.scroll(0, 0);
     }
   };
+
+  // Example: restaurantId === 1000 || abc
+  if (
+    (restaurantId && !Number.isInteger(parseInt(restaurantId))) ||
+    (!isLoading && myRestaurant && Object.values(myRestaurant).length === 0)
+  ) {
+    return <NotFoundPage />;
+  }
 
   // Check if the current user is the restaurant owner
   if (

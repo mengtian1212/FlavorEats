@@ -70,11 +70,8 @@ const Maps = ({
   const directionsCallback = (response) => {
     if (response !== null) {
       if (response.status === "OK") {
-        console.log("Route: okokokokok");
-
         setResponse(response);
         setDeliveryDuration(response.routes[0].legs[0].duration);
-        console.log("setDeliveryDuration", response.routes[0].legs[0].duration);
       } else {
         console.log("Route: " + response.status);
       }
@@ -99,7 +96,6 @@ const Maps = ({
       resLat,
       resLng
     );
-    console.log("distance", distance);
     // setResponse(null);
   }, [deliveryLat, deliveryLng, resLat, resLng]);
 

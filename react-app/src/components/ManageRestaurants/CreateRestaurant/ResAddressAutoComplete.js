@@ -53,7 +53,6 @@ function ResAddressAutoComplete({ apiKey, geoKey, onAddressChange }) {
             resAddress.push(lat);
             resAddress.push(lng);
             onAddressChange(resAddress);
-            console.log("Selected Place:", place);
           },
           (error) => {
             console.error(error);

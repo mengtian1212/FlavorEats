@@ -46,8 +46,6 @@ function EditRestaurant() {
   const [showNoPictureError, setShowNoPictureError] = useState(false);
   // after submit image loading to aws
   const [imageLoading, setImageLoading] = useState(false);
-  console.log("image", image);
-  console.log("photoUrl", photoUrl);
 
   const [myAddress, setMyAddress] = useState("");
   const [address, setAddress] = useState(
@@ -142,10 +140,10 @@ function EditRestaurant() {
 
   //////////// for uploading image to aws
   const handlePhoto = async ({ currentTarget }) => {
-    console.log("currentTarget", currentTarget);
+    // console.log("currentTarget", currentTarget);
     // <input type="file" accept="image/png, image/jpeg, image/jpg, image/gif" style="display: none;">
 
-    console.log("currentTarget.files[0]", currentTarget.files[0]);
+    // console.log("currentTarget.files[0]", currentTarget.files[0]);
     // File {name: 'pic1.jpg', lastModified: 1690350018999, lastModifiedDate: Tue Jul 25 2023 22:40:18 GMT-0700 (Pacific Daylight Time), webkitRelativePath: '', size: 131767, …}
 
     if (currentTarget.files[0]) {
@@ -154,9 +152,6 @@ function EditRestaurant() {
       fileReader.readAsDataURL(currentTarget.files[0]);
       fileReader.onload = () => setPhotoUrl(fileReader.result);
       setShowNoPictureError(false);
-
-      console.log("after fileReader onload: image", image);
-      console.log("after fileReader onload: photoUrl", photoUrl);
     }
   };
 
@@ -292,7 +287,6 @@ function EditRestaurant() {
       setImageLoading(false);
       setIsAdded(false);
       setValidationErrors(data.errors);
-      console.log(data.errors);
     } else {
       setImageLoading(false);
       resetForm();
