@@ -66,7 +66,7 @@ function MyOneResSideBar({ myRestaurant }) {
         ></i>
         <div className="_16"></div>
         <div className={`lih ${showOverview ? "underfocus" : ""}`}>
-          Store overview
+          Store Dashboard
         </div>
       </div>
       <div
@@ -79,7 +79,7 @@ function MyOneResSideBar({ myRestaurant }) {
           }`}
         ></i>
         <div className="_16"></div>
-        <div className={`lih ${showMenus ? "underfocus" : ""}`}>Store menu</div>
+        <div className={`lih ${showMenus ? "underfocus" : ""}`}>Store Menu</div>
       </div>
     </>
   );

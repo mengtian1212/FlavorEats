@@ -116,12 +116,15 @@ class Order(db.Model):
         res = {
             'id': self.id,
             'user_id': self.user_id,
+            'user_firstname': self.user.first_name,
+            'user_lastname': self.user.last_name,
             'user_image_url': self.user.image_url,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'num_items': self.calculate_num_items(),
             'total_price': self.calculate_total_price(),
-            'review_rating': self.review.rating if self.review_id else 0
-        }
+            'review_rating': self.review.rating if self.review_id else 0,
+            'is_pickup': self.is_pickup,
+            'is_priority': self.is_priority, }
 
         return res

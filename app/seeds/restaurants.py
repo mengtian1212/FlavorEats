@@ -341,7 +341,7 @@ def seed_restaurants():
             "lng": -118.326449
         },
         {  # 25  pittsburgh
-            "owner_id": 1,
+            "owner_id": 2,
             "name": "Pizza Forever",
             "image_url": "https://duyt4h9nfnj50.cloudfront.net/resized/34317c790cc8ae79127d7863385bb89f-w2880-27.jpg",
             "delivery_fee": 1.00,

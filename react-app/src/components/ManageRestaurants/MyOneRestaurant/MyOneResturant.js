@@ -118,6 +118,14 @@ function MyOneRestaurant() {
                   <button
                     className="reorder-btn6"
                     onClick={() =>
+                      history.push(`/restaurants/${myRestaurant.id}`)
+                    }
+                  >
+                    View store page
+                  </button>
+                  <button
+                    className="reorder-btn6"
+                    onClick={() =>
                       history.push(`/business/${myRestaurant.id}/edit`)
                     }
                   >
@@ -130,14 +138,6 @@ function MyOneRestaurant() {
                     }
                     myClass="reorder-btn6"
                   />
-                  <button
-                    className="reorder-btn6"
-                    onClick={() =>
-                      history.push(`/restaurants/${myRestaurant.id}`)
-                    }
-                  >
-                    View store page
-                  </button>
                 </div>
                 {myRestaurant?.menuitems &&
                   Object.values(myRestaurant?.menuitems).length === 0 && (

@@ -29,7 +29,9 @@
 }
 
 .my-one-edit-btns {
-  padding-top: 60px;
+  width: 836px;
+  padding: 36px 0;
+  padding-bottom: 24px;
   display: flex;
   gap: 36px;
   align-items: center;
@@ -37,8 +39,8 @@
 }
 
 .reorder-btn6 {
-  width: 302px;
-  padding: 20px;
+  flex: 1;
+  padding: 16px;
   border: none;
   outline: none;
   /* border-radius: 8px; */
@@ -77,7 +79,9 @@
 }
 
 .reorder-btn12 {
-  margin-top: 2.8em;
+  margin-top: 1em;
+  /* padding-bottom: 2.8em; */
+
   padding: 16px 24px;
   border: none;
   outline: none;
@@ -204,8 +208,9 @@
 }
 
 .taking-order-container {
-  width: fit-content;
-  margin: 1em 0;
+  height: fit-content;
+  width: 837px;
+  margin-bottom: 24px;
   padding: 2em;
   border-radius: 1em;
   display: flex;

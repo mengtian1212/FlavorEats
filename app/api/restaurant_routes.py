@@ -11,6 +11,7 @@ from app.forms.create_review_form import ReviewForm
 from app.forms.create_dish_form import NewDishForm
 from sqlalchemy import and_, case, desc, or_
 from sqlalchemy.sql import func, extract
+from datetime import datetime, timedelta
 import random
 
 
@@ -337,22 +338,32 @@ def add_review_to_restaurant(restaurantId):
 @restaurant_routes.route('/<int:restaurantId>/orders')
 @login_required
 def get_sales_by_restaurantId(restaurantId):
-    past_orders = Order.query.filter(and_(Order.is_complete == True, Order.restaurant_id == restaurantId)).order_by(
+    twelve_months_ago = datetime.now() - timedelta(days=365)
+    past_orders = Order.query.filter(and_(Order.is_complete == True, Order.restaurant_id == restaurantId, Order.created_at >= twelve_months_ago)).order_by(
         Order.created_at.desc()).all()
     # return {"restaurant_orders": {order.id: order.to_dict() for order in past_orders}}
 
     monthly_totals = {}
     # Iterate over the orders and calculate the monthly totals
     for order in past_orders:
+        year = order.created_at.year
         month = order.created_at.month
         order_dollar_volume = order.calculate_total_price()
 
-        if month in monthly_totals:
-            monthly_totals[month] += order_dollar_volume
+        if (year, month) in monthly_totals:
+            monthly_totals[(year, month)] += order_dollar_volume
         else:
-            monthly_totals[month] = order_dollar_volume
+            monthly_totals[(year, month)] = order_dollar_volume
 
-    return {"monthly_totals": monthly_totals}
+    # Sort the monthly totals by year and month
+    sorted_monthly_totals = sorted(monthly_totals.items())
+    result = [
+        {"yearMonth": str(year) + '/' + str(month),
+         "year": year, "month": month, "value": total, "valueK": f'{total/1000:.1f}k'}
+        for (year, month), total in sorted_monthly_totals
+    ]
+
+    return {"monthly_totals": result}
 
 
 @restaurant_routes.route('/<int:restaurantId>/customers')

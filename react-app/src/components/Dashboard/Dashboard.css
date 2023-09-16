@@ -1,11 +1,10 @@
-.dash__menu-item-rating-container {
-  border: 1px solid black;
-}
-
 .dash__menu-item-rating {
   display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
+/* dashboard layout */
 .dashboard {
   width: 1270px;
   display: flex;
@@ -36,4 +35,325 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+/* dashboard main  */
+.dash__menu-item-rating-container {
+  border: 2px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.dash__title {
+  line-height: 26px;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.dash__subtitle {
+  font-size: 14px;
+  line-height: 20px;
+  color: #848484;
+}
+
+.dash__main {
+  padding: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dash_entry {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.no-data {
+  color: #848484;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .dash_entry div {
+  font-size: 14px;
+} */
+
+/* MostSellingItems.js */
+.dash__index {
+  font-weight: 500;
+}
+
+.dash_sell {
+  display: flex;
+  gap: 12px;
+}
+
+.dash_sellq {
+  padding-right: 16px;
+}
+
+/* MenuItemFeedback.js */
+.dash_entry1 {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.dash_entry1:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dash_entry1:first-child {
+  padding-top: 0;
+}
+
+.dash_entry2 {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.dash_entry2:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dash_entry2:first-child {
+  padding-top: 0;
+}
+
+.dash_entry3 {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 12px 0;
+  border-bottom: 2px solid #e8e8e8;
+}
+
+.dash_entry3:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.dash_entry3:first-child {
+  padding-top: 0;
+}
+
+.dash_recent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dash-tup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 500px;
+  background-color: #daf0e3;
+  color: rgb(4, 136, 72);
+}
+
+.dash-tdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 500px;
+  background-color: #fed7d2;
+  color: #d64531;
+}
+
+/* RestaurantFeedback */
+.dash_menu-item {
+  display: flex;
+}
+
+.dash_menu-item1 {
+  flex: 70;
+  display: flex;
+  flex-direction: column;
+}
+
+.dash_menu-item2 {
+  flex: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dash_menu-item3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.dash_menu-item4 {
+  flex: 55;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dash_menu-item-num {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dash_menu-item-num1 {
+  padding-top: 4px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.stars-dl1 {
+  flex: 17;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 16px 0;
+}
+
+.rating-bars-container1 {
+  flex: 84;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 8px;
+  gap: 12px;
+  padding: 20px 0px 0 0;
+}
+
+.ratings3 {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  height: 12px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.ratings4 {
+  position: relative;
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  height: 12px;
+  background-color: #c3d8ff;
+  border-radius: 4px;
+}
+
+.full-bar1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* TopRatedItems  */
+.dash_rated_box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dash_rated_box1 {
+  display: flex;
+}
+
+.dash_ci {
+  color: rgb(4, 136, 72);
+  font-size: 12px;
+  padding-right: 4px;
+}
+
+.dash_up {
+  color: #b1b1b1;
+  font-size: 12px;
+  padding-right: 4px;
+}
+
+.dash_down {
+  color: #d8d8d8;
+  font-size: 12px;
+  padding-right: 4px;
+}
+
+.dash_rated_box2 {
+  font-size: 12px;
+  padding-right: 8px;
+}
+
+.dash-rr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TopOrders */
+.dash_topleft {
+  flex: 10;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: center;
+}
+
+.dash_top {
+  flex: 13;
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  align-items: center;
+}
+
+.dash_oname {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-line-clamp: 1;
+}
+
+/* CustomersInfo  */
+.dash_cum_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dash_cum_container1 {
+  display: flex;
+  align-items: center;
+}
+
+.dash_cum1 {
+  color: #276ef1;
+  font-size: 12px;
+  padding-right: 8px;
+}
+
+.dash_cum2 {
+  color: #c3d8ff;
+  font-size: 12px;
+  padding-right: 8px;
 }

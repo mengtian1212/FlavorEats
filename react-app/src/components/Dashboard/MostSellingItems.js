@@ -19,13 +19,22 @@ function MostSellingItems({ restaurantId }) {
     <>
       {!isLoading && (
         <div className="dash__menu-item-rating-container">
-          most selling items
-          {mostSellingItems?.map((item, index) => (
-            <div key={index}>
-              <div>{item[2]}</div>
-              <div>{item[1]}</div>
-            </div>
-          ))}
+          <div className="dash__title">Top Selling Items</div>
+          <div className="dash__subtitle">Ranked by order volume</div>
+          <div className="dash__main">
+            {mostSellingItems?.map((item, index) => (
+              <div key={index} className="dash_entry">
+                <div className="dash_sell">
+                  <div className="dash__index">0{index + 1}</div>
+                  <div className="dash_sellq">{item[2]}</div>
+                </div>
+                <div className="dash_sellq">{item[1]}</div>
+              </div>
+            ))}
+            {mostSellingItems.length === 0 && (
+              <div className="no-data">No data</div>
+            )}
+          </div>
         </div>
       )}
     </>

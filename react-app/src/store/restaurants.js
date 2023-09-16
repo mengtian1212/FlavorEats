@@ -255,7 +255,7 @@ const initialState = {
   singleRestaurant: {},
   newestRestaurant: {},
   favRestaurants: {},
-  sales: {},
+  sales: [],
   topOrders: {},
   topSellingItems: [],
   recentReviewItems: [],

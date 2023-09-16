@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllReviewsThunk } from "../../store/reviews";
+import { useHistory, Link } from "react-router-dom";
 
 function RestaurantFeedback({ restaurantId }) {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const reviews = useSelector((state) => Object.values(state.reviews));
   const [starColor, setStarColor] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -74,74 +77,82 @@ function RestaurantFeedback({ restaurantId }) {
     <>
       {!isLoading && (
         <div className="dash__menu-item-rating-container">
-          <div>Customer satisfactation</div>
-          <div>
-            The overall, average rating customers have given your store.
-          </div>
-          <div className="restaurant-card-stars2">
-            <div>{avgRating > 0 ? avgRating.toFixed(1) : "0"}</div>
-            <div className="ratings1">
-              <div className="empty-stars1"></div>
-              <div
-                className="full-stars1"
-                style={{
-                  width: `${percentage}%`,
-                  color: `${starColor}`,
-                }}
-              ></div>
+          <div className="dash_menu-item">
+            <div className="dash_menu-item1">
+              <div className="dash__title">Customer Satisfaction</div>
+              <div className="dash__subtitle">
+                The overall, average rating customers have given your store.
+              </div>
             </div>
-          </div>
-          <div className="n-reviews">
-            {reviews.length} {reviews.length === 1 ? "review" : "reviews"}
-          </div>
-          <div className="stars-distribution">
-            <div className="stars-dl">
-              <div className="item-name-text">5 stars</div>
-              <div className="item-name-text">4 stars</div>
-              <div className="item-name-text">3 stars</div>
-              <div className="item-name-text">2 stars</div>
-              <div className="item-name-text">1 star</div>
-            </div>
-            <div className="rating-bars-container">
-              <div className="ratings2">
+
+            <div className="dash_menu-item2">
+              <div className="dash_menu-item-num">
+                {avgRating > 0 ? avgRating.toFixed(1) : "0"}
+              </div>
+              <div className="ratings1">
+                <div className="empty-stars1"></div>
                 <div
-                  className="full-bar"
+                  className="full-stars1"
+                  style={{
+                    width: `${percentage}%`,
+                    color: `${starColor}`,
+                  }}
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          {/* <div className="n-reviews">
+            {reviews.length} {reviews.length === 1 ? "review" : "reviews"}
+          </div> */}
+          <div className="stars-distribution1">
+            <div className="stars-dl1">
+              <div className="dash__index">5 stars</div>
+              <div className="dash__index">4 stars</div>
+              <div className="dash__index">3 stars</div>
+              <div className="dash__index">2 stars</div>
+              <div className="dash__index">1 star</div>
+            </div>
+            <div className="rating-bars-container1">
+              <div className="ratings3">
+                <div
+                  className="full-bar1"
                   style={{
                     width: `${starPercents[5] * 100}%`,
                     backgroundColor: `rgb(251, 80, 60)`,
                   }}
                 ></div>
               </div>
-              <div className="ratings2">
+              <div className="ratings3">
                 <div
-                  className="full-bar"
+                  className="full-bar1"
                   style={{
                     width: `${starPercents[4] * 100}%`,
                     backgroundColor: `rgb(255, 100, 61) `,
                   }}
                 ></div>
               </div>
-              <div className="ratings2">
+              <div className="ratings3">
                 <div
-                  className="full-bar"
+                  className="full-bar1"
                   style={{
                     width: `${starPercents[3] * 100}%`,
                     backgroundColor: `rgb(255, 135, 66)`,
                   }}
                 ></div>
               </div>
-              <div className="ratings2">
+              <div className="ratings3">
                 <div
-                  className="full-bar"
+                  className="full-bar1"
                   style={{
                     width: `${starPercents[2] * 100}%`,
                     backgroundColor: `rgb(255, 173, 72)`,
                   }}
                 ></div>
               </div>
-              <div className="ratings2">
+              <div className="ratings3">
                 <div
-                  className="full-bar"
+                  className="full-bar1"
                   style={{
                     width: `${starPercents[1] * 100}%`,
                     backgroundColor: `rgb(255, 204, 75)`,

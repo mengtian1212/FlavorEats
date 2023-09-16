@@ -10,8 +10,8 @@ def seed_menuitems():
             "item_type": "Burgers",
             "price": 7.79,
             "calory": 590,
-            "num_likes": 4,
-            "num_dislikes": 1,
+            "num_likes": 16,
+            "num_dislikes": 4,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/DC_201907_0005_BigMac_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "Ever wondered what's on a Big Mac? The McDonald's Big Mac® is a 100% beef burger with a taste like no other. The mouthwatering perfection starts with two 100% pure all beef patties and Big Mac® sauce sandwiched between a sesame seed bun."
         },
@@ -50,8 +50,8 @@ def seed_menuitems():
             "item_type": "Burgers",
             "price": 11.79,
             "calory": 870,
-            "num_likes": 3,
-            "num_dislikes": 0,
+            "num_likes": 9,
+            "num_dislikes": 3,
             "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/Header_CheesyJalapenoBaconQPC_Single_832x472:product-header-desktop?wid=830&hei=458&dpr=off",
             "description": "Introducing McDonald's new Cheesy Jalapeño Bacon QPC, featuring our 100% fresh beef Quarter Pounder patty that's cooked right when you order so it's hot and juicy every time. "
         },
@@ -143,8 +143,8 @@ def seed_menuitems():
             "item_type": "Combo Meals",
             "price": 12.59,
             "calory": 870,
-            "num_likes": 4,
-            "num_dislikes": 1,
+            "num_likes": 12,
+            "num_dislikes": 3,
             "image_url": "https://tb-static.uber.com/prod/image-proc/processed_images/71ead9db896ec112fd16e0dfa247efe9/5954bcb006b10dbfd0bc160f6370faf3.jpeg",
             "description": "Our Chicken McNugget Happy Meal features ten tender Chicken McNuggets made with white meat, World Famous Fries and a side of beverage."
         },

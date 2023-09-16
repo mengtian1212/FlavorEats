@@ -122,10 +122,10 @@ function PastOrderCard({ pastOrder }) {
               </div>
               <div>
                 {pastOrder?.review_rating > 0 && (
-                  <div className="ratings3">
-                    <div className="empty-stars3"></div>
+                  <div className="ratings">
+                    <div className="empty-stars"></div>
                     <div
-                      className="full-stars3"
+                      className="full-stars"
                       style={{
                         width: `${percentage}%`,
                         color: `${starColor}`,
