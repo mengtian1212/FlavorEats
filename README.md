@@ -10,7 +10,7 @@ Customers can search for their preferred cuisines and restaurants, manage multip
 
 ### 1. Fuzzy Search:🔍
 
-Customers can perform efficient searches across various types: dishes, restaurants or keywords in descrption.
+Customers can perform efficient searches across various types: dishes, restaurants cuisine types, or keywords in descrption.
 
 ### 2. Multi-Restaurant Cart Management:🛒
 
