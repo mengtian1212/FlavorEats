@@ -112,4 +112,4 @@ For more details on features and application architecture please refer to the wi
 - [Database Schema](https://github.com/mengtian1212/FlavorEats/wiki/Database-Schema)
 - [Feature List](https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)
 - [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
-- [Wireframes] (https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
+- [Wireframes](https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
