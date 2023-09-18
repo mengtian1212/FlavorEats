@@ -46,15 +46,6 @@ Engage with customers through feedback collection, enabling improvements in serv
 
 Our platform facilitates the process of starting a new restaurant business, editing store profiles, and removing businesses.
 
-<h2 id="table-of-contents">Index</h2>
-
-- [Technologies Used](#techstackTechStack)
-- [Features](#features)
-- [Future Plans](#future-plans)
-- [Let's Connect](#connect)
-
-For more details on features and application architecture please refer to the wiki page:
-
 ## TechStack
 
 ### Languages
@@ -113,3 +104,12 @@ For more details on features and application architecture please refer to the wi
   - https://www.maggietian.com/
   - https://github.com/mengtian1212
   - https://www.linkedin.com/in/mengtian1212/
+  - mengtian.thu@gmail.com
+
+For more details on features and application architecture please refer to the wiki page:
+
+- [Backend Endpoints & Frontend Routes](https://github.com/mengtian1212/FlavorEats/wiki/Backend-Endpoints-&-Frontend-Routes)
+- [Database Schema](https://github.com/mengtian1212/FlavorEats/wiki/Database-Schema)
+- [Feature List](https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)
+- [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
+- [Wireframes] (https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
