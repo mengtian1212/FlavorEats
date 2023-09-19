@@ -9,7 +9,7 @@ review_routes = Blueprint('reviews', __name__)
 
 @review_routes.route("/<int:id>", methods=["PUT"])
 @login_required
-def update_comment_for_restaurant(id):
+def update_review_for_restaurant(id):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 

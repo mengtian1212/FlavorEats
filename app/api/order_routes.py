@@ -10,6 +10,9 @@ order_routes = Blueprint('orders', __name__)
 @order_routes.route('/past')
 @login_required
 def get_all_past_orders():
+    """
+    Query for all past orders of current user
+    """
     past_orders = Order.query.filter(and_(Order.is_complete == True, Order.user_id == current_user.id)).order_by(
         Order.updated_at.desc()).all()
     return {"past_orders": {order.id: order.to_dict() for order in past_orders}}
@@ -18,6 +21,9 @@ def get_all_past_orders():
 @order_routes.route('/past/<int:orderId>')
 @login_required
 def get_single_past_order(orderId):
+    """
+    Query for a single past order by id
+    """
     single_past_order = Order.query.get(orderId)
     if not single_past_order:
         return jsonify({"message": "Order not found"}), 404
@@ -27,6 +33,9 @@ def get_single_past_order(orderId):
 @order_routes.route('/past/latest')
 @login_required
 def get_last_past_order():
+    """
+    Query for the last order placed by the current user
+    """
     last_past_order = Order.query.filter(
         Order.user_id == current_user.id).order_by(Order.updated_at.desc()).first()
     if not last_past_order:

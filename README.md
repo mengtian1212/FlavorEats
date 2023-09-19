@@ -1,6 +1,6 @@
 # Flavor Eats 🍔🌮🍕
 
-[View Live Site](https://flavor-eats.onrender.com/)
+[View Live Site](https://flavor-eats.onrender.com/){:target="\_blank" rel="noopener"}
 
 Welcome to Flavor Eats, your one-stop web application that seamlessly combines the best of e-commerce for both customers and restaurant businesses.
 
@@ -10,7 +10,7 @@ Customers can search for their preferred cuisines and restaurants, manage multip
 
 ### 1. Fuzzy Search:🔍
 
-Customers can perform efficient searches across various types: dishes, restaurants or keywords in descrption.
+Customers can perform efficient searches across various types: dishes, restaurants or keywords in description.
 
 ### 2. Multi-Restaurant Cart Management:🛒
 
@@ -48,7 +48,7 @@ Our platform facilitates the process of starting a new restaurant business, edit
 
 <h2 id="table-of-contents">Index</h2>
 
-- [Technologies Used](#techstackTechStack)
+- [Technologies Used](#TechStack)
 - [Features](#features)
 - [Future Plans](#future-plans)
 - [Let's Connect](#connect)
