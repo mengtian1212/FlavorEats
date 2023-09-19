@@ -77,9 +77,31 @@ Our platform facilitates the process of starting a new restaurant business, edit
 
 ## Selected Views:
 
-### Landing page
+### Landing Page
 
 ![landing-page](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/landing-page.PNG)
+
+### Main Page
+
+![main-page1](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/main1.PNG)
+![main-page2](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/main2.PNG)
+
+### Single Restaurant Page
+
+![single-restaurant-page](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/single-restaurant1.PNG)
+![store-info](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/single-restaurant-store-info.PNG)
+
+### Checkout Page
+
+![checkout](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/checkout-page.PNG)
+
+### Place Order Page
+
+![place-order](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/place-order-page.PNG)
+
+### Restaurant Review
+
+![restaurant-review](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/restaurant-review.PNG)
 
 ## How to Build Locally:
 
