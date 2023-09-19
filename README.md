@@ -1,6 +1,6 @@
 # Flavor Eats 🍔🌮🍕
 
-[View Live Site](https://flavor-eats.onrender.com/)
+[>>> Live Site <<<](https://flavor-eats.onrender.com/)
 
 Welcome to Flavor Eats, your one-stop web application that seamlessly combines the best of e-commerce for both customers and restaurant businesses.
 
