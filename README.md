@@ -104,10 +104,10 @@ Our platform facilitates the process of starting a new restaurant business, edit
 ## Developer
 
 - Meng (Maggie) Tian
-  - https://www.maggietian.com/
-  - https://github.com/mengtian1212
-  - https://www.linkedin.com/in/mengtian1212/
-  - mengtian.thu@gmail.com
+  - Personal website: https://www.maggietian.com/
+  - Github: https://github.com/mengtian1212
+  - Linkedin: https://www.linkedin.com/in/mengtian1212/
+  - Email: mengtian.thu@gmail.com
 
 For more details on features and application architecture please refer to the wiki page:
 
