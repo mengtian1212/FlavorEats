@@ -92,41 +92,60 @@ For more details on features and application architecture please refer to the wi
 
 <h2 id="views">Selected Views:</h2>
 
-### Landing Page
+### Landing Page:
 
 ![landing-page](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/landing-page.PNG)
 
-### Main Page
+### Main Page:
 
 ![main-page1](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/main1.PNG)
 ![main-page2](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/main2.PNG)
 
-### Single Restaurant Page
+### Single Restaurant Page:
 
 ![single-restaurant-page](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/single-restaurant1.PNG)
 ![store-info](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/single-restaurant-store-info.PNG)
 
-### Checkout Page
+### Checkout Page:
 
 ![checkout](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/checkout-page.PNG)
 
-### Place Order Page
+### Place Order Page:
 
 ![place-order](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/place-order-page.PNG)
 
-### Search
+### Search:
 
 ![search](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/search.PNG)
 
-### Restaurant & Dish Review
+### Restaurant & Dish Review:
 
 ![restaurant-review](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/restaurant-review.PNG)
 ![create-review](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/create-review-with-items.PNG)
 
-### Past Orders
+### Past Orders:
 
 ![past-orders](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/past-orders-page.PNG)
 ![receipt](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/past-orders-page-receipt.PNG)
+
+### Business Dashboard:
+
+![dashboard](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/dashboard.PNG)
+
+### Manage Business:
+
+![dashboard](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/dashboard.PNG)
+![menu](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/menu.PNG)
+![create-restaurant](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/create-restaurant.PNG)
+![create-item](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/add-menu-item.PNG)
+
+### Login:
+
+![login](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/log-in-page.PNG)
+
+### Signup:
+
+![signup](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG)
 
 <h2 id="build">How to Build Locally:</h2>
 
@@ -161,3 +180,5 @@ For more details on features and application architecture please refer to the wi
   - Github: https://github.com/mengtian1212
   - Linkedin: https://www.linkedin.com/in/mengtian1212/
   - Email: mengtian.thu@gmail.com
+
+Let's connect!
