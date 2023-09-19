@@ -46,7 +46,11 @@ Engage with customers through feedback collection, enabling improvements in serv
 
 Our platform facilitates the process of starting a new restaurant business, editing store profiles, and removing businesses.
 
-## Index:
+#
+## Table of Contents
+- [Technologies Used](#tech-stack)
+- [Future Plans](#future-plans)
+
 
 - [Tech Stack](##Tech Stack)
 
@@ -57,7 +61,8 @@ For more details on features and application architecture please refer to the wi
 - [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
 - [Wireframes](https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
 
-## Tech Stack:
+#
+<h2 id="tech-stack">Tech Stack</h2>
 
 ### Languages
 
