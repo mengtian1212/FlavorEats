@@ -1,6 +1,6 @@
 # Flavor Eats 🍔🌮🍕
 
-[View Live Site](https://flavor-eats.onrender.com/){:target="\_blank" rel="noopener"}
+[View Live Site](https://flavor-eats.onrender.com/)
 
 Welcome to Flavor Eats, your one-stop web application that seamlessly combines the best of e-commerce for both customers and restaurant businesses.
 
@@ -10,7 +10,7 @@ Customers can search for their preferred cuisines and restaurants, manage multip
 
 ### 1. Fuzzy Search:🔍
 
-Customers can perform efficient searches across various types: dishes, restaurants or keywords in description.
+Customers can perform efficient searches across various types: dishes, restaurants cuisine types, or keywords in descrption.
 
 ### 2. Multi-Restaurant Cart Management:🛒
 
@@ -46,15 +46,6 @@ Engage with customers through feedback collection, enabling improvements in serv
 
 Our platform facilitates the process of starting a new restaurant business, editing store profiles, and removing businesses.
 
-<h2 id="table-of-contents">Index</h2>
-
-- [Technologies Used](#TechStack)
-- [Features](#features)
-- [Future Plans](#future-plans)
-- [Let's Connect](#connect)
-
-For more details on features and application architecture please refer to the wiki page:
-
 ## TechStack
 
 ### Languages
@@ -80,6 +71,9 @@ For more details on features and application architecture please refer to the wi
 ### Hosting:
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+
+## Database Schema Design
+![schema](https://user-images.githubusercontent.com/43865099/268796979-82d155bd-2346-4955-9b1d-9f014ab4ac86.PNG)
 
 ## How to Build Locally
 
@@ -107,9 +101,19 @@ For more details on features and application architecture please refer to the wi
 
 4. In the brower, open http://localhost:3000/
 
+## Wiki
+
+For more details on features and application architecture please refer to the wiki page:
+
+- [Backend Endpoints & Frontend Routes](https://github.com/mengtian1212/FlavorEats/wiki/Backend-Endpoints-&-Frontend-Routes)
+- [Feature List](https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)
+- [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
+- [Wireframes](https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
+
 ## Developer
 
 - Meng (Maggie) Tian
-  - https://www.maggietian.com/
-  - https://github.com/mengtian1212
-  - https://www.linkedin.com/in/mengtian1212/
+  - Personal website: https://www.maggietian.com/
+  - Github: https://github.com/mengtian1212
+  - Linkedin: https://www.linkedin.com/in/mengtian1212/
+  - Email: mengtian.thu@gmail.com
