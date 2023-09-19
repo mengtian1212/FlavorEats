@@ -148,7 +148,7 @@ For more details on features and application architecture please refer to the wi
 
 ### Shopping Cart:
 
-![cart](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG)
+![cart](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/shopping-cart.PNG)
 
 ### Favorited Restaurants:
 
