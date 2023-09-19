@@ -148,7 +148,11 @@ For more details on features and application architecture please refer to the wi
 
 ### Shopping Cart:
 
-![cart]([https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/shopping-cart.PNG)
+![cart](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/shopping-cart.PNG)
+
+### Favorited Restaurants:
+
+![favorites](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/favorite-page.PNG)
 
 <h2 id="build">How to Build Locally:</h2>
 
