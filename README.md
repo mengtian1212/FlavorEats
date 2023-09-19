@@ -46,9 +46,12 @@ Engage with customers through feedback collection, enabling improvements in serv
 
 Our platform facilitates the process of starting a new restaurant business, editing store profiles, and removing businesses.
 
-## Table of Contents
+## Table of Contents:
 - [Technologies Used](#tech-stack)
 - [Database Schema Design](#database)
+- [Selected Views](#views)
+- [How to Build Locally](#build)
+- [Developer](#developer)
 
 For more details on features and application architecture please refer to the wiki page:
 
@@ -59,14 +62,14 @@ For more details on features and application architecture please refer to the wi
 
 <h2 id="tech-stack">Tech Stack</h2>
 
-### Languages
+### Languages:
 
 ![html5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
 
-### Frameworks and Libraries
+### Frameworks and Libraries:
 
 ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white)
@@ -83,11 +86,11 @@ For more details on features and application architecture please refer to the wi
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
-<h2 id="database">Database Schema Design</h2>
+<h2 id="database">Database Schema Design:</h2>
 
 ![schema](https://user-images.githubusercontent.com/43865099/268796979-82d155bd-2346-4955-9b1d-9f014ab4ac86.PNG)
 
-<h2 id="views">Selected Views</h2>
+<h2 id="views">Selected Views:</h2>
 
 ### Landing Page
 
