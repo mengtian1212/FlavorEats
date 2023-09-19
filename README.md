@@ -72,6 +72,9 @@ Our platform facilitates the process of starting a new restaurant business, edit
 
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
+## Database Schema Design
+![schema](https://github.com/mengtian1212/FlavorEats/wiki/Database-Schema)
+
 ## How to Build Locally
 
 1. Clone this repository (only this branch)
