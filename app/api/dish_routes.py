@@ -71,6 +71,9 @@ def edit_dish(dishId):
 @dish_routes.route('/<int:dishId>', methods=["DELETE"])
 @login_required
 def delete_dish(dishId):
+    """
+    Remove a menu item
+    """
     targetDish = MenuItem.query.get(dishId)
     if not targetDish:
         return {"errors": "Dish not found,"}, 404
