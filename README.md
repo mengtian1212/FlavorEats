@@ -134,7 +134,6 @@ For more details on features and application architecture please refer to the wi
 
 ### Manage Business:
 
-![dashboard](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/dashboard.PNG)
 ![menu](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/menu.PNG)
 ![create-restaurant](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/create-restaurant.PNG)
 ![create-item](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/add-menu-item.PNG)
@@ -149,7 +148,7 @@ For more details on features and application architecture please refer to the wi
 
 ### Shopping Cart:
 
-![cart]([https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/shopping-cart.PNG))
+![cart]([https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/shopping-cart.PNG)
 
 <h2 id="build">How to Build Locally:</h2>
 
