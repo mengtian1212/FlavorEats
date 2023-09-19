@@ -46,6 +46,17 @@ Engage with customers through feedback collection, enabling improvements in serv
 
 Our platform facilitates the process of starting a new restaurant business, editing store profiles, and removing businesses.
 
+## Index:
+
+- [Tech Stack](##Tech Stack)
+
+For more details on features and application architecture please refer to the wiki page:
+
+- [Backend Endpoints & Frontend Routes](https://github.com/mengtian1212/FlavorEats/wiki/Backend-Endpoints-&-Frontend-Routes)
+- [Feature List](https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)
+- [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
+- [Wireframes](https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
+
 ## Tech Stack:
 
 ### Languages
@@ -138,15 +149,6 @@ Our platform facilitates the process of starting a new restaurant business, edit
    ```
 
 4. In the brower, open http://localhost:3000/
-
-## Wiki:
-
-For more details on features and application architecture please refer to the wiki page:
-
-- [Backend Endpoints & Frontend Routes](https://github.com/mengtian1212/FlavorEats/wiki/Backend-Endpoints-&-Frontend-Routes)
-- [Feature List](https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)
-- [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
-- [Wireframes](https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
 
 ## Developer:
 
