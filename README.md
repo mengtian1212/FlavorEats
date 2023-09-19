@@ -147,6 +147,10 @@ For more details on features and application architecture please refer to the wi
 
 ![signup](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG)
 
+### Shopping Cart:
+
+![cart]([https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/sign-up-page.PNG](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/shopping-cart.PNG))
+
 <h2 id="build">How to Build Locally:</h2>
 
 1. Clone this repository (only this branch)
