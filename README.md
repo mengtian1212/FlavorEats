@@ -1,10 +1,10 @@
-# Flavor Eats 🍔🌮🍕
+# FlavorEats 🍔🌮🍕
 
 [>>> Live Site <<<](https://flavor-eats.onrender.com/)
 
-Welcome to Flavor Eats, your one-stop web application that seamlessly combines the best of e-commerce for both customers and restaurant businesses.
+Welcome to FlavorEats, your one-stop web application that seamlessly combines the best of e-commerce for both customers and restaurant businesses.
 
-Customers can search for their preferred cuisines and restaurants, manage multiple shopping carts and track their orders. On the flip side, business managers have access to a user-friendly dashboard for monitoring sales performance, managing menus and orders and engaging with customer feedback. Flavor Eats has got you covered on both fronts!
+Customers can search for their preferred cuisines and restaurants, manage multiple shopping carts and track their orders. On the flip side, business managers have access to a user-friendly dashboard for monitoring sales performance, managing menus and orders and engaging with customer feedback. FlavorEats has got you covered on both fronts!
 
 ## Customer-Centric Features:🍽️📦
 
