@@ -49,7 +49,7 @@ Our platform facilitates the process of starting a new restaurant business, edit
 ## Table of Contents:
 - [Technologies Used](#tech-stack)
 - [Database Schema Design](#database)
-- [Selected Views](#views)
+- [Selected Screenshots](#views)
 - [How to Build Locally](#build)
 - [Developer](#developer)
 
