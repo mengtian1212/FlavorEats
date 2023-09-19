@@ -101,13 +101,7 @@ Our platform facilitates the process of starting a new restaurant business, edit
 
 4. In the brower, open http://localhost:3000/
 
-## Developer
-
-- Meng (Maggie) Tian
-  - Personal website: https://www.maggietian.com/
-  - Github: https://github.com/mengtian1212
-  - Linkedin: https://www.linkedin.com/in/mengtian1212/
-  - Email: mengtian.thu@gmail.com
+## Wiki
 
 For more details on features and application architecture please refer to the wiki page:
 
@@ -115,3 +109,11 @@ For more details on features and application architecture please refer to the wi
 - [Feature List](https://github.com/mengtian1212/FlavorEats/wiki/Feature-List)
 - [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
 - [Wireframes](https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
+
+## Developer
+
+- Meng (Maggie) Tian
+  - Personal website: https://www.maggietian.com/
+  - Github: https://github.com/mengtian1212
+  - Linkedin: https://www.linkedin.com/in/mengtian1212/
+  - Email: mengtian.thu@gmail.com
