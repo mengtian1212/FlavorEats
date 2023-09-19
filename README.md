@@ -46,7 +46,7 @@ Engage with customers through feedback collection, enabling improvements in serv
 
 Our platform facilitates the process of starting a new restaurant business, editing store profiles, and removing businesses.
 
-## TechStack
+## Tech Stack:
 
 ### Languages
 
@@ -75,7 +75,13 @@ Our platform facilitates the process of starting a new restaurant business, edit
 ## Database Schema Design
 ![schema](https://user-images.githubusercontent.com/43865099/268796979-82d155bd-2346-4955-9b1d-9f014ab4ac86.PNG)
 
-## How to Build Locally
+## Selected Views:
+
+### Landing page
+
+![landing-page](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/landing-page.PNG)
+
+## How to Build Locally:
 
 1. Clone this repository (only this branch)
 
@@ -101,7 +107,7 @@ Our platform facilitates the process of starting a new restaurant business, edit
 
 4. In the brower, open http://localhost:3000/
 
-## Wiki
+## Wiki:
 
 For more details on features and application architecture please refer to the wiki page:
 
@@ -110,7 +116,7 @@ For more details on features and application architecture please refer to the wi
 - [User Stories](https://github.com/mengtian1212/FlavorEats/wiki/User-Stories)
 - [Wireframes](https://github.com/mengtian1212/FlavorEats/wiki/Wireframes)
 
-## Developer
+## Developer:
 
 - Meng (Maggie) Tian
   - Personal website: https://www.maggietian.com/
