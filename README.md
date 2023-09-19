@@ -99,9 +99,19 @@ Our platform facilitates the process of starting a new restaurant business, edit
 
 ![place-order](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/place-order-page.PNG)
 
-### Restaurant Review
+### Search
+
+![search](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/search.PNG)
+
+### Restaurant & Dish Review
 
 ![restaurant-review](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/restaurant-review.PNG)
+![create-review](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/create-review-with-items.PNG)
+
+### Past Orders
+
+![past-orders](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/past-orders-page.PNG)
+![receipt](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/past-orders-page-receipt.PNG)
 
 ## How to Build Locally:
 
