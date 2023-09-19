@@ -84,6 +84,7 @@ For more details on features and application architecture please refer to the wi
 ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
 <h2 id="database">Database Schema Design</h2>
+
 ![schema](https://user-images.githubusercontent.com/43865099/268796979-82d155bd-2346-4955-9b1d-9f014ab4ac86.PNG)
 
 <h2 id="views">Selected Views</h2>
