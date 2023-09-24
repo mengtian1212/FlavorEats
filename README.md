@@ -186,6 +186,7 @@ For more details on features and application architecture please refer to the wi
   - Personal website: https://www.maggietian.com/
   - Github: https://github.com/mengtian1212
   - Linkedin: https://www.linkedin.com/in/mengtian1212/
+  - Wellfound: https://wellfound.com/u/meng-tian-2
   - Email: mengtian.thu@gmail.com
 
 Let's connect!
