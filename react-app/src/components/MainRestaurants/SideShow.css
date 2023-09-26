@@ -138,6 +138,7 @@
 @media screen and (max-width: 1430px) {
   .slide-btn {
     padding: 6px 12px;
+    margin-top: 8px;
   }
 
   .slide-btn > * {
@@ -150,5 +151,20 @@
 
   .slide-text-container {
     height: fit-content;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .slide-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .slide-btn > * {
+    font-size: 12px;
+  }
+
+  .slide-text {
+    font-size: 17px;
   }
 }
