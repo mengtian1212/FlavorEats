@@ -14,6 +14,24 @@
   column-gap: 24px;
 }
 
+@media screen and (max-width: 1420px) {
+  .checkout-main-container {
+    min-width: 1024px;
+    max-width: 1200px;
+
+    margin: 16px auto;
+
+    padding: 0px auto;
+    padding-bottom: 36px;
+    /* width: 80%; */
+
+    display: grid;
+    grid-template-columns: 750px 450px;
+    row-gap: 32px;
+    column-gap: 24px;
+  }
+}
+
 .checkout-res-container {
   margin-bottom: 40px;
   display: flex;

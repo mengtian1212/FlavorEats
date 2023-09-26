@@ -196,6 +196,16 @@ input[type="radio"] {
   padding-right: 16px;
 }
 
+.res-list-title5 {
+  line-height: 40px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding-right: 16px;
+  max-width: 90%;
+}
+
 .over-res {
   flex: 1;
 }
@@ -361,4 +371,8 @@ input[type="radio"] {
 
 .newest-res-card {
   position: relative;
+}
+
+.cusine-type-name {
+  text-align: center;
 }

@@ -297,7 +297,6 @@ function Navigation({ isLoaded }) {
             </div>
             {!showEditAddress && (
               <>
-                <div className="_48"></div>
                 <div className="nav-search">
                   <i className="fas fa-search"></i>
                   <input

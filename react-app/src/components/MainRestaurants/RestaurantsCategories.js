@@ -110,7 +110,7 @@ function RestaurantsCategories({ filterType, setFilterType }) {
             }`}
           />
         </div>
-        <div>Best Overall</div>
+        <div className="cusine-type-name">Best Overall</div>
       </div>
       {selectedCuisineTypes.map((cuisineType, index) => (
         <div
@@ -127,7 +127,7 @@ function RestaurantsCategories({ filterType, setFilterType }) {
               }`}
             />
           </div>
-          <div>{cuisineType.name}</div>
+          <div className="cusine-type-name">{cuisineType.name}</div>
         </div>
       ))}
     </section>

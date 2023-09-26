@@ -61,7 +61,7 @@ function NearestResSubSection() {
     <>
       {!isLoading && (
         <div className="near-container">
-          <div className="res-list-title">
+          <div className="res-list-title5">
             {sessionUser
               ? `Popular stores near your location (${address})`
               : "Popular stores near you"}

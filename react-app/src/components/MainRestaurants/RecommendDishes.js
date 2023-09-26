@@ -118,7 +118,7 @@ function RecommendDishes() {
                               buttonText="Quick view"
                               onItemClick={closeMenu}
                               modalComponent={<ItemModal item={item} />}
-                              myClass="img-quick-view2 cursor"
+                              myClass="img-quick-view3 cursor"
                             />
                           </div>
                           <div className="item-name-text1">

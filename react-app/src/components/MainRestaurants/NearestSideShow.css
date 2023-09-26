@@ -21,7 +21,7 @@
 }
 
 .slide-near {
-  min-height: 140px;
+  min-height: 240px;
   height: max-content;
   /* background: rgb(222, 233, 254); */
   position: absolute;
@@ -31,6 +31,43 @@
   right: 0;
   display: flex;
   overflow: hidden;
+}
+
+@media screen and (max-width: 1700px) {
+  .slide-outer-near {
+    min-height: 285px;
+  }
+}
+
+@media screen and (max-width: 1900px) {
+  .all-res-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 40px 24px;
+  }
+
+  .restaurant-preview {
+    height: 128px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+
+  .restaurant-card-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* width: fit-content; */
+    width: 100%;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .mw {
+    padding-left: 24px;
+    padding-right: 48px;
+  }
 }
 
 /* button  */
