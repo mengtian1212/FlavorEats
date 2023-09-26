@@ -141,10 +141,14 @@
   }
 
   .slide-btn > * {
-    font-size: 1.1vw;
+    font-size: 12px;
   }
 
   .slide-caption {
-    font-size: 14px;
+    display: none;
+  }
+
+  .slide-text-container {
+    height: fit-content;
   }
 }

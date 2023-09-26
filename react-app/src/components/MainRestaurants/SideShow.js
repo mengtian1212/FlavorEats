@@ -87,8 +87,7 @@ function SideShow({ setFilterType }) {
     5: {
       //
       text: "Manage your business on the FlavorEats platform",
-      caption:
-        "Your business' all-purpose tool for restaurant, menu, and store analytics",
+      caption: "All-purpose tool for restaurant, menu, and store analytics",
       btnText: "Enter here",
       // img: "https://cn-geo1.uber.com/static/mobile-content/eats/promo_manager/savings_card_icons/ubereats/storefront@3x.png",
       img: "https://www.uber-assets.com/image/upload/q_auto:eco,c_fill,w_360,h_240/v1622579254/assets/f8/3a023b-d455-4aab-97a0-12bc3026cebf/original/YouPrepare.svg",
