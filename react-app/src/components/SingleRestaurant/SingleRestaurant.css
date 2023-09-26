@@ -6,11 +6,12 @@
 
 .restaurant-photo-container {
   position: relative;
+  /* z-index: -1; */
 }
 
 .favsingle {
   position: absolute;
-  z-index: 1;
+  z-index: 1 !important;
   right: 24px;
   top: 24px;
   color: black;
@@ -425,4 +426,3 @@ main {
   justify-content: center;
   gap: 1em;
 }
-

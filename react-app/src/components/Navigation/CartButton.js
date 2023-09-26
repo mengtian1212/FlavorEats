@@ -67,10 +67,10 @@ function CartButton({ user }) {
           </div>
           <button
             onClick={() => history.push("/login")}
-            className="btn-white cursor"
+            className="btn-white-login cursor"
           >
             <i className="fa-solid fa-user"></i>
-            <div>Log in</div>
+            <div className="white-login">Log in</div>
           </button>
           <div className="_16"></div>
           <button
