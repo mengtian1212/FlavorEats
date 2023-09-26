@@ -59,6 +59,17 @@ function UserButton({ user }) {
           </div>
           <div>Github</div>
         </a>
+        <a
+          href="https://wellfound.com/u/meng-tian-2"
+          className="menu-item github1 cursor userhover"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <div className="menu-icons">
+            <i className="fa-brands fa-angellist"></i>
+          </div>
+          <div>Wellfound</div>
+        </a>
       </>
     );
     setModalClass("profile-dropdown");
