@@ -33,6 +33,10 @@
   overflow: hidden;
 }
 
+.slide-outer-near {
+  min-height: 268px;
+}
+
 @media screen and (max-width: 1700px) {
   .slide-outer-near {
     min-height: 285px;
