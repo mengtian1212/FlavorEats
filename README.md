@@ -112,7 +112,7 @@ For more details on features and application architecture please refer to the wi
 
 ### Place Order Page:
 
-![place-order](https://github.com/mengtian1212/FlavorEats/blob/screenshot/schema-screenshots/place-order-page.PNG)
+![place-order](https://github.com/mengtian1212/FlavorEats/blob/main/schema-screenshots/place-order-page.PNG)
 
 ### Search:
 
