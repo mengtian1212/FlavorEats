@@ -101,7 +101,7 @@ function SideShow({ setFilterType }) {
       caption: "Customize your culinary offerings and flavors with ease",
       btnText: "Get started",
       // img: "https://cdn.discordapp.com/attachments/1139263822469795862/1149586364359258162/23._new_restaurant_snip.PNG",
-      img: "https://media.discordapp.net/attachments/1139263822469795862/1220198048261738586/23._new_restaurant_snip_copy.PNG",
+      img: "https://media.discordapp.net/attachments/1220221548531548173/1220265324763676712/23._new_restaurant_snip_copy.PNG",
       path: "/business/restaurant-builder",
       // backgroundColor: "#262626",
       backgroundColor: "rgb(20,35,40)",
