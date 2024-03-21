@@ -14,7 +14,8 @@ function ThankReview({ rating }) {
         <i className="fa-solid fa-xmark"></i>
       </div>
       <img
-        src="https://media.discordapp.net/attachments/1220221548531548173/1220266090219962431/19._shopping_bag_copy.png"
+        // src="https://media.discordapp.net/attachments/1220221548531548173/1220266090219962431/19._shopping_bag_copy.png"
+        src="https://flavoreatsbucket.s3.us-west-2.amazonaws.com/19._shopping_bag_copy.png"
         alt=""
         className="thank-review-img"
       />
