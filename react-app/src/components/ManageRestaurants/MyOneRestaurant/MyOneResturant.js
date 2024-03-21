@@ -162,7 +162,8 @@ function MyOneRestaurant() {
                         </button>
                       </div>
                       <img
-                        src="https://cdn.discordapp.com/attachments/1139263822469795862/1152037211777282148/26._you_store_ready_pic.PNG"
+                        // src="https://media.discordapp.net/attachments/1220221548531548173/1220265536512856104/26._you_store_ready_pic_copy.PNG"
+                        src="https://flavoreatsbucket.s3.us-west-2.amazonaws.com/26._you_store_ready_pic_copy.PNG"
                         alt=""
                         className="walking-order"
                       />
